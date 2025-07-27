@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# portfolio-web
 
-## Getting Started
+[NEXT.JS](https://nextjs.org/)
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+npx create-next-app@latest
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[TAILWIND CSS](https://tailwindcss.com/)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
 
-## Learn More
+[ACETERNITY UI](https://ui.aceternity.com/)
 
-To learn more about Next.js, take a look at the following resources:
+- [Spotlight](https://ui.aceternity.com/components/spotlight)
+- [Grid and Dot Backgrounds](https://ui.aceternity.com/components/grid-and-dot-backgrounds)
+- [Text Generate Effect](https://ui.aceternity.com/components/text-generate-effect)
+- [Floating Navbar](https://ui.aceternity.com/components/floating-navbar)
+- [Bento Grid](https://ui.aceternity.com/components/bento-grid)
+- [Background Gradient Animation](https://ui.aceternity.com/components/background-gradient-animation)
+- [GitHub Globe](https://ui.aceternity.com/components/github-globe)
+- [3D Animated Pin](https://ui.aceternity.com/components/3d-pin)
+- [Infinite Moving Cards](https://ui.aceternity.com/components/infinite-moving-cards)
+- [Moving Border](https://ui.aceternity.com/components/moving-border)
+- [Canvas Reveal Effect](https://ui.aceternity.com/components/canvas-reveal-effect)
+- [Tailwind CSS buttons](https://ui.aceternity.com/components/tailwindcss-buttons)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[NPM]
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
+- [react-icons](https://www.npmjs.com/package/react-icons) → [Popular icons in your React projects](https://react-icons.github.io/react-icons/)
+- [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+[CSS GRADIENT](https://cssgradient.io/)
