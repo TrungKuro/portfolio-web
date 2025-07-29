@@ -6,19 +6,28 @@ import Grid from "@/components/Grid";
 import { Hero } from "@/components/Hero";
 import RecentProjects from "@/components/RecentProjects";
 import { FloatingNavbar } from "@/components/ui/FloatingNavbar";
-import { navItems } from "@/data";
+import { getIndexData } from "@/lib/content";
 
 export default function Home() {
+  const { navItems } = getIndexData();
+
   return (
     <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto sm:px-10 px-5 overflow-clip">
       <div className="max-w-7xl w-full">
+        {/* Navigation */}
         <FloatingNavbar navItems={navItems} />
+
+        {/* Header */}
         <Hero />
+
+        {/* Body */}
         <Grid />
         <RecentProjects />
         <Clients />
         <Experience />
         <Approach />
+
+        {/* Footer */}
         <Footer />
       </div>
     </main>

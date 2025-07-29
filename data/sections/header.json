@@ -1,0 +1,52 @@
+{
+  "header": {
+    "logo": {
+      "img": "/assets/logo.svg",
+      "alt": "Hoang Trung Portfolio"
+    },
+
+    "navItems": [
+      { "name": "Home", "id": "home", "link": "/" },
+      { "name": "About", "id": "about", "link": "/about", "hash": "#about" },
+      {
+        "name": "Skills",
+        "id": "skills",
+        "link": "/skills",
+        "hash": "#skills"
+      },
+      {
+        "name": "Projects",
+        "id": "projects",
+        "link": "/projects",
+        "hash": "#projects"
+      },
+      {
+        "name": "Contact",
+        "id": "contact",
+        "link": "/contact",
+        "hash": "#contact"
+      }
+    ],
+
+    "buttons": {
+      "cv": {
+        "title": "View Resume",
+        "download": "/assets/HoangTrungCV.pdf"
+      },
+      "theme": {
+        "icons": {
+          "light": "/assets/theme-light.svg",
+          "dark": "/assets/theme-dark.svg"
+        },
+        "toggle": true
+      },
+      "language": {
+        "icons": {
+          "en": "/assets/language-en.svg",
+          "vn": "/assets/language-vn.svg"
+        },
+        "toggle": true
+      }
+    }
+  }
+}

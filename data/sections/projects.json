@@ -1,0 +1,58 @@
+{
+  "projects": [
+    {
+      "title": "Task Flow Manager",
+      "description": "A Trello-inspired task management app that allows users to create boards, lists, and draggable task cards. Includes user authentication, real-time updates, and team collaboration features.",
+      "image": "/assets/projects/taskflow.png",
+      "techStack": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Node.js",
+        "MongoDB",
+        "Socket.io"
+      ],
+      "links": {
+        "client": "",
+        "server": "",
+        "live": ""
+      }
+    },
+    {
+      "title": "Personal Finance Tracker",
+      "description": "An interactive dashboard to track income, expenses, and budgets. Includes visual charts, monthly analytics, goal tracking, and categorized spending insights. Designed for intuitive personal finance control.",
+      "image": "/assets/projects/finance-tracker.png",
+      "techStack": [
+        "React",
+        "Next.js",
+        "Tailwind CSS",
+        "Recharts",
+        "Node.js",
+        "MongoDB",
+        "JWT Auth"
+      ],
+      "links": {
+        "client": "",
+        "server": "",
+        "live": ""
+      }
+    },
+    {
+      "title": "Personal Blog CMS",
+      "description": "A full-featured personal blog where the admin can write, edit, and publish blog posts via a custom CMS dashboard. Includes rich text editor, SEO-friendly routing, and public viewing.",
+      "image": "/assets/projects/blogcms.png",
+      "techStack": [
+        "Next.js",
+        "Tailwind CSS",
+        "Prisma",
+        "PostgreSQL",
+        "NextAuth"
+      ],
+      "links": {
+        "client": "",
+        "server": "",
+        "live": ""
+      }
+    }
+  ]
+}

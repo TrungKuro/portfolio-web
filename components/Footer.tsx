@@ -2,9 +2,11 @@
 import React from "react";
 import { MagicButton } from "./ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
-import { socialMedia } from "@/data";
+import { getIndexData } from "@/lib/content";
 
 const Footer = () => {
+  const { socialMedia } = getIndexData();
+
   return (
     <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
       <div className="w-full absolute left-0 lg:-bottom-72 md:-bottom-48 sm:-bottom-24 min-h-96">

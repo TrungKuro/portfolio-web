@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prefer-const */
 "use client";
 import React, { JSX, useState } from "react";
 import {
@@ -9,16 +7,19 @@ import {
   useMotionValueEvent,
 } from "motion/react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+
+interface NavItem {
+  name: string;
+  link: string;
+  icon?: JSX.Element;
+}
 
 export const FloatingNavbar = ({
   navItems,
   className,
 }: {
-  navItems: {
-    name: string;
-    link: string;
-    icon?: JSX.Element;
-  }[];
+  navItems: NavItem[];
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
@@ -28,7 +29,7 @@ export const FloatingNavbar = ({
   useMotionValueEvent(scrollYProgress, "change", (current) => {
     // Check if current is not undefined and is a number
     if (typeof current === "number") {
-      let direction = current! - scrollYProgress.getPrevious()!;
+      const direction = current! - scrollYProgress.getPrevious()!;
 
       if (scrollYProgress.get() < 0.05) {
         setVisible(false);
@@ -61,8 +62,8 @@ export const FloatingNavbar = ({
           className
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
-          <a
+        {navItems.map((navItem: NavItem, idx: number) => (
+          <Link
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
@@ -71,7 +72,7 @@ export const FloatingNavbar = ({
           >
             <span className="block sm:hidden">{navItem.icon}</span>
             <span className="text-sm !cursor-pointer">{navItem.name}</span>
-          </a>
+          </Link>
         ))}
       </motion.div>
     </AnimatePresence>

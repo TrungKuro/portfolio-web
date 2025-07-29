@@ -1,0 +1,215 @@
+{
+  "skills": {
+    "title": "Skills",
+
+    "techStack": {
+      "label": "Tech Stack",
+      "title": "My Skills",
+      "categories": [
+        {
+          "categoryName": "Programming Languages",
+          "items": [
+            {
+              "name": "JavaScript",
+              "type": "Language",
+              "icon": "/icons/javascript.svg"
+            },
+            {
+              "name": "TypeScript",
+              "type": "Language",
+              "icon": "/icons/typescript.svg"
+            },
+            { "name": "Dart", "type": "Language", "icon": "/icons/dart.svg" }
+          ]
+        },
+        {
+          "categoryName": "Frontend Frameworks & Libraries",
+          "items": [
+            {
+              "name": "HTML",
+              "type": "Markup Language",
+              "icon": "/icons/html.svg"
+            },
+            {
+              "name": "CSS",
+              "type": "Style Language",
+              "icon": "/icons/css.svg"
+            },
+            {
+              "name": "React",
+              "type": "JavaScript Library",
+              "icon": "/icons/react.svg"
+            },
+            {
+              "name": "Next.js",
+              "type": "React Framework",
+              "icon": "/icons/nextjs.svg"
+            },
+            {
+              "name": "Tailwind CSS",
+              "type": "CSS Framework",
+              "icon": "/icons/tailwind.svg"
+            },
+            {
+              "name": "Material-UI (MUI)",
+              "type": "UI Component Library",
+              "icon": "/icons/mui.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "State & Data Management",
+          "items": [
+            {
+              "name": "Zustand",
+              "type": "State Management",
+              "icon": "/icons/zustand.svg"
+            },
+            {
+              "name": "React Query",
+              "type": "Async Data Handling",
+              "icon": "/icons/react-query.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "Backend & Databases",
+          "items": [
+            {
+              "name": "Node.js",
+              "type": "Runtime Environment",
+              "icon": "/icons/nodejs.svg"
+            },
+            {
+              "name": "Express.js",
+              "type": "Web Framework",
+              "icon": "/icons/expressjs.svg"
+            },
+            {
+              "name": "MySQL",
+              "type": "Relational Database",
+              "icon": "/icons/mysql.svg"
+            },
+            {
+              "name": "MongoDB",
+              "type": "NoSQL Database",
+              "icon": "/icons/mongodb.svg"
+            },
+            {
+              "name": "Firebase",
+              "type": "Backend as a Service",
+              "icon": "/icons/firebase.svg"
+            },
+            {
+              "name": "Sanity",
+              "type": "Headless CMS",
+              "icon": "/icons/sanity.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "Mobile Development",
+          "items": [
+            {
+              "name": "Flutter",
+              "type": "Cross-platform Framework",
+              "icon": "/icons/flutter.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "UI/UX & Productivity Tools",
+          "items": [
+            {
+              "name": "Figma",
+              "type": "Design Tool",
+              "icon": "/icons/figma.svg"
+            },
+            {
+              "name": "Vite",
+              "type": "Frontend Build Tool",
+              "icon": "/icons/vite.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "DevOps & Utilities",
+          "items": [
+            {
+              "name": "Git",
+              "type": "Version Control",
+              "icon": "/icons/git.svg"
+            },
+            {
+              "name": "NPM",
+              "type": "Package Manager",
+              "icon": "/icons/npm.svg"
+            },
+            {
+              "name": "GitHub Actions",
+              "type": "CI/CD Tool",
+              "icon": "/icons/github.svg"
+            },
+            {
+              "name": "Postman",
+              "type": "API Testing Tool",
+              "icon": "/icons/postman.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "Testing Frameworks",
+          "items": [
+            {
+              "name": "Vitest",
+              "type": "Unit Testing Tool",
+              "icon": "/icons/vitest.svg"
+            }
+          ]
+        },
+        {
+          "categoryName": "Deployment Platforms",
+          "items": [
+            {
+              "name": "Vercel",
+              "type": "Hosting Platform",
+              "icon": "/icons/vercel.svg"
+            },
+            {
+              "name": "Netlify",
+              "type": "Hosting Platform",
+              "icon": "/icons/netlify.svg"
+            }
+          ]
+        }
+      ]
+    },
+
+    "softSkills": {
+      "label": "Soft Skills",
+      "title": "My Soft Skills",
+      "items": [
+        "Analytical Thinking & Problem Solving",
+        "Big Picture Thinking",
+        "Clear & Concise Communication",
+        "Team Collaboration & Empathy",
+        "Adaptability & Continuous Learning",
+        "Detail-Oriented Execution"
+      ]
+    },
+
+    "expertise": {
+      "label": "Expertise",
+      "title": "My Expertise",
+      "items": [
+        "Building Scalable Frontend with React & Next.js",
+        "Cross-platform Mobile Development using Flutter",
+        "Designing Clean Architecture & Maintainable Codebase",
+        "Creating Reusable & Modular UI Components",
+        "Optimizing Web & App Performance for UX",
+        "Implementing CI/CD & Agile Development Practices",
+        "Effective Collaboration in Remote Environments"
+      ]
+    }
+  }
+}
