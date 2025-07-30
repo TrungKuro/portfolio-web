@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import { getIndexData } from "@/lib/content";
 import React from "react";
-import { Button } from "./ui/MovingBorder";
-import Reveal from "./common/Reveal";
+import { Button } from "../ui/MovingBorder";
+import Reveal from "../common/ScrollRevealAnimation";
 
-const Experience = () => {
+const Experience = ({ id }: { id: string }) => {
   const { workExperience } = getIndexData();
 
   return (
-    <section id="testimonials">
+    <section id={id}>
       <Reveal>
         <div className="py-20">
           <h1 className="heading">

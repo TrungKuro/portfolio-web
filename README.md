@@ -35,11 +35,16 @@
 >
 > **WEB TOOLS**
 >
-> - [CSS GRADIENT](https://cssgradient.io/)
+> - [CSS Gradient](https://cssgradient.io/)
+> - [SVG Repo](https://www.svgrepo.com/)
 >
 > **HEADLESS CMS**
 >
 > - [Sanity](https://www.sanity.io/)
+>
+> **WEBPACK**
+>
+> - [SVGR](https://react-svgr.com/) → [Configure your Next.js project to import SVG as React components](https://react-svgr.com/docs/next/)
 
 ## Portfolio
 

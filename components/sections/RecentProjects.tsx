@@ -1,15 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 import { getIndexData } from "@/lib/content";
 import React from "react";
-import { PinContainer } from "./ui/3DPin";
+import { PinContainer } from "../ui/3DPin";
 import { FaLocationArrow } from "react-icons/fa";
-import Reveal from "./common/Reveal";
+import Reveal from "../common/ScrollRevealAnimation";
 
-const RecentProjects = () => {
+const RecentProjects = ({ id }: { id: string }) => {
   const { projects } = getIndexData();
 
   return (
-    <section id="projects">
+    <section id={id}>
       <Reveal>
         <div className="py-20">
           <h1 className="heading">

@@ -4,11 +4,11 @@ import React from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
-import Reveal from "./common/Reveal";
+import Reveal from "../common/ScrollRevealAnimation";
 
-const Approach = () => {
+const Approach = ({ id }: { id: string }) => {
   return (
-    <section>
+    <section id={id}>
       <Reveal>
         <div className="w-full py-20">
           <h1 className="heading">

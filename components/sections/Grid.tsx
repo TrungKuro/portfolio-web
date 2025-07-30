@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
-import { BentoGrid, BentoGridItem } from "./BentoGrid";
+import { BentoGrid, BentoGridItem } from "../BentoGrid";
 import { title } from "process";
 import { getIndexData } from "@/lib/content";
-import Reveal from "./common/Reveal";
+import Reveal from "../common/ScrollRevealAnimation";
 
-const Grid = () => {
+const Grid = ({ id }: { id: string }) => {
   const { gridItems } = getIndexData();
 
   return (
-    <section id="about">
+    <section id={id}>
       <Reveal>
         <BentoGrid className="w-full py-20">
           {gridItems.map(

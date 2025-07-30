@@ -1,14 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import { InfiniteMovingCards } from "./ui/InfiniteMovingCards";
+import { InfiniteMovingCards } from "../ui/InfiniteMovingCards";
 import { getIndexData } from "@/lib/content";
-import Reveal from "./common/Reveal";
+import Reveal from "../common/ScrollRevealAnimation";
 
-const Clients = () => {
+const Clients = ({ id }: { id: string }) => {
   const { companies, testimonials } = getIndexData();
 
   return (
-    <section id="testimonials">
+    <section id={id}>
       <Reveal>
         <div className="py-20">
           <h1 className="heading">

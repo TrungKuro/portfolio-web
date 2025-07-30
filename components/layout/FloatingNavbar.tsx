@@ -1,10 +1,12 @@
 "use client";
+
 import React, { JSX, useState } from "react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
+  useTransform,
 } from "motion/react";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -23,6 +25,9 @@ export const FloatingNavbar = ({
   className?: string;
 }) => {
   const { scrollYProgress } = useScroll();
+
+  // Biến đổi giá trị scrollYProgress (0 → 1) thành width: 0% → 100%
+  const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
   const [visible, setVisible] = useState(false);
 
@@ -67,14 +72,25 @@ export const FloatingNavbar = ({
             key={`link=${idx}`}
             href={navItem.link}
             className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+              "relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300",
+              idx === navItems.length - 1 && "mr-0"
             )}
           >
             <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="text-sm !cursor-pointer">{navItem.name}</span>
+            <span className="hidden sm:block text-sm !cursor-pointer">
+              {navItem.name}
+            </span>
           </Link>
         ))}
+        <motion.span className="absolute inset-x-0 -bottom-px h-px mx-10">
+          <motion.span
+            className="absolute inset-x-0 h-px bg-[linear-gradient(to_right,_transparent_0%,_#a855f7_10%,_#3b82f6_50%,_#a855f7_90%,_transparent_100%)]"
+            style={{ width: progressWidth }}
+          />
+        </motion.span>
       </motion.div>
     </AnimatePresence>
   );
 };
+
+// style={{ width: progressWidth }}
