@@ -1,18 +1,19 @@
-import { FloatingNavbar } from "@/components/layout/FloatingNavbar";
-import { getHeaderData } from "@/lib/content";
 import NavHomeIcon from "@/public/assets/icons/nav-home.svg";
 import NavAboutIcon from "@/public/assets/icons/nav-about.svg";
 import NavSkillsIcon from "@/public/assets/icons/nav-skills.svg";
 import NavProjectsIcon from "@/public/assets/icons/nav-projects.svg";
 import NavContactIcon from "@/public/assets/icons/nav-contact.svg";
 
-import Hero from "@/components/sections/Hero";
-import Grid from "@/components/sections/Grid";
-import RecentProjects from "@/components/sections/RecentProjects";
-import Clients from "@/components/sections/Clients";
-import Experience from "@/components/sections/Experience";
-import Approach from "@/components/sections/Approach";
-import Footer from "@/components/sections/Footer";
+import { getHeaderData } from "@/lib/content";
+import { FloatingNavbar } from "@/components/common/FloatingNavbar";
+
+import { Hero } from "@/components/sections/Hero";
+import { About } from "@/components/sections/About";
+import { Projects } from "@/components/sections/Projects";
+import { Clients } from "@/components/sections/Clients";
+import { Experience } from "@/components/sections/Experience";
+import { Approach } from "@/components/sections/Approach";
+import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
   const { navItems } = getHeaderData();
@@ -57,14 +58,14 @@ export default function Home() {
         <Hero id={navItems[0].id} />
 
         {/* Body */}
-        <Grid id={navItems[1].id} />
-        <RecentProjects id={navItems[2].id} />
+        <About id={navItems[1].id} />
+        <Projects id={navItems[2].id} />
         <Clients id={navItems[3].id} />
         <Experience id="" />
         <Approach id="" />
 
         {/* Footer */}
-        <Footer id={navItems[4].id} />
+        <Contact id={navItems[4].id} />
       </div>
     </main>
   );

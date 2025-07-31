@@ -4,12 +4,12 @@ import React from "react";
 
 import { AnimatePresence, motion } from "motion/react";
 import { CanvasRevealEffect } from "@/components/ui/CanvasRevealEffect";
-import Reveal from "../common/ScrollRevealAnimation";
+import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
-const Approach = ({ id }: { id: string }) => {
+export const Approach = ({ id }: { id: string }) => {
   return (
     <section id={id}>
-      <Reveal>
+      <ScrollRevealAnimation>
         <div className="w-full py-20">
           <h1 className="heading">
             My <span className="text-purple">approach</span>
@@ -59,12 +59,10 @@ const Approach = ({ id }: { id: string }) => {
             </Card>
           </div>
         </div>
-      </Reveal>
+      </ScrollRevealAnimation>
     </section>
   );
 };
-
-export default Approach;
 
 const Card = ({
   title,
@@ -132,7 +130,7 @@ const AceternityIcon = ({ order }: { order: string }) => {
   );
 };
 
-export const Icon = ({ className, ...rest }: any) => {
+const Icon = ({ className, ...rest }: any) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

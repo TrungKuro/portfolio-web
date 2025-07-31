@@ -92,5 +92,3 @@ export const FloatingNavbar = ({
     </AnimatePresence>
   );
 };
-
-// style={{ width: progressWidth }}

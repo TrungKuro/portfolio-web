@@ -5,10 +5,10 @@ import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import { MagicButton } from "../ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import { getHeaderData } from "@/lib/content";
-import TypewriterEffect from "../common/TypewriterEffect";
+import { TypewriterEffect } from "../common/TypewriterEffect";
 import Link from "next/link";
 
-const Hero = ({ id }: { id: string }) => {
+export const Hero = ({ id }: { id: string }) => {
   const { hero, cv } = getHeaderData();
 
   return (
@@ -62,5 +62,3 @@ const Hero = ({ id }: { id: string }) => {
     </header>
   );
 };
-
-export default Hero;

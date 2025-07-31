@@ -2,14 +2,14 @@
 import React from "react";
 import { InfiniteMovingCards } from "../ui/InfiniteMovingCards";
 import { getIndexData } from "@/lib/content";
-import Reveal from "../common/ScrollRevealAnimation";
+import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
-const Clients = ({ id }: { id: string }) => {
+export const Clients = ({ id }: { id: string }) => {
   const { companies, testimonials } = getIndexData();
 
   return (
     <section id={id}>
-      <Reveal>
+      <ScrollRevealAnimation>
         <div className="py-20">
           <h1 className="heading">
             Kind words from{" "}
@@ -31,9 +31,7 @@ const Clients = ({ id }: { id: string }) => {
             </div>
           </div>
         </div>
-      </Reveal>
+      </ScrollRevealAnimation>
     </section>
   );
 };
-
-export default Clients;

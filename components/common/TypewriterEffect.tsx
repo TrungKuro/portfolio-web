@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
-const TypewriterEffect = ({
+export const TypewriterEffect = ({
   texts,
   typeSpeed = 100,
   deleteSpeed = 50,
@@ -110,5 +110,3 @@ const TypewriterEffect = ({
     </p>
   );
 };
-
-export default TypewriterEffect;

@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
-import { BentoGrid, BentoGridItem } from "../BentoGrid";
-import { title } from "process";
+import { BentoGrid, BentoGridItem } from "../ui/BentoGrid";
 import { getIndexData } from "@/lib/content";
-import Reveal from "../common/ScrollRevealAnimation";
+import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
-const Grid = ({ id }: { id: string }) => {
+export const About = ({ id }: { id: string }) => {
   const { gridItems } = getIndexData();
 
   return (
     <section id={id}>
-      <Reveal>
+      <ScrollRevealAnimation>
         <BentoGrid className="w-full py-20">
           {gridItems.map(
             ({
@@ -37,9 +35,7 @@ const Grid = ({ id }: { id: string }) => {
             )
           )}
         </BentoGrid>
-      </Reveal>
+      </ScrollRevealAnimation>
     </section>
   );
 };
-
-export default Grid;

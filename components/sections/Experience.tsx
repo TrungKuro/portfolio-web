@@ -2,14 +2,14 @@
 import { getIndexData } from "@/lib/content";
 import React from "react";
 import { Button } from "../ui/MovingBorder";
-import Reveal from "../common/ScrollRevealAnimation";
+import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
-const Experience = ({ id }: { id: string }) => {
+export const Experience = ({ id }: { id: string }) => {
   const { workExperience } = getIndexData();
 
   return (
     <section id={id}>
-      <Reveal>
+      <ScrollRevealAnimation>
         <div className="py-20">
           <h1 className="heading">
             My <span className="text-purple">work experience</span>
@@ -41,9 +41,7 @@ const Experience = ({ id }: { id: string }) => {
             ))}
           </div>
         </div>
-      </Reveal>
+      </ScrollRevealAnimation>
     </section>
   );
 };
-
-export default Experience;

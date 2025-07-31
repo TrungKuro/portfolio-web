@@ -3,14 +3,14 @@ import { getIndexData } from "@/lib/content";
 import React from "react";
 import { PinContainer } from "../ui/3DPin";
 import { FaLocationArrow } from "react-icons/fa";
-import Reveal from "../common/ScrollRevealAnimation";
+import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
-const RecentProjects = ({ id }: { id: string }) => {
+export const Projects = ({ id }: { id: string }) => {
   const { projects } = getIndexData();
 
   return (
     <section id={id}>
-      <Reveal>
+      <ScrollRevealAnimation>
         <div className="py-20">
           <h1 className="heading">
             A small selection of{" "}
@@ -69,9 +69,7 @@ const RecentProjects = ({ id }: { id: string }) => {
             ))}
           </div>
         </div>
-      </Reveal>
+      </ScrollRevealAnimation>
     </section>
   );
 };
-
-export default RecentProjects;

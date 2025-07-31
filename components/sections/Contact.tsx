@@ -4,7 +4,7 @@ import { MagicButton } from "../ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import { getIndexData } from "@/lib/content";
 
-const Footer = ({ id }: { id: string }) => {
+export const Contact = ({ id }: { id: string }) => {
   const { socialMedia } = getIndexData();
 
   return (
@@ -54,5 +54,3 @@ const Footer = ({ id }: { id: string }) => {
     </footer>
   );
 };
-
-export default Footer;

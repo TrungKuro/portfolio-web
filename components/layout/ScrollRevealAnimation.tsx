@@ -1,5 +1,3 @@
-// Scroll Reveal Animation: "fade-in" + "slide-in"
-
 "use client";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -12,12 +10,12 @@ interface RevealProps {
   duration?: number;
 }
 
-export default function Reveal({
+export const ScrollRevealAnimation = ({
   children,
   delay = 0,
   threshold = 0.2,
   duration = 0.8,
-}: RevealProps) {
+}: RevealProps) => {
   const controls = useAnimation();
   const [ref, inView] = useInView({ threshold });
 
@@ -43,4 +41,4 @@ export default function Reveal({
       {children}
     </motion.div>
   );
-}
+};
