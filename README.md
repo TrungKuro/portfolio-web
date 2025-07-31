@@ -32,11 +32,15 @@
 > - [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
 > - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react)
 > - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
+> - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
 >
 > **WEB TOOLS**
 >
 > - [CSS Gradient](https://cssgradient.io/)
 > - [SVG Repo](https://www.svgrepo.com/)
+> - [Cool Symbols & Fonts](https://coolsymbol.com/)
+> - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
+> - [11zon](https://www.11zon.com/vi/)
 >
 > **HEADLESS CMS**
 >
@@ -282,3 +286,55 @@ types/
 - Dễ thay đổi từ "local file" sang "API CMS" chỉ tại `lib/content.ts`
   - Nếu định sau này xài CMS (như Strapi, Sanity, Notion…)
   - Chỉ cần sửa `content.ts` để fetch dữ liệu từ CMS
+
+### Google Drive
+
+✅ Cách làm chuẩn: Google Drive → Link download trực tiếp
+
+- Giả sử bạn có link chia sẻ như sau:
+
+  ```
+  https://drive.google.com/file/d/1AbCdEfGhIjKlMn/view?usp=sharing
+  ```
+
+- 🔁 Bước 1: Lấy FILE_ID
+
+  ```
+  FILE_ID = 1AbCdEfGhIjKlMn
+
+  ```
+
+- 🔁 Bước 2: Chuyển sang link download trực tiếp
+
+  ```
+  https://drive.google.com/uc?export=download&id=1AbCdEfGhIjKlMn
+  ```
+
+- ✅ Bước 3: Gắn vào thẻ <a> với download để mở hộp thoại "Save As"
+
+  ```
+  <a
+    href="https://drive.google.com/uc?export=download&id=1AbCdEfGhIjKlMn"
+    download
+  >
+    <button>
+      📥 Tải CV
+    </button>
+  </a>
+  ```
+
+- ⚠️ Quan trọng:
+  - `download` chỉ hoạt động nếu link trả về đúng file PDF mà không _"redirect preview"_.
+  - **Google Drive** có thể cảnh báo/quét virus nếu file lớn, lúc đó nó không mở hộp Save trực tiếp.
+
+### Favicon
+
+- [Favicon là gì? Hướng dẫn cách tạo favicon cho website ấn tượng [Chi tiết từ A-Z]](https://vietnix.vn/favicon-la-gi/)
+
+  - Step 1: Chuẩn bị hình có kích thước vuông, tỉ lệ `1:1`
+  - Step 2: Chuyển đổi file ảnh sang định dạng `.ico`
+  - Step 3: Chèn đoạn mã favicon HTML vào các trang web
+
+- **Next.Js - Metadata Files**
+  - [favicon, icon, and apple-icon](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
+  - [manifest.json](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)

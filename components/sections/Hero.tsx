@@ -4,8 +4,13 @@ import { GridBackground } from "../ui/GridBackground";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
 import { MagicButton } from "../ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
+import { getHeaderData } from "@/lib/content";
+import TypewriterEffect from "../common/TypewriterEffect";
+import Link from "next/link";
 
 const Hero = ({ id }: { id: string }) => {
+  const { hero, cv } = getHeaderData();
+
   return (
     <header id={id}>
       <div className="pb-20 pt-36">
@@ -25,26 +30,32 @@ const Hero = ({ id }: { id: string }) => {
 
         <div className="flex justify-center relative my-20 z-10">
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-            <p className="uppercase tracking-widest text-xs text-center text-blue-100 max-w-80">
-              Dynamic Web Magic with Next.js
+            <p className="uppercase tracking-widest text-xs md:text-base lg:text-xl text-center text-blue-100 max-w-80">
+              {hero.greeting}
             </p>
 
             <TextGenerateEffect
-              words="Transforming Concepts into Seamless User Experiences"
-              className="text-center text-[40px] md:text-5xl lg:text-6xl"
+              words={hero.name}
+              wordHighlight={3}
+              className="text-center text-4xl md:text-6xl lg:text-8xl"
             />
 
-            <p className="text-center md:tracking-wider mb-4 text-sm md:text-lg lg:text-2xl">
-              Hi, I&apos;m Trung, a Next.js Developer based in Vietnam.
-            </p>
+            <div className="flex justify-center items-center space-x-2 my-4 tracking-wider text-base md:text-xl lg:text-3xl">
+              <p className="text-white">{hero.introducePrefix}</p>
+              <TypewriterEffect
+                texts={hero.roles}
+                textClassName="text-blue-100 uppercase font-bold"
+              />
+              <p className="text-purple font-bold">.</p>
+            </div>
 
-            <a href="#about">
+            <Link href={cv.download} download>
               <MagicButton
-                title="Show my work"
+                title={cv.title}
                 icon={<FaLocationArrow />}
                 position="right"
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>

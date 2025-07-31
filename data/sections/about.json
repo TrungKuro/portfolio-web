@@ -1,35 +1,19 @@
 {
-  "about": {
-    "title": "About Me",
+  "title": "About Me",
 
-    "hero": {
-      "greeting": "Hi, I'm",
-      "titles": [
-        "Hoang Trung",
-        "Full-stack Developer",
-        "Web & Mobile Developer",
-        "Freelancer from Vietnam"
-      ],
-      "loop": true,
-      "typingSpeed": 100,
-      "deletingSpeed": 50,
-      "delayBetween": 2000
-    },
+  "bio": {
+    "description": "I’m a Full-stack Developer who transitioned from electrical engineering to web & mobile development, with a background in embedded systems. I approach every project like solving a puzzle — applying system-level thinking, writing clean code, and crafting user-first experiences."
+  },
 
-    "bio": {
-      "description": "I’m a Full-stack Developer who transitioned from electrical engineering to web & mobile development, with a background in embedded systems. I approach every project like solving a puzzle — applying system-level thinking, writing clean code, and crafting user-first experiences."
-    },
+  "highlights": [
+    "Experienced with React, Next.js, and Flutter (Web & Mobile)",
+    "Strong foundation in HTML, CSS, JavaScript, TypeScript, and Dart",
+    "3+ years of development learning with an embedded freelance background",
+    "Builds clean, scalable, and user-centric applications",
+    "System thinker, passionate about performance and architecture",
+    "Thrives in team environments with clear tasks and collaboration",
+    "Based in Ho Chi Minh City, open to remote freelance roles for global clients"
+  ],
 
-    "highlights": [
-      "Experienced with React, Next.js, and Flutter (Web & Mobile)",
-      "Strong foundation in HTML, CSS, JavaScript, TypeScript, and Dart",
-      "3+ years of development learning with an embedded freelance background",
-      "Builds clean, scalable, and user-centric applications",
-      "System thinker, passionate about performance and architecture",
-      "Thrives in team environments with clear tasks and collaboration",
-      "Based in Ho Chi Minh City, open to remote freelance roles for global clients"
-    ],
-
-    "profileImage": "/assets/avatar.jpg"
-  }
+  "profileImage": "/assets/avatar.jpg"
 }

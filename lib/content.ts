@@ -9,7 +9,6 @@
 /* ------------------------------------------------------------------------- */
 
 import header from "@/data/sections/header.json";
-import home from "@/data/sections/home.json";
 import about from "@/data/sections/about.json";
 import skills from "@/data/sections/skills.json";
 import projects from "@/data/sections/projects.json";
@@ -20,7 +19,6 @@ import indexData from "@/data/sections/index.json";
 
 // Các hàm Export để dùng tại các Section
 export const getHeaderData = () => header;
-export const getHomeData = () => home;
 export const getAboutData = () => about;
 export const getSkillsData = () => skills;
 export const getProjectsData = () => projects;
