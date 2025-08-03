@@ -35,6 +35,7 @@
   "hero": {
     "greeting": "Hello there, I’m",
     "name": "Hoang Trung </>",
+    "nameHighlight": 3,
     "introducePrefix": "I’m a",
     "roles": [
       "Full-stack Developer 💻",

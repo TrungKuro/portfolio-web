@@ -1,53 +1,139 @@
+"use client";
 /* eslint-disable @next/next/no-img-element */
-import React from "react";
+import React, { useState } from "react";
 import { MagicButton } from "../ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
-import { getIndexData } from "@/lib/content";
+import { getFooterData } from "@/lib/content";
+import Image from "next/image";
+import { HeadingHighlight } from "../common/HeadingHighlight";
+import Link from "next/link";
+import { IconSVG } from "../common/IconSVG";
+import { Lamp } from "../common/Lamp";
 
 export const Contact = ({ id }: { id: string }) => {
-  const { socialMedia } = getIndexData();
+  const { contact, background, address, copyright, socialMedia } =
+    getFooterData();
+
+  const [copied, setCopied] = useState<Record<string, boolean>>({});
+
+  const handleCopy = async (content: string, iconName: string) => {
+    try {
+      await navigator.clipboard.writeText(content);
+      setCopied((prev) => ({ ...prev, [iconName]: true }));
+      setTimeout(() => {
+        setCopied((prev) => ({ ...prev, [iconName]: false }));
+      }, 3000);
+    } catch (err) {
+      console.error("Error when copy:", err);
+    }
+  };
 
   return (
     <footer id={id}>
-      <div className="w-full pb-10 mb-[100px] md:mb-5">
-        <div className="w-full absolute left-0 lg:-bottom-72 md:-bottom-48 sm:-bottom-24 min-h-96">
-          <img
-            src="/footer-grid.svg"
-            alt="footer-grid"
-            className="w-full h-full"
-          />
-        </div>
+      <div className="relative w-full pt-20 pb-30">
         <div className="flex flex-col items-center">
-          <h1 className="heading lg:max-w-[45vw]">
-            Ready to take <span className="text-purple">your</span> digital
-            presence to the next level?
-          </h1>
-          <p className="text-white-200 md:mt-10 my-5 text-center">
-            Reach out to me today and let&apos;s discuss how I can help you
-            achieve your goals.
-          </p>
-          <a href="mailto:hdh.trung96@gmail.com">
+          <Lamp heightFrame={66} scaleY={130} background="black-100" />
+          <HeadingHighlight
+            title={contact.title}
+            wordHighlight={contact.titleHighlight}
+          />
+
+          <div className="mt-10 grid auto-rows-auto md:grid-cols-[1fr_auto] gap-5 md:gap-10">
+            <div className="grid gap-3 text-center md:text-left tracking-widest text-xs sm:text-base lg:text-xl">
+              <p className="text-cool-gray font-extrabold">{contact.intro}</p>
+              <p className="text-lavender font-extralight">{contact.message}</p>
+            </div>
+
+            <div className="grid gap-3 place-content-center">
+              {address.map(({ iconName, title, content, link }) => (
+                <div key={iconName} className="grid grid-cols-[auto_1fr] gap-3">
+                  <div className="flex justify-center items-center">
+                    <button
+                      title="Click to Copy"
+                      disabled={copied[iconName]}
+                      onClick={() => handleCopy(content, iconName)}
+                      className={`cursor-pointer hover:scale-90 transition-transform ${
+                        copied[iconName] ? "opacity-50 scale-90" : "opacity-100"
+                      }`}
+                    >
+                      <IconSVG
+                        iconName={iconName}
+                        className="border-1 sm:border-2 lg:border-3 stroke-[1px] sm:stroke-[1.5px] lg:stroke-[2px] border-foreground p-1.5 rounded-lg size-8 sm:size-9 lg:size-11 text-foreground"
+                      />
+                    </button>
+                  </div>
+
+                  <div className="place-content-center">
+                    <p className="text-cool-gray font-extrabold text-xs sm:text-base lg:text-xl">
+                      {title}
+                    </p>
+                    <p className="text-lavender font-extralight text-xs sm:text-base lg:text-xl hover:text-cyan hover:font-medium">
+                      <Link
+                        href={link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {content}
+                      </Link>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <Link href="" className="my-16">
             <MagicButton
               title="Let's get in touch"
               icon={<FaLocationArrow />}
               position="right"
             />
-          </a>
+          </Link>
         </div>
-        <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
-          <p className="md:text-base text-sm md:font-normal font-light max-md:m-5">
-            Copyright © 2025 Trung Hoang
+
+        <div className="w-full h-full absolute left-0 bottom-0 pointer-events-none">
+          <img
+            src={background.img}
+            alt={background.alt}
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="flex md:flex-row flex-col-reverse justify-between items-center">
+          <p className="md:text-base text-sm md:font-normal font-light max-md:m-6">
+            {copyright}
           </p>
 
-          <div className="flex items-center md:gap-3 gap-6">
-            {socialMedia.map(({ id, img }) => (
-              <div
-                key={id}
-                className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300"
-              >
-                <img src={img} alt="icons" width={20} height={20} />
-              </div>
-            ))}
+          <div className="flex md:flex-row flex-col justify-between items-center">
+            <div className="flex items-center md:gap-3 gap-6">
+              {socialMedia.core.map(({ id, name, icon, url }) => (
+                <button
+                  key={id}
+                  title={name}
+                  onClick={() => window.open(url, "_blank")}
+                >
+                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-transform">
+                    <Image src={icon} alt="icons" width={25} height={25} />
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            <span className="block w-full h-0.5 max-md:my-6 md:w-0.5 md:h-10 md:mx-3 bg-overlay-white rounded-full" />
+
+            <div className="flex items-center md:gap-3 gap-6">
+              {socialMedia.branding.map(({ id, name, icon, url }) => (
+                <button
+                  key={id}
+                  title={name}
+                  onClick={() => window.open(url, "_blank")}
+                >
+                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-transform">
+                    <Image src={icon} alt="icons" width={25} height={25} />
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>

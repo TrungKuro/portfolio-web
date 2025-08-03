@@ -24,6 +24,7 @@
 > - [Moving Border](https://ui.aceternity.com/components/moving-border)
 > - [Canvas Reveal Effect](https://ui.aceternity.com/components/canvas-reveal-effect)
 > - [Tailwind CSS buttons](https://ui.aceternity.com/components/tailwindcss-buttons)
+> - [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
 >
 > [**NPM**](https://www.npmjs.com/)
 >
@@ -174,8 +175,7 @@ components/
 ├── common/                # Component nhỏ tái sử dụng nhiều nơi (Button, SectionWrapper...)
 ├── sections/              # Component từng section: Hero, About, Projects...
 ├── layout/                # Wrapper layout (Navbar, Footer...)
-├── ui/                    # Thành phần UI như Card, Tabs, Tooltip (nếu có)
-└── index.ts               # Optional - re-export all nếu bạn muốn import ngắn
+└── ui/                    # Thành phần UI như Card, Tabs, Tooltip (nếu có)
 ```
 
 Gợi ý cho thư mục `data`:
@@ -338,3 +338,35 @@ types/
 - **Next.Js - Metadata Files**
   - [favicon, icon, and apple-icon](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
   - [manifest.json](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
+
+### Import
+
+- **Default Import** (Import mặc định)
+  - Dùng khi module export một giá trị mặc định duy nhất `(export default)`
+  - Bạn có thể đặt tên gì cũng được khi import default
+- **Named Imports** (Import theo tên)
+  - Dùng khi module export nhiều thứ bằng tên cụ thể `(export const, export function, ...)`
+  - Bạn phải dùng đúng tên đã export (hoặc dùng `as` để đổi tên)
+
+### Grid
+
+Grid có 2 chiều độc lập:
+
+- Inline axis (trục ngang) - thường là chiều rộng
+- Block axis (trục dọc) - thường là chiều cao
+
+```
+justify-* = căn chỉnh theo chiều ngang (inline axis)
+align-*   = căn chỉnh theo chiều dọc   (block axis)
+
+content ~> item → self
+
+content = căn chỉnh toàn bộ grid trong container
+|         |_ justify-content / align-content / place-content
+|
+items   = căn chỉnh mặc định cho tất cả grid items
+|         |_ justify-items / align-items / place-items
+|
+self    = căn chỉnh riêng lẻ từng grid item
+|         |_ justify-self / align-self / place-self
+```

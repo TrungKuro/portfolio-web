@@ -11,21 +11,43 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* CUSTOM COLOR */
+  /* CUSTOM COLOR 
+      Phong cách Retro Futuristic / Vaporwave / Soft Neon
+      - Không hoàn toàn là “neon chói lọi” (neon truyền thống: #ff00ff, #00ffff, #00ff00)
+      - Nhưng cũng không phải pastel thuần tuý (vốn thiên về muted & earth tone)
+      - Cặp này nằm ở giao điểm giữa pastel và neon, đặc biệt trong các thiết kế Vaporwave, Synthwave, hoặc UI mang chất sci-fi nhẹ nhàng
+
+    COLOR SCHEME
+    Primary    : Tím sáng retro     (#cbacf9)
+    Secondary  : Xanh baby pastel   (#acd8f9)
+    |
+    Accent		 : Cam pastel ấm      (#f9d7ac)
+    Tertiary	 : Tím hồng nhạt      (#e9acf9)
+    Success	   : Xanh lá chanh sáng (#c9f9ac)
+    Error		   : Đỏ đào pastel      (#f9acac)
+    Info		   : Xanh ngọc sáng     (#acf9f3)
+    |
+    Background : Đen tím smoky	    (#1e1e2f)
+    Foreground : Trắng tím ngà      (#fdfdfe)
+   */
 
   /* === Black === */
-  --color-black: #000;
-  --color-black-100: #000319;
+  --color-black: rgba(0, 0, 0, 1);
+  --color-black-100: rgba(0, 3, 25, 1);
   --color-black-200: rgba(17, 25, 40, 0.75);
-  --color-black-300: rgba(255, 255, 255, 0.125);
 
-  /* === White === */
-  --color-white: #fff;
-  --color-white-100: #bec1dd;
-  --color-white-200: #c1c2d3;
+  --color-overlay-white: rgba(255, 255, 255, 0.125);
+  --color-lavender: #bec1dd;
+  --color-cool-gray: #c1c2d3;
 
-  /* === Purple  === */
+  /* === Custom Colors === */
   --color-purple: #cbacf9;
+  --color-blue: #acd8f9;
+  --color-orange: #f9d7ac;
+  --color-pink: #e9acf9;
+  --color-green: #c9f9ac;
+  --color-red: #f9acac;
+  --color-cyan: #acf9f3;
 
   /* ACETERNITY UI */
   --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
@@ -40,8 +62,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1e1e2f;
+    --foreground: #fdfdfe;
   }
 }
 

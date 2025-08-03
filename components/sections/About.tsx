@@ -9,7 +9,7 @@ export const About = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <BentoGrid className="w-full py-20">
+        <BentoGrid className="w-full pt-10 pb-20">
           {gridItems.map(
             ({
               id,

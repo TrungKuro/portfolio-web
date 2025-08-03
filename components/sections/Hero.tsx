@@ -13,7 +13,7 @@ export const Hero = ({ id }: { id: string }) => {
 
   return (
     <header id={id}>
-      <div className="pb-20 pt-36">
+      <div className="pt-30 pb-20">
         <div>
           <Spotlight
             className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
@@ -30,13 +30,13 @@ export const Hero = ({ id }: { id: string }) => {
 
         <div className="flex justify-center relative my-20 z-10">
           <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-            <p className="uppercase tracking-widest text-xs md:text-base lg:text-xl text-center text-blue-100 max-w-80">
+            <p className="uppercase tracking-widest text-xs md:text-base lg:text-xl text-center text-blue max-w-80">
               {hero.greeting}
             </p>
 
             <TextGenerateEffect
               words={hero.name}
-              wordHighlight={3}
+              wordHighlight={hero.nameHighlight}
               className="text-center text-4xl md:text-6xl lg:text-8xl"
             />
 
@@ -44,12 +44,12 @@ export const Hero = ({ id }: { id: string }) => {
               <p className="text-white">{hero.introducePrefix}</p>
               <TypewriterEffect
                 texts={hero.roles}
-                textClassName="text-blue-100 uppercase font-bold"
+                textClassName="text-blue uppercase font-bold"
               />
               <p className="text-purple font-bold">.</p>
             </div>
 
-            <Link href={cv.download} download>
+            <Link href={cv.download} download className="mt-5 md:mt-10">
               <MagicButton
                 title={cv.title}
                 icon={<FaLocationArrow />}

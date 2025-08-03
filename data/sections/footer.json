@@ -1,38 +1,78 @@
 {
-  "footer": {
-    "copyright": "© Hoang Trung, 2025. All rights reserved.",
+  "contact": {
+    "title": "Contact with Me",
+    "titleHighlight": 3,
 
-    "socials": {
-      "core": [
-        {
-          "name": "GitHub",
-          "icon": "/assets/github.svg",
-          "url": "https://github.com/TrungKuro"
-        },
-        {
-          "name": "LinkedIn",
-          "icon": "/assets/linkedin.svg",
-          "url": "https://www.linkedin.com/in/trungkuro/"
-        }
-      ],
+    "intro": "Let’s work together to build exceptional web & mobile experiences!",
 
-      "branding": [
-        {
-          "name": "Twitter",
-          "icon": "/assets/twitter.svg",
-          "url": "https://x.com/Trung_Kuro"
-        },
-        {
-          "name": "Telegram",
-          "icon": "/assets/telegram.svg",
-          "url": "https://t.me/trung_kuro"
-        },
-        {
-          "name": "Discord",
-          "icon": "/assets/discord.svg",
-          "url": "https://discord.com/users/1120258933471322112"
-        }
-      ]
+    "message": "As a dedicated Web & Mobile Developer, I work closely with clients to understand their vision and deliver meaningful solutions. My focus is not only on crafting high-quality products that drive business results, but also on building long-term, trust-based relationships. Let’s build something remarkable together!"
+  },
+
+  "address": [
+    {
+      "iconName": "location",
+      "title": "My Address",
+      "content": "Ho Chi Minh City, Vietnam",
+      "link": "https://maps.app.goo.gl/jAFb3wh2Cd29Qp2b8"
+    },
+
+    {
+      "iconName": "email",
+      "title": "Contact Email",
+      "content": "hdh.trung96@gmail.com",
+      "link": "mailto:hdh.trung96@gmail.com"
+    },
+
+    {
+      "iconName": "phone",
+      "title": "Find Me on Phone / Zalo",
+      "content": "(+84) 762 534 798",
+      "link": "callto:0762534798"
     }
+  ],
+
+  "background": {
+    "img": "/images/misc/footer-grid.svg",
+    "alt": "footer-grid"
+  },
+
+  "copyright": "© Hoang Trung, 2025. All rights reserved.",
+
+  "socialMedia": {
+    "core": [
+      {
+        "id": "github",
+        "name": "GitHub",
+        "icon": "/assets/icons/soc-github.svg",
+        "url": "https://github.com/TrungKuro"
+      },
+      {
+        "id": "linkedin",
+        "name": "LinkedIn",
+        "icon": "/assets/icons/soc-linkedin.svg",
+        "url": "https://www.linkedin.com/in/trungkuro/"
+      }
+    ],
+
+    "branding": [
+      {
+        "id": "discord",
+        "name": "Discord",
+        "icon": "/assets/icons/soc-discord.svg",
+        "url": "https://discord.com/users/1120258933471322112"
+      },
+      {
+        "id": "twitter",
+        "name": "Twitter",
+        "icon": "/assets/icons/soc-twitter.svg",
+        "url": "https://x.com/Trung_Kuro"
+      },
+      {
+        "id": "telegram",
+        "name": "Telegram",
+        "icon": "/assets/icons/soc-telegram.svg",
+        "url": "https://t.me/trung_kuro"
+      }
+    ]
   }
 }

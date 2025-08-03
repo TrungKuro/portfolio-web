@@ -11,7 +11,7 @@ export const Projects = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <div className="py-20">
+        <div className="pt-10 pb-20">
           <h1 className="heading">
             A small selection of{" "}
             <span className="text-purple">recent projects</span>
