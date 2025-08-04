@@ -352,21 +352,91 @@ types/
 
 Grid có 2 chiều độc lập:
 
-- Inline axis (trục ngang) - thường là chiều rộng
-- Block axis (trục dọc) - thường là chiều cao
+- **Inline axis** luôn là trục ngang (trái ↔ phải)
+  - `justify-*` = căn chỉnh theo chiều ngang (inline axis)
+- **Block axis** luôn là trục dọc (trên ↕ xuống)
+  - `align-*` = căn chỉnh theo chiều dọc (block axis)
 
 ```
-justify-* = căn chỉnh theo chiều ngang (inline axis)
-align-*   = căn chỉnh theo chiều dọc   (block axis)
+💎 content ~> item → self
 
-content ~> item → self
+CONTENT = căn chỉnh toàn bộ grid tracks trong container
+|
+|- justify-content: center; 👉🏻 căn giữa tất cả columns
+|_ align-content: center;   👉🏻 căn giữa tất cả rows
 
-content = căn chỉnh toàn bộ grid trong container
-|         |_ justify-content / align-content / place-content
+ITEMS = căn chỉnh mặc định cho items trong cells
 |
-items   = căn chỉnh mặc định cho tất cả grid items
-|         |_ justify-items / align-items / place-items
+|- justify-items: center;   👉🏻 căn giữa items trong cell theo ngang
+|_ align-items: center;     👉🏻 căn giữa items trong cell theo dọc
+
+SELF = ghi đè căn chỉnh cho item cụ thể */
 |
-self    = căn chỉnh riêng lẻ từng grid item
-|         |_ justify-self / align-self / place-self
+|- justify-self: end;       👉🏻 item này căn phải trong cell
+|_ align-self: start;       👉🏻 item này căn trên trong cell
 ```
+
+- **Shorthand**:
+  - `place-content`: <align-content> <justify-content>;
+  - `place-items`: <align-items> <justify-items>;
+  - `place-self`: <align-self> <justify-self>;
+
+### Flex
+
+Flex có 2 trục độc lập:
+
+- **Main axis** (trục chính) - mặc định là chiều ngang (phụ thuộc vào `flex-direction`)
+- **Cross axis** (trục phụ) - mặc định là chiều dọc
+
+```
+flex-direction: row;            /* main axis = ngang, cross axis = dọc */
+flex-direction: column;         /* main axis = dọc, cross axis = ngang */
+flex-direction: row-reverse;    /* main axis = ngang (đảo chiều) */
+flex-direction: column-reverse; /* main axis = dọc (đảo chiều) */
+```
+
+- `justify-*` = căn chỉnh theo **main axis** (có thể ngang hoặc dọc)
+- `align-*` = căn chỉnh theo **cross axis** (có thể dọc hoặc ngang)
+
+```
+💎 content ~> item → self
+
+content = căn chỉnh toàn bộ flex trong container
+items   = căn chỉnh mặc định cho tất cả flex items
+self    = căn chỉnh riêng lẻ từng flex item
+```
+
+- ✅ Flexbox chỉ hỗ trợ:
+  - `justify-content` 👉🏻 căn chỉnh items dọc theo main axis
+  - `align-content` 👉🏻 căn chỉnh các dòng khi wrap
+  - `align-items` 👉🏻 căn chỉnh mặc định cho items theo cross axis
+  - `align-self` 👉🏻 căn chỉnh riêng lẻ item theo cross axis
+- ❌ Flexbox không hỗ trợ:
+  - `justify-items` ⚠️ không tồn tại trong flexbox
+  - `justify-self` ⚠️ không tồn tại trong flexbox
+
+### Prompt
+
+- Prompt tạo hình các `'categoryName'` cho **Skill -> Tech Stack**:
+
+```
+"Create a minimalist flat-style SVG illustration with a modern UI/UX dashboard aesthetic. Use a harmonious color palette dominated by shades of purple, pink, and blue. The composition should feature 3D-style cards, widgets, or panels arranged in a floating layered layout with soft shadows, rounded corners, and consistent spacing. Include subtle icons or elements that convey the theme of 'categoryName'. Ensure visual balance and use gradients or soft lighting effects to enhance depth and cleanliness. Style should evoke a tech-savvy, futuristic, and professional feel."
+```
+
+### [ object-fit ]
+
+- `fill`
+  - ✅ _Mặc định._ Co giãn ảnh để **lấp đầy khung**, có thể **méo ảnh** nếu tỉ lệ khác
+  - Dùng khi bạn không quan tâm đến tỉ lệ gốc
+- `contain`
+  - Ảnh sẽ **thu nhỏ vừa khít trong khung**, **giữ đúng tỉ lệ**, có thể **còn khoảng trống**
+  - Dùng khi cần thấy toàn bộ ảnh
+- `cover`
+  - Ảnh sẽ **phóng to để phủ kín khung**, **giữ đúng tỉ lệ**, có thể **bị cắt ảnh**
+  - Dùng cho background, avatar, card,...
+- `none`
+  - Ảnh giữ nguyên kích thước gốc (theo chiều `width`, `height`)
+  - Dùng khi muốn ảnh hiển thị đúng như gốc
+- `scale-down`
+  - So sánh giữa `none` và `contain`, và dùng cái nào **nhỏ hơn**
+  - Dùng khi muốn tối ưu kích thước nhất có thể

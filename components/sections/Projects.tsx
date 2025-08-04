@@ -59,7 +59,7 @@ export const Projects = ({ id }: { id: string }) => {
                     </div>
                   </div>
                   <div className="flex items-center justify-center">
-                    <p className="flex lg:text-xl md:text-xs text-sm text-purple">
+                    <p className="flex content-custom text-purple">
                       Check Live Site
                     </p>
                     <FaLocationArrow className="ms-3" color="#cbacf9" />

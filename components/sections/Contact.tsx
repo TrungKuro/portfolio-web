@@ -30,16 +30,21 @@ export const Contact = ({ id }: { id: string }) => {
 
   return (
     <footer id={id}>
-      <div className="relative w-full pt-20 pb-30">
+      <div className="relative pt-20 pb-30 z-0">
         <div className="flex flex-col items-center">
-          <Lamp heightFrame={66} scaleY={130} background="black-100" />
+          <Lamp
+            heightFrame={66}
+            scaleY={130}
+            background="black-100"
+            className="-z-2 max-sm:hidden sm:translate-y-[19rem] md:translate-y-[18rem] lg:translate-y-[17rem] xl:translate-y-[16rem] 2xl:translate-y-[15rem]"
+          />
           <HeadingHighlight
             title={contact.title}
             wordHighlight={contact.titleHighlight}
           />
 
           <div className="mt-10 grid auto-rows-auto md:grid-cols-[1fr_auto] gap-5 md:gap-10">
-            <div className="grid gap-3 text-center md:text-left tracking-widest text-xs sm:text-base lg:text-xl">
+            <div className="grid gap-3 text-center md:text-left tracking-widest content-custom">
               <p className="text-cool-gray font-extrabold">{contact.intro}</p>
               <p className="text-lavender font-extralight">{contact.message}</p>
             </div>
@@ -63,11 +68,9 @@ export const Contact = ({ id }: { id: string }) => {
                     </button>
                   </div>
 
-                  <div className="place-content-center">
-                    <p className="text-cool-gray font-extrabold text-xs sm:text-base lg:text-xl">
-                      {title}
-                    </p>
-                    <p className="text-lavender font-extralight text-xs sm:text-base lg:text-xl hover:text-cyan hover:font-medium">
+                  <div className="place-content-center content-custom">
+                    <p className="text-cool-gray font-extrabold">{title}</p>
+                    <p className="text-lavender font-extralight hover:text-cyan hover:font-medium">
                       <Link
                         href={link}
                         target="_blank"
@@ -91,7 +94,7 @@ export const Contact = ({ id }: { id: string }) => {
           </Link>
         </div>
 
-        <div className="w-full h-full absolute left-0 bottom-0 pointer-events-none">
+        <div className="w-full h-full absolute left-0 bottom-0 -z-1">
           <img
             src={background.img}
             alt={background.alt}

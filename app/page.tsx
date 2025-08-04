@@ -9,9 +9,10 @@ import { FloatingNavbar } from "@/components/common/FloatingNavbar";
 
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
+import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Clients } from "@/components/sections/Clients";
-import { Experience } from "@/components/sections/Experience";
+// import { Experience } from "@/components/sections/Experience";
 import { Approach } from "@/components/sections/Approach";
 import { Contact } from "@/components/sections/Contact";
 
@@ -59,9 +60,10 @@ export default function Home() {
 
         {/* Body */}
         <About id={navItems[1].id} />
-        <Projects id={navItems[2].id} />
-        <Clients id={navItems[3].id} />
-        <Experience id="" />
+        <Skills id={navItems[2].id} />
+        <Projects id={navItems[3].id} />
+        <Clients id="" />
+        {/* <Experience id="" /> */}
         <Approach id="" />
 
         {/* Footer */}

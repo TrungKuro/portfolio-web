@@ -88,6 +88,19 @@ body {
   .heading {
     @apply font-bold text-4xl md:text-5xl text-center;
   }
+  .content-custom {
+    @apply text-xs sm:text-base lg:text-xl;
+  }
+
+  .title-custom {
+    @apply text-xs md:text-base lg:text-xl;
+  }
+  .sub-title-custom {
+    @apply text-xs md:text-sm lg:text-base;
+  }
+
+  /* text-sm md:text-xs lg:text-base */
+
   .bg-gradient-custom {
     background: rgb(4, 7, 29);
     background: linear-gradient(

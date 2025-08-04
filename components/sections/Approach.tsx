@@ -10,7 +10,7 @@ export const Approach = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <div className="w-full pt-10 pb-20">
+        <div className="pt-10 pb-20">
           <h1 className="heading">
             My <span className="text-purple">approach</span>
           </h1>

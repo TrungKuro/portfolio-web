@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
+import { cn } from "@/lib/utils";
 
 export const Lamp = ({
   heightFrame = 100, // đơn vị [vh]
@@ -10,6 +11,7 @@ export const Lamp = ({
   colorLamp = "cyan-400",
   lightInner = "cyan-400",
   lightOuter = "cyan-500",
+  className = "",
 }: {
   heightFrame?: number;
   scaleY?: number;
@@ -18,6 +20,7 @@ export const Lamp = ({
   colorLamp?: string;
   lightInner?: string;
   lightOuter?: string;
+  className?: string;
 }) => {
   const getColor = (color: string) => {
     // Bảng ánh xạ một số màu tailwind phổ biến sang mã hex
@@ -34,7 +37,7 @@ export const Lamp = ({
 
   return (
     <div
-      className="relative flex w-full z-0"
+      className={cn("relative flex w-full z-0", className)}
       style={{
         height: `${heightFrame}vh`,
         backgroundColor: getColor(background) || undefined,

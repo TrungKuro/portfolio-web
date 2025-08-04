@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { getIndexData } from "@/lib/content";
 import React from "react";
-import { Button } from "../ui/MovingBorder";
+import { BtnMoveBorder } from "../common/BtnMoveBorder";
 import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 
 export const Experience = ({ id }: { id: string }) => {
@@ -16,7 +16,7 @@ export const Experience = ({ id }: { id: string }) => {
           </h1>
           <div className="w-full mt-10 grid lg:grid-cols-4 grid-cols-1 gap-10">
             {workExperience.map(({ id, thumbnail, title, desc }) => (
-              <Button
+              <BtnMoveBorder
                 key={id}
                 duration={Math.floor(Math.random() * 10000 + 10000)}
                 borderRadius="1.75rem"
@@ -37,7 +37,7 @@ export const Experience = ({ id }: { id: string }) => {
                     </p>
                   </div>
                 </div>
-              </Button>
+              </BtnMoveBorder>
             ))}
           </div>
         </div>
