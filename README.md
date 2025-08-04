@@ -9,6 +9,8 @@
 > [**TAILWIND CSS**](https://tailwindcss.com/)
 >
 > - [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+>   - [Responsive design](https://tailwindcss.com/docs/responsive-design)
+>   - [font-size](https://tailwindcss.com/docs/font-size)
 >
 > [**ACETERNITY UI**](https://ui.aceternity.com/)
 >
@@ -25,6 +27,7 @@
 > - [Canvas Reveal Effect](https://ui.aceternity.com/components/canvas-reveal-effect)
 > - [Tailwind CSS buttons](https://ui.aceternity.com/components/tailwindcss-buttons)
 > - [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
+> - [Animated Tooltip](https://ui.aceternity.com/components/animated-tooltip)
 >
 > [**NPM**](https://www.npmjs.com/)
 >
@@ -42,6 +45,7 @@
 > - [Cool Symbols & Fonts](https://coolsymbol.com/)
 > - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
 > - [11zon](https://www.11zon.com/vi/)
+> - [DevIcon](https://devicon.dev/)
 >
 > **HEADLESS CMS**
 >

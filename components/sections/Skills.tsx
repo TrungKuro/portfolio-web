@@ -6,6 +6,7 @@ import { HeadingHighlight } from "../common/HeadingHighlight";
 import { BtnMoveBorder } from "../common/BtnMoveBorder";
 import { getSkillsData } from "@/lib/content";
 import Image from "next/image";
+import { AnimatedTooltip } from "../ui/AnimatedTooltip";
 
 export const Skills = ({ id }: { id: string }) => {
   const { skills, techStack } = getSkillsData();
@@ -31,7 +32,7 @@ export const Skills = ({ id }: { id: string }) => {
                   >
                     <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
                       {/* THUMBNAIL */}
-                      <div className="relative h-full lg:size-32 md:size-20 size-16">
+                      <div className="relative h-full lg:w-32 md:w-20 w-16">
                         <Image
                           src={thumbnail}
                           alt={categoryName}
@@ -52,10 +53,23 @@ export const Skills = ({ id }: { id: string }) => {
                           {categoryName}
                         </h1>
 
-                        <p className="text-start text-lavender mt-3 font-semibold">
-                          {/* {items} */}
+                        {/* <p className="text-start text-lavender mt-3 font-semibold">
                           ITEMS
-                        </p>
+                        </p> */}
+                        <div className="flex flex-wrap items-center justify-start gap-3 mt-3">
+                          <AnimatedTooltip
+                            items={items.map((item, idx) => ({
+                              id: idx,
+                              name: item.name,
+                              designation: item.type,
+                              image: item.icon,
+                              isBg: item.isBackground,
+                            }))}
+                            classNameBg="bg-foreground rounded-tl-sm rounded-br-sm"
+                            classNameTitle="text-cool-gray"
+                            classNameSubTitle="text-lavender"
+                          />
+                        </div>
                       </div>
                     </div>
                   </BtnMoveBorder>

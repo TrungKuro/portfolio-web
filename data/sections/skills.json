@@ -7,186 +7,217 @@
     "categories": [
       {
         "categoryName": "Programming Languages",
-        "thumbnail":"/images/illustrations/skill-prog-lang.png",
+        "thumbnail": "/images/illustrations/skill-prog-lang.png",
         "items": [
           {
             "name": "JavaScript",
             "type": "Language",
-            "icon": "/icons/javascript.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
           },
           {
             "name": "TypeScript",
             "type": "Language",
-            "icon": "/icons/typescript.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
           },
-          { "name": "Dart", "type": "Language", "icon": "/icons/dart.svg" }
+          {
+            "name": "Dart",
+            "type": "Language",
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+          }
         ]
       },
       {
         "categoryName": "Frontend Frameworks & Libraries",
-        "thumbnail":"/images/illustrations/skill-front-framework.png",
+        "thumbnail": "/images/illustrations/skill-front-framework.png",
         "items": [
           {
             "name": "HTML",
             "type": "Markup Language",
-            "icon": "/icons/html.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
           },
           {
             "name": "CSS",
             "type": "Style Language",
-            "icon": "/icons/css.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
           },
           {
             "name": "React",
             "type": "JavaScript Library",
-            "icon": "/icons/react.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
           },
           {
             "name": "Next.js",
             "type": "React Framework",
-            "icon": "/icons/nextjs.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
           },
           {
             "name": "Tailwind CSS",
             "type": "CSS Framework",
-            "icon": "/icons/tailwind.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
           },
           {
             "name": "Material-UI (MUI)",
             "type": "UI Component Library",
-            "icon": "/icons/mui.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg"
           }
         ]
       },
       {
         "categoryName": "State & Data Management",
-        "thumbnail":"/images/illustrations/skill-state-data.png",
+        "thumbnail": "/images/illustrations/skill-state-data.png",
         "items": [
           {
             "name": "Zustand",
             "type": "State Management",
-            "icon": "/icons/zustand.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg"
           },
           {
             "name": "React Query",
             "type": "Async Data Handling",
-            "icon": "/icons/react-query.svg"
+            "isBackground": false,
+            "icon": "/assets/icons/skill-react-query.svg"
           }
         ]
       },
       {
         "categoryName": "Backend & Databases",
-        "thumbnail":"/images/illustrations/skill-back-database.png",
+        "thumbnail": "/images/illustrations/skill-back-database.png",
         "items": [
           {
             "name": "Node.js",
             "type": "Runtime Environment",
-            "icon": "/icons/nodejs.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
           },
           {
             "name": "Express.js",
             "type": "Web Framework",
-            "icon": "/icons/expressjs.svg"
+            "isBackground": true,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"
           },
           {
             "name": "MySQL",
             "type": "Relational Database",
-            "icon": "/icons/mysql.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
           },
           {
             "name": "MongoDB",
             "type": "NoSQL Database",
-            "icon": "/icons/mongodb.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
           },
           {
             "name": "Firebase",
             "type": "Backend as a Service",
-            "icon": "/icons/firebase.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
           },
           {
             "name": "Sanity",
             "type": "Headless CMS",
-            "icon": "/icons/sanity.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sanity/sanity-original.svg"
           }
         ]
       },
       {
         "categoryName": "Mobile Development",
-        "thumbnail":"/images/illustrations/skill-mobile-dev.png",
+        "thumbnail": "/images/illustrations/skill-mobile-dev.png",
         "items": [
           {
             "name": "Flutter",
             "type": "Cross-platform Framework",
-            "icon": "/icons/flutter.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
           }
         ]
       },
       {
         "categoryName": "UI/UX & Productivity Tools",
-        "thumbnail":"/images/illustrations/skill-ui-ux.png",
+        "thumbnail": "/images/illustrations/skill-ui-ux.png",
         "items": [
           {
             "name": "Figma",
             "type": "Design Tool",
-            "icon": "/icons/figma.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
           },
           {
             "name": "Vite",
             "type": "Frontend Build Tool",
-            "icon": "/icons/vite.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg"
           }
         ]
       },
       {
         "categoryName": "DevOps & Utilities",
-        "thumbnail":"/images/illustrations/skill-dev-ops.png",
+        "thumbnail": "/images/illustrations/skill-dev-ops.png",
         "items": [
           {
             "name": "Git",
             "type": "Version Control",
-            "icon": "/icons/git.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
           },
           {
             "name": "NPM",
             "type": "Package Manager",
-            "icon": "/icons/npm.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg"
           },
           {
             "name": "GitHub Actions",
             "type": "CI/CD Tool",
-            "icon": "/icons/github.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg"
           },
           {
             "name": "Postman",
             "type": "API Testing Tool",
-            "icon": "/icons/postman.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
           }
         ]
       },
       {
         "categoryName": "Testing Frameworks",
-        "thumbnail":"/images/illustrations/skill-test-framework.png",
+        "thumbnail": "/images/illustrations/skill-test-framework.png",
         "items": [
           {
             "name": "Vitest",
             "type": "Unit Testing Tool",
-            "icon": "/icons/vitest.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
           }
         ]
       },
       {
         "categoryName": "Deployment Platforms",
-        "thumbnail":"/images/illustrations/skill-deploy-platform.png",
+        "thumbnail": "/images/illustrations/skill-deploy-platform.png",
         "items": [
           {
             "name": "Vercel",
             "type": "Hosting Platform",
-            "icon": "/icons/vercel.svg"
+            "isBackground": true,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
           },
           {
             "name": "Netlify",
             "type": "Hosting Platform",
-            "icon": "/icons/netlify.svg"
+            "isBackground": false,
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg"
           }
         ]
       }
