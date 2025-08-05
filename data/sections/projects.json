@@ -1,57 +1,76 @@
 {
-  "projects": [
+  "project": {
+    "title": "There is my some projects example",
+    "titleHighlight": 5
+  },
+
+  "personalProjects": [
     {
-      "title": "Task Flow Manager",
-      "description": "A Trello-inspired task management app that allows users to create boards, lists, and draggable task cards. Includes user authentication, real-time updates, and team collaboration features.",
-      "image": "/assets/projects/taskflow.png",
-      "techStack": [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "Node.js",
-        "MongoDB",
-        "Socket.io"
+      "title": "3D Solar System Planets to Explore",
+      "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+      "image": "/images/projects/p1.svg",
+      "iconLists": [
+        "/assets/icons/tech-re.svg",
+        "/assets/icons/tech-tail.svg",
+        "/assets/icons/tech-ts.svg",
+        "/assets/icons/tech-three.svg",
+        "/assets/icons/tech-fm.svg"
       ],
       "links": {
         "client": "",
         "server": "",
-        "live": ""
+        "live": "https://github.com/adrianhajdin?tab=repositories"
       }
     },
     {
-      "title": "Personal Finance Tracker",
-      "description": "An interactive dashboard to track income, expenses, and budgets. Includes visual charts, monthly analytics, goal tracking, and categorized spending insights. Designed for intuitive personal finance control.",
-      "image": "/assets/projects/finance-tracker.png",
-      "techStack": [
-        "React",
-        "Next.js",
-        "Tailwind CSS",
-        "Recharts",
-        "Node.js",
-        "MongoDB",
-        "JWT Auth"
+      "title": "Yoom - Video Conferencing App",
+      "description": "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+      "image": "/images/projects/p2.svg",
+      "iconLists": [
+        "/assets/icons/tech-next.svg",
+        "/assets/icons/tech-tail.svg",
+        "/assets/icons/tech-ts.svg",
+        "/assets/icons/tech-stream.svg",
+        "/assets/icons/tech-c.svg"
       ],
       "links": {
         "client": "",
         "server": "",
-        "live": ""
+        "live": "https://github.com/adrianhajdin/zoom-clone"
       }
     },
     {
-      "title": "Personal Blog CMS",
-      "description": "A full-featured personal blog where the admin can write, edit, and publish blog posts via a custom CMS dashboard. Includes rich text editor, SEO-friendly routing, and public viewing.",
-      "image": "/assets/projects/blogcms.png",
-      "techStack": [
-        "Next.js",
-        "Tailwind CSS",
-        "Prisma",
-        "PostgreSQL",
-        "NextAuth"
+      "title": "AI Image SaaS - Canva Application",
+      "description": "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+      "image": "/images/projects/p3.svg",
+      "iconLists": [
+        "/assets/icons/tech-re.svg",
+        "/assets/icons/tech-tail.svg",
+        "/assets/icons/tech-ts.svg",
+        "/assets/icons/tech-three.svg",
+        "/assets/icons/tech-c.svg"
       ],
       "links": {
         "client": "",
         "server": "",
-        "live": ""
+        "live": "https://github.com/adrianhajdin/ai_saas_app"
+      }
+    },
+    {
+      "title": "Animated Apple Iphone 3D Website",
+      "description": "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+      "image": "/images/projects/p4.svg",
+      "iconLists": [
+        "/assets/icons/tech-next.svg",
+        "/assets/icons/tech-tail.svg",
+        "/assets/icons/tech-ts.svg",
+        "/assets/icons/tech-three.svg",
+        "/assets/icons/tech-gsap.svg"
+      ],
+      "links": {
+        "client": "",
+        "server": "",
+        "live": "https://github.com/adrianhajdin/iphone"
       }
     }
   ]

@@ -9,7 +9,7 @@ import Image from "next/image";
 import { AnimatedTooltip } from "../ui/AnimatedTooltip";
 
 export const Skills = ({ id }: { id: string }) => {
-  const { skills, techStack } = getSkillsData();
+  const { skill, techStack } = getSkillsData();
 
   return (
     <section id={id}>
@@ -17,8 +17,8 @@ export const Skills = ({ id }: { id: string }) => {
         <div className="pt-10 pb-20">
           <div className="flex flex-col items-center">
             <HeadingHighlight
-              title={skills.title}
-              wordHighlight={skills.titleHighlight}
+              title={skill.title}
+              wordHighlight={skill.titleHighlight}
             />
 
             <div className="w-full mt-10 grid lg:grid-cols-4 grid-cols-1 gap-5 lg:gap-10">
@@ -53,9 +53,6 @@ export const Skills = ({ id }: { id: string }) => {
                           {categoryName}
                         </h1>
 
-                        {/* <p className="text-start text-lavender mt-3 font-semibold">
-                          ITEMS
-                        </p> */}
                         <div className="flex flex-wrap items-center justify-start gap-3 mt-3">
                           <AnimatedTooltip
                             items={items.map((item, idx) => ({

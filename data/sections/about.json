@@ -1,7 +1,10 @@
 {
-  "title": "About Me",
+  "about": {
+    "title": "About Me",
+    "titleHighlight": 2
+  },
 
-  "bio": {
+  "biography": {
     "description": "I’m a Full-stack Developer who transitioned from electrical engineering to web & mobile development, with a background in embedded systems. I approach every project like solving a puzzle — applying system-level thinking, writing clean code, and crafting user-first experiences."
   },
 

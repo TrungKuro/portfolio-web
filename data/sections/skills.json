@@ -1,5 +1,5 @@
 {
-  "skills": { "title": "All my skills", "titleHighlight": 3 },
+  "skill": { "title": "All my skills", "titleHighlight": 3 },
 
   "techStack": {
     "label": "Tech Stack",
