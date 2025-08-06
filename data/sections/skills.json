@@ -157,7 +157,7 @@
             "name": "Vite",
             "type": "Frontend Build Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vite/vite-original.svg"
+            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
           }
         ]
       },

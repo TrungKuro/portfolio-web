@@ -444,3 +444,5 @@ self    = căn chỉnh riêng lẻ từng flex item
 - `scale-down`
   - So sánh giữa `none` và `contain`, và dùng cái nào **nhỏ hơn**
   - Dùng khi muốn tối ưu kích thước nhất có thể
+
+### Regex

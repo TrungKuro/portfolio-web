@@ -30,7 +30,7 @@ export const Contact = ({ id }: { id: string }) => {
 
   return (
     <footer id={id}>
-      <div className="relative pt-20 pb-30 z-0">
+      <div className="relative max-sm:pt-30 pb-30 z-0">
         <div className="flex flex-col items-center">
           <Lamp
             heightFrame={66}

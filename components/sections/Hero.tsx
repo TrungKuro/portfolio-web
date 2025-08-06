@@ -13,7 +13,7 @@ export const Hero = ({ id }: { id: string }) => {
 
   return (
     <header id={id}>
-      <div className="pt-30 pb-20">
+      <div className="py-30 h-screen">
         <div>
           <Spotlight
             className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"

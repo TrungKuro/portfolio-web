@@ -18,5 +18,106 @@
     "Based in Ho Chi Minh City, open to remote freelance roles for global clients"
   ],
 
-  "profileImage": "/assets/avatar.jpg"
+  "profileImage": "/assets/avatar.jpg",
+
+  "bentoGridClassName": "grid-cols-1 gap-3 md:grid-cols-12 md:grid-rows-9 md:gap-5 lg:gap-10",
+
+  "bentoGridItems": [
+    {
+      "className": "md:col-span-6 md:row-span-5",
+
+      "title": "From Circuits to Code",
+      "description": "I bring a system-thinking mindset from engineering into web & mobile development.",
+
+      "contentClassName": "justify-end",
+      "titleClassName": "max-w-[80%]",
+      "descriptionClassName": "max-w-[80%]",
+
+      "img": "/images/misc/bg-card1.svg",
+      "spareImg": "",
+
+      "imgClassName": "",
+      "spareImgClassName": ""
+    },
+    {
+      "className": "md:col-span-6 md:row-span-3",
+
+      "title": "Remote-Friendly & Time-Zone Flexible",
+      "description": "Based in Ho Chi Minh City — available for global freelance projects.",
+
+      "contentClassName": "justify-end group-hover/bento:-translate-y-2",
+      "titleClassName": "text-center",
+      "descriptionClassName": "text-center",
+
+      "img": "",
+      "spareImg": "",
+
+      "imgClassName": "",
+      "spareImgClassName": ""
+    },
+    {
+      "className": "md:col-span-6 md:row-span-2",
+
+      "title": "Solid in Web Fundamentals",
+      "description": "HTML, CSS, JavaScript, TypeScript & Dart — I build from the ground up.",
+
+      "contentClassName": "justify-center",
+      "titleClassName": "max-w-[40%]",
+      "descriptionClassName": "max-w-[40%]",
+
+      "img": "",
+      "spareImg": "",
+
+      "imgClassName": "",
+      "spareImgClassName": ""
+    },
+    {
+      "className": "md:col-span-5 md:row-span-3",
+
+      "title": "Team Player, Clear Communicator",
+      "description": "I thrive in collaborative teams with shared goals and feedback loops.",
+
+      "contentClassName": "justify-start group-hover/bento:translate-y-2",
+      "titleClassName": "text-center",
+      "descriptionClassName": "text-center",
+
+      "img": "/images/misc/bg-card4.svg",
+      "spareImg": "/images/misc/bento-grid.svg",
+
+      "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
+      "spareImgClassName": "opacity-40"
+    },
+    {
+      "className": "md:col-span-7 md:row-span-3",
+
+      "title": "Building with React, Next.js & Flutter",
+      "description": "I create cross-platform apps that are clean, fast, and scalable.",
+
+      "contentClassName": "justify-start items-end group-hover/bento:-translate-x-2",
+      "titleClassName": "text-right max-w-[80%]",
+      "descriptionClassName": "text-right max-w-[80%]",
+
+      "img": "/images/misc/bg-card5.svg",
+      "spareImg": "/images/misc/bento-grid.svg",
+
+      "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
+      "spareImgClassName": "opacity-80"
+    },
+    {
+      "className": "md:col-span-12 md:row-span-1",
+
+      "title": "Let’s Build Something Great",
+      "description": "Open to meaningful collaborations. Got a project in mind?",
+
+      "contentClassName": "justify-center items-center group-hover/bento:translate-none group-hover/bento:scale-90",
+      "titleClassName": "text-center max-w-[80%]",
+      "descriptionClassName": "text-center max-w-[80%]",
+
+      "img": "",
+      "spareImg": "",
+
+      "imgClassName": "",
+      "spareImgClassName": ""
+    }
+  ]
 }
