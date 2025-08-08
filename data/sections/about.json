@@ -20,11 +20,11 @@
 
   "profileImage": "/assets/avatar.jpg",
 
-  "bentoGridClassName": "grid-cols-1 gap-3 md:grid-cols-12 md:grid-rows-9 md:gap-5 lg:gap-10",
+  "bentoGridClassName": "grid-cols-1 gap-3 md:grid-cols-16 md:grid-rows-10 md:gap-5 lg:gap-10",
 
   "bentoGridItems": [
     {
-      "className": "md:col-span-6 md:row-span-5",
+      "className": "md:col-span-8 md:row-span-5",
 
       "title": "From Circuits to Code",
       "description": "I bring a system-thinking mindset from engineering into web & mobile development.",
@@ -37,10 +37,12 @@
       "spareImg": "",
 
       "imgClassName": "",
-      "spareImgClassName": ""
+      "spareImgClassName": "",
+
+      "specialEffect": ""
     },
     {
-      "className": "md:col-span-6 md:row-span-3",
+      "className": "md:col-span-8 md:row-span-3",
 
       "title": "Remote-Friendly & Time-Zone Flexible",
       "description": "Based in Ho Chi Minh City — available for global freelance projects.",
@@ -53,10 +55,12 @@
       "spareImg": "",
 
       "imgClassName": "",
-      "spareImgClassName": ""
+      "spareImgClassName": "",
+
+      "specialEffect": ""
     },
     {
-      "className": "md:col-span-6 md:row-span-2",
+      "className": "md:col-span-8 md:row-span-2",
 
       "title": "Solid in Web Fundamentals",
       "description": "HTML, CSS, JavaScript, TypeScript & Dart — I build from the ground up.",
@@ -69,10 +73,12 @@
       "spareImg": "",
 
       "imgClassName": "",
-      "spareImgClassName": ""
+      "spareImgClassName": "",
+
+      "specialEffect": ""
     },
     {
-      "className": "md:col-span-5 md:row-span-3",
+      "className": "md:col-span-6 md:row-span-3",
 
       "title": "Team Player, Clear Communicator",
       "description": "I thrive in collaborative teams with shared goals and feedback loops.",
@@ -85,10 +91,12 @@
       "spareImg": "/images/misc/bento-grid.svg",
 
       "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
-      "spareImgClassName": "opacity-40"
+      "spareImgClassName": "opacity-40",
+
+      "specialEffect": ""
     },
     {
-      "className": "md:col-span-7 md:row-span-3",
+      "className": "md:col-span-10 md:row-span-3",
 
       "title": "Building with React, Next.js & Flutter",
       "description": "I create cross-platform apps that are clean, fast, and scalable.",
@@ -101,10 +109,12 @@
       "spareImg": "/images/misc/bento-grid.svg",
 
       "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
-      "spareImgClassName": "opacity-80"
+      "spareImgClassName": "opacity-80",
+
+      "specialEffect": ""
     },
     {
-      "className": "md:col-span-12 md:row-span-1",
+      "className": "md:col-span-16 md:row-span-2",
 
       "title": "Let’s Build Something Great",
       "description": "Open to meaningful collaborations. Got a project in mind?",
@@ -117,7 +127,9 @@
       "spareImg": "",
 
       "imgClassName": "",
-      "spareImgClassName": ""
+      "spareImgClassName": "",
+
+      "specialEffect": "background-gradient-animation"
     }
   ]
 }

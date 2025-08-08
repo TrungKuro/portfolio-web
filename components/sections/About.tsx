@@ -33,6 +33,8 @@ export const About = ({ id }: { id: string }) => {
                   spareImg,
                   imgClassName,
                   spareImgClassName,
+                  //
+                  specialEffect,
                 },
                 idx
               ) => (
@@ -50,6 +52,8 @@ export const About = ({ id }: { id: string }) => {
                   spareImg={spareImg}
                   imgClassName={imgClassName}
                   spareImgClassName={spareImgClassName}
+                  //
+                  specialEffect={specialEffect}
                 />
               )
             )}

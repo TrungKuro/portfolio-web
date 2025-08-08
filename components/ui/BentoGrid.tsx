@@ -18,8 +18,16 @@ export const BentoGrid = ({
 }) => {
   return (
     <div
-      // (md:) Tỉ lệ (4:3) : 12 CỘT - 9 DÒNG
       // Thuộc tính này được thiếp lập bên dữ liệu JSON
+      // Kích hoạt khi (md:)
+      //
+      // Tỉ lệ cũ (4:3) = 12 CỘT : 9 DÒNG
+      // | card 1 = 6:5 | card 2 = 6:3 | card 3 = 6:2
+      // | card 4 = 5:3 | card 5 = 7:3 | card 6 = 12:1
+      //
+      // Tỉ lệ mới (16:10) = 16 CỘT : 10 DÒNG
+      // | card 1 = 8:5 | card 2 = 8:3  | card 3 = 8:2
+      // | card 4 = 6:3 | card 5 = 10:3 | card 6 = 16:2
       className={cn("grid mx-auto", className)}
     >
       {children}
@@ -40,6 +48,8 @@ export const BentoGridItem = ({
   spareImg,
   imgClassName,
   spareImgClassName,
+  //
+  specialEffect,
 }: {
   className?: string;
   //
@@ -53,6 +63,8 @@ export const BentoGridItem = ({
   spareImg?: string;
   imgClassName?: string;
   spareImgClassName?: string;
+  //
+  specialEffect?: string;
 }) => {
   //!!!! bỏ đi cái đám này
   // const leftLists = ["React.js", "Next.js", "Node.js", "Nest.js"];
@@ -102,11 +114,10 @@ export const BentoGridItem = ({
           />
         )}
 
-        {/* {id === 6 && (
-          <BackgroundGradientAnimation size="100%">
-            <div className="absolute z-50 inset-0 flex items-center justify-center text-white font-bold px-4 pointer-events-none text-3xl text-center md:text-4xl lg:text-7xl" />
-          </BackgroundGradientAnimation>
-        )} */}
+        {/* Hiệu ứng đặc biệt */}
+        {specialEffect === "background-gradient-animation" && (
+          <BackgroundGradientAnimation />
+        )}
 
         {/* Nội dung */}
         <div
@@ -116,6 +127,8 @@ export const BentoGridItem = ({
             !hasCustomTranslate && "group-hover/bento:translate-x-2",
             // Luôn thêm các class cố định
             "transition duration-200 relative z-10 w-full h-full flex flex-col space-y-3 p-5 lg:p-10",
+            //! Mouse events pass through -> tắt để các lớp "absolute" bên dưới có thể nhận Event Mouse | không ảnh hưởng hiệu ứng vì phần tử đã được liên kết Event với phần tử gốc
+            "pointer-events-none",
             // Và cuối cùng là "contentClassName" truyền vào
             contentClassName
           )}

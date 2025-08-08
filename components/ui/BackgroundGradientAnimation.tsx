@@ -34,12 +34,16 @@ export const BackgroundGradientAnimation = ({
   interactive?: boolean;
   containerClassName?: string;
 }) => {
+  //! Tham chiếu của <div> CONTAINER
+  const containerRef = useRef<HTMLDivElement>(null);
+  //! Tham chiếu của <div> INTERACTIVE so với VIEWPORT
   const interactiveRef = useRef<HTMLDivElement>(null);
 
   const [curX, setCurX] = useState(0);
   const [curY, setCurY] = useState(0);
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
+
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
@@ -64,33 +68,68 @@ export const BackgroundGradientAnimation = ({
       if (!interactiveRef.current) {
         return;
       }
-      setCurX(curX + (tgX - curX) / 20);
-      setCurY(curY + (tgY - curY) / 20);
-      interactiveRef.current.style.transform = `translate(${Math.round(
-        curX
-      )}px, ${Math.round(curY)}px)`;
+
+      // Smooth animation: gradually move towards target position
+      setCurX((prevCurX) => {
+        const newCurX = prevCurX + (tgX - prevCurX) / 5;
+        return newCurX;
+      });
+      setCurY((prevCurY) => {
+        const newCurY = prevCurY + (tgY - prevCurY) / 5;
+        return newCurY;
+      });
     }
 
     move();
   }, [tgX, tgY]);
 
-  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+  // Apply transform whenever curX or curY changes
+  useEffect(() => {
     if (interactiveRef.current) {
-      const rect = interactiveRef.current.getBoundingClientRect();
-      setTgX(event.clientX - rect.left);
-      setTgY(event.clientY - rect.top);
+      interactiveRef.current.style.transform = `translate(${Math.round(
+        curX
+      )}px, ${Math.round(curY)}px)`;
+    }
+  }, [curX, curY]);
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (containerRef.current && interactiveRef.current) {
+      // Lấy vị trí của CONTAINER so với VIEWPORT
+      const containerRect = containerRef.current.getBoundingClientRect();
+
+      //! event.clientX và event.clientY là vị trí của con trỏ chuột so với VIEWPORT (không phải so với element)
+
+      // Tính vị trí con trỏ chuột so với CONTAINER
+      const mouseXInContainer = event.clientX - containerRect.left;
+      const mouseYInContainer = event.clientY - containerRect.top;
+
+      // Tính vị trí cần transform để tâm INTERACTIVE nằm tại vị trí con trỏ chuột
+      // INTERACTIVE có kích thước full container, nên tâm ban đầu ở giữa container
+      const containerCenterX = containerRect.width / 2;
+      const containerCenterY = containerRect.height / 2;
+
+      // Offset cần thiết để di chuyển tâm INTERACTIVE đến vị trí con trỏ
+      const targetX = mouseXInContainer - containerCenterX;
+      const targetY = mouseYInContainer - containerCenterY;
+
+      setTgX(targetX);
+      setTgY(targetY);
     }
   };
 
   const [isSafari, setIsSafari] = useState(false);
+
   useEffect(() => {
     setIsSafari(/^((?!chrome|android).)*safari/i.test(navigator.userAgent));
   }, []);
 
   return (
     <div
+      //! Đây là CONTAINER
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
       className={cn(
-        "h-full w-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        "w-full h-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
         containerClassName
       )}
     >
@@ -112,7 +151,9 @@ export const BackgroundGradientAnimation = ({
           </filter>
         </defs>
       </svg>
+
       <div className={cn("", className)}>{children}</div>
+
       <div
         className={cn(
           "gradients-container h-full w-full blur-lg",
@@ -127,7 +168,8 @@ export const BackgroundGradientAnimation = ({
             `animate-first`,
             `opacity-100`
           )}
-        ></div>
+        />
+
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--second-color),_0.8)_0,_rgba(var(--second-color),_0)_50%)_no-repeat]`,
@@ -136,7 +178,8 @@ export const BackgroundGradientAnimation = ({
             `animate-second`,
             `opacity-100`
           )}
-        ></div>
+        />
+
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--third-color),_0.8)_0,_rgba(var(--third-color),_0)_50%)_no-repeat]`,
@@ -145,7 +188,8 @@ export const BackgroundGradientAnimation = ({
             `animate-third`,
             `opacity-100`
           )}
-        ></div>
+        />
+
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fourth-color),_0.8)_0,_rgba(var(--fourth-color),_0)_50%)_no-repeat]`,
@@ -154,7 +198,8 @@ export const BackgroundGradientAnimation = ({
             `animate-fourth`,
             `opacity-70`
           )}
-        ></div>
+        />
+
         <div
           className={cn(
             `absolute [background:radial-gradient(circle_at_center,_rgba(var(--fifth-color),_0.8)_0,_rgba(var(--fifth-color),_0)_50%)_no-repeat]`,
@@ -163,18 +208,19 @@ export const BackgroundGradientAnimation = ({
             `animate-fifth`,
             `opacity-100`
           )}
-        ></div>
+        />
 
         {interactive && (
           <div
+            //! Đây là INTERACTIVE
             ref={interactiveRef}
-            onMouseMove={handleMouseMove}
+            // TÂM GIỮA của INTERACTIVE sẽ nằm ngay chính giữa TÂM của CONTAINER lúc đầu
             className={cn(
               `absolute [background:radial-gradient(circle_at_center,_rgba(var(--pointer-color),_0.8)_0,_rgba(var(--pointer-color),_0)_50%)_no-repeat]`,
-              `[mix-blend-mode:var(--blending-value)] w-full h-full -top-1/2 -left-1/2`,
+              `[mix-blend-mode:var(--blending-value)] w-full h-full top-0 left-0`,
               `opacity-70`
             )}
-          ></div>
+          />
         )}
       </div>
     </div>
