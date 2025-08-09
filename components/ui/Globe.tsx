@@ -55,9 +55,19 @@ export type GlobeConfig = {
   initialPosition?: {
     lat: number;
     lng: number;
+    //
+    offsetLat: number;
+    offsetLng: number;
   };
   autoRotate?: boolean;
   autoRotateSpeed?: number;
+  //
+  countryColor?: string;
+  countryName?: string;
+  //
+  polygonResolution?: number;
+  polygonMargin?: number;
+  pointRadius?: number;
 };
 
 interface WorldProps {
@@ -86,6 +96,14 @@ export function Globe({ globeConfig, data }: WorldProps) {
     arcLength: 0.9,
     rings: 1,
     maxRings: 3,
+    //
+    countryColor: "rgba(255,255,255,0.7)",
+    countryName: "",
+    //
+    polygonResolution: 3,
+    polygonMargin: 0.7,
+    pointRadius: 2,
+    //
     ...globeConfig,
   };
 
@@ -119,6 +137,24 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeConfig.emissiveIntensity,
     globeConfig.shininess,
   ]);
+
+  //! Set initial globe position based on "initialPosition"
+  useEffect(() => {
+    if (!globeRef.current || !isInitialized || !defaultProps.initialPosition)
+      return;
+
+    const { lat, lng, offsetLat, offsetLng } = defaultProps.initialPosition;
+
+    // Convert degrees to radians
+    const latRad = ((lat + offsetLat) * Math.PI) / 180;
+    const lngRad = ((lng + offsetLng) * Math.PI) / 180;
+
+    // Rotate the group containing the globe
+    if (groupRef.current) {
+      groupRef.current.rotation.x = -latRad;
+      groupRef.current.rotation.y = -lngRad;
+    }
+  }, [isInitialized, defaultProps.initialPosition]);
 
   // Build data when globe is initialized or when data changes
   useEffect(() => {
@@ -157,12 +193,30 @@ export function Globe({ globeConfig, data }: WorldProps) {
 
     globeRef.current
       .hexPolygonsData(countries.features)
-      .hexPolygonResolution(3)
-      .hexPolygonMargin(0.7)
+      .hexPolygonResolution(defaultProps.polygonResolution)
+      .hexPolygonMargin(defaultProps.polygonMargin)
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
       .atmosphereAltitude(defaultProps.atmosphereAltitude)
-      .hexPolygonColor(() => defaultProps.polygonColor);
+      .hexPolygonColor((feature: any) => {
+        // Nếu bạn có chọn quốc gia thì...
+        if (defaultProps.countryName) {
+          // Kiểm tra nếu là quốc gia bạn chọn hợp lệ (có tên trong "globe.json")
+          if (
+            feature.properties &&
+            feature.properties.admin === defaultProps.countryName
+          ) {
+            //! Confirm quốc gia chọn được tìm thấy
+            // console.log(`Found your country: ${feature.properties.name}`);
+
+            // Màu lãnh thổ riêng cho quốc gia bạn chọn
+            return defaultProps.countryColor;
+          }
+        }
+
+        // Màu mặc định cho các quốc gia khác
+        return defaultProps.polygonColor;
+      });
 
     globeRef.current
       .arcsData(data)
@@ -183,7 +237,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .pointColor((e) => (e as { color: string }).color)
       .pointsMerge(true)
       .pointAltitude(0.0)
-      .pointRadius(2);
+      .pointRadius(defaultProps.pointRadius);
 
     globeRef.current
       .ringsData([])
@@ -278,8 +332,8 @@ export function World(props: WorldProps) {
         enableZoom={false}
         minDistance={cameraZ}
         maxDistance={cameraZ}
-        autoRotateSpeed={1}
-        autoRotate={true}
+        autoRotateSpeed={globeConfig.autoRotateSpeed}
+        autoRotate={globeConfig.autoRotate}
         minPolarAngle={Math.PI / 3.5}
         maxPolarAngle={Math.PI - Math.PI / 3}
       />

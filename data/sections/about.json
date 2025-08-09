@@ -57,7 +57,7 @@
       "imgClassName": "",
       "spareImgClassName": "",
 
-      "specialEffect": ""
+      "specialEffect": "globe"
     },
     {
       "className": "md:col-span-8 md:row-span-2",
