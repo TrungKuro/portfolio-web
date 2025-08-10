@@ -122,7 +122,7 @@
       "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
       "spareImgClassName": "opacity-80",
 
-      "specialEffect": ""
+      "specialEffect": "meteors"
     },
     {
       "className": "md:col-span-16 md:row-span-2",

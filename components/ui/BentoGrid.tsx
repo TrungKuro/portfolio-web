@@ -5,6 +5,7 @@ import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
 import { GlobeDemo } from "../common/GlobeDemo";
 import { IconCloudDemo } from "../common/IconCloudDemo";
 import { LottieDemo } from "../common/LottieDemo";
+import { Meteors } from "./Meteors";
 
 export const BentoGrid = ({
   className,
@@ -107,6 +108,7 @@ export const BentoGridItem = ({
         {specialEffect === "globe" && <GlobeDemo />}
         {specialEffect === "icon-cloud" && <IconCloudDemo />}
         {specialEffect === "lottie" && <LottieDemo />}
+        {specialEffect === "meteors" && <Meteors number={20} />}
 
         {/* Nội dung */}
         <div
