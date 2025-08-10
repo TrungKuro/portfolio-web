@@ -29,6 +29,14 @@
 > - [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
 > - [Animated Tooltip](https://ui.aceternity.com/components/animated-tooltip)
 >
+> [**MATERIAL UI**](https://mui.com/)
+>
+> - [Tooltip](https://mui.com/material-ui/react-tooltip/)
+>
+> [**SHADCN UI**](https://ui.shadcn.com/)
+>
+> - [Icon Cloud](https://magicui.design/docs/components/icon-cloud)
+>
 > [**NPM**](https://www.npmjs.com/)
 >
 > - [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)

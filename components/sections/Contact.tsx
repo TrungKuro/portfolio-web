@@ -9,6 +9,7 @@ import { HeadingHighlight } from "../common/HeadingHighlight";
 import Link from "next/link";
 import { IconSVG } from "../common/IconSVG";
 import { Lamp } from "../common/Lamp";
+import Tooltip from "@mui/material/Tooltip";
 
 export const Contact = ({ id }: { id: string }) => {
   const { contact, background, address, copyright, socialMedia } =
@@ -53,19 +54,22 @@ export const Contact = ({ id }: { id: string }) => {
               {address.map(({ iconName, title, content, link }) => (
                 <div key={iconName} className="grid grid-cols-[auto_1fr] gap-3">
                   <div className="flex justify-center items-center">
-                    <button
-                      title="Click to Copy"
-                      disabled={copied[iconName]}
-                      onClick={() => handleCopy(content, iconName)}
-                      className={`cursor-pointer hover:scale-90 transition-transform ${
-                        copied[iconName] ? "opacity-50 scale-90" : "opacity-100"
-                      }`}
-                    >
-                      <IconSVG
-                        iconName={iconName}
-                        className="border-1 sm:border-2 lg:border-3 stroke-[1px] sm:stroke-[1.5px] lg:stroke-[2px] border-foreground p-1.5 rounded-lg size-8 sm:size-9 lg:size-11 text-foreground"
-                      />
-                    </button>
+                    <Tooltip title="Click to Copy" arrow>
+                      <button
+                        disabled={copied[iconName]}
+                        onClick={() => handleCopy(content, iconName)}
+                        className={`cursor-pointer hover:scale-90 transition-transform ${
+                          copied[iconName]
+                            ? "opacity-50 scale-90"
+                            : "opacity-100"
+                        }`}
+                      >
+                        <IconSVG
+                          iconName={iconName}
+                          className="border-1 sm:border-2 lg:border-3 stroke-[1px] sm:stroke-[1.5px] lg:stroke-[2px] border-foreground p-1.5 rounded-lg size-8 sm:size-9 lg:size-11 text-foreground"
+                        />
+                      </button>
+                    </Tooltip>
                   </div>
 
                   <div className="place-content-center content-custom">
@@ -110,15 +114,13 @@ export const Contact = ({ id }: { id: string }) => {
           <div className="flex md:flex-row flex-col justify-between items-center">
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.core.map(({ id, name, icon, url }) => (
-                <button
-                  key={id}
-                  title={name}
-                  onClick={() => window.open(url, "_blank")}
-                >
-                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-transform">
-                    <Image src={icon} alt="icons" width={25} height={25} />
-                  </div>
-                </button>
+                <Tooltip key={id} title={name} arrow>
+                  <button onClick={() => window.open(url, "_blank")}>
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-transform">
+                      <Image src={icon} alt="icons" width={25} height={25} />
+                    </div>
+                  </button>
+                </Tooltip>
               ))}
             </div>
 
@@ -126,15 +128,13 @@ export const Contact = ({ id }: { id: string }) => {
 
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.branding.map(({ id, name, icon, url }) => (
-                <button
-                  key={id}
-                  title={name}
-                  onClick={() => window.open(url, "_blank")}
-                >
-                  <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-transform">
-                    <Image src={icon} alt="icons" width={25} height={25} />
-                  </div>
-                </button>
+                <Tooltip key={id} title={name} arrow>
+                  <button onClick={() => window.open(url, "_blank")}>
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-transform">
+                      <Image src={icon} alt="icons" width={25} height={25} />
+                    </div>
+                  </button>
+                </Tooltip>
               ))}
             </div>
           </div>

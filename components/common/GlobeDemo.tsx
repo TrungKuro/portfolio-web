@@ -95,7 +95,7 @@ export function GlobeDemo() {
       offsetLng: myCountry.offsetLng,
     },
     autoRotate: true,
-    autoRotateSpeed: 0.1,
+    autoRotateSpeed: 0.15,
 
     //! 💀 Đánh đổi giữa HIỆU SUẤT và HIỂN THỊ
     //

@@ -8,6 +8,7 @@ import Lottie from "react-lottie";
 import animationData from "@/data/confetti.json";
 import { MagicButton } from "./MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
+import { IconCloudDemo } from "../common/IconCloudDemo";
 
 export const BentoGrid = ({
   className,
@@ -119,6 +120,7 @@ export const BentoGridItem = ({
           <BackgroundGradientAnimation />
         )}
         {specialEffect === "globe" && <GlobeDemo />}
+        {specialEffect === "icon-cloud" && <IconCloudDemo />}
 
         {/* Nội dung */}
         <div
