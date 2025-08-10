@@ -3,12 +3,8 @@
 import { cn } from "@/lib/utils";
 import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
 import { GlobeDemo } from "../common/GlobeDemo";
-import { useState } from "react";
-import Lottie from "react-lottie";
-import animationData from "@/data/confetti.json";
-import { MagicButton } from "./MagicButton";
-import { IoCopyOutline } from "react-icons/io5";
 import { IconCloudDemo } from "../common/IconCloudDemo";
+import { LottieDemo } from "../common/LottieDemo";
 
 export const BentoGrid = ({
   className,
@@ -67,17 +63,6 @@ export const BentoGridItem = ({
   //
   specialEffect?: string;
 }) => {
-  //!!!! bỏ đi cái đám này
-  // const leftLists = ["React.js", "Next.js", "Node.js", "Nest.js"];
-  // const rightLists = ["HTML5", "CSS3", "JavaScript (ES6)", "TypeScript"];
-
-  // const [copied, setCopied] = useState(false); // Use for Lottie animation
-
-  // const handleCopy = () => {
-  //   navigator.clipboard.writeText("hdh.trung.96@gmail.com");
-  //   setCopied(true);
-  // };
-
   //! Nếu "contentClassName" có chứa `group-hover/bento:translate-` hoặc `group-hover/bento:-translate-` thì không dùng mặc định
   const hasCustomTranslate = /group-hover\/bento:-?translate-/.test(
     contentClassName || ""
@@ -121,6 +106,7 @@ export const BentoGridItem = ({
         )}
         {specialEffect === "globe" && <GlobeDemo />}
         {specialEffect === "icon-cloud" && <IconCloudDemo />}
+        {specialEffect === "lottie" && <LottieDemo />}
 
         {/* Nội dung */}
         <div
@@ -159,67 +145,6 @@ export const BentoGridItem = ({
               {description}
             </div>
           )}
-
-          {/* 
-
-          {id === 3 && (
-            <div className="flex gap-1 lg:gap-5 w-fit absolute -right-3 lg:-right-2">
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                {leftLists.map((item, index) => (
-                  <span
-                    key={index}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132e]"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132e]"></span>
-              </div>
-              <div className="flex flex-col gap-3 md:gap-3 lg:gap-8">
-                <span className="lg:py-4 lg:px-3 py-4 px-3  rounded-lg text-center bg-[#10132e]"></span>
-                {rightLists.map((item, index) => (
-                  <span
-                    key={index}
-                    className="lg:py-4 lg:px-3 py-2 px-3 text-xs lg:text-base opacity-50 
-                    lg:opacity-100 rounded-lg text-center bg-[#10132e]"
-                  >
-                    {item}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {id === 6 && (
-            <div className="mt-5 relative">
-              <div
-                className={`absolute -bottom-5 right-0 ${
-                  copied ? "block" : "block"
-                }`}
-              >
-                <Lottie
-                  options={{
-                    loop: copied,
-                    autoplay: copied,
-                    animationData,
-                    rendererSettings: {
-                      preserveAspectRatio: "xMidYMid slice",
-                    },
-                  }}
-                  height={200}
-                  width={400}
-                />
-              </div>
-              <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email address"}
-                icon={<IoCopyOutline />}
-                position="left"
-                otherClasses="!bg-[#161a31]"
-                handleClick={handleCopy}
-              />
-            </div>
-          )} */}
         </div>
       </div>
     </div>

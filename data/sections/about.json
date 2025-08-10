@@ -104,7 +104,7 @@
       "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
       "spareImgClassName": "opacity-40",
 
-      "specialEffect": ""
+      "specialEffect": "lottie"
     },
     {
       "className": "md:col-span-10 md:row-span-3",
