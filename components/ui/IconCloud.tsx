@@ -335,7 +335,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
         ctx.save();
         ctx.filter = `blur(${(blurPx / Math.max(0.001, scale)).toFixed(2)}px)`; // keep blur constant vs depth
         ctx.globalAlpha = 1; // background alpha independent from depth
-        ctx.fillStyle = "rgba(253, 253, 254, 0.75)";
+        ctx.fillStyle = "rgba(253, 253, 254, 0.70)";
         drawRoundedRect(
           ctx,
           -(bgSize / 2),

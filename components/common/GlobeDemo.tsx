@@ -9,7 +9,7 @@ const World = dynamic(() => import("../ui/Globe").then((m) => m.World), {
 export function GlobeDemo() {
   /* ----------------------------------------------------------------------- */
 
-  const colors = ["#1e40af", "#7c3aed", "#0891b2"];
+  const colors = ["#60a5fa", "#34d399", "#a78bfa"];
 
   const myCountry = {
     name: "Vietnam",
@@ -60,10 +60,10 @@ export function GlobeDemo() {
     pointSize: 4,
 
     // 🌍 GLOBE
-    globeColor: "#2a4a6b",
+    globeColor: "#1a365d",
     emissive: "#4a5568",
     emissiveIntensity: 0.4,
-    shininess: 1.0,
+    shininess: 1.2,
 
     // 🌟 ATMOSPHERE - Halo sáng xung quanh globe
     showAtmosphere: true,

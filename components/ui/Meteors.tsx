@@ -1,7 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+interface MeteorData {
+  delay: number;
+  duration: number;
+}
 
 export const Meteors = ({
   number,
@@ -10,7 +16,21 @@ export const Meteors = ({
   number?: number;
   className?: string;
 }) => {
-  const meteors = new Array(number || 20).fill(true);
+  const meteorCount = number || 20;
+  const meteors = new Array(meteorCount).fill(true);
+  const [meteorData, setMeteorData] = useState<MeteorData[]>([]);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    // Generate random values only on the client side
+    const data = meteors.map(() => ({
+      delay: Math.random() * 5, // Random delay between 0-5s
+      duration: Math.floor(Math.random() * (10 - 5) + 5), // Random duration between 5-10s
+    }));
+    setMeteorData(data);
+    setIsClient(true);
+  }, [meteorCount]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -18,9 +38,13 @@ export const Meteors = ({
       transition={{ duration: 0.5 }}
     >
       {meteors.map((el, idx) => {
-        const meteorCount = number || 20;
         // Calculate position to evenly distribute meteors across container width
         const position = idx * (800 / meteorCount) - 400; // Spread across 800px range, centered
+
+        // Use default values during SSR, actual random values after hydration
+        const delay = isClient && meteorData[idx] ? meteorData[idx].delay : 0;
+        const duration =
+          isClient && meteorData[idx] ? meteorData[idx].duration : 5;
 
         return (
           <span
@@ -33,8 +57,8 @@ export const Meteors = ({
             style={{
               top: "-40px", // Start above the container
               left: position + "px",
-              animationDelay: Math.random() * 5 + "s", // Random delay between 0-5s
-              animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s", // Keep some randomness in duration
+              animationDelay: delay + "s",
+              animationDuration: duration + "s",
             }}
           ></span>
         );
