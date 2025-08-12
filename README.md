@@ -56,6 +56,9 @@
 > - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
 > - [11zon](https://www.11zon.com/vi/)
 > - [DevIcon](https://devicon.dev/)
+> - [Lottie Files](https://lottiefiles.com/)
+> - [Canva](https://www.canva.com/)
+> - [Clipping Magic](https://vi.clippingmagic.com/)
 >
 > **HEADLESS CMS**
 >
