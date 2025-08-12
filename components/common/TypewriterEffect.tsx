@@ -39,7 +39,14 @@ export const TypewriterEffect = ({
         // Typing animation
         if (charIndex < Array.from(texts[currentIndex]).length) {
           timeout = setTimeout(() => {
-            const characters = Array.from(texts[currentIndex]);
+            //! Tách chuỗi thành mảng ký tự (hiển thị đúng với emoji, cả loại nhiều mã Unicode)
+            const characters = Array.from(
+              new Intl.Segmenter("en", { granularity: "grapheme" }).segment(
+                texts[currentIndex]
+              ),
+              (seg) => seg.segment
+            );
+
             setDisplayText(characters.slice(0, charIndex + 1).join(""));
             setCharIndex((prev) => prev + 1);
           }, typeSpeed);
@@ -54,7 +61,14 @@ export const TypewriterEffect = ({
         // Deleting animation
         if (charIndex > 0) {
           timeout = setTimeout(() => {
-            const characters = Array.from(texts[currentIndex]);
+            //! Tách chuỗi thành mảng ký tự (hiển thị đúng với emoji, cả loại nhiều mã Unicode)
+            const characters = Array.from(
+              new Intl.Segmenter("en", { granularity: "grapheme" }).segment(
+                texts[currentIndex]
+              ),
+              (seg) => seg.segment
+            );
+
             setDisplayText(characters.slice(0, charIndex - 1).join(""));
             setCharIndex((prev) => prev - 1);
           }, deleteSpeed);

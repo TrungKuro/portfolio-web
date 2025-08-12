@@ -995,3 +995,27 @@ Kết quả 💀 (thêm hình ở đây)
   Math.floor(Math.random() * (max - min + 1)) + min
 
   ```
+
+### Unicode
+
+- Kí tự 💻 có tên Unicode là **"Laptop Computer"** với mã Unicode là `U+1F4BB` còn cách viết `\u` trong JS là `\u{1F4BB}`
+- Kí tự 🖥️ có tên Unicode là **"Desktop Computer"** với mã Unicode là `U+1F5A5` (`U+FE0F` nếu có variation selector) còn cách viết `\u` trong JS là `\u{1F5A5}` hoặc `\u{1F5A5}\u{FE0F}`
+- Kí tự 📱 có tên Unicode là **"Mobile Phone"** với mã Unicode là `U+1F4F1` còn cách viết `\u` trong JS là `{1F4F1}`
+- Kí tự 🇻🇳 có tên Unicode là **"Flag: Vietnam"** với mã Unicode là `U+1F1FB U+1F1F3` _(2 Regional Indicator Symbols)_ còn cách viết `\u` trong JS là `\u{1F1FB}\u{1F1F3}`
+
+💡 Lưu ý:
+
+- Một số emoji là kết hợp nhiều mã Unicode (như cờ Việt Nam 🇻🇳 gồm 2 ký tự: `U+1F1FB` + `U+1F1F3`).
+- Nếu muốn hiển thị chính xác màu emoji trong HTML, bạn chỉ cần dán thẳng ký tự hoặc dùng `&#xCODE;`.
+
+```
+💻 = &#x1F4BB;
+🖥️ = &#x1F5A5;&#xFE0F;
+📱 = &#x1F4F1;
+🇻🇳 = &#x1F1FB;&#x1F1F3;
+```
+
+🔑 Dùng `Intl.Segmenter`: (built-in từ ES2022)
+
+- Giúp tách chuỗi thành mảng ký tự hiển thị đúng với emoji nhiều mã.
+- Bây giờ 🇻🇳 sẽ được coi là 1 ký tự (thay vì 2).
