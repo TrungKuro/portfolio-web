@@ -1,12 +1,12 @@
-"use client";
 /* eslint-disable @next/next/no-img-element */
-import { cn } from "@/lib/utils";
-import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
+
+import { DraggableCardDemo } from "../common/DraggableCardDemo";
 import { GlobeDemo } from "../common/GlobeDemo";
 import { IconCloudDemo } from "../common/IconCloudDemo";
 import { LottieDemo } from "../common/LottieDemo";
 import { Meteors } from "./Meteors";
-import { DraggableCardDemo } from "../common/DraggableCardDemo";
+import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
+import { cn } from "@/lib/utils";
 
 export const BentoGrid = ({
   className,
@@ -103,14 +103,14 @@ export const BentoGridItem = ({
         )}
 
         {/* Hiệu ứng đặc biệt */}
-        {specialEffect === "background-gradient-animation" && (
-          <BackgroundGradientAnimation />
-        )}
+        {specialEffect === "draggable-card" && <DraggableCardDemo />}
         {specialEffect === "globe" && <GlobeDemo />}
         {specialEffect === "icon-cloud" && <IconCloudDemo />}
         {specialEffect === "lottie" && <LottieDemo />}
         {specialEffect === "meteors" && <Meteors number={20} />}
-        {specialEffect === "draggable-card" && <DraggableCardDemo />}
+        {specialEffect === "background-gradient-animation" && (
+          <BackgroundGradientAnimation />
+        )}
 
         {/* Nội dung */}
         <div

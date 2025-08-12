@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+"use client";
+
 import React, { useState } from "react";
 import { DraggableCardBody, DraggableCardContainer } from "../ui/DraggableCard";
 import { getAboutData } from "@/lib/content";

@@ -1,13 +1,11 @@
-"use-client";
-
+import Image from "next/image";
 import React from "react";
 import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 import { HeadingHighlight } from "../common/HeadingHighlight";
 import { BtnMoveBorder } from "../common/BtnMoveBorder";
-import { getSkillsData } from "@/lib/content";
-import Image from "next/image";
-import { AnimatedTooltip } from "../ui/AnimatedTooltip";
 import { Lens } from "../ui/Lens";
+import { AnimatedTooltip } from "../ui/AnimatedTooltip";
+import { getSkillsData } from "@/lib/content";
 
 export const Skills = ({ id }: { id: string }) => {
   const { skill, techStack } = getSkillsData();

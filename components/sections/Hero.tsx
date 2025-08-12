@@ -1,12 +1,12 @@
+import Link from "next/link";
 import React from "react";
 import { Spotlight } from "../ui/Spotlight";
 import { GridBackground } from "../ui/GridBackground";
 import { TextGenerateEffect } from "../ui/TextGenerateEffect";
-import { MagicButton } from "../ui/MagicButton";
+import { TypewriterEffect } from "../ui/TypewriterEffect";
+import { MagicButton } from "../common/MagicButton";
 import { FaLocationArrow } from "react-icons/fa";
 import { getHeaderData } from "@/lib/content";
-import { TypewriterEffect } from "../common/TypewriterEffect";
-import Link from "next/link";
 
 export const Hero = ({ id }: { id: string }) => {
   const { hero, cv } = getHeaderData();

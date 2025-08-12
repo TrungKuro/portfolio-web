@@ -104,8 +104,6 @@ body {
     @apply text-[8px] md:text-[12px] lg:text-[16px];
   }
 
-  /* text-sm md:text-xs lg:text-base */
-
   .bg-gradient-custom {
     background: rgb(4, 7, 29);
     background: linear-gradient(

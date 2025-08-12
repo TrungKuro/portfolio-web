@@ -1,15 +1,16 @@
-"use client";
 /* eslint-disable @next/next/no-img-element */
-import React, { useState } from "react";
-import { MagicButton } from "../ui/MagicButton";
-import { FaLocationArrow } from "react-icons/fa";
-import { getFooterData } from "@/lib/content";
-import Image from "next/image";
-import { HeadingHighlight } from "../common/HeadingHighlight";
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
+import React, { useState } from "react";
+import { HeadingHighlight } from "../common/HeadingHighlight";
+import { MagicButton } from "../common/MagicButton";
+import { FaLocationArrow } from "react-icons/fa";
 import { IconSVG } from "../common/IconSVG";
-import { Lamp } from "../common/Lamp";
+import { Lamp } from "../ui/Lamp";
 import Tooltip from "@mui/material/Tooltip";
+import { getFooterData } from "@/lib/content";
 
 export const Contact = ({ id }: { id: string }) => {
   const { contact, background, address, copyright, socialMedia } =

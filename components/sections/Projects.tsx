@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import { getProjectsData } from "@/lib/content";
+
 import React from "react";
-import { PinContainer } from "../ui/3DPin";
-import { FaLocationArrow } from "react-icons/fa";
 import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 import { HeadingHighlight } from "../common/HeadingHighlight";
+import { PinContainer } from "../ui/PinContainer";
+import { FaLocationArrow } from "react-icons/fa";
+import { getProjectsData } from "@/lib/content";
 
 export const Projects = ({ id }: { id: string }) => {
   const { project, personalProjects } = getProjectsData();

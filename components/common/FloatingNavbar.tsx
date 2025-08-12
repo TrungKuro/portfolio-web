@@ -1,15 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import React, { JSX, useState } from "react";
 import {
   motion,
-  AnimatePresence,
   useScroll,
   useMotionValueEvent,
   useTransform,
+  AnimatePresence,
 } from "motion/react";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
 
 interface NavItem {
   name: string;

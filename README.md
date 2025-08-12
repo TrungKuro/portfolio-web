@@ -192,10 +192,65 @@ Gợi ý cho thư mục `components`:
 ```
 components/
 ├── common/                # Component nhỏ tái sử dụng nhiều nơi (Button, SectionWrapper...)
-├── sections/              # Component từng section: Hero, About, Projects...
 ├── layout/                # Wrapper layout (Navbar, Footer...)
+├── sections/              # Component từng section: Hero, About, Projects...
 └── ui/                    # Thành phần UI như Card, Tabs, Tooltip (nếu có)
 ```
+
+- 1️⃣ `components/common/` – Thành phần nhỏ, tái sử dụng nhiều nơi
+  - Chứa các component cơ bản và <u>không phụ thuộc</u> vào **layout** hay **page** cụ thể.
+  - Tính chất:
+    - Nhỏ, gọn
+    - Tái sử dụng ở nhiều chỗ khác nhau
+    - Không chứa logic đặc thù của một trang
+  - Ví dụ:
+    - Button.tsx → Nút bấm chung (Primary, Secondary…)
+    - SectionWrapper.tsx → Bao bọc section kèm padding/margin chuẩn
+    - Heading.tsx → Tiêu đề chuẩn của toàn site
+    - Container.tsx → Component wrapper giữ độ rộng max-width
+  ```
+  📌 Mục tiêu: Khi đổi UI hoặc style ở đây, toàn bộ site cập nhật theo.
+  ```
+- 2️⃣ `components/layout/` – Các phần khung cố định
+  - Chứa <u>layout wrapper</u> cho toàn **page** hoặc từng nhóm **pages**.
+  - Thường lặp lại trên nhiều trang.
+  - Ví dụ:
+    - Navbar.tsx → Thanh điều hướng
+    - Footer.tsx → Chân trang
+    - Sidebar.tsx → Thanh bên
+    - MainLayout.tsx → Khung layout chung, chứa header + footer
+  - Thường được import ở app/layout.tsx (Next.js 13+) hoặc bọc quanh page.
+  ```
+  📌 Mục tiêu: Giữ bố cục thống nhất trên tất cả các trang.
+  ```
+- 3️⃣ components/sections/ – Thành phần đại diện từng phần nội dung
+  - Chứa component </u>đặc thù</u> cho từng **section** trên **page**.
+  - Thường là một khối nội dung lớn (Hero, About, Contact, v.v).
+  - Ví dụ:
+    - Hero.tsx → Phần mở đầu trang
+    - About.tsx → Giới thiệu
+    - Projects.tsx → Danh sách dự án
+    - Testimonials.tsx → Feedback khách hàng
+  - Thường không tái sử dụng nguyên khối ở trang khác, vì đặc thù nội dung.
+  ```
+  📌 Mục tiêu: Dễ quản lý khi chỉnh sửa hoặc sắp xếp lại các section của trang.
+  ```
+- 4️⃣ components/ui/ – Thành phần UI tương tác/đặc biệt
+  - Chứa UI component <u>phức tạp</u> hơn common, thường đi kèm **animation** hoặc **logic** riêng.
+  - Có thể lấy từ thư viện UI hoặc custom lại.
+  - Ví dụ:
+    - Card.tsx → Thẻ hiển thị thông tin
+    - Tabs.tsx → Thanh tab chuyển nội dung
+    - Tooltip.tsx → Gợi ý khi hover
+    - Modal.tsx → Hộp thoại bật lên
+    - Dropdown.tsx → Menu xổ xuống
+  - Tính chất:
+    - Có thể tái sử dụng ở nhiều chỗ
+    - Phức tạp hơn so với component common
+    - Thường được dùng trong sections hoặc layout
+  ```
+  📌 Mục tiêu: Gom nhóm các UI phức tạp để dễ bảo trì và tái sử dụng.
+  ```
 
 Gợi ý cho thư mục `data`:
 
@@ -223,16 +278,16 @@ Gợi ý cho thư mục `public`:
 ```
 public/
 ├── assets/
+│   ├── fonts/             → Nếu dùng custom fonts
 │   ├── icons/             → SVG, PNG icons dùng trong UI (menu, social, arrow...)
 │   ├── logos/             → Logo cá nhân, logo đối tác, stack logo
-│   ├── lottie/            → File JSON Lottie animation
-│   └── fonts/             → Nếu dùng custom fonts
+│   └── lottie/            → File JSON Lottie animation
 │
 └── images/
-    ├── profile/           → Ảnh chân dung, ảnh cá nhân
-    ├── projects/          → Ảnh preview từng project (thumbnail, screen...)
     ├── illustrations/     → Hình minh họa (vẽ tay, 3D, landing)
-    └── misc/              → Hình khác (background, texture, decor...)
+    ├── misc/              → Hình khác (background, texture, decor...)
+    ├── profile/           → Ảnh chân dung, ảnh cá nhân
+    └── projects/          → Ảnh preview từng project (thumbnail, screen...)
 ```
 
 Gợi ý cho thư mục `types`:
@@ -462,7 +517,32 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 ### Regex
 
-### [globe.json]
+- Regex (Regular Expression) = Biểu thức chính quy.
+- Là chuỗi ký tự đặc biệt dùng để tìm kiếm, so khớp, hoặc thay thế mẫu trong văn bản.
+- Có trong hầu hết ngôn ngữ lập trình: JS, Python, PHP, Java...
+
+Cấu trúc cơ bản:
+
+| Ký hiệu | Ý nghĩa                       |      |
+| ------- | ----------------------------- | ---- |
+| `.`     | Bất kỳ ký tự nào              |      |
+| `^`     | Bắt đầu chuỗi                 |      |
+| `$`     | Kết thúc chuỗi                |      |
+| `*`     | Lặp 0 hoặc nhiều lần          |      |
+| `+`     | Lặp 1 hoặc nhiều lần          |      |
+| `?`     | 0 hoặc 1 lần                  |      |
+| `[]`    | Một ký tự trong tập           |      |
+| `[^]`   | Một ký tự **không** trong tập |      |
+| `{n}`   | Lặp đúng `n` lần              |      |
+| `{n,}`  | Lặp ≥ `n` lần                 |      |
+| `{n,m}` | Lặp từ `n` đến `m` lần        |      |
+| `()`    | Nhóm                          |      |
+| \`      | \`                            | Hoặc |
+| `\d`    | Số (`[0-9]`)                  |      |
+| `\w`    | Ký tự chữ + số + `_`          |      |
+| `\s`    | Khoảng trắng                  |      |
+
+### [ globe.json ]
 
 - `Mẫu GeoJSON` ban đầu lãnh thổ Việt Nam từ nguồn [Download the globe.json](https://assets.aceternity.com/globe.json)
 
@@ -1023,3 +1103,12 @@ Kết quả 💀 (thêm hình ở đây)
 
 - Giúp tách chuỗi thành mảng ký tự hiển thị đúng với emoji nhiều mã.
 - Bây giờ 🇻🇳 sẽ được coi là 1 ký tự (thay vì 2).
+
+### "use client"
+
+- Trong App Router (Next.js 13+), **mặc định component là server component**.
+- Nếu bạn muốn component đó:
+  - <u>Chạy code chỉ có trên `client`</u> (DOM API, state hook…)
+  - Dùng các hook như useState, useEffect, useRef…
+
+⇒ Phải thêm `"use client"` ở đầu file.

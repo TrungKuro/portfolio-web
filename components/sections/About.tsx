@@ -1,9 +1,9 @@
 import React from "react";
-import { BentoGrid, BentoGridItem } from "../ui/BentoGrid";
-import { getAboutData } from "@/lib/content";
 import { ScrollRevealAnimation } from "../layout/ScrollRevealAnimation";
 import { HeadingHighlight } from "../common/HeadingHighlight";
+import { BentoGrid, BentoGridItem } from "../ui/BentoGrid";
 import { cn } from "@/lib/utils";
+import { getAboutData } from "@/lib/content";
 
 export const About = ({ id }: { id: string }) => {
   const { about, bentoGridClassName, bentoGridItems } = getAboutData();
