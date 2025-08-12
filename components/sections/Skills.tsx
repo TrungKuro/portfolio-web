@@ -7,6 +7,7 @@ import { BtnMoveBorder } from "../common/BtnMoveBorder";
 import { getSkillsData } from "@/lib/content";
 import Image from "next/image";
 import { AnimatedTooltip } from "../ui/AnimatedTooltip";
+import { Lens } from "../ui/Lens";
 
 export const Skills = ({ id }: { id: string }) => {
   const { skill, techStack } = getSkillsData();
@@ -30,20 +31,22 @@ export const Skills = ({ id }: { id: string }) => {
               >
                 <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
                   {/* THUMBNAIL */}
-                  <div className="relative h-full lg:w-32 md:w-20 w-16">
-                    <Image
-                      src={thumbnail}
-                      alt={categoryName}
-                      fill
-                      // 1rem = 16px -> 1.75rem = 28px
-                      // p-3  = 12px
-                      //
-                      // Border Radius OUTER : 28px
-                      // Padding             : 12px
-                      // Border Radius INNER : 16px (28-12)
-                      className="object-cover rounded-bl-[16px] rounded-tl-[16px]"
-                    />
-                  </div>
+                  <Lens zoomFactor={5} lensSize={100}>
+                    <div className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in">
+                      <Image
+                        src={thumbnail}
+                        alt={categoryName}
+                        fill
+                        // 1rem = 16px -> 1.75rem = 28px
+                        // p-3  = 12px
+                        //
+                        // Border Radius OUTER : 28px
+                        // Padding             : 12px
+                        // Border Radius INNER : 16px (28-12)
+                        className="object-cover rounded-bl-[16px] rounded-tl-[16px]"
+                      />
+                    </div>
+                  </Lens>
 
                   {/* CONTENT */}
                   <div className="w-full">

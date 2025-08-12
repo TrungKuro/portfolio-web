@@ -29,6 +29,7 @@
 > - [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
 > - [Animated Tooltip](https://ui.aceternity.com/components/animated-tooltip)
 > - [Meteor Effect](https://ui.aceternity.com/components/meteors)
+> - [Lens](https://ui.aceternity.com/components/lens)
 >
 > [**MATERIAL UI**](https://mui.com/)
 >
