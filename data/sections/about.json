@@ -71,7 +71,7 @@
 
   "bentoGridItems": [
     {
-      "className": "md:col-span-8 md:row-span-5",
+      "className": "max-md:min-h-[75vh] md:col-span-8 md:row-span-5",
 
       "title": "From Circuits to Code",
       "description": "I bring a system-thinking mindset from engineering into web & mobile development.",
@@ -89,7 +89,7 @@
       "specialEffect": "draggable-card"
     },
     {
-      "className": "md:col-span-8 md:row-span-3",
+      "className": "max-md:min-h-[45vh] md:col-span-8 md:row-span-3",
 
       "title": "Remote-Friendly & Time-Zone Flexible",
       "description": "Based in Ho Chi Minh City — available for global freelance projects.",
@@ -107,7 +107,7 @@
       "specialEffect": "globe"
     },
     {
-      "className": "md:col-span-8 md:row-span-2",
+      "className": "max-md:min-h-[30vh] md:col-span-8 md:row-span-2",
 
       "title": "Solid in Web Fundamentals",
       "description": "HTML, CSS, JavaScript, TypeScript & Dart — I build from the ground up.",
@@ -125,7 +125,7 @@
       "specialEffect": "icon-cloud"
     },
     {
-      "className": "md:col-span-6 md:row-span-3",
+      "className": "max-md:min-h-[45vh] md:col-span-6 md:row-span-3",
 
       "title": "Team Player, Clear Communicator",
       "description": "I thrive in collaborative teams with shared goals and feedback loops.",
@@ -143,7 +143,7 @@
       "specialEffect": "lottie"
     },
     {
-      "className": "md:col-span-10 md:row-span-3",
+      "className": "max-md:min-h-[45vh] md:col-span-10 md:row-span-3",
 
       "title": "Building with React, Next.js & Flutter",
       "description": "I create cross-platform apps that are clean, fast, and scalable.",
@@ -161,7 +161,7 @@
       "specialEffect": "meteors"
     },
     {
-      "className": "md:col-span-16 md:row-span-2",
+      "className": "max-md:min-h-[30vh] md:col-span-16 md:row-span-2",
 
       "title": "Let’s Build Something Great",
       "description": "Open to meaningful collaborations. Got a project in mind?",

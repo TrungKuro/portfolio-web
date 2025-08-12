@@ -6,8 +6,8 @@ export const LottieDemo = () => {
   return (
     <div className="absolute w-full h-full flex items-center justify-center">
       <Lottie
-        height={"30%"}
-        width={"30%"}
+        height={"50%"}
+        width={"auto"}
         options={{
           loop: true,
           autoplay: true,
