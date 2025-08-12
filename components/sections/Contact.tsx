@@ -58,7 +58,7 @@ export const Contact = ({ id }: { id: string }) => {
                       <button
                         disabled={copied[iconName]}
                         onClick={() => handleCopy(content, iconName)}
-                        className={`cursor-pointer hover:scale-90 transition-transform ${
+                        className={`hover:cursor-copy hover:scale-90 transition-transform ${
                           copied[iconName]
                             ? "opacity-50 scale-90"
                             : "opacity-100"

@@ -419,7 +419,10 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      className={cn("rounded-lg", className)}
+      className={cn(
+        "rounded-lg hover:cursor-grab active:cursor-grabbing",
+        className
+      )}
       aria-label="Interactive 3D Icon Cloud"
       role="img"
     />

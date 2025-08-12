@@ -627,7 +627,7 @@ export function GlobeDemo() {
   /* ----------------------------------------------------------------------- */
 
   return (
-    <div className="absolute w-full h-full flex items-center justify-center">
+    <div className="absolute w-full h-full flex items-center justify-center hover:cursor-grab active:cursor-grabbing">
       <World data={sampleArcs} globeConfig={globeConfig} />
     </div>
   );

@@ -58,7 +58,7 @@ export const AnimatedTooltip = ({
     <>
       {items.map((item) => (
         <div
-          className="relative"
+          className="relative hover:cursor-help"
           key={item.name}
           onMouseEnter={() => setHoveredIndex(item.id)}
           onMouseLeave={() => setHoveredIndex(null)}

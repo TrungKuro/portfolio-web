@@ -163,7 +163,7 @@ export const DraggableCardBody = ({
       className={cn(
         "flex flex-col justify-between items-center overflow-hidden shadow-2xl shadow-foreground/10 transform-3d bg-background",
         "rounded-lg gap-y-1.5 p-1.5 h-24 w-20 md:p-3 md:h-48 md:w-40 lg:p-4.5 lg:h-72 lg:w-60",
-        "absolute hover:cursor-pointer active:z-50 active:cursor-grabbing",
+        "absolute hover:cursor-grab active:z-50 active:cursor-grabbing",
         className
       )}
     >
