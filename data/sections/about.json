@@ -5,8 +5,6 @@
   },
 
   "personalize": {
-    "profileImage": "/assets/avatar.jpg",
-
     "biography": "I’m a Full-stack Developer who transitioned from electrical engineering to web & mobile development, with a background in embedded systems. I approach every project like solving a puzzle — applying system-level thinking, writing clean code, and crafting user-first experiences.",
 
     "highlights": [
@@ -28,6 +26,44 @@
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
       "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+    ],
+
+    "profileCards": [
+      {
+        "title": "Jul 30, 2025",
+        "image": "/images/profile/about-me-300725.jpg",
+        "className": "top-10 left-[20%] rotate-[-5deg]"
+      },
+      {
+        "title": "Feb 26, 2025",
+        "image": "/images/profile/about-me-260225.jpg",
+        "className": "top-40 left-[25%] rotate-[-7deg]"
+      },
+      {
+        "title": "Feb 22, 2024",
+        "image": "/images/profile/about-me-220224.jpg",
+        "className": "top-5 left-[40%] rotate-[8deg]"
+      },
+      {
+        "title": "Nov 25, 2023",
+        "image": "/images/profile/about-me-251123.jpg",
+        "className": "top-32 left-[55%] rotate-[10deg]"
+      },
+      {
+        "title": "Sep 07, 2023",
+        "image": "/images/profile/about-me-070923.jpg",
+        "className": "top-20 right-[35%] rotate-[2deg]"
+      },
+      {
+        "title": "Aug 23, 2023",
+        "image": "/images/profile/about-me-230823.jpg",
+        "className": "top-24 left-[45%] rotate-[-7deg]"
+      },
+      {
+        "title": "Sep 10, 2022",
+        "image": "/images/profile/about-me-100922.jpg",
+        "className": "top-8 left-[30%] rotate-[4deg]"
+      }
     ]
   },
 
@@ -50,7 +86,7 @@
       "imgClassName": "",
       "spareImgClassName": "",
 
-      "specialEffect": ""
+      "specialEffect": "draggable-card"
     },
     {
       "className": "md:col-span-8 md:row-span-3",

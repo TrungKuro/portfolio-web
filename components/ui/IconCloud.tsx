@@ -425,5 +425,3 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
     />
   );
 };
-
-//! NÂNG CẤP + NEXT + NEXT

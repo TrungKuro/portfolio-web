@@ -973,3 +973,25 @@ self    = căn chỉnh riêng lẻ từng flex item
   - Cuối cùng thêm các data GeoJSON đã _"scale"_ trên vào kế bên GeoJSON của _"Đại lục Vietnam"_ trong file `globe.json`.
 
 Kết quả 💀 (thêm hình ở đây)
+
+### Random
+
+- Trong React (hoặc JavaScript nói chung), bạn có thể dùng `Math.random()` để tạo số ngẫu nhiên, rồi **scale** và **dịch chuyển** về khoảng bạn muốn.
+
+- Tạo số thực ngẫu nhiên:
+
+  ```
+  Math.random() * (max - min) + min
+
+  ```
+
+  - `Math.random()` → số ngẫu nhiên _"từ 0 đến < 1"_
+  - **(x)** nhân `(max - min)` → **scale** về khoảng độ rộng đơn vị
+  - **(+)** cộng min → **dịch chuyển** về vị trí bắt đầu
+
+- Tạo số nguyên ngẫu nhiên:
+
+  ```
+  Math.floor(Math.random() * (max - min + 1)) + min
+
+  ```

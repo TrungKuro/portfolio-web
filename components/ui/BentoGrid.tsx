@@ -6,6 +6,7 @@ import { GlobeDemo } from "../common/GlobeDemo";
 import { IconCloudDemo } from "../common/IconCloudDemo";
 import { LottieDemo } from "../common/LottieDemo";
 import { Meteors } from "./Meteors";
+import { DraggableCardDemo } from "../common/DraggableCardDemo";
 
 export const BentoGrid = ({
   className,
@@ -109,6 +110,7 @@ export const BentoGridItem = ({
         {specialEffect === "icon-cloud" && <IconCloudDemo />}
         {specialEffect === "lottie" && <LottieDemo />}
         {specialEffect === "meteors" && <Meteors number={20} />}
+        {specialEffect === "draggable-card" && <DraggableCardDemo />}
 
         {/* Nội dung */}
         <div
