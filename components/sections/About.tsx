@@ -39,7 +39,7 @@ export const About = ({ id }: { id: string }) => {
                 idx
               ) => (
                 <BentoGridItem
-                  key={idx}
+                  key={`${idx}-${title}`}
                   className={className}
                   //
                   title={title}

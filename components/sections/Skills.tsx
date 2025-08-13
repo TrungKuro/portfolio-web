@@ -22,7 +22,7 @@ export const Skills = ({ id }: { id: string }) => {
           <div className="w-full mt-10 grid lg:grid-cols-4 grid-cols-1 gap-5 lg:gap-10">
             {techStack.categories.map(({ categoryName, thumbnail, items }) => (
               <BtnMoveBorder
-                key={categoryName}
+                key={`${categoryName}-${thumbnail}`}
                 duration={Math.floor(Math.random() * 10000 + 10000)}
                 borderRadius="1.75rem"
                 className="text-white border-slate-800"

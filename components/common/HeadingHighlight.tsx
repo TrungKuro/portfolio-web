@@ -16,7 +16,7 @@ export const HeadingHighlight = ({
             if (index === wordHighlight - 1) {
               // Highlight từ được chọn
               return (
-                <span key={index} className="text-purple">
+                <span key={`${index}-${word}`} className="text-purple">
                   {word + (words.length - 1 === index ? "" : " ")}
                 </span>
               );

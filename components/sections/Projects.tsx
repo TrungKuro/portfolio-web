@@ -33,7 +33,7 @@ export const Projects = ({ id }: { id: string }) => {
                 idx
               ) => (
                 <PinContainer
-                  key={idx}
+                  key={`${idx}-${title}`}
                   title={links.live}
                   href={links.live}
                   allowExpandToParent={true}
@@ -79,7 +79,7 @@ export const Projects = ({ id }: { id: string }) => {
                     <div className="flex items-center">
                       {iconLists.map((icon, index) => (
                         <div
-                          key={icon.alt}
+                          key={`${title}-${icon.alt}`}
                           className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex items-center justify-center"
                           style={{
                             transform: `translateX(-${10 * index}px)`,

@@ -53,7 +53,10 @@ export const Contact = ({ id }: { id: string }) => {
 
             <div className="grid gap-3 place-content-center">
               {address.map(({ iconName, title, content, link }) => (
-                <div key={iconName} className="grid grid-cols-[auto_1fr] gap-3">
+                <div
+                  key={`address=${iconName}`}
+                  className="grid grid-cols-[auto_1fr] gap-3"
+                >
                   <div className="flex justify-center items-center">
                     <Tooltip title="Click to Copy" arrow>
                       <button
@@ -118,7 +121,7 @@ export const Contact = ({ id }: { id: string }) => {
           <div className="flex md:flex-row flex-col justify-between items-center">
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.core.map(({ id, name, icon, url }) => (
-                <Tooltip key={id} title={name} arrow>
+                <Tooltip key={`socialMediaCore=${id}`} title={name} arrow>
                   <button
                     type="button"
                     aria-label={name}
@@ -146,7 +149,7 @@ export const Contact = ({ id }: { id: string }) => {
 
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.branding.map(({ id, name, icon, url }) => (
-                <Tooltip key={id} title={name} arrow>
+                <Tooltip key={`socialMediaBranding=${id}`} title={name} arrow>
                   <button
                     type="button"
                     aria-label={name}

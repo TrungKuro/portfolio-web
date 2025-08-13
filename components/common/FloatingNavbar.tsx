@@ -69,7 +69,7 @@ export const FloatingNavbar = ({
       >
         {navItems.map((navItem: NavItem, idx: number) => (
           <Link
-            key={`link=${idx}`}
+            key={`${idx}-${navItem.name}`}
             href={navItem.link}
             className={cn(
               "relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300",
