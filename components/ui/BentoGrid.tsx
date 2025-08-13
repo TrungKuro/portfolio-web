@@ -70,6 +70,25 @@ export const BentoGridItem = ({
     contentClassName || ""
   );
 
+  //! Đổi <img> qua dùng <Image> cho HÌNH NỀN CHÍNH và HÌNH NỀN PHỤ
+  //
+  // Dùng alt="" vì ảnh chỉ là trang trí, tránh ảnh hưởng SEO
+  //
+  // "fill"
+  //  - Tự động set position: absolute; top: 0; left: 0; width: 100%; height: 100%
+  //  - Không cần "w-full h-full absolute" nữa
+  //
+  // sizes="100vw"
+  //  - Giúp Next.js chỉ tải ảnh kích thước cần thiết cho viewport → giảm dung lượng
+  //
+  // "priority"
+  // - true: tải ngay (ảnh trên fold, ảnh chính)
+  // - false: lazy load mặc định
+  // Vì là ảnh nền hỗ trợ nên mình chọn "lazy load" cũng là chế độ mặc định, để ảnh chỉ cần load khi user cuộn viewport tới
+  //
+  //! Nhưng vì các ảnh mình dùng là SVG, nên dùng <img> vẫn tối ưu hơn
+  //! Tuy nhiên nếu không phải là ảnh SVG thì việc layout các ảnh kích thước lớn dùng <Image> sẽ tốt hơn
+
   return (
     <div
       className={cn(
@@ -82,7 +101,9 @@ export const BentoGridItem = ({
         {spareImg && (
           <img
             src={spareImg}
-            alt={spareImg}
+            alt=""
+            loading="lazy"
+            decoding="async"
             className={cn(
               "w-full h-full absolute object-cover object-center",
               spareImgClassName
@@ -94,7 +115,9 @@ export const BentoGridItem = ({
         {img && (
           <img
             src={img}
-            alt={img}
+            alt=""
+            loading="lazy"
+            decoding="async"
             className={cn(
               "w-full h-full absolute object-cover object-center",
               imgClassName

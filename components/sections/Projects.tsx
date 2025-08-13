@@ -21,7 +21,17 @@ export const Projects = ({ id }: { id: string }) => {
 
           <div className="mt-10 w-full grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-10">
             {personalProjects.map(
-              ({ title, description, image, iconLists, links }, idx) => (
+              (
+                {
+                  title,
+                  description,
+                  backgroundProject,
+                  image,
+                  iconLists,
+                  links,
+                },
+                idx
+              ) => (
                 <PinContainer
                   key={idx}
                   title={links.live}
@@ -30,21 +40,26 @@ export const Projects = ({ id }: { id: string }) => {
                 >
                   {/* Hình demo dự án */}
                   <div className="relative flex items-center justify-center">
-                    <div>
-                      <img
-                        src="/images/misc/bg-project.png"
-                        alt="bg-project"
-                        // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
-                        // Padding            = p-4         → tương đương 1rem = 16px
-                        //
-                        // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
-                        // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
-                        className="w-full h-full rounded-lg bg-black-200"
-                      />
-                    </div>
+                    {/* Hình nền */}
+                    <img
+                      src={backgroundProject}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
+                      // Padding            = p-4         → tương đương 1rem = 16px
+                      //
+                      // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
+                      // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
+                      className="w-full h-full rounded-lg bg-black-200"
+                    />
+
+                    {/* Hình dự án */}
                     <img
                       src={image}
                       alt={title}
+                      loading="lazy"
+                      decoding="async"
                       className="z-10 absolute bottom-0"
                     />
                   </div>
@@ -64,13 +79,23 @@ export const Projects = ({ id }: { id: string }) => {
                     <div className="flex items-center">
                       {iconLists.map((icon, index) => (
                         <div
-                          key={icon}
+                          key={icon.alt}
                           className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex items-center justify-center"
                           style={{
                             transform: `translateX(-${10 * index}px)`,
                           }}
                         >
-                          <img src={icon} alt={icon} className="p-2" />
+                          <img
+                            //! Vẫn dùng <img> thay vì <Image>
+                            // Lý do Icons thường nhỏ (< 5KB)
+                            // - Overhead của Next.js Image (13KB) > lợi ích
+                            // - Load time difference không đáng kể
+                            src={icon.src}
+                            alt={icon.alt}
+                            loading="lazy"
+                            decoding="async"
+                            className="p-2 w-full aspect-square object-contain"
+                          />
                         </div>
                       ))}
                     </div>

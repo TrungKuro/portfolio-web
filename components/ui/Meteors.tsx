@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useState, useEffect } from "react";
@@ -18,11 +17,13 @@ export const Meteors = ({
   className?: string;
 }) => {
   const meteorCount = number || 20;
-  const meteors = new Array(meteorCount).fill(true);
   const [meteorData, setMeteorData] = useState<MeteorData[]>([]);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    // Tạo Meteors Array trực tiếp trong useEffect, thay vì tạo "meteors" ngoài sẽ bị ESLint yêu cầu đặt vào Array Dependencies
+    const meteors = new Array(meteorCount).fill(true);
+
     // Generate random values only on the client side
     const data = meteors.map(() => ({
       delay: Math.random() * 5, // Random delay between 0-5s
@@ -38,7 +39,8 @@ export const Meteors = ({
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {meteors.map((el, idx) => {
+      {/* Tạo Meteors Array để render */}
+      {Array.from({ length: meteorCount }, (_, idx) => {
         // Calculate position to evenly distribute meteors across container width
         const position = idx * (800 / meteorCount) - 400; // Spread across 800px range, centered
 

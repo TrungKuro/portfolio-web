@@ -30,11 +30,23 @@ export const Skills = ({ id }: { id: string }) => {
                 <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
                   {/* THUMBNAIL */}
                   <Lens zoomFactor={5} lensSize={100}>
-                    <div className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in">
+                    <div
+                      // Từ (md:) trở xuống | Chiều rộng = 64px
+                      // Từ (md:) trở lên   | Chiều rộng = 80px
+                      // Từ (lg:) trở lên   | Chiều rộng = 128px
+                      className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in"
+                    >
                       <Image
                         src={thumbnail}
                         alt={categoryName}
                         fill
+                        //! Đáng lẽ đặt -> sizes="(min-width: 1024px) 128px, (min-width: 768px) 80px, 64px"
+                        // Nhưng vì có kết hợp với <Lens> có hệ số ảnh là 5
+                        // Và vì các ảnh này cũng không phải ảnh SVG -> Nên cần đặt lại "sizes" với:
+                        // - Từ (md:) trở xuống | 64 x 5 = 320px
+                        // - Từ (md:) trở lên   | 80 x 5 = 400px
+                        // - Từ (lg:) trở lên   | 128 x 5 = 640px
+                        sizes="(min-width: 1024px) 640px, (min-width: 768px) 400px, 320px"
                         // 1rem = 16px -> 1.75rem = 28px
                         // p-3  = 12px
                         //

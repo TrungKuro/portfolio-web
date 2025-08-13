@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect } from "react";
@@ -9,7 +8,7 @@ export const TextGenerateEffect = ({
   words,
   className,
   filter = true,
-  duration = 0.5,
+  duration = 1,
   wordHighlight = 0,
 }: {
   words: string;
@@ -20,6 +19,7 @@ export const TextGenerateEffect = ({
 }) => {
   const [scope, animate] = useAnimate();
   const wordsArray = words.split(" ");
+
   useEffect(() => {
     animate(
       "span",
@@ -28,11 +28,12 @@ export const TextGenerateEffect = ({
         filter: filter ? "blur(0px)" : "none",
       },
       {
-        duration: duration ? duration : 1,
+        duration: duration,
         delay: stagger(0.2),
       }
     );
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); //! Chỉ chạy một lần khi mount
 
   const renderWords = () => {
     return (

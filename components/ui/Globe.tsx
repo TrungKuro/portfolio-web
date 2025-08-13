@@ -1,8 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-var */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable prefer-const */
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -77,7 +74,7 @@ interface WorldProps {
   data: Position[];
 }
 
-let numbersOfRings = [0];
+// let numbersOfRings = [0];
 
 export function Globe({ globeConfig, data }: WorldProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
@@ -113,7 +110,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
   useEffect(() => {
     if (!globeRef.current && groupRef.current) {
       globeRef.current = new ThreeGlobe();
-      (groupRef.current as any).add(globeRef.current);
+      (groupRef.current as unknown as Group).add(globeRef.current);
       setIsInitialized(true);
     }
   }, []);
@@ -163,10 +160,10 @@ export function Globe({ globeConfig, data }: WorldProps) {
     if (!globeRef.current || !isInitialized || !data) return;
 
     const arcs = data;
-    let points = [];
+    const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
+      // const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -200,7 +197,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .showAtmosphere(defaultProps.showAtmosphere)
       .atmosphereColor(defaultProps.atmosphereColor)
       .atmosphereAltitude(defaultProps.atmosphereAltitude)
-      .hexPolygonColor((feature: any) => {
+      .hexPolygonColor((feature: { properties?: { admin?: string } }) => {
         // Nếu bạn có chọn quốc gia thì...
         if (defaultProps.countryName) {
           // Kiểm tra nếu là quốc gia bạn chọn hợp lệ (có tên trong "globe.json")
@@ -226,7 +223,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .arcStartLng((d) => (d as { startLng: number }).startLng * 1)
       .arcEndLat((d) => (d as { endLat: number }).endLat * 1)
       .arcEndLng((d) => (d as { endLng: number }).endLng * 1)
-      .arcColor((e: any) => (e as { color: string }).color)
+      .arcColor((e: unknown) => (e as { color: string }).color)
       .arcAltitude((e) => (e as { arcAlt: number }).arcAlt * 1)
       .arcStroke(() => [0.32, 0.28, 0.3][Math.round(Math.random() * 2)])
       .arcDashLength(defaultProps.arcLength)
@@ -250,17 +247,22 @@ export function Globe({ globeConfig, data }: WorldProps) {
         (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
   }, [
-    isInitialized,
     data,
-    defaultProps.pointSize,
-    defaultProps.showAtmosphere,
-    defaultProps.atmosphereColor,
-    defaultProps.atmosphereAltitude,
-    defaultProps.polygonColor,
-    defaultProps.arcLength,
-    defaultProps.arcTime,
-    defaultProps.rings,
-    defaultProps.maxRings,
+    // defaultProps.arcLength,
+    // defaultProps.arcTime,
+    // defaultProps.atmosphereAltitude,
+    // defaultProps.atmosphereColor,
+    // defaultProps.countryColor,
+    // defaultProps.countryName,
+    // defaultProps.maxRings,
+    // defaultProps.pointRadius,
+    // defaultProps.pointSize,
+    // defaultProps.polygonColor,
+    // defaultProps.polygonMargin,
+    // defaultProps.polygonResolution,
+    // defaultProps.rings,
+    // defaultProps.showAtmosphere,
+    isInitialized,
   ]);
 
   // Handle rings animation with cleanup
@@ -298,11 +300,16 @@ export function Globe({ globeConfig, data }: WorldProps) {
 export function WebGLRendererConfig() {
   const { gl, size } = useThree();
 
-  useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio);
-    gl.setSize(size.width, size.height);
-    gl.setClearColor(0xffaaff, 0);
-  }, []);
+  useEffect(
+    () => {
+      gl.setPixelRatio(window.devicePixelRatio);
+      gl.setSize(size.width, size.height);
+      gl.setClearColor(0xffaaff, 0);
+    },
+    [
+      // gl, size.height, size.width
+    ]
+  );
 
   return null;
 }
@@ -344,12 +351,12 @@ export function World(props: WorldProps) {
 }
 
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
     return r + r + g + g + b + b;
   });
 
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),

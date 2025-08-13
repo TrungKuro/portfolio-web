@@ -135,24 +135,24 @@ export function GlobeDemo() {
       arcAlt: 0.1,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 1,
-      startLat: 28.6139, // New Delhi, India
-      startLng: 77.209,
-      endLat: 3.139, // Kuala Lumpur, Malaysia
-      endLng: 101.6869,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 1,
-      startLat: -19.885592, // Belo Horizonte, Brazil
-      startLng: -43.951191,
-      endLat: -1.303396, // Nairobi, Kenya
-      endLng: 36.852443,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 1,
+    //   startLat: 28.6139, // New Delhi, India
+    //   startLng: 77.209,
+    //   endLat: 3.139, // Kuala Lumpur, Malaysia
+    //   endLng: 101.6869,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 1,
+    //   startLat: -19.885592, // Belo Horizonte, Brazil
+    //   startLng: -43.951191,
+    //   endLat: -1.303396, // Nairobi, Kenya
+    //   endLng: 36.852443,
+    //   arcAlt: 0.5,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 2,
       startLat: 1.3521, // Singapore, Singapore
@@ -162,24 +162,24 @@ export function GlobeDemo() {
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 2,
-      startLat: 51.5072, // London, United Kingdom
-      startLng: -0.1276,
-      endLat: 3.139, // Kuala Lumpur, Malaysia
-      endLng: 101.6869,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 2,
-      startLat: -15.785493, // Brasília, Brazil
-      startLng: -47.909029,
-      endLat: 36.162809, // Las Vegas, USA
-      endLng: -115.119411,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 2,
+    //   startLat: 51.5072, // London, United Kingdom
+    //   startLng: -0.1276,
+    //   endLat: 3.139, // Kuala Lumpur, Malaysia
+    //   endLng: 101.6869,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 2,
+    //   startLat: -15.785493, // Brasília, Brazil
+    //   startLng: -47.909029,
+    //   endLat: 36.162809, // Las Vegas, USA
+    //   endLng: -115.119411,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 3,
       startLat: -33.8688, // Sydney, Australia
@@ -189,24 +189,24 @@ export function GlobeDemo() {
       arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 3,
-      startLat: 21.3099, // Honolulu, USA
-      startLng: -157.8581,
-      endLat: 40.7128, // New York City, USA
-      endLng: -74.006,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 3,
-      startLat: -6.2088, // Jakarta, Indonesia
-      startLng: 106.8456,
-      endLat: 51.5072, // London, United Kingdom
-      endLng: -0.1276,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 3,
+    //   startLat: 21.3099, // Honolulu, USA
+    //   startLng: -157.8581,
+    //   endLat: 40.7128, // New York City, USA
+    //   endLng: -74.006,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 3,
+    //   startLat: -6.2088, // Jakarta, Indonesia
+    //   startLng: 106.8456,
+    //   endLat: 51.5072, // London, United Kingdom
+    //   endLng: -0.1276,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 4,
       startLat: 11.986597, // Abuja, Nigeria
@@ -216,24 +216,24 @@ export function GlobeDemo() {
       arcAlt: 0.5,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 4,
-      startLat: -34.6037, // Buenos Aires, Argentina
-      startLng: -58.3816,
-      endLat: 22.3193, // Hồng Kông (Hong Kong)
-      endLng: 114.1694,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 4,
-      startLat: 51.5072, // London, United Kingdom
-      startLng: -0.1276,
-      endLat: 48.8566, // Paris, France
-      endLng: -2.3522,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 4,
+    //   startLat: -34.6037, // Buenos Aires, Argentina
+    //   startLng: -58.3816,
+    //   endLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   endLng: 114.1694,
+    //   arcAlt: 0.7,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 4,
+    //   startLat: 51.5072, // London, United Kingdom
+    //   startLng: -0.1276,
+    //   endLat: 48.8566, // Paris, France
+    //   endLng: -2.3522,
+    //   arcAlt: 0.1,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 5,
       startLat: 14.5995, // Manila, Philippines
@@ -243,24 +243,24 @@ export function GlobeDemo() {
       arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 5,
-      startLat: 1.3521, // Singapore, Singapore
-      startLng: 103.8198,
-      endLat: -33.8688, // Sydney, Australia
-      endLng: 151.2093,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 5,
-      startLat: 34.0522, // Los Angeles, USA
-      startLng: -118.2437,
-      endLat: 48.8566, // Paris, France
-      endLng: -2.3522,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 5,
+    //   startLat: 1.3521, // Singapore, Singapore
+    //   startLng: 103.8198,
+    //   endLat: -33.8688, // Sydney, Australia
+    //   endLng: 151.2093,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 5,
+    //   startLat: 34.0522, // Los Angeles, USA
+    //   startLng: -118.2437,
+    //   endLat: 48.8566, // Paris, France
+    //   endLng: -2.3522,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 6,
       startLat: -15.432563, // Lusaka, Zambia
@@ -270,24 +270,24 @@ export function GlobeDemo() {
       arcAlt: 0.7,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 6,
-      startLat: 37.5665, // Seoul, South Korea
-      startLng: 126.978,
-      endLat: 35.6762, // Tokyo, Japan
-      endLng: 139.6503,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 6,
-      startLat: 22.3193, // Hồng Kông (Hong Kong)
-      startLng: 114.1694,
-      endLat: 51.5072, // London, United Kingdom
-      endLng: -0.1276,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 6,
+    //   startLat: 37.5665, // Seoul, South Korea
+    //   startLng: 126.978,
+    //   endLat: 35.6762, // Tokyo, Japan
+    //   endLng: 139.6503,
+    //   arcAlt: 0.1,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 6,
+    //   startLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   startLng: 114.1694,
+    //   endLat: 51.5072, // London, United Kingdom
+    //   endLng: -0.1276,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 7,
       startLat: -19.885592, // Belo Horizonte, Brazil
@@ -297,24 +297,24 @@ export function GlobeDemo() {
       arcAlt: 0.1,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 7,
-      startLat: 48.8566, // Paris, France
-      startLng: -2.3522,
-      endLat: 52.52, // Berlin, Germany
-      endLng: 13.405,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 7,
-      startLat: 52.52, // Berlin, Germany
-      startLng: 13.405,
-      endLat: 34.0522, // Los Angeles, USA
-      endLng: -118.2437,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 7,
+    //   startLat: 48.8566, // Paris, France
+    //   startLng: -2.3522,
+    //   endLat: 52.52, // Berlin, Germany
+    //   endLng: 13.405,
+    //   arcAlt: 0.1,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 7,
+    //   startLat: 52.52, // Berlin, Germany
+    //   startLng: 13.405,
+    //   endLat: 34.0522, // Los Angeles, USA
+    //   endLng: -118.2437,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 8,
       startLat: -8.833221, // Luanda, Angola
@@ -324,24 +324,24 @@ export function GlobeDemo() {
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 8,
-      startLat: 49.2827, // Vancouver, Canada
-      startLng: -123.1207,
-      endLat: 52.3676, // Amsterdam, Netherlands
-      endLng: 4.9041,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 8,
-      startLat: 1.3521, // Singapore, Singapore
-      startLng: 103.8198,
-      endLat: 40.7128, // New York City, USA
-      endLng: -74.006,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 8,
+    //   startLat: 49.2827, // Vancouver, Canada
+    //   startLng: -123.1207,
+    //   endLat: 52.3676, // Amsterdam, Netherlands
+    //   endLng: 4.9041,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 8,
+    //   startLat: 1.3521, // Singapore, Singapore
+    //   startLng: 103.8198,
+    //   endLat: 40.7128, // New York City, USA
+    //   endLng: -74.006,
+    //   arcAlt: 0.5,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 9,
       startLat: 51.5072, // London, United Kingdom
@@ -351,24 +351,24 @@ export function GlobeDemo() {
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 9,
-      startLat: 22.3193, // Hồng Kông (Hong Kong)
-      startLng: 114.1694,
-      endLat: -22.9068, // Rio de Janeiro, Brazil
-      endLng: -43.1729,
-      arcAlt: 0.7,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 9,
-      startLat: 1.3521, // Singapore, Singapore
-      startLng: 103.8198,
-      endLat: -34.6037, // Buenos Aires, Argentina
-      endLng: -58.3816,
-      arcAlt: 0.5,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 9,
+    //   startLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   startLng: 114.1694,
+    //   endLat: -22.9068, // Rio de Janeiro, Brazil
+    //   endLng: -43.1729,
+    //   arcAlt: 0.7,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 9,
+    //   startLat: 1.3521, // Singapore, Singapore
+    //   startLng: 103.8198,
+    //   endLat: -34.6037, // Buenos Aires, Argentina
+    //   endLng: -58.3816,
+    //   arcAlt: 0.5,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 10,
       startLat: -22.9068, // Rio de Janeiro, Brazil
@@ -378,24 +378,24 @@ export function GlobeDemo() {
       arcAlt: 0.7,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 10,
-      startLat: 34.0522, // Los Angeles, USA
-      startLng: -118.2437,
-      endLat: 31.2304, // Shanghai, China
-      endLng: 121.4737,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 10,
-      startLat: -6.2088, // Jakarta, Indonesia
-      startLng: 106.8456,
-      endLat: 52.3676, // Amsterdam, Netherlands
-      endLng: 4.9041,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 10,
+    //   startLat: 34.0522, // Los Angeles, USA
+    //   startLng: -118.2437,
+    //   endLat: 31.2304, // Shanghai, China
+    //   endLng: 121.4737,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 10,
+    //   startLat: -6.2088, // Jakarta, Indonesia
+    //   startLng: 106.8456,
+    //   endLat: 52.3676, // Amsterdam, Netherlands
+    //   endLng: 4.9041,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 11,
       startLat: 41.9028, // Rome, Italy
@@ -405,24 +405,24 @@ export function GlobeDemo() {
       arcAlt: 0.2,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 11,
-      startLat: -6.2088, // Jakarta, Indonesia
-      startLng: 106.8456,
-      endLat: 31.2304, // Shanghai, China
-      endLng: 121.4737,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 11,
-      startLat: 22.3193, // Hồng Kông (Hong Kong)
-      startLng: 114.1694,
-      endLat: 1.3521, // Singapore, Singapore
-      endLng: 103.8198,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 11,
+    //   startLat: -6.2088, // Jakarta, Indonesia
+    //   startLng: 106.8456,
+    //   endLat: 31.2304, // Shanghai, China
+    //   endLng: 121.4737,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 11,
+    //   startLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   startLng: 114.1694,
+    //   endLat: 1.3521, // Singapore, Singapore
+    //   endLng: 103.8198,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 12,
       startLat: 34.0522, // Los Angeles, USA
@@ -432,24 +432,24 @@ export function GlobeDemo() {
       arcAlt: 0.1,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 12,
-      startLat: 35.6762, // Tokyo, Japan
-      startLng: 139.6503,
-      endLat: 22.3193, // Hồng Kông (Hong Kong)
-      endLng: 114.1694,
-      arcAlt: 0.2,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 12,
-      startLat: 22.3193, // Hồng Kông (Hong Kong)
-      startLng: 114.1694,
-      endLat: 34.0522, // Los Angeles, USA
-      endLng: -118.2437,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 12,
+    //   startLat: 35.6762, // Tokyo, Japan
+    //   startLng: 139.6503,
+    //   endLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   endLng: 114.1694,
+    //   arcAlt: 0.2,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 12,
+    //   startLat: 22.3193, // Hồng Kông (Hong Kong)
+    //   startLng: 114.1694,
+    //   endLat: 34.0522, // Los Angeles, USA
+    //   endLng: -118.2437,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 13,
       startLat: 52.52, // Berlin, Germany
@@ -459,24 +459,24 @@ export function GlobeDemo() {
       arcAlt: 0.3,
       color: colors[Math.floor(Math.random() * (colors.length - 1))],
     },
-    {
-      order: 13,
-      startLat: 11.986597, // Abuja, Nigeria
-      startLng: 8.571831,
-      endLat: 35.6762, // Tokyo, Japan
-      endLng: 139.6503,
-      arcAlt: 0.3,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
-    {
-      order: 13,
-      startLat: -22.9068, // Rio de Janeiro, Brazil
-      startLng: -43.1729,
-      endLat: -34.6037, // Buenos Aires, Argentina
-      endLng: -58.3816,
-      arcAlt: 0.1,
-      color: colors[Math.floor(Math.random() * (colors.length - 1))],
-    },
+    // {
+    //   order: 13,
+    //   startLat: 11.986597, // Abuja, Nigeria
+    //   startLng: 8.571831,
+    //   endLat: 35.6762, // Tokyo, Japan
+    //   endLng: 139.6503,
+    //   arcAlt: 0.3,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
+    // {
+    //   order: 13,
+    //   startLat: -22.9068, // Rio de Janeiro, Brazil
+    //   startLng: -43.1729,
+    //   endLat: -34.6037, // Buenos Aires, Argentina
+    //   endLng: -58.3816,
+    //   arcAlt: 0.1,
+    //   color: colors[Math.floor(Math.random() * (colors.length - 1))],
+    // },
     {
       order: 14,
       startLat: -33.936138, // Cape Town, South Africa

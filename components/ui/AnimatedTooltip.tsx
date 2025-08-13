@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import React, { useState, useRef } from "react";
 import {
   motion,
@@ -103,14 +102,21 @@ export const AnimatedTooltip = ({
           </AnimatePresence>
           <div
             className={cn(
-              "relative size-8 sm:size-9 md:size-10 lg:size-11 transition-transform hover:scale-110 hover:z-30 object-contain object-center",
+              "relative size-8 sm:size-9 md:size-10 lg:size-11 transition-transform hover:scale-110 hover:z-30",
               item.isBg ? classNameBg : ""
             )}
           >
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={item.image}
               alt={item.name}
-              fill
+              //! Nên dùng <img> thông thường vì:
+              //  - SVG không cần optimization của Next.js Image (đã là vector)
+              //  - Tránh overhead không cần thiết của Image component
+              //  - SVG tự responsive và không bị mất nét
+              className="w-full h-full object-contain object-center"
+              loading="lazy" // Lazy loading
+              decoding="async" // Async decoding
               onMouseMove={handleMouseMove}
             />
           </div>

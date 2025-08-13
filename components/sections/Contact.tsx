@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import React, { useState } from "react";
 import { HeadingHighlight } from "../common/HeadingHighlight";
 import { MagicButton } from "../common/MagicButton";
@@ -101,8 +101,11 @@ export const Contact = ({ id }: { id: string }) => {
 
         <div className="w-full h-full absolute left-0 bottom-0 -z-1">
           <img
+            // Vẫn nên dùng <img> thay <Image> vì đây là ảnh SVG
             src={background.img}
-            alt={background.alt}
+            alt=""
+            loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>
@@ -116,9 +119,23 @@ export const Contact = ({ id }: { id: string }) => {
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.core.map(({ id, name, icon, url }) => (
                 <Tooltip key={id} title={name} arrow>
-                  <button onClick={() => window.open(url, "_blank")}>
-                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-transform">
-                      <Image src={icon} alt="icons" width={25} height={25} />
+                  <button
+                    type="button"
+                    aria-label={name}
+                    onClick={() =>
+                      window.open(url, "_blank", "noopener,noreferrer")
+                    }
+                  >
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-all duration-200 ease-out">
+                      <img
+                        src={icon}
+                        alt={`icons-${name}`}
+                        width={25}
+                        height={25}
+                        loading="lazy"
+                        decoding="async"
+                        className="pointer-events-none select-none"
+                      />
                     </div>
                   </button>
                 </Tooltip>
@@ -130,9 +147,23 @@ export const Contact = ({ id }: { id: string }) => {
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.branding.map(({ id, name, icon, url }) => (
                 <Tooltip key={id} title={name} arrow>
-                  <button onClick={() => window.open(url, "_blank")}>
-                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-transform">
-                      <Image src={icon} alt="icons" width={25} height={25} />
+                  <button
+                    type="button"
+                    aria-label={name}
+                    onClick={() =>
+                      window.open(url, "_blank", "noopener,noreferrer")
+                    }
+                  >
+                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-all duration-200 ease-out">
+                      <img
+                        src={icon}
+                        alt={`icons-${name}`}
+                        width={25}
+                        height={25}
+                        loading="lazy"
+                        decoding="async"
+                        className="pointer-events-none select-none"
+                      />
                     </div>
                   </button>
                 </Tooltip>

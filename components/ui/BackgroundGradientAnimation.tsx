@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import { useEffect, useRef, useState } from "react";
@@ -45,23 +44,44 @@ export const BackgroundGradientAnimation = ({
   const [tgX, setTgX] = useState(0);
   const [tgY, setTgY] = useState(0);
 
+  //! Dùng "useRef" phù hợp lưu snapshot ban đầu, để không phải đưa những dữ liệu này vào Array Dependencies theo yêu cầu của ESLint
+  //
+  // Những dữ liệu này được sử dụng theo cách cố định, không thay đổi trong suốt thời gian component render
+  // Nên không cần phải đưa vào [] để theo sát giá trị mới và làm tăng thêm quá trình so sánh để phát hiện re-render
+  // Đặc biệt nếu [] chứa object/array/function sẽ làm render liên tục (vì so sánh === sẽ luôn khác, khiến effect chạy lại liên tục)
+  // Các dữ liệu này được lưu trữ trong suốt vòng đời component, chi phí bộ nhớ rất nhỏ (thường không đáng kể so với DOM)
+  //
+  const gradientBackgroundStartRef = useRef(gradientBackgroundStart);
+  const gradientBackgroundEndRef = useRef(gradientBackgroundEnd);
+  const firstColorRef = useRef(firstColor);
+  const secondColorRef = useRef(secondColor);
+  const thirdColorRef = useRef(thirdColor);
+  const fourthColorRef = useRef(fourthColor);
+  const fifthColorRef = useRef(fifthColor);
+  const pointerColorRef = useRef(pointerColor);
+  const sizeRef = useRef(size);
+  const blendingValueRef = useRef(blendingValue);
+
   useEffect(() => {
     document.body.style.setProperty(
       "--gradient-background-start",
-      gradientBackgroundStart
+      gradientBackgroundStartRef.current
     );
     document.body.style.setProperty(
       "--gradient-background-end",
-      gradientBackgroundEnd
+      gradientBackgroundEndRef.current
     );
-    document.body.style.setProperty("--first-color", firstColor);
-    document.body.style.setProperty("--second-color", secondColor);
-    document.body.style.setProperty("--third-color", thirdColor);
-    document.body.style.setProperty("--fourth-color", fourthColor);
-    document.body.style.setProperty("--fifth-color", fifthColor);
-    document.body.style.setProperty("--pointer-color", pointerColor);
-    document.body.style.setProperty("--size", size);
-    document.body.style.setProperty("--blending-value", blendingValue);
+    document.body.style.setProperty("--first-color", firstColorRef.current);
+    document.body.style.setProperty("--second-color", secondColorRef.current);
+    document.body.style.setProperty("--third-color", thirdColorRef.current);
+    document.body.style.setProperty("--fourth-color", fourthColorRef.current);
+    document.body.style.setProperty("--fifth-color", fifthColorRef.current);
+    document.body.style.setProperty("--pointer-color", pointerColorRef.current);
+    document.body.style.setProperty("--size", sizeRef.current);
+    document.body.style.setProperty(
+      "--blending-value",
+      blendingValueRef.current
+    );
   }, []);
 
   useEffect(() => {

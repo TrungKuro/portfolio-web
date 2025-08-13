@@ -1112,3 +1112,97 @@ Kết quả 💀 (thêm hình ở đây)
   - Dùng các hook như useState, useEffect, useRef…
 
 ⇒ Phải thêm `"use client"` ở đầu file.
+
+### `<img>` và `<Image>`
+
+Với SVG, dùng `<img>` thông thường tốt hơn nhiều so với **Next.js** `<Image>`. Đây là lý do:
+
+- `SVG` không cần optimization
+  - SVG đã là vector format, không bị pixelated
+  - Không cần resize, compress hay generate multiple sizes
+  - Next.js Image optimization chỉ lãng phí resources
+- Performance tốt hơn
+  - Ít JavaScript bundle size hơn
+  - Không có processing overhead từ Next.js
+  - Load nhanh hơn vì không qua pipeline optimization
+- Tương thích tốt hơn
+  - Không có layout shift issues
+  - Không cần wrapper div với position: relative
+  - CSS styling trực tiếp
+
+Khi nào vẫn dùng `<Image>`?
+
+- Chỉ dùng Next.js `<Image>` với:
+
+  - Ảnh raster: `JPG`, `PNG`, `WebP`
+  - Ảnh cần optimization: resize, lazy loading, format conversion
+  - Ảnh lớn: cần compress để giảm bandwidth
+
+- Yếu tố quyết định quan trọng:
+
+  - Kích thước file gốc (quan trọng nhất)
+    - File lớn `(>50KB)` + không phải `SVG` → `<Image>`
+    - File nhỏ `(<50KB)` hoặc `SVG` → `<img>`
+  - Số lượng ảnh trên trang
+    - Nhiều ảnh → `<Image>` với `loading="lazy"`
+    - Ngoại lệ: `SVG` dù nhiều vẫn nên dùng `<img>` với `loading="lazy"`
+  - Vị trí và độ ưu tiên
+    - Critical (header, hero) → `<img>` để load ngay
+    - Non-critical → `<Image>` với `lazy loading`
+
+- Quy tắc thực tế:
+
+  - Dùng `<Image>` khi:
+    - File gốc `> 50KB` (dù hiển thị nhỏ) + không phải SVG
+    - Cần lazy loading (nhiều ảnh)
+    - Cần responsive images
+    - Ảnh user-generated content
+  - Dùng `<img>` khi:
+    - File đã được optimize sẵn → File nhỏ (<50KB) hoặc SVG
+    - Critical loading (above fold)
+    - File rất nhỏ (<10KB)
+    - Simple static icons
+
+- Nếu đã dùng `loading="lazy"` thì nên luôn kết hợp với `decoding="async"`! -> Kết hợp cả hai cho performance tốt nhất, đặc biệt với **ảnh raster formats**! 🚀
+
+  - Hoạt động khác nhau nhưng bổ trợ (kết hợp tối ưu)
+    - loading="lazy" // Kiểm soát KHI NÀO load
+    - decoding="async" // Kiểm soát CÁCH decode (không block)
+  - Tác động performance
+    - loading="lazy": Chờ loading network request
+    - decoding="async": Tránh blocking main thread khi decode
+  - Trải nghiệm người dùng
+    - Khi user scroll đến ảnh:
+    - loading="lazy" → bắt đầu download
+    - decoding="async" → decode không làm đơ UI
+    - Smooth rendering
+  - ⚡️ Lưu ý browser support:
+    - loading="lazy": **Chrome 76+, Firefox 75+, Safari 15.4+**
+    - decoding="async": **Chrome 65+, Firefox 63+, Safari 11.1+**
+
+### Raster Formats và Vector Formats
+
+Ảnh `Bitmap` còn gọi là **ảnh pixel**:
+
+- Đặc điểm:
+  - Được tạo từ lưới các pixel
+  - Mỗi pixel có màu sắc riêng
+  - Có độ phân giải cố định (ví dụ: 1920x1080)
+  - Scale lên → bị mờ/pixelated
+  - <u>Thích hợp: photos, complex images</u>
+- Các loại phổ biến:
+  ```
+  📸 JPEG (.jpg, .jpeg) - Ảnh chụp, có nén손실
+  🖼️ PNG (.png) - Hỗ trợ trong suốt, không nén손실
+  🎨 WebP (.webp) - Định dạng modern, nén tốt
+  🎬 GIF (.gif) - Animation, màu hạn chế
+  📱 AVIF (.avif) - Định dạng mới nhất, nén rất tốt
+  🖥️ BMP (.bmp) - Không nén, file lớn
+  ```
+
+Ảnh Vector (`SVG`) còn gọi là **ảnh toán học**:
+
+- Đặc điểm:
+  - Scale không bị mờ ♾️
+  - File nhỏ cho hình đơn giản
+  - <u>Thích hợp: icons, logos, illustrations</u>

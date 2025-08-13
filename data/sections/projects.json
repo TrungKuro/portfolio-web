@@ -8,13 +8,29 @@
     {
       "title": "3D Solar System Planets to Explore",
       "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
+      "backgroundProject": "/images/misc/bg-project.png",
       "image": "/images/projects/p1.svg",
       "iconLists": [
-        "/assets/icons/tech-re.svg",
-        "/assets/icons/tech-tail.svg",
-        "/assets/icons/tech-ts.svg",
-        "/assets/icons/tech-three.svg",
-        "/assets/icons/tech-fm.svg"
+        {
+          "src": "/assets/icons/tech-re.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/tech-tail.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/tech-ts.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/tech-three.svg",
+          "alt": "Three.js Logo"
+        },
+        {
+          "src": "/assets/icons/tech-fm.svg",
+          "alt": "Framer Motion Logo"
+        }
       ],
       "links": {
         "client": "",
@@ -25,13 +41,29 @@
     {
       "title": "Yoom - Video Conferencing App",
       "description": "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
+      "backgroundProject": "/images/misc/bg-project.png",
       "image": "/images/projects/p2.svg",
       "iconLists": [
-        "/assets/icons/tech-next.svg",
-        "/assets/icons/tech-tail.svg",
-        "/assets/icons/tech-ts.svg",
-        "/assets/icons/tech-stream.svg",
-        "/assets/icons/tech-c.svg"
+        {
+          "src": "/assets/icons/tech-next.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/tech-tail.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/tech-ts.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/tech-stream.svg",
+          "alt": "Stream Logo"
+        },
+        {
+          "src": "/assets/icons/tech-c.svg",
+          "alt": "C Logo"
+        }
       ],
       "links": {
         "client": "",
@@ -42,13 +74,29 @@
     {
       "title": "AI Image SaaS - Canva Application",
       "description": "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
+      "backgroundProject": "/images/misc/bg-project.png",
       "image": "/images/projects/p3.svg",
       "iconLists": [
-        "/assets/icons/tech-re.svg",
-        "/assets/icons/tech-tail.svg",
-        "/assets/icons/tech-ts.svg",
-        "/assets/icons/tech-three.svg",
-        "/assets/icons/tech-c.svg"
+        {
+          "src": "/assets/icons/tech-re.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/tech-tail.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/tech-ts.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/tech-three.svg",
+          "alt": "Three.js Logo"
+        },
+        {
+          "src": "/assets/icons/tech-c.svg",
+          "alt": "C Logo"
+        }
       ],
       "links": {
         "client": "",
@@ -59,13 +107,29 @@
     {
       "title": "Animated Apple Iphone 3D Website",
       "description": "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
+      "backgroundProject": "/images/misc/bg-project.png",
       "image": "/images/projects/p4.svg",
       "iconLists": [
-        "/assets/icons/tech-next.svg",
-        "/assets/icons/tech-tail.svg",
-        "/assets/icons/tech-ts.svg",
-        "/assets/icons/tech-three.svg",
-        "/assets/icons/tech-gsap.svg"
+        {
+          "src": "/assets/icons/tech-next.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/tech-tail.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/tech-ts.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/tech-three.svg",
+          "alt": "Three.js Logo"
+        },
+        {
+          "src": "/assets/icons/tech-gsap.svg",
+          "alt": "GSAP Logo"
+        }
       ],
       "links": {
         "client": "",

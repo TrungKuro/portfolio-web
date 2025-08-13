@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import React, { useRef } from "react";
@@ -14,7 +13,6 @@ import { cn } from "@/lib/utils";
 export const BtnMoveBorder = ({
   borderRadius = "1.75rem",
   children,
-  as: Component = "button",
   containerClassName,
   borderClassName,
   duration,
@@ -23,15 +21,14 @@ export const BtnMoveBorder = ({
 }: {
   borderRadius?: string;
   children: React.ReactNode;
-  as?: any;
   containerClassName?: string;
   borderClassName?: string;
   duration?: number;
   className?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
   return (
-    <Component
+    <button
       className={cn(
         "relative overflow-hidden bg-transparent p-[1px] text-xl md:col-span-2",
         containerClassName
@@ -66,7 +63,7 @@ export const BtnMoveBorder = ({
       >
         {children}
       </div>
-    </Component>
+    </button>
   );
 };
 
@@ -81,9 +78,9 @@ export const MovingBorder = ({
   duration?: number;
   rx?: string;
   ry?: string;
-  [key: string]: any;
+  [key: string]: unknown;
 }) => {
-  const pathRef = useRef<any>(null);
+  const pathRef = useRef<SVGRectElement>(null);
   const progress = useMotionValue<number>(0);
 
   useAnimationFrame((time) => {
@@ -124,6 +121,7 @@ export const MovingBorder = ({
           ref={pathRef}
         />
       </svg>
+
       <motion.div
         style={{
           position: "absolute",

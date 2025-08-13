@@ -161,6 +161,10 @@ export const DraggableCardBody = ({
       whileHover={{ scale: 1.02 }} // Phóng to nhẹ khi hover
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      //! Kích thước CARD được "fix" cố định
+      // Từ (md:) trở xuống | Chiều rộng hình = 80 - (6 x 2) = 68px
+      // Từ (md:) trở lên   | Chiều rộng hình = 160 - (12 x 2) = 136px
+      // Từ (lg:) trở lên   | Chiều rộng hình = 240 - (18 x 2) = 204px
       className={cn(
         "flex flex-col justify-between items-center overflow-hidden shadow-2xl shadow-foreground/10 transform-3d bg-background",
         "rounded-lg gap-y-1.5 p-1.5 h-24 w-20 md:p-3 md:h-48 md:w-40 lg:p-4.5 lg:h-72 lg:w-60",
