@@ -61,7 +61,7 @@
 > - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react)
 > - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
 > - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
-> - [lottie-react](https://www.npmjs.com/package/lottie-react)
+> - [lottie-react](https://www.npmjs.com/package/lottie-react) → [Lottie for React](https://lottiereact.com/)
 >
 > **WEB TOOLS**
 >
@@ -1524,3 +1524,30 @@ font.woff2                                          ████
   - 🔹 Ưu tiên thấp
     - Minify CSS/JS (Next.js build production tự làm).
     - Remove legacy polyfill nếu chỉ nhắm tới browser hiện đại.
+
+## SEO
+
+### Meta Description
+
+- Thẻ _"meta description"_ trong phần `<head>` của trang web.
+- Cung cấp mô tả ngắn gọn về nội dung trang, thường hiển thị dưới tiêu đề khi trang xuất hiện trên kết quả tìm kiếm (Google, Bing…).
+- Nếu thiếu, Google sẽ tự lấy một đoạn văn từ trang để hiển thị, nhưng thường không tối ưu cho `SEO` hoặc _"tỷ lệ click"_ `(CTR)`.
+
+**Best practice cho meta description:**
+
+- Độ dài: 50–160 ký tự (Google có thể cắt nếu quá dài).
+- Mỗi trang nên có mô tả duy nhất, liên quan trực tiếp đến nội dung trang đó.
+- Chứa từ khóa chính nhưng vẫn tự nhiên, không nhồi từ khóa.
+- Viết như một lời mời click (call-to-action nhẹ).
+
+### Open Graph
+
+### Twitter Card
+
+### Canonical
+
+### Structured Data (JSON-LD)
+
+- Để Google hiểu rõ hơn về trang của bạn, giúp trang web xuất hiện với _"rich snippets"_ trong kết quả tìm kiếm
+
+### [ sitemap.xml ] và [ robots.txt ]

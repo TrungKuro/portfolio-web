@@ -1,9 +1,15 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { debugError, debugLog, debugWarn } from "@/lib/logger";
+
+import { Geist, Geist_Mono } from "next/font/google";
+
+import type { Metadata } from "next";
+import { PortfolioMetadata, StructuredData } from "@/data/seo";
+
+/* ------------------------------------------------------------------------- */
+/*                                    ...                                    */
+/* ------------------------------------------------------------------------- */
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,23 +21,23 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Trung's Portfolio",
-  description:
-    "Trung's portfolio - Fullstack web developer specializing in React, Next.js, and Node.js.",
-};
+export const metadata: Metadata = PortfolioMetadata;
+
+/* ------------------------------------------------------------------------- */
+/*                                    ...                                    */
+/* ------------------------------------------------------------------------- */
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  debugLog("Test console log:", { name: "Trung" });
-  debugWarn("Test console warn:", 1200, "ms");
-  debugError("Test console error:", new Error("404 Not Found"));
-
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* JSON-LD Structured Data */}
+        <StructuredData />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
