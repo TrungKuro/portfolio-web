@@ -21,17 +21,7 @@ export const Projects = ({ id }: { id: string }) => {
 
           <div className="mt-10 w-full grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-10">
             {personalProjects.map(
-              (
-                {
-                  title,
-                  description,
-                  backgroundProject,
-                  image,
-                  iconLists,
-                  links,
-                },
-                idx
-              ) => (
+              ({ title, description, imageProject, iconLists, links }, idx) => (
                 <PinContainer
                   key={`${idx}-${title}`}
                   title={links.live}
@@ -42,7 +32,7 @@ export const Projects = ({ id }: { id: string }) => {
                   <div className="relative flex items-center justify-center">
                     {/* Hình nền */}
                     <img
-                      src={backgroundProject}
+                      src={imageProject.background}
                       alt=""
                       loading="lazy"
                       decoding="async"
@@ -56,8 +46,8 @@ export const Projects = ({ id }: { id: string }) => {
 
                     {/* Hình dự án */}
                     <img
-                      src={image}
-                      alt={title}
+                      src={imageProject.src}
+                      alt={imageProject.alt}
                       loading="lazy"
                       decoding="async"
                       className="z-10 absolute bottom-0"

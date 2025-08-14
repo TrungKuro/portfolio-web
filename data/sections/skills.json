@@ -8,6 +8,7 @@
       {
         "categoryName": "Programming Languages",
         "thumbnail": "/images/illustrations/skill-prog-lang.png",
+        "alt": "Illustration of Programming Languages",
         "items": [
           {
             "name": "JavaScript",
@@ -32,6 +33,7 @@
       {
         "categoryName": "Frontend Frameworks & Libraries",
         "thumbnail": "/images/illustrations/skill-front-framework.png",
+        "alt": "Illustration of Frontend Frameworks & Libraries",
         "items": [
           {
             "name": "HTML",
@@ -74,6 +76,7 @@
       {
         "categoryName": "State & Data Management",
         "thumbnail": "/images/illustrations/skill-state-data.png",
+        "alt": "Illustration of State & Data Management",
         "items": [
           {
             "name": "Zustand",
@@ -92,6 +95,7 @@
       {
         "categoryName": "Backend & Databases",
         "thumbnail": "/images/illustrations/skill-back-database.png",
+        "alt": "Illustration of Backend & Databases",
         "items": [
           {
             "name": "Node.js",
@@ -134,6 +138,7 @@
       {
         "categoryName": "Mobile Development",
         "thumbnail": "/images/illustrations/skill-mobile-dev.png",
+        "alt": "Illustration of Mobile Development",
         "items": [
           {
             "name": "Flutter",
@@ -146,6 +151,7 @@
       {
         "categoryName": "UI/UX & Productivity Tools",
         "thumbnail": "/images/illustrations/skill-ui-ux.png",
+        "alt": "Illustration of UI/UX & Productivity Tools",
         "items": [
           {
             "name": "Figma",
@@ -164,6 +170,7 @@
       {
         "categoryName": "DevOps & Utilities",
         "thumbnail": "/images/illustrations/skill-dev-ops.png",
+        "alt": "Illustration of DevOps & Utilities",
         "items": [
           {
             "name": "Git",
@@ -194,6 +201,7 @@
       {
         "categoryName": "Testing Frameworks",
         "thumbnail": "/images/illustrations/skill-test-framework.png",
+        "alt": "Illustration of Testing Frameworks",
         "items": [
           {
             "name": "Vitest",
@@ -206,6 +214,7 @@
       {
         "categoryName": "Deployment Platforms",
         "thumbnail": "/images/illustrations/skill-deploy-platform.png",
+        "alt": "Illustration of Deployment Platforms",
         "items": [
           {
             "name": "Vercel",

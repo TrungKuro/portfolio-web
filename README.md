@@ -1206,3 +1206,270 @@ Khi nào vẫn dùng `<Image>`?
   - Scale không bị mờ ♾️
   - File nhỏ cho hình đơn giản
   - <u>Thích hợp: icons, logos, illustrations</u>
+
+### [ quality ] của `<Image>`
+
+- Được sử dụng để _"điều chỉnh mức độ nén của hình ảnh"_ được tối ưu hóa, ảnh hưởng đến kích thước tệp và độ chi tiết của hình ảnh
+
+  - Phạm vi: Thuộc tính quality nhận giá trị là một số nguyên từ 1 đến 100.
+    - Giá trị `1`: Chất lượng thấp nhất, nén mạnh nhất, dẫn đến kích thước tệp nhỏ nhưng hình ảnh có thể mất chi tiết nghiêm trọng (pixelated).
+    - Giá trị `100`: Chất lượng cao nhất, nén ít nhất, giữ được nhiều chi tiết nhưng kích thước tệp lớn hơn.
+  - Giá trị mặc định: `75`. Giá trị này được chọn để cân bằng giữa kích thước tệp và chất lượng hình ảnh, phù hợp cho hầu hết các trường hợp sử dụng mà không cần cấu hình thêm.
+
+- Khi nào nên dùng thuộc tính `quality`? -> Thuộc tính `quality` nên được sử dụng khi bạn muốn:
+
+  - Tối ưu hóa hiệu suất:
+    - Giảm kích thước tệp hình ảnh để cải thiện thời gian tải trang, đặc biệt quan trọng cho các trang web có nhiều hình ảnh hoặc nhắm đến người dùng với kết nối mạng chậm.
+  - Cân bằng chất lượng và tốc độ:
+    - Điều chỉnh chất lượng hình ảnh để phù hợp với mục đích sử dụng (ví dụ: hình ảnh nền không cần chất lượng quá cao, nhưng hình ảnh sản phẩm cần rõ nét).
+  - Tối ưu hóa **Core Web Vitals**:
+    - Giảm kích thước hình ảnh để cải thiện các chỉ số như **Largest Contentful Paint (LCP)**, giúp tăng thứ hạng **SEO** và trải nghiệm người dùng.
+  - Tùy chỉnh theo thiết bị hoặc ngữ cảnh:
+    - Kết hợp với thuộc tính `sizes` để phục vụ hình ảnh phù hợp với các thiết bị có độ phân giải khác nhau.
+
+- Dùng giá trị bao nhiêu? -> Việc chọn giá trị quality phụ thuộc vào mục tiêu và loại nội dung hình ảnh:
+  - `Chất lượng thấp (1-50):`
+    - Khi nào dùng: Dùng cho hình ảnh không cần chi tiết cao, như hình nền, hình ảnh trang trí, hoặc khi ưu tiên tốc độ tải trang trên các thiết bị có băng thông thấp.
+    - Ví dụ: Hình ảnh thumbnail, biểu tượng nhỏ, hoặc hình ảnh trong các ứng dụng di động nơi kích thước tệp cần được giảm tối đa.
+    - Lưu ý: Giá trị quá thấp (ví dụ: 1-30) có thể làm hình ảnh bị pixelated, gây ảnh hưởng xấu đến trải nghiệm người dùng.
+  - `Chất lượng trung bình (50-80, mặc định 75):`
+    - Khi nào dùng: Phù hợp cho hầu hết các trường hợp, như hình ảnh nội dung chung, bài viết blog, hoặc các trang web thương mại điện tử nơi chất lượng hình ảnh và tốc độ tải đều quan trọng.
+    - Ví dụ: Hình ảnh sản phẩm trong danh mục, hình ảnh bài viết, hoặc banner quảng cáo.
+    - Lợi ích: Giá trị 75 thường cung cấp sự cân bằng tốt, giữ được độ rõ nét mà không làm tăng kích thước tệp quá nhiều.
+  - `Chất lượng cao (80-100):`
+    - Khi nào dùng: Dùng cho các hình ảnh yêu cầu chi tiết cao, như ảnh sản phẩm trong các trang chi tiết sản phẩm, ảnh nghệ thuật, hoặc hình ảnh cần hiển thị sắc nét trên màn hình Retina/4K.
+    - Ví dụ: Ảnh sản phẩm thời trang, ảnh chụp đồ ăn, hoặc ảnh trong portfolio nhiếp ảnh.
+    - Lưu ý: Giá trị cao (gần 100) làm tăng kích thước tệp, có thể ảnh hưởng đến thời gian tải, đặc biệt trên mạng chậm. Chỉ nên dùng khi hình ảnh là yếu tố chính của trải nghiệm người dùng.
+
+⚠️ Hình ảnh gốc đã nén: Nếu <u>hình ảnh gốc đã có chất lượng thấp</u>, việc đặt <u>quality cao</u> (ví dụ: 90-100) sẽ <u>không cải thiện chất lượng</u> mà chỉ làm <u>tăng kích thước tệp</u>
+
+### Photo Optimized
+
+Nên chuẩn bị trước **ảnh đã tối ưu hóa**!
+
+- Mặc dù Next.js `<Image>` có `optimization`, nhưng với những ảnh có tỉ lệ gốc rất cao, như: 2K, 4K, ...
+- Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
+
+🎯 Tại sao nên xử lý trước:
+
+- Build time optimization tốt hơn runtime
+  - ❌ Nếu chỉ dựa vào Next.js -> chậm lần đầu load
+  - ✅ Nếu đã optimize trước -> load nhanh ngay
+- Network & Storage costs
+  - Giúp tiết kiệm 80-90% bandwidth!
+
+### WebP
+
+## Thử nghiệm và đo lường
+
+Sử dụng công cụ như `Lighthouse` hoặc `WebPageTest` để kiểm tra hiệu suất trang và trải nghiệm người dùng
+
+- `Audits` là gì?
+  - Nghĩa gốc là kiểm tra, đánh giá, rà soát
+  - Thường chỉ quá trình phân tích website
+
+```
+Audit = một bản “kiểm toán” nhưng áp dụng cho mã nguồn, hiệu suất, bảo mật, SEO, accessibility…
+
+Kết quả audit thường là báo cáo kèm đề xuất cải thiện.
+```
+
+- `Metrics` là gì?
+  - Nghĩa là các chỉ số đo lường — trong lập trình và đặc biệt là web performance
+  - Nó là những con số định lượng dùng để đánh giá tình trạng hoặc hiệu suất của một hệ thống
+
+```
+Metric = đơn vị đo lường kết quả, giúp bạn biết "tốt" hay "xấu" dựa trên dữ liệu thực tế, thay vì cảm tính.
+
+Trong web/app, metrics thường được thu thập tự động (tracking, logging, analytics).
+```
+
+- `Waterfall` là gì?
+  - Biểu đồ thác nước -> biểu đồ thời gian load
+  - Trong bối cảnh _"web performance"_ là một <u>biểu đồ thời gian tải tài nguyên</u> cho thấy:
+    - Mỗi request (HTML, CSS, JS, ảnh, font, video, API call…) bắt đầu và kết thúc khi nào.
+    - Trình tự tải các tài nguyên (cái nào tải song song, cái nào chờ).
+    - Mất bao lâu ở từng giai đoạn:
+      - DNS Lookup
+      - TCP/TLS handshake
+      - Request/Response (TTFB – Time To First Byte)
+      - Download
+      - Blocking / Queuing
+      - Rendering
+
+```
+Tài nguyên              0ms   200ms   400ms   600ms   800ms  ...
+index.html              ███████████████
+style.css                   █████████
+main.js                          ██████████████████████
+image.jpg                                 ███████████████
+font.woff2                                          ████
+```
+
+- Mỗi dòng là 1 request và chiều dài thanh màu thể hiện thời gian tải.
+  - Thanh dài → tài nguyên đó tải lâu → có thể cần tối ưu.
+  - Thanh bị chồng hoặc xếp nối tiếp → cho thấy tài nguyên này phụ thuộc vào cái khác
+
+🎯 Lợi ích khi xem Waterfall
+
+- Xác định _"nút cổ chai"_ `(bottleneck)` trong quá trình tải.
+- Phát hiện tài nguyên tải quá chậm hoặc tải sớm không cần thiết.
+- Biết được thứ tự ưu tiên của trình duyệt khi tải file.
+- Phân tích tại sao `LCP`, `TTI`, `TBT` lại cao.
+
+### Lighthouse
+
+- [What Is Google Lighthouse and How to Use It?](https://www.youtube.com/watch?v=VyaHwvPWuZU)
+
+  - [Extension Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
+  - Ví dụ: chạy báo cáo trên trang web chạy cục bộ tại URL _"http://localhost:3000/"_ bằng extension `Lighthouse` trên trình duyệt `Brave`
+    - Với kết quả của bản ghi `JSON` _"20250814T021541"_
+    - Tức ngày 14-08-2025 lúc 2am15:41
+
+- Tổng quát các danh mục:
+
+  - `HIỆU SUẤT (Performance)`: 41 điểm -> ❌
+    - 👉🏻 Đo hiệu suất tải trang
+      - Phản ánh: Trang web tải nhanh hay chậm, nội dung hiển thị mượt hay bị trễ.
+      - Dựa trên: Các chỉ số như `FCP`, `LCP`, `SI`, `TBT`, `CLS`, `TTI`…
+      - Mục tiêu: Cải thiện trải nghiệm người dùng về tốc độ và độ mượt.
+      - Ảnh hưởng: Trực tiếp đến tỷ lệ thoát, mức độ hài lòng và `SEO`.
+  - `KHẢ NĂNG TIẾP CẬN (Accessibility)`: 99 điểm -> ✅
+    - 👉🏻 Kiểm tra truy cập cho người khuyết tật
+      - Phản ánh: Người dùng, kể cả người khuyết tật (thị giác, thính giác…), có thể truy cập và sử dụng trang hay không.
+      - Dựa trên: Các tiêu chuẩn như WCAG (Web Content Accessibility Guidelines).
+      - Ví dụ kiểm tra:
+        - Có text thay thế (alt) cho ảnh
+        - Tương phản màu sắc đủ cao
+        - Thứ tự tab hợp lý
+        - Hỗ trợ screen reader
+      - Mục tiêu: Trang dễ sử dụng cho mọi người, kể cả trên thiết bị trợ năng.
+  - `THỰC HÀNH TỐT NHẤT (Best Practices)`: 96 điểm -> ✅
+    - 👉🏻 Kiểm tra thân thiện di động
+      - Phản ánh: Trang tuân thủ các quy tắc an toàn, kỹ thuật tối ưu và coding hiện đại hay không.
+      - Dựa trên:
+        - Sử dụng HTTPS
+        - Không dùng API hoặc JS lỗi thời
+        - Không load tài nguyên không an toàn
+        - Kích thước ảnh, font hợp lý
+      - Mục tiêu: Đảm bảo trang hoạt động ổn định, an toàn, hiệu quả.
+  - `TỐI ƯU CÔNG CỤ TÌM KIẾM (SEO)`: 91 điểm -> ✅
+    - 👉🏻 Phân tích SEO cơ bản
+      - Phản ánh: Trang có thân thiện với công cụ tìm kiếm (Google, Bing…) hay không.
+      - Dựa trên:
+        - Cấu trúc HTML hợp lệ
+        - Thẻ `<title>` và `<meta description>` đầy đủ
+        - Heading cấu trúc hợp lý
+        - Mobile-friendly
+      - Mục tiêu: Giúp trang dễ được tìm thấy và xếp hạng cao trên kết quả tìm kiếm.
+
+💡 Nói gọn:
+
+```
+1️⃣ [ Performance    ] → Nhanh và mượt.
+2️⃣ [ Accessibility  ] → Ai cũng dùng được.
+3️⃣ [ Best Practices ] → An toàn và đúng chuẩn.
+4️⃣ [ SEO            ] → Dễ tìm thấy trên Google.
+```
+
+- Kết quả phân tích từ file _"localhost_3000-20250814T021541.json"_:
+
+  - ⏱️ `Timing`: Tổng thời gian thực hiện báo cáo là **8465 ms**.
+  - 💯 `Score`: Từ 0-1 (1 là tốt nhất; dưới 0.9 thường cần cải thiện).
+  - Scores tổng quát:
+    - Performance: **0.54** (thấp, cần cải thiện lớn về tốc độ và hiệu suất).
+    - Accessibility: **0.92** (tốt, nhưng vẫn có một số vấn đề nhỏ).
+    - Best Practices: **0.85** (tốt, nhưng có vấn đề về cache và JavaScript).
+    - SEO: **0.98** (rất tốt, gần như hoàn hảo).
+
+- `Metrics` (chỉ số quan trọng)
+
+  - `FCP (First Contentful Paint)` : 1.035s ✅ Tốt
+    - 👉🏻 Thời gian từ lúc tải trang đến khi nội dung đầu tiên (text, ảnh, SVG…) xuất hiện trên màn hình
+    - 🏆 Mục tiêu tốt (**≤ 1.8 giây**)
+    - 💎 Phản ánh cảm giác trang đã bắt đầu hiển thị gì đó
+  - `LCP (Largest Contentful Paint)` : 4.085s ⚠️ Cần cải thiện
+    - 👉🏻 Thời gian từ lúc tải trang đến khi phần tử nội dung lớn nhất trong viewport render xong (thường là ảnh hero hoặc khối text lớn)
+    - 🏆 Mục tiêu tốt (**≤ 2.5 giây**)
+    - 💎 Phản ánh cảm giác nội dung chính đã xuất hiện
+  - `SI (Speed Index)`: 2.199s ✅ Khá ổn
+    - 👉🏻 Đo thời gian nội dung nhìn thấy được của trang xuất hiện nhanh như thế nào
+    - 👉🏻 Giá trị càng thấp nghĩa là người dùng thấy trang hiển thị gần đầy đủ càng sớm
+    - 🏆 Mục tiêu tốt (**≤ 3.4 giây**)
+    - 💎 Phản ánh trải nghiệm thị giác (nội dung hiển thị nhanh hay chậm)
+
+  ```
+  FCP / LCP / SI → liên quan đến "thị giác" (thấy gì và khi nào)
+    ├── FCP: đo thời điểm đầu tiên bạn thấy được một phần nội dung.
+    ├── LCP: đo thời điểm nội dung lớn nhất hiển thị xong.
+    └── SI: đo tốc độ tổng thể mà toàn bộ vùng nhìn thấy (viewport) được lấp đầy nội dung theo thời gian.
+  ```
+
+  - `TTI (Time to Interactive)` : 10.227s ❌ Rất chậm → JS nặng hoặc block
+    - 👉🏻 Thời gian từ lúc tải trang đến khi trang hoàn toàn sẵn sàng tương tác (không còn tác vụ JS dài gây block)
+    - 🏆 Mục tiêu tốt (**≤ 3.8 giây**)
+    - 💎 Phản ánh cảm giác trang đã sẵn sàng để thao tác mà không bị delay
+  - `FID (First Input Delay)` : ?
+    - 👉🏻 Độ trễ giữa tương tác đầu tiên của người dùng (click, tap, keypress) và khi browser thực sự xử lý sự kiện đó
+    - 🏆 Mục tiêu tốt (**≤ 100 mili giây**)
+    - 💎 Phản ánh cảm giác trang phản hồi nhanh khi bấm lần đầu
+  - `TBT (Total Blocking Time)` : 7.777s ❌ Quá cao, ảnh hưởng tương tác
+    - 👉🏻 Tổng thời gian mà **main thread** bị chặn bởi các tác vụ JavaScript dài (mỗi tác vụ **>50ms**), làm người dùng không thể tương tác
+    - 🏆 Mục tiêu tốt (**≤ 200 mili giây**)
+    - 💎 Phản ánh trải nghiệm tương tác (bấm, cuộn, nhập liệu có bị delay hay không)
+
+  ```
+  TTI / FID / TBT → liên quan đến "tương tác" (có phản hồi nhanh hay không)
+  ├── TTI: đo thời điểm trang đã sẵn sàng để người dùng thao tác mà không bị delay.
+  ├── FID: đo độ trễ giữa tương tác đầu tiên của người dùng (click, tap, nhập) và khi trình duyệt bắt đầu phản hồi.
+  └── TBT: đo tổng thời gian main thread bị chặn bởi tác vụ dài (>50ms), khiến trang không phản hồi kịp với thao tác người dùng.
+  ```
+
+  - `CLS (Cumulative Layout Shift)` : 0.00086 ✅ Rất tốt
+    - 👉🏻 Đo mức độ dịch chuyển layout không mong muốn trong quá trình tải trang (ảnh chưa có kích thước, font thay đổi…)
+    - 🏆 Mục tiêu tốt (**≤ 0.1**)
+    - 💎 Phản ánh cảm giác trang có ổn định hay bị xô lệch khi đang xem
+
+  ```
+  CLS → liên quan đến sự "ổn định" (layout có bị nhảy hay không)
+  └── CLS: đo mức độ dịch chuyển bố cục không mong muốn trong quá trình tải trang (ví dụ: ảnh, quảng cáo, hoặc nội dung mới xuất hiện làm các phần tử khác bị đẩy xuống/xô lệch).
+  ```
+
+💡 Mẹo tối ưu nhanh theo nhóm:
+
+```
+├── FCP / LCP / SI → tối ưu ảnh, giảm render-blocking CSS/JS, preload font/ảnh chính
+├── TTI / TBT / FID → giảm JS, lazy load script, chia nhỏ bundle, tối ưu logic event handler
+└──CLS → đặt kích thước cố định cho ảnh/video, tránh chèn nội dung bất ngờ
+```
+
+- `Diagnostics` (chẩn đoán)
+
+  - Số request: 27 (ổn).
+  - Tổng dung lượng tải: ~ 11.16 MB 🚨 Rất lớn → cần tối ưu ảnh/video.
+  - Font: 2 fonts.
+  - Script: 6 scripts.
+  - CSS: 1 file.
+  - Nhiều tác vụ JS dài: 4 tác vụ >500ms → gây lag.
+
+- 🔑 <u>Giải pháp tối ưu</u>:
+  - 🔹 Ưu tiên cao
+    - Giảm LCP từ 4.0s xuống < 2.5s
+      - Dùng priority cho `<Image>` hero.
+      - Dùng WebP/AVIF cho ảnh lớn.
+      - Tối ưu kích thước ảnh khớp viewport.
+    - Giảm TTI & TBT
+      - Chia nhỏ bundle JS, lazy load component không cần ngay.
+      - Loại bỏ JS thừa (đặc biệt thư viện nặng).
+      - Sử dụng React.lazy() và dynamic import trong Next.js.
+    - Giảm dung lượng trang (~11MB)
+      - Nén ảnh (sử dụng next/image hoặc sharp).
+      - Tránh ảnh/video full-HD nếu không cần.
+      - Dùng video streaming nếu cần hiển thị animation dài.
+  - 🔹 Ưu tiên trung bình
+    - Preconnect đến domain ảnh/font/script ngoài.
+    - HTTP/2 nếu server chưa bật.
+    - Lazy-load cho ảnh ngoài viewport (loading="lazy").
+  - 🔹 Ưu tiên thấp
+    - Minify CSS/JS (Next.js build production tự làm).
+    - Remove legacy polyfill nếu chỉ nhắm tới browser hiện đại.

@@ -120,7 +120,7 @@ export const Contact = ({ id }: { id: string }) => {
 
           <div className="flex md:flex-row flex-col justify-between items-center">
             <div className="flex items-center md:gap-3 gap-6">
-              {socialMedia.core.map(({ id, name, icon, url }) => (
+              {socialMedia.core.map(({ id, name, alt, icon, url }) => (
                 <Tooltip key={`socialMediaCore=${id}`} title={name} arrow>
                   <button
                     type="button"
@@ -132,7 +132,7 @@ export const Contact = ({ id }: { id: string }) => {
                     <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-all duration-200 ease-out">
                       <img
                         src={icon}
-                        alt={`icons-${name}`}
+                        alt={alt}
                         width={25}
                         height={25}
                         loading="lazy"
@@ -148,7 +148,7 @@ export const Contact = ({ id }: { id: string }) => {
             <span className="block w-full h-0.5 max-md:my-6 md:w-0.5 md:h-10 md:mx-3 bg-overlay-white rounded-full" />
 
             <div className="flex items-center md:gap-3 gap-6">
-              {socialMedia.branding.map(({ id, name, icon, url }) => (
+              {socialMedia.branding.map(({ id, name, alt, icon, url }) => (
                 <Tooltip key={`socialMediaBranding=${id}`} title={name} arrow>
                   <button
                     type="button"
@@ -160,7 +160,7 @@ export const Contact = ({ id }: { id: string }) => {
                     <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-all duration-200 ease-out">
                       <img
                         src={icon}
-                        alt={`icons-${name}`}
+                        alt={alt}
                         width={25}
                         height={25}
                         loading="lazy"

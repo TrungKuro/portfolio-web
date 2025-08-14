@@ -8,8 +8,11 @@
     {
       "title": "3D Solar System Planets to Explore",
       "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-      "backgroundProject": "/images/misc/bg-project.png",
-      "image": "/images/projects/p1.svg",
+      "imageProject": {
+        "src": "/images/projects/p1.svg",
+        "alt": "Home page interface of '3D Solar System Planets to Explore' project",
+        "background": "/images/misc/bg-project.png"
+      },
       "iconLists": [
         {
           "src": "/assets/icons/tech-re.svg",
@@ -41,8 +44,11 @@
     {
       "title": "Yoom - Video Conferencing App",
       "description": "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-      "backgroundProject": "/images/misc/bg-project.png",
-      "image": "/images/projects/p2.svg",
+      "imageProject": {
+        "src": "/images/projects/p2.svg",
+        "alt": "Home page interface of 'Yoom - Video Conferencing App' project",
+        "background": "/images/misc/bg-project.png"
+      },
       "iconLists": [
         {
           "src": "/assets/icons/tech-next.svg",
@@ -74,8 +80,11 @@
     {
       "title": "AI Image SaaS - Canva Application",
       "description": "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-      "backgroundProject": "/images/misc/bg-project.png",
-      "image": "/images/projects/p3.svg",
+      "imageProject": {
+        "src": "/images/projects/p3.svg",
+        "alt": "Home page interface of 'AI Image SaaS - Canva Application' project",
+        "background": "/images/misc/bg-project.png"
+      },
       "iconLists": [
         {
           "src": "/assets/icons/tech-re.svg",
@@ -107,8 +116,11 @@
     {
       "title": "Animated Apple Iphone 3D Website",
       "description": "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
-      "backgroundProject": "/images/misc/bg-project.png",
-      "image": "/images/projects/p4.svg",
+      "imageProject": {
+        "src": "/images/projects/p4.svg",
+        "alt": "Home page interface of 'Animated Apple Iphone 3D Website' project",
+        "background": "/images/misc/bg-project.png"
+      },
       "iconLists": [
         {
           "src": "/assets/icons/tech-next.svg",

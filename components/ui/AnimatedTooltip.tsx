@@ -109,7 +109,7 @@ export const AnimatedTooltip = ({
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={item.image}
-              alt={item.name}
+              alt={`${item.name}-${item.designation}`}
               //! Nên dùng <img> thông thường vì:
               //  - SVG không cần optimization của Next.js Image (đã là vector)
               //  - Tránh overhead không cần thiết của Image component

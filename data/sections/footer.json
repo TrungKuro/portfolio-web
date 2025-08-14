@@ -43,12 +43,14 @@
       {
         "id": "github",
         "name": "GitHub",
+        "alt": "GitHub profile of Hoang Trung",
         "icon": "/assets/icons/soc-github.svg",
         "url": "https://github.com/TrungKuro"
       },
       {
         "id": "linkedin",
         "name": "LinkedIn",
+        "alt": "LinkedIn profile of Hoang Trung",
         "icon": "/assets/icons/soc-linkedin.svg",
         "url": "https://www.linkedin.com/in/trungkuro/"
       }
@@ -58,18 +60,21 @@
       {
         "id": "discord",
         "name": "Discord",
+        "alt": "Discord profile of Hoang Trung",
         "icon": "/assets/icons/soc-discord.svg",
         "url": "https://discord.com/users/1120258933471322112"
       },
       {
         "id": "twitter",
         "name": "Twitter",
+        "alt": "Twitter profile of Hoang Trung",
         "icon": "/assets/icons/soc-twitter.svg",
         "url": "https://x.com/Trung_Kuro"
       },
       {
         "id": "telegram",
         "name": "Telegram",
+        "alt": "Telegram profile of Hoang Trung",
         "icon": "/assets/icons/soc-telegram.svg",
         "url": "https://t.me/trung_kuro"
       }

@@ -32,7 +32,7 @@ export function DraggableCardDemo() {
               <div className="grow relative w-full h-full">
                 <Image
                   src={card.image}
-                  alt={card.title}
+                  alt={card.alt}
                   //
                   //! Next.js sẽ tự set cho ảnh:
                   // position: absolute;

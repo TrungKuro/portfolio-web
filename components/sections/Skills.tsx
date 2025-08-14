@@ -20,68 +20,70 @@ export const Skills = ({ id }: { id: string }) => {
           />
 
           <div className="w-full mt-10 grid lg:grid-cols-4 grid-cols-1 gap-5 lg:gap-10">
-            {techStack.categories.map(({ categoryName, thumbnail, items }) => (
-              <BtnMoveBorder
-                key={`${categoryName}-${thumbnail}`}
-                duration={Math.floor(Math.random() * 10000 + 10000)}
-                borderRadius="1.75rem"
-                className="text-white border-slate-800"
-              >
-                <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
-                  {/* THUMBNAIL */}
-                  <Lens zoomFactor={5} lensSize={100}>
-                    <div
-                      // Từ (md:) trở xuống | Chiều rộng = 64px
-                      // Từ (md:) trở lên   | Chiều rộng = 80px
-                      // Từ (lg:) trở lên   | Chiều rộng = 128px
-                      className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in"
-                    >
-                      <Image
-                        src={thumbnail}
-                        alt={categoryName}
-                        fill
-                        //! Đáng lẽ đặt -> sizes="(min-width: 1024px) 128px, (min-width: 768px) 80px, 64px"
-                        // Nhưng vì có kết hợp với <Lens> có hệ số ảnh là 5
-                        // Và vì các ảnh này cũng không phải ảnh SVG -> Nên cần đặt lại "sizes" với:
-                        // - Từ (md:) trở xuống | 64 x 5 = 320px
-                        // - Từ (md:) trở lên   | 80 x 5 = 400px
-                        // - Từ (lg:) trở lên   | 128 x 5 = 640px
-                        sizes="(min-width: 1024px) 640px, (min-width: 768px) 400px, 320px"
-                        // 1rem = 16px -> 1.75rem = 28px
-                        // p-3  = 12px
-                        //
-                        // Border Radius OUTER : 28px
-                        // Padding             : 12px
-                        // Border Radius INNER : 16px (28-12)
-                        className="object-cover rounded-bl-[16px] rounded-tl-[16px]"
-                      />
-                    </div>
-                  </Lens>
+            {techStack.categories.map(
+              ({ categoryName, thumbnail, alt, items }) => (
+                <BtnMoveBorder
+                  key={`${categoryName}-${thumbnail}`}
+                  duration={Math.floor(Math.random() * 10000 + 10000)}
+                  borderRadius="1.75rem"
+                  className="text-white border-slate-800"
+                >
+                  <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
+                    {/* THUMBNAIL */}
+                    <Lens zoomFactor={5} lensSize={100}>
+                      <div
+                        // Từ (md:) trở xuống | Chiều rộng = 64px
+                        // Từ (md:) trở lên   | Chiều rộng = 80px
+                        // Từ (lg:) trở lên   | Chiều rộng = 128px
+                        className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in"
+                      >
+                        <Image
+                          src={thumbnail}
+                          alt={alt}
+                          fill
+                          //! Đáng lẽ đặt -> sizes="(min-width: 1024px) 128px, (min-width: 768px) 80px, 64px"
+                          // Nhưng vì có kết hợp với <Lens> có hệ số ảnh là 5
+                          // Và vì các ảnh này cũng không phải ảnh SVG -> Nên cần đặt lại "sizes" với:
+                          // - Từ (md:) trở xuống | 64 x 5 = 320px
+                          // - Từ (md:) trở lên   | 80 x 5 = 400px
+                          // - Từ (lg:) trở lên   | 128 x 5 = 640px
+                          sizes="(min-width: 1024px) 640px, (min-width: 768px) 400px, 320px"
+                          // 1rem = 16px -> 1.75rem = 28px
+                          // p-3  = 12px
+                          //
+                          // Border Radius OUTER : 28px
+                          // Padding             : 12px
+                          // Border Radius INNER : 16px (28-12)
+                          className="object-cover rounded-bl-[16px] rounded-tl-[16px]"
+                        />
+                      </div>
+                    </Lens>
 
-                  {/* CONTENT */}
-                  <div className="w-full">
-                    <h1 className="text-start text-xl md:text-2xl font-bold ">
-                      {categoryName}
-                    </h1>
+                    {/* CONTENT */}
+                    <div className="w-full">
+                      <h1 className="text-start text-xl md:text-2xl font-bold ">
+                        {categoryName}
+                      </h1>
 
-                    <div className="flex flex-wrap items-center justify-start gap-3 mt-3">
-                      <AnimatedTooltip
-                        items={items.map((item, idx) => ({
-                          id: idx,
-                          name: item.name,
-                          designation: item.type,
-                          image: item.icon,
-                          isBg: item.isBackground,
-                        }))}
-                        classNameBg="bg-foreground rounded-tl-sm rounded-br-sm"
-                        classNameTitle="text-cool-gray"
-                        classNameSubTitle="text-lavender"
-                      />
+                      <div className="flex flex-wrap items-center justify-start gap-3 mt-3">
+                        <AnimatedTooltip
+                          items={items.map((item, idx) => ({
+                            id: idx,
+                            name: item.name,
+                            designation: item.type,
+                            image: item.icon,
+                            isBg: item.isBackground,
+                          }))}
+                          classNameBg="bg-foreground rounded-tl-sm rounded-br-sm"
+                          classNameTitle="text-cool-gray"
+                          classNameSubTitle="text-lavender"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
-              </BtnMoveBorder>
-            ))}
+                </BtnMoveBorder>
+              )
+            )}
           </div>
         </div>
       </ScrollRevealAnimation>
