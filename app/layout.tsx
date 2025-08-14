@@ -3,6 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "next-themes";
+import { debugError, debugLog, debugWarn } from "@/lib/logger";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,6 +26,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  debugLog("Test console log:", { name: "Trung" });
+  debugWarn("Test console warn:", 1200, "ms");
+  debugError("Test console error:", new Error("404 Not Found"));
+
   return (
     <html lang="en" suppressHydrationWarning>
       <body

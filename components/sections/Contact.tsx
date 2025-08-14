@@ -11,6 +11,7 @@ import { IconSVG } from "../common/IconSVG";
 import { Lamp } from "../ui/Lamp";
 import Tooltip from "@mui/material/Tooltip";
 import { getFooterData } from "@/lib/content";
+import { debugError } from "@/lib/logger";
 
 export const Contact = ({ id }: { id: string }) => {
   const { contact, background, address, copyright, socialMedia } =
@@ -25,8 +26,8 @@ export const Contact = ({ id }: { id: string }) => {
       setTimeout(() => {
         setCopied((prev) => ({ ...prev, [iconName]: false }));
       }, 3000);
-    } catch (err) {
-      console.error("Error when copy:", err);
+    } catch (error) {
+      debugError("Error when copy: ", error);
     }
   };
 

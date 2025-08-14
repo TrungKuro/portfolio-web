@@ -5,6 +5,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 import { cn } from "@/lib/utils";
+import { debugWarn } from "@/lib/logger";
 
 interface Icon {
   x: number;
@@ -110,7 +111,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
               offCtx.drawImage(img, 0, 0, sizeRender, sizeRender);
               imagesLoadedRef.current[index] = true;
             } catch (error) {
-              // console.warn(`Failed to decode image ${index}:`, error);
+              debugWarn(`Failed to decode image ${index}: `, error);
               imagesLoadedRef.current[index] = true; // Vẫn đánh dấu loaded
             }
           };
@@ -132,7 +133,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
               offCtx.drawImage(img, 0, 0, sizeRender, sizeRender);
               imagesLoadedRef.current[index] = true;
             } catch (error) {
-              // console.warn(`Failed to decode SVG ${index}:`, error);
+              debugWarn(`Failed to decode SVG ${index}: `, error);
               imagesLoadedRef.current[index] = true;
             }
           };

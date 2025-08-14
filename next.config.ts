@@ -48,6 +48,11 @@ const nextConfig: NextConfig = {
 
     return config;
   },
+
+  compiler: {
+    // Chỉ xóa console trong production
+    removeConsole: process.env.NODE_ENV === "production",
+  },
 };
 
 export default nextConfig;

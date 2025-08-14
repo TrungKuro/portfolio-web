@@ -8,6 +8,7 @@ import ThreeGlobe from "three-globe";
 import { useThree, Canvas, extend } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/globe.json";
+import { debugLog } from "@/lib/logger";
 
 declare module "@react-three/fiber" {
   interface ThreeElements {
@@ -206,7 +207,7 @@ export function Globe({ globeConfig, data }: WorldProps) {
             feature.properties.admin === defaultProps.countryName
           ) {
             //! Confirm quốc gia chọn được tìm thấy
-            // console.log(`Found your country: ${feature.properties.name}`);
+            debugLog("Found your country: ", feature.properties.admin);
 
             // Màu lãnh thổ riêng cho quốc gia bạn chọn
             return defaultProps.countryColor;

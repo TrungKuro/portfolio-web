@@ -6,6 +6,20 @@
 > npm run dev
 > ```
 >
+> Chạy Web ở chế độ Dev
+>
+> - `Local`: http://localhost:3000
+>   - Chỉ truy cập được trên chính máy bạn.
+>   - localhost hoặc 127.0.0.1 là địa chỉ loopback (vòng về máy mình), không đi qua mạng LAN.
+>   - Dùng khi bạn code và test trực tiếp trên máy đang chạy server.
+>   - Nếu bạn gửi link này cho người khác hoặc mở trên thiết bị khác (cùng Wi-Fi), họ sẽ không truy cập được.
+> - `Network`: http://192.168.2.61:3000
+>   - Là địa chỉ IP trong mạng LAN (nội bộ).
+>   - Máy khác trong cùng mạng Wi-Fi/LAN có thể truy cập app của bạn qua link này.
+>   - Hữu ích khi:
+>     - Test website trên điện thoại hoặc tablet.
+>     - Cho người khác xem demo ngay trên mạng nội bộ.
+>
 > [**TAILWIND CSS**](https://tailwindcss.com/)
 >
 > - [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
@@ -1259,6 +1273,42 @@ Nên chuẩn bị trước **ảnh đã tối ưu hóa**!
   - Giúp tiết kiệm 80-90% bandwidth!
 
 ### WebP
+
+?
+
+### File Môi Trường
+
+**Next.js** sử dụng thư viện `dotenv` để tải các biến môi trường từ các file `.env*`
+
+- Các file môi trường được ưu tiên theo thứ tự sau (từ cao đến thấp):
+  - `.env.local`:
+    - File này được sử dụng cho <u>môi trường cục bộ</u> (local development)
+    - Có <u>ưu tiên cao nhất</u> trong mọi trường hợp
+  - `.env.development`:
+    - Được sử dụng khi chạy `next dev` (hoặc `npm run dev`), nhưng chỉ nếu không có `.env.local`
+    - Nếu bạn có `.env.local`, các biến trong file này sẽ <u>ghi đè</u> các biến cùng tên trong `.env.development` hoặc `.env`
+  - `.env.production`:
+    - Được sử dụng khi chạy `next build` hoặc `next start` (hoặc `npm run build` và `npm run start`), nhưng chỉ nếu không có `.env.local`
+    - Nếu bạn có `.env.local`, các biến trong file này sẽ <u>ghi đè</u> các biến cùng tên trong `.env.production` hoặc `.env`
+  - `.env`:
+    - File <u>mặc định</u>, được tải trong mọi trường hợp (`dev`, `build`, `start`)
+    - Nhưng có <u>ưu tiên thấp nhất</u> và sẽ <u>bị ghi đè</u> bởi các file khác nếu có cùng `[key]`.
+
+```
+[ npm run dev   ] .env.local ➡️ .env.development ➡️ .env
+
+[ npm run build ] .env.local ➡️ .env.production  ➡️ .env
+```
+
+Môi trường được xác định bởi `NODE_ENV`:
+
+- `npm run dev` đặt `NODE_ENV=development`.
+- `npm run build` và `npm run start` đặt `NODE_ENV=production`.
+
+**Client Variables** vs **Server Variables**:
+
+- Trong **Next.js**, các <u>biến môi trường</u> bắt đầu bằng `NEXT_PUBLIC_` được _"expose"_ cho **client-side (browser)** còn các biến khác chỉ dùng ở **server-side**
+- ⚠️ Đảm bảo bạn đặt các <u>biến nhạy cảm</u> (như API keys) không có _"prefix"_ `NEXT_PUBLIC_`
 
 ## Thử nghiệm và đo lường
 
