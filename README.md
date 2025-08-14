@@ -61,6 +61,7 @@
 > - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react)
 > - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
 > - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
+> - [lottie-react](https://www.npmjs.com/package/lottie-react)
 >
 > **WEB TOOLS**
 >
