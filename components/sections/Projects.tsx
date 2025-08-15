@@ -31,18 +31,28 @@ export const Projects = ({ id }: { id: string }) => {
                   {/* Hình demo dự án */}
                   <div className="relative flex items-center justify-center">
                     {/* Hình nền */}
-                    <img
-                      src={imageProject.background}
-                      alt=""
-                      loading="lazy"
-                      decoding="async"
-                      // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
-                      // Padding            = p-4         → tương đương 1rem = 16px
-                      //
-                      // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
-                      // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
-                      className="w-full h-full rounded-lg bg-black-200"
-                    />
+                    <picture>
+                      <source
+                        srcSet={imageProject.background.webp}
+                        type="image/webp"
+                      />
+                      <source
+                        srcSet={imageProject.background.png}
+                        type="image/png"
+                      />
+                      <img
+                        src={imageProject.background.png}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
+                        // Padding            = p-4         → tương đương 1rem = 16px
+                        //
+                        // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
+                        // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
+                        className="w-full h-full rounded-lg bg-black-200"
+                      />
+                    </picture>
 
                     {/* Hình dự án */}
                     <img

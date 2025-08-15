@@ -1275,11 +1275,41 @@ Khi nào vẫn dùng `<Image>`?
   - Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
 
 - 🎯 Tại sao nên xử lý trước:
+
   - Build time optimization tốt hơn runtime
     - ❌ Nếu chỉ dựa vào Next.js -> chậm lần đầu load
     - ✅ Nếu đã optimize trước -> load nhanh ngay
   - Network & Storage costs
     - Giúp tiết kiệm 80-90% bandwidth!
+
+- ⚙️ Online tools
+  - `TinyPNG/TinyJPG`: Nén không mất chất lượng
+  - `Squoosh`: Google's image optimizer
+  - `ImageOptim`: Mac app
+
+- Công thức dùng *"squoosh"* của Google để chuyển ảnh từ `(png)` sang `(webp)`:
+  - *"Edit"*:
+    - Resize: ❌ `OFF` (giữ nguyên kích thước)
+    - Reduce palette: ❌ `OFF` (giữ đầy đủ màu sắc)
+  - *"Compress"* -> `WebP`:
+    - Lossless: ❌ `UNCHECK` (để giảm file size)
+    - Effort: `4` (cân bằng speed/quality)
+    - Quality: `75-80` (cho balance tốt) hoặc 85-90 (nếu ảnh quan trọng)
+  - *"Advanced Settings"*:
+    - Compress alpha: ✅ `ON` (nén alpha)
+    - Alpha quality: `85-90` (vẫn sắc nét, file nhỏ hơn)
+    - Alpha filter quality: `1`
+    - Auto adjust filter strength: ❌ `OFF` (tự động điều chỉnh cường độ bộ lọc)
+    - Filter strength: `40-50` (giảm artifacts, không quá aggressive)
+    - Strong filter: ✅ `ON` (bộ lọc mạnh)
+    - Filter sharpness: `5-6` (cân bằng giữa crisp và natural)
+    - Sharp RGB→YUV conversion: ❌ `OFF` (chuyển đổi RGB→YUV sắc nét)
+    - Passes: `1`
+    - Spatial noise shaping: `30-40` (giảm processing overhead)
+    - Preprocess: `None`
+    - Segments: `3` (đủ cho most cases, nhanh hơn)
+    - Partitions: `0`
+  - ⚠️ **Preserve transparent data**: ✅ CHECK (nếu ảnh có trong suốt - bảo toàn dữ liệu trong suốt)
 
 **[ quality ] của `<Image>`:**
 
@@ -1317,6 +1347,86 @@ Khi nào vẫn dùng `<Image>`?
     - Lưu ý: Giá trị cao (gần 100) làm tăng kích thước tệp, có thể ảnh hưởng đến thời gian tải, đặc biệt trên mạng chậm. Chỉ nên dùng khi hình ảnh là yếu tố chính của trải nghiệm người dùng.
 
 - ⚠️ Hình ảnh gốc đã nén: Nếu <u>hình ảnh gốc đã có chất lượng thấp</u>, việc đặt <u>quality cao</u> (ví dụ: 90-100) sẽ <u>không cải thiện chất lượng</u> mà chỉ làm <u>tăng kích thước tệp</u>
+
+**Tự động tạo WebP khi build:**
+
+- Bạn có thể dùng `Sharp` hoặc `imagemin-webp` để convert toàn bộ ảnh trong `/public` sang `WebP` khi chạy `npm run build`.
+
+  - ✅ Nên dùng WebP: `Ảnh bitmap (raster)` như JPG, PNG → WebP giúp giảm dung lượng 25–35% mà vẫn giữ chất lượng gần như gốc (hoặc `AVIF` nếu muốn nhẹ hơn nữa).
+  - ❌ Không cần dùng WebP: `Ảnh vector (SVG)` → không bị vỡ khi phóng to/thu nhỏ, dung lượng nhỏ sẵn, không cần convert sang WebP.
+
+  | Tiêu chí         | **Sharp**                      | **imagemin-webp**           |
+  | ---------------- | ------------------------------ | --------------------------- |
+  | Mục đích         | Xử lý ảnh đa năng              | Chỉ nén & convert sang WebP |
+  | Định dạng hỗ trợ | JPEG, PNG, WebP, AVIF, GIF…    | JPEG, PNG → WebP            |
+  | Resize/crop      | ✅ Có                          | ❌ Không                    |
+  | Hiệu suất        | ⚡ Rất nhanh (libvips)         | Nhanh vừa                   |
+  | Cài đặt          | Tương đối nặng (native module) | Nhẹ hơn                     |
+  | Dùng khi         | Cần xử lý ảnh phức tạp         | Chỉ cần convert WebP        |
+
+- 💡 Kinh nghiệm chọn
+  - Nếu bạn dùng Next.js với `<Image>` → thường không cần cả hai, vì Next.js đã dùng _"Sharp nội bộ"_ để tối ưu ảnh.
+  - Nếu bạn xử lý ảnh thủ công trước khi đưa vào `/public`:
+  - Muốn resize + tối ưu → dùng `Sharp`.
+  - Chỉ muốn convert sang `WebP` → dùng `imagemin-webp` (nhẹ hơn).
+
+**CDN Caching:**
+
+- `CDN` đặt ở nhiều vị trí địa lý khác nhau, để người dùng tải nội dung từ **server** gần mình nhất thay vì luôn yêu cầu về **server gốc**.
+
+- 📌 Cách hoạt động:
+
+  - Người dùng truy cập → CDN kiểm tra cache.
+  - Nếu có cache → trả về bản sao đã lưu (rất nhanh).
+  - Nếu chưa có cache → CDN lấy nội dung từ server gốc, lưu lại, rồi trả cho người dùng.
+
+- 📌 Lợi ích:
+
+  - Tăng tốc tải trang (đặc biệt cho người dùng ở xa server gốc).
+  - Giảm tải server gốc (ít request hơn).
+  - Tối ưu SEO & Core Web Vitals (FCP, LCP nhanh hơn).
+
+- 📌 Ví dụ:
+
+  - Website host tại Singapore, người ở Mỹ truy cập → CDN có server ở Los Angeles → người đó lấy dữ liệu từ LA thay vì Singapore → nhanh hơn nhiều.
+
+- 💡 Tóm gọn: CDN caching = lưu nội dung ở nhiều nơi → người dùng lấy từ nơi gần nhất → nhanh hơn, tiết kiệm tài nguyên server gốc.
+
+### AVIF
+
+- Định dạng ảnh nén thế hệ mới (ra mắt 2019).
+
+  - Dựa trên codec video AV1 → cho chất lượng ảnh cao hơn với dung lượng nhỏ hơn so với JPEG, PNG, WebP.
+  - Hỗ trợ cả lossy (mất dữ liệu) và lossless (không mất dữ liệu).
+
+- ✅ Ưu điểm nổi bật:
+
+  - Dung lượng thường nhỏ hơn WebP 20–50% cùng chất lượng.
+  - Hỗ trợ HDR, 10-bit, transparency (alpha).
+
+- ❌ Nhược điểm:
+
+  - Encode (chuyển đổi) chậm hơn WebP.
+  - Chưa hỗ trợ 100% trên tất cả trình duyệt (nhưng đã khá phổ biến).
+
+**So sánh AVIF vs WebP:**
+
+| Tiêu chí           | **WebP**                | **AVIF**                                              |
+| ------------------ | ----------------------- | ----------------------------------------------------- |
+| Năm ra mắt         | 2010 (Google)           | 2019 (Alliance for Open Media)                        |
+| Dung lượng         | Nhỏ hơn JPEG/PNG 25–35% | Nhỏ hơn JPEG/PNG 40–60%, nhỏ hơn WebP \~20–50%        |
+| Chất lượng         | Tốt                     | Rất tốt (chi tiết & màu sắc tốt hơn ở dung lượng nhỏ) |
+| Hỗ trợ alpha       | ✅ Có                   | ✅ Có                                                 |
+| Hỗ trợ animation   | ✅ Có                   | ⚠ Có nhưng ít dùng                                    |
+| Tốc độ encode      | Nhanh                   | Chậm hơn WebP                                         |
+| Hỗ trợ trình duyệt | Rất rộng                | Rộng nhưng chưa tuyệt đối                             |
+| HDR / 10-bit       | ❌ Không                | ✅ Có                                                 |
+
+**💡 Kinh nghiệm chọn:**
+
+- Nếu ưu tiên dung lượng cực thấp + chất lượng cao → AVIF (khi chắc browser hỗ trợ).
+- Nếu cần tốc độ xử lý nhanh + hỗ trợ mọi nơi → WebP.
+- Trong thực tế, nhiều website dùng `AVIF` trước, _"fallback"_ sang `WebP`, rồi mới _"fallback"_ `JPEG/PNG` cho các browser rất cũ.
 
 ### File Môi Trường
 

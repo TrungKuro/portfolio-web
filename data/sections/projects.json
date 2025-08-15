@@ -11,7 +11,10 @@
       "imageProject": {
         "src": "/images/projects/p1.svg",
         "alt": "Home page interface of '3D Solar System Planets to Explore' project",
-        "background": "/images/misc/bg-project.png"
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
       },
       "iconLists": [
         {
@@ -47,7 +50,10 @@
       "imageProject": {
         "src": "/images/projects/p2.svg",
         "alt": "Home page interface of 'Yoom - Video Conferencing App' project",
-        "background": "/images/misc/bg-project.png"
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
       },
       "iconLists": [
         {
@@ -83,7 +89,10 @@
       "imageProject": {
         "src": "/images/projects/p3.svg",
         "alt": "Home page interface of 'AI Image SaaS - Canva Application' project",
-        "background": "/images/misc/bg-project.png"
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
       },
       "iconLists": [
         {
@@ -119,7 +128,10 @@
       "imageProject": {
         "src": "/images/projects/p4.svg",
         "alt": "Home page interface of 'Animated Apple Iphone 3D Website' project",
-        "background": "/images/misc/bg-project.png"
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
       },
       "iconLists": [
         {
