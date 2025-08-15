@@ -1222,11 +1222,70 @@ Khi nào vẫn dùng `<Image>`?
   - File nhỏ cho hình đơn giản
   - <u>Thích hợp: icons, logos, illustrations</u>
 
-### [ quality ] của `<Image>`
+### WebP
+
+`WebP` là định dạng ảnh do `Google` phát triển, giúp <u>giảm dung lượng</u> so với `JPEG/PNG` mà <u>vẫn giữ chất lượng tốt</u>.
+
+📌 Ưu điểm
+
+- Nhỏ hơn ~25–35% so với JPEG/PNG cùng chất lượng.
+- Hỗ trợ nền trong suốt (như PNG).
+- Hỗ trợ ảnh động (như GIF).
+- Giúp tăng tốc độ tải trang, cải thiện SEO & Core Web Vitals.
+
+📌 Nhược điểm
+
+- Một số phần mềm cũ chưa hỗ trợ (nhưng trình duyệt hiện đại hầu hết đã hỗ trợ).
+
+💡 Tóm gọn: WebP = ảnh nhẹ hơn, load nhanh hơn, tốt cho SEO.
+
+**Dùng `<Image>` của Next.js:**
+
+- Next.js tự động chuyển ảnh sang `WebP/AVIF` khi trình duyệt hỗ trợ, nhờ `Image Optimization API`.
+  - Trình duyệt hỗ trợ WebP → Next.js gửi `WebP`.
+  - Không hỗ trợ → Next.js gửi `JPEG/PNG` gốc.
+- ✅ Ưu điểm: Không cần lưu thêm file `(.webp)` riêng, Next.js xử lý tự động.
+- ⚠️ Nhược điểm: Chỉ áp dụng nếu dùng `<Image>` (không áp dụng cho `<img>`).
+
+**Nếu bắt buộc dùng `<img>`**:
+
+- Bạn cần <u>tạo WebP thủ công</u> và _"fallback"_ sang `JPG/PNG` bằng thẻ `<picture>`:
+
+  - Trình duyệt hỗ trợ WebP → dùng `WebP`.
+  - Không hỗ trợ → fallback sang `JPG`.
+
+  ```html
+  <picture>
+    <source srcset="/images/my-photo.webp" type="image/webp" />
+    <source srcset="/images/my-photo.jpg" type="image/jpeg" />
+    <img
+      src="/images/my-photo.jpg"
+      alt="Mô tả ảnh"
+      loading="lazy"
+      decoding="async"
+    />
+  </picture>
+  ```
+
+**Photo Optimized:**
+
+- Nên chuẩn bị trước **ảnh đã tối ưu hóa**!
+
+  - Mặc dù Next.js `<Image>` có `optimization`, nhưng với những ảnh có tỉ lệ gốc rất cao, như: 2K, 4K, ...
+  - Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
+
+- 🎯 Tại sao nên xử lý trước:
+  - Build time optimization tốt hơn runtime
+    - ❌ Nếu chỉ dựa vào Next.js -> chậm lần đầu load
+    - ✅ Nếu đã optimize trước -> load nhanh ngay
+  - Network & Storage costs
+    - Giúp tiết kiệm 80-90% bandwidth!
+
+**[ quality ] của `<Image>`:**
 
 - Được sử dụng để _"điều chỉnh mức độ nén của hình ảnh"_ được tối ưu hóa, ảnh hưởng đến kích thước tệp và độ chi tiết của hình ảnh
 
-  - Phạm vi: Thuộc tính quality nhận giá trị là một số nguyên từ 1 đến 100.
+  - Phạm vi: Thuộc tính `quality` nhận giá trị là một số nguyên từ 1 đến 100.
     - Giá trị `1`: Chất lượng thấp nhất, nén mạnh nhất, dẫn đến kích thước tệp nhỏ nhưng hình ảnh có thể mất chi tiết nghiêm trọng (pixelated).
     - Giá trị `100`: Chất lượng cao nhất, nén ít nhất, giữ được nhiều chi tiết nhưng kích thước tệp lớn hơn.
   - Giá trị mặc định: `75`. Giá trị này được chọn để cân bằng giữa kích thước tệp và chất lượng hình ảnh, phù hợp cho hầu hết các trường hợp sử dụng mà không cần cấu hình thêm.
@@ -1242,7 +1301,8 @@ Khi nào vẫn dùng `<Image>`?
   - Tùy chỉnh theo thiết bị hoặc ngữ cảnh:
     - Kết hợp với thuộc tính `sizes` để phục vụ hình ảnh phù hợp với các thiết bị có độ phân giải khác nhau.
 
-- Dùng giá trị bao nhiêu? -> Việc chọn giá trị quality phụ thuộc vào mục tiêu và loại nội dung hình ảnh:
+- Dùng giá trị bao nhiêu? -> Việc chọn giá trị `quality` phụ thuộc vào mục tiêu và loại nội dung hình ảnh:
+
   - `Chất lượng thấp (1-50):`
     - Khi nào dùng: Dùng cho hình ảnh không cần chi tiết cao, như hình nền, hình ảnh trang trí, hoặc khi ưu tiên tốc độ tải trang trên các thiết bị có băng thông thấp.
     - Ví dụ: Hình ảnh thumbnail, biểu tượng nhỏ, hoặc hình ảnh trong các ứng dụng di động nơi kích thước tệp cần được giảm tối đa.
@@ -1256,26 +1316,7 @@ Khi nào vẫn dùng `<Image>`?
     - Ví dụ: Ảnh sản phẩm thời trang, ảnh chụp đồ ăn, hoặc ảnh trong portfolio nhiếp ảnh.
     - Lưu ý: Giá trị cao (gần 100) làm tăng kích thước tệp, có thể ảnh hưởng đến thời gian tải, đặc biệt trên mạng chậm. Chỉ nên dùng khi hình ảnh là yếu tố chính của trải nghiệm người dùng.
 
-⚠️ Hình ảnh gốc đã nén: Nếu <u>hình ảnh gốc đã có chất lượng thấp</u>, việc đặt <u>quality cao</u> (ví dụ: 90-100) sẽ <u>không cải thiện chất lượng</u> mà chỉ làm <u>tăng kích thước tệp</u>
-
-### Photo Optimized
-
-Nên chuẩn bị trước **ảnh đã tối ưu hóa**!
-
-- Mặc dù Next.js `<Image>` có `optimization`, nhưng với những ảnh có tỉ lệ gốc rất cao, như: 2K, 4K, ...
-- Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
-
-🎯 Tại sao nên xử lý trước:
-
-- Build time optimization tốt hơn runtime
-  - ❌ Nếu chỉ dựa vào Next.js -> chậm lần đầu load
-  - ✅ Nếu đã optimize trước -> load nhanh ngay
-- Network & Storage costs
-  - Giúp tiết kiệm 80-90% bandwidth!
-
-### WebP
-
-?
+- ⚠️ Hình ảnh gốc đã nén: Nếu <u>hình ảnh gốc đã có chất lượng thấp</u>, việc đặt <u>quality cao</u> (ví dụ: 90-100) sẽ <u>không cải thiện chất lượng</u> mà chỉ làm <u>tăng kích thước tệp</u>
 
 ### File Môi Trường
 
@@ -1375,14 +1416,14 @@ font.woff2                                          ████
   - [Extension Lighthouse](https://chromewebstore.google.com/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk)
   - Ví dụ: chạy báo cáo trên trang web chạy cục bộ tại URL _"http://localhost:3000/"_ bằng extension `Lighthouse` trên trình duyệt `Brave`
     - Với kết quả của bản ghi `JSON` _"20250814T021541"_
-    - Tức ngày 14-08-2025 lúc 2am15:41
+    - Tức ngày **14-08-2025** lúc **2am15:41**
 
 - Tổng quát các danh mục:
 
   - `HIỆU SUẤT (Performance)`: 41 điểm -> ❌
     - 👉🏻 Đo hiệu suất tải trang
       - Phản ánh: Trang web tải nhanh hay chậm, nội dung hiển thị mượt hay bị trễ.
-      - Dựa trên: Các chỉ số như `FCP`, `LCP`, `SI`, `TBT`, `CLS`, `TTI`…
+      - Dựa trên: Các chỉ số như `FCP` (10 điểm ✅), `LCP` (1 điểm ❌), `TBT` (0 điểm ❌), `CLS` (25 điểm ✅) `SI` (5 điểm ⚠️), …
       - Mục tiêu: Cải thiện trải nghiệm người dùng về tốc độ và độ mượt.
       - Ảnh hưởng: Trực tiếp đến tỷ lệ thoát, mức độ hài lòng và `SEO`.
   - `KHẢ NĂNG TIẾP CẬN (Accessibility)`: 99 điểm -> ✅
@@ -1423,7 +1464,7 @@ font.woff2                                          ████
 4️⃣ [ SEO            ] → Dễ tìm thấy trên Google.
 ```
 
-- Kết quả phân tích từ file _"localhost_3000-20250814T021541.json"_:
+- Kết quả phân tích của AI từ file _"localhost_3000-20250814T021541.json"_:
 
   - ⏱️ `Timing`: Tổng thời gian thực hiện báo cáo là **8465 ms**.
   - 💯 `Score`: Từ 0-1 (1 là tốt nhất; dưới 0.9 thường cần cải thiện).
@@ -1527,6 +1568,24 @@ font.woff2                                          ████
 
 ## SEO
 
+`SEO (Search Engine Optimization)` là tối ưu hóa website để công cụ tìm kiếm (như Google) hiểu nội dung và xếp hạng cao hơn → giúp người dùng dễ tìm thấy khi họ tìm kiếm từ khóa liên quan.
+
+📌 Mục tiêu chính của SEO
+
+- Tăng khả năng hiển thị trên kết quả tìm kiếm.
+- Tăng lưu lượng truy cập tự nhiên (organic traffic).
+- Cải thiện trải nghiệm người dùng (tốc độ, nội dung, cấu trúc site).
+
+📌 Các yếu tố quan trọng
+
+- On-page SEO: Tối ưu nội dung, tiêu đề, meta description, heading, hình ảnh (alt), URL.
+- Technical SEO: Tốc độ tải, cấu trúc HTML, mobile-friendly, sitemap, robots.txt.
+- Off-page SEO: Backlinks, chia sẻ mạng xã hội, thương hiệu.
+
+📌 Kết quả
+
+- SEO tốt → xếp hạng cao → nhiều click hơn → nhiều khách hàng/độc giả hơn mà không cần trả tiền quảng cáo.
+
 ### Meta Description
 
 - Thẻ _"meta description"_ trong phần `<head>` của trang web.
@@ -1542,12 +1601,84 @@ font.woff2                                          ████
 
 ### Open Graph
 
+`Open Graph (Open Graph Protocol)` là tiêu chuẩn siêu dữ liệu do `Facebook` phát triển, giúp website định nghĩa rõ cách nội dung hiển thị khi chia sẻ lên mạng xã hội **(Facebook, LinkedIn, Zalo…)**.
+
+📌 Mục đích
+
+- Khi bạn chia sẻ link, mạng xã hội sẽ đọc thẻ OG (og:title, og:description, og:image, …) để hiển thị ảnh, tiêu đề, mô tả đẹp và chính xác, thay vì lấy ngẫu nhiên từ trang.
+
+📌 Kết quả
+
+- Link chia sẻ đẹp hơn, đồng bộ hình + text.
+- Tăng tỷ lệ click (CTR) khi chia sẻ trên mạng xã hội.
+
 ### Twitter Card
 
-### Canonical
+`Twitter Card` là tiêu chuẩn siêu dữ liệu của `Twitter` (tương tự `Open Graph`) giúp website xác định cách hiển thị khi link được chia sẻ lên **Twitter/X**.
+
+📌 Mục đích
+
+- Hiển thị ảnh, tiêu đề, mô tả đẹp và đồng bộ khi share link.
+- Giúp bài tweet thu hút hơn và tăng lượt click.
+
+📌 Kết quả
+
+- Link chia sẻ trên Twitter/X trông đẹp, rõ ràng, nhiều thông tin.
+- Tăng tỷ lệ click (CTR) khi tweet có link website.
+
+### Canonical URL
+
+`Canonical URL` là đường dẫn chuẩn mà bạn muốn công cụ tìm kiếm **(Google, Bing, …)** coi là <u>phiên bản chính thức của một trang</u>, nhằm <u>tránh trùng lặp nội dung</u> khi <u>có nhiều URL dẫn tới cùng nội dung</u>.
+
+📌 Mục đích
+
+- Tránh Google đánh giá duplicate content.
+- Tập trung toàn bộ sức mạnh SEO vào một URL duy nhất.
+
+📌 Ví dụ
+
+- Giả sử trang của bạn có thể truy cập bằng cả:
+  - https://example.com
+  - https://www.example.com
+  - https://example.com/index.html
+- Bạn muốn Google chỉ index https://example.com, thì thêm:
+
+  ```html
+  <link rel="canonical" href="https://example.com" />
+  ```
+
+📌 Kết quả
+
+- **Google** chỉ xếp hạng **URL canonical**.
+- Không chia nhỏ thứ hạng giữa nhiều bản sao nội dung.
 
 ### Structured Data (JSON-LD)
 
-- Để Google hiểu rõ hơn về trang của bạn, giúp trang web xuất hiện với _"rich snippets"_ trong kết quả tìm kiếm
+- Định dạng dữ liệu có cấu trúc theo chuẩn `Schema.org`, viết bằng `JSON-LD (JavaScript Object Notation for Linked Data)`.
+
+  - Mục đích: Giúp <u>công cụ tìm kiếm</u> (Google, Bing, …) hiểu rõ nội dung trang (loại trang, tác giả, sản phẩm, bài viết, sự kiện…).
+  - Lợi ích: Có thể hiển thị `Rich Snippets` trên kết quả tìm kiếm (VD: sao đánh giá, giá sản phẩm, breadcrumb, logo…).
+
+- Verification Codes [ Google ] vs [ Bing ]
+  - <u>Mã xác minh</u> (HTML meta tag hoặc file) để <u>chứng minh quyền sở hữu website</u> với `Google Search Console` hoặc `Bing Webmaster Tools`.
+  - Mục đích:
+    - Cho phép bạn xem dữ liệu tìm kiếm, xếp hạng.
+    - Gửi sitemap, theo dõi SEO, khắc phục lỗi index.
 
 ### [ sitemap.xml ] và [ robots.txt ]
+
+`sitemap.xml`
+
+- Là gì: File XML liệt kê tất cả URL quan trọng của website.
+- Mục đích: Giúp công cụ tìm kiếm thu thập dữ liệu nhanh và đầy đủ hơn.
+- Lợi ích: Tăng khả năng index, kiểm soát trang nào được ưu tiên.
+
+`robots.txt`
+
+- Là gì: File văn bản hướng dẫn công cụ tìm kiếm biết trang nào được phép hoặc không được phép thu thập.
+- Mục đích: Kiểm soát quyền truy cập bot vào các phần của website.
+
+📌 Tóm tắt
+
+- `sitemap.xml` → Danh sách URL muốn Google/Bing index.
+- `robots.txt` → Quy định bot được / không được vào đâu.

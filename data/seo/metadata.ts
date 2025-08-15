@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
-import { seoConfig } from "./index";
+import { seoConfig } from "./seo-config";
 
 export const PortfolioMetadata: Metadata = {
+  metadataBase: new URL(seoConfig.baseUrl),
+
   // "Title" tag optimization
   title: "Hoang Trung - Full-Stack Developer | React, Next.js, Flutter Expert",
 

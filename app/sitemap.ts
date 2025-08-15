@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { seoConfig } from "@/data/seo";
+import { seoConfig } from "@/data/seo/seo-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const { baseUrl, sitemap: sitemapConfig } = seoConfig;

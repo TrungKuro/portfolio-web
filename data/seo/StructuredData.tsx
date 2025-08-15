@@ -119,7 +119,7 @@ const serviceJsonLd = {
 /* ------------------------------------------------------------------------- */
 
 import React from "react";
-import { seoConfig } from "./index";
+import { seoConfig } from "./seo-config";
 
 export const StructuredData = () => {
   return (
