@@ -75,6 +75,10 @@
 > - [Canva](https://www.canva.com/)
 > - [Clipping Magic](https://vi.clippingmagic.com/)
 >
+> **CLI TOOLS**
+>
+> - [SVG Optimizer](https://svgo.dev/) → [svgo](https://github.com/svg/svgo)
+>
 > **HEADLESS CMS**
 >
 > - [Sanity](https://www.sanity.io/)
@@ -1274,28 +1278,47 @@ Khi nào vẫn dùng `<Image>`?
   - Mặc dù Next.js `<Image>` có `optimization`, nhưng với những ảnh có tỉ lệ gốc rất cao, như: 2K, 4K, ...
   - Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
 
-- 🎯 Tại sao nên xử lý trước:
+- 🎯 **Tại sao nên xử lý trước**:
 
   - Build time optimization tốt hơn runtime
     - ❌ Nếu chỉ dựa vào Next.js -> chậm lần đầu load
     - ✅ Nếu đã optimize trước -> load nhanh ngay
-  - Network & Storage costs
-    - Giúp tiết kiệm 80-90% bandwidth!
+  - Giảm Kích Thước File Gốc: PNG thường rất nặng (ví dụ: 8MB so với 300KB WebP). Tối ưu hóa trước (nén, resize) giúp:
+    - Giảm dung lượng lưu trữ trên `server/CDN`.
+    - Giảm thời gian xử lý của `Image Optimization API`.
+    - Cải thiện `Largest Contentful Paint (LCP)`, đặc biệt nếu `LCP` của bạn cao.
+  - Hỗ Trợ Môi Trường Tự Host: Nếu không dùng Vercel, Next.js có thể không tối ưu hóa tốt, dẫn đến tải file gốc lớn.
+  - Tránh Phụ Thuộc Quá Nhiều vào Next.js: Tối ưu hóa trước giúp <u>giảm tải cho server</u> (tiết kiệm bandwidth), đặc biệt khi có nhiều request hình ảnh.
 
-- ⚙️ Online tools
+- ⚙️ **Online tools**:
+
   - `TinyPNG/TinyJPG`: Nén không mất chất lượng
   - `Squoosh`: Google's image optimizer
   - `ImageOptim`: Mac app
 
-- Công thức dùng *"squoosh"* của Google để chuyển ảnh từ `(png)` sang `(webp)`:
-  - *"Edit"*:
+- **Cách Tối Ưu Hóa Ảnh Gốc (ảnh Vector)**:
+
+- Sử dụng Công cụ Tối ưu SVG:
+  - `SVGO (SVG Optimizer)` - Công cụ phổ biến để nén SVG.
+    - 
+
+- **Cách Tối Ưu Hóa Ảnh Gốc (ảnh Bitmap)**:
+
+  - _"Chuyển sang WebP"_ (Tùy Chọn):
+    - Lossy: Quality 75-85, Effort 4, giữ alpha quality 80-90 (nếu có transparency).
+    - Lossless: Dùng cho đồ họa/logo để giữ chi tiết.
+  - _"Resize Ảnh"_: điều chỉnh kích thước ảnh gốc về đúng kích thước hiển thị tối đa trên website.
+  - _"Nén Ảnh"_: mà không làm mất chất lượng đáng kể.
+
+- Công thức dùng _"squoosh"_ của Google để chuyển ảnh từ `(png)` sang `(webp)`:
+  - _"Edit"_:
     - Resize: ❌ `OFF` (giữ nguyên kích thước)
     - Reduce palette: ❌ `OFF` (giữ đầy đủ màu sắc)
-  - *"Compress"* -> `WebP`:
+  - _"Compress"_ -> `WebP`:
     - Lossless: ❌ `UNCHECK` (để giảm file size)
     - Effort: `4` (cân bằng speed/quality)
     - Quality: `75-80` (cho balance tốt) hoặc 85-90 (nếu ảnh quan trọng)
-  - *"Advanced Settings"*:
+  - _"Advanced Settings"_:
     - Compress alpha: ✅ `ON` (nén alpha)
     - Alpha quality: `85-90` (vẫn sắc nét, file nhỏ hơn)
     - Alpha filter quality: `1`
