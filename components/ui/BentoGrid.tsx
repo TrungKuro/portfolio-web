@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-
+import Image from "next/image";
 import { DraggableCardDemo } from "../common/DraggableCardDemo";
 import { GlobeDemo } from "../common/GlobeDemo";
 import { IconCloudDemo } from "../common/IconCloudDemo";
@@ -99,29 +98,23 @@ export const BentoGridItem = ({
       <div className="relative w-full h-full">
         {/* Hình nền phụ */}
         {spareImg && (
-          <img
+          <Image
             src={spareImg}
             alt=""
-            loading="lazy"
-            decoding="async"
-            className={cn(
-              "w-full h-full absolute object-cover object-center",
-              spareImgClassName
-            )}
+            fill
+            sizes="100vw"
+            className={cn("object-cover object-center", spareImgClassName)}
           />
         )}
 
         {/* Hình nền chính */}
         {img && (
-          <img
+          <Image
             src={img}
             alt=""
-            loading="lazy"
-            decoding="async"
-            className={cn(
-              "w-full h-full absolute object-cover object-center",
-              imgClassName
-            )}
+            fill
+            sizes="100vw"
+            className={cn("object-cover object-center", imgClassName)}
           />
         )}
 

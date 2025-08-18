@@ -577,10 +577,38 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 ### Image Optimization Vector
 
+✅ SVG chuẩn thường chỉ vài `KB` → vài trăm `KB` (do bản chất là XML mô tả vector).
+
+- ❌ Nếu lên tới `MB`, chắc chắn có vấn đề:
+  - Xuất SVG trực tiếp từ Figma/Illustrator mà không tối ưu.
+  - _Bị embed hình ảnh bitmap (PNG/JPG) vào trong SVG._
+  - Quá nhiều node/path phức tạp (ví dụ bản đồ chi tiết, gradient mesh...).
+- 💎 Với web thực tế, `SVG` nên `< 300KB` (tốt nhất `<100KB`).
+
 👉🏻 **Cách Tối Ưu Hóa Ảnh Gốc (ảnh Vector):**
 
 - Sử dụng Công cụ Tối ưu SVG:
+
   - `SVGO (SVG Optimizer)`: công cụ phổ biến để nén SVG
+
+- Kiểm tra có `embed raster image` không?
+  - Mở file `(.svg)` bằng VSCode:
+  - Nếu thấy đoạn `<image href="data:image/png;base64,...">` → tức là file đang embed ảnh bitmap → chính bitmap đó làm nặng.
+  - Giải pháp:
+    - Xuất ảnh bitmap riêng (PNG/WebP/AVIF).
+    - Giữ vector phần vector.
+    - Kết hợp trong HTML/CSS thay vì embed trong SVG.
+
+🔹 **Vấn đề của kiểu embed raster!**
+
+- Kích thước file SVG phình to
+  - Nếu `embed` bằng `Base64` → file SVG dài, <u>khó nén</u> hiệu quả.
+  - Nếu `embed` bằng `<image href="...">` thì trình duyệt vẫn phải <u>tải thêm file PNG bên ngoài</u>.
+- Mất lợi thế của vector
+  - SVG phóng to vẫn bị bể hình vì raster bên trong không scale đẹp.
+  - Chẳng khác gì dùng ảnh PNG bọc trong vỏ SVG.
+- Tối ưu khó khăn hơn 💀
+  - Các tool nén SVG (như SVGO) chỉ tối ưu phần vector, không tối ưu ảnh raster nhúng bên trong.
 
 ## Other Things
 
@@ -751,6 +779,10 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
     - `Preprocess` (Tiền xử lý): `None` (không cần preprocess cho thiết kế)
     - `Segments` (Phân đoạn): `4`
     - `Partitions` (Phân vùng): `0`
+
+```
+Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh vector có "embed raster image", từ SVG sang WebP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+```
 
 ### [ "use client" ]
 

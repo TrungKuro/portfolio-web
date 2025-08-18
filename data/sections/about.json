@@ -70,7 +70,7 @@
       "titleClassName": "max-w-[80%]",
       "descriptionClassName": "max-w-[80%]",
 
-      "img": "/images/misc/bg-card1.svg",
+      "img": "/images/misc/bg-card1-optimal.webp",
       "spareImg": "",
 
       "imgClassName": "",
@@ -125,7 +125,7 @@
       "descriptionClassName": "text-center",
 
       "img": "/images/misc/bg-card4.svg",
-      "spareImg": "/images/misc/bento-grid.svg",
+      "spareImg": "/images/misc/bento-grid-optimal.webp",
 
       "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
       "spareImgClassName": "opacity-40",
@@ -142,8 +142,8 @@
       "titleClassName": "text-right max-w-[80%]",
       "descriptionClassName": "text-right max-w-[80%]",
 
-      "img": "/images/misc/bg-card5.svg",
-      "spareImg": "/images/misc/bento-grid.svg",
+      "img": "/images/misc/bg-card5-optimal.webp",
+      "spareImg": "/images/misc/bento-grid-optimal.webp",
 
       "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
       "spareImgClassName": "opacity-80",
