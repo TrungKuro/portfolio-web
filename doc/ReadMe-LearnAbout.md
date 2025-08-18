@@ -595,9 +595,9 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 ### Random
 
-- Trong React (hoặc JavaScript nói chung), bạn có thể dùng `Math.random()` để tạo số ngẫu nhiên, rồi **scale** và **dịch chuyển** về khoảng bạn muốn.
+Trong React (hoặc JavaScript nói chung), bạn có thể dùng `Math.random()` để tạo số ngẫu nhiên, rồi **scale** và **dịch chuyển** về khoảng bạn muốn.
 
-- Tạo số thực ngẫu nhiên:
+- 📌 Tạo số thực ngẫu nhiên:
 
   ```
   Math.random() * (max - min) + min
@@ -608,12 +608,23 @@ self    = căn chỉnh riêng lẻ từng flex item
   - **(x)** nhân `(max - min)` → **scale** về khoảng độ rộng đơn vị
   - **(+)** cộng min → **dịch chuyển** về vị trí bắt đầu
 
-- Tạo số nguyên ngẫu nhiên:
+- 📌 Tạo số nguyên ngẫu nhiên:
 
   ```
   Math.floor(Math.random() * (max - min + 1)) + min
 
   ```
+
+⚠️ `Math.random()` là một hàm JavaScript tích hợp sẵn trong môi trường JavaScript, có sẵn trong cả `client-side (trình duyệt)` và `server-side (Node.js, như trong Next.js khi SSR hoặc SSG)`
+
+- Vì vậy, khi bạn gọi `Math.random()` trong một component Next.js, nó sẽ <u>chạy ở cả hai môi trường nếu không được kiểm soát</u>.
+- Trong trường hợp component có `"use client"`, code vẫn có thể được pre-render ở server (SSR/SSG) trước khi hydrate ở client, dẫn đến việc Math.random() chạy ở cả hai phía -> **ERROR ❌ Hydration Mismatch 💀**
+- Cách đảm bảo `Math.random()` chỉ chạy ở _"client-side"_:
+  - Cách 1: Sử dụng **Random** bên trong `useEffect()`
+  - Cách 2: Kiểm tra `typeof window` -> Dùng điều kiện `typeof window !== 'undefined'` để đảm bảo code chỉ chạy ở client.
+  - Cách 3: Dùng `crypto.getRandomValues()` (an toàn hơn)
+
+👉🏻 Hàm `crypto.getRandomValues()` chỉ chạy ở `client-side (trình duyệt)`, vì nó là một phần của **Web Crypto API (window.crypto)**, không có sẵn trong môi trường `Node.js (server-side)` theo mặc định.
 
 ### Unicode
 
@@ -673,6 +684,38 @@ Cấu trúc cơ bản:
 ```
 "Create a minimalist flat-style SVG illustration with a modern UI/UX dashboard aesthetic. Use a harmonious color palette dominated by shades of purple, pink, and blue. The composition should feature 3D-style cards, widgets, or panels arranged in a floating layered layout with soft shadows, rounded corners, and consistent spacing. Include subtle icons or elements that convey the theme of 'categoryName'. Ensure visual balance and use gradients or soft lighting effects to enhance depth and cleanliness. Style should evoke a tech-savvy, futuristic, and professional feel."
 ```
+
+- Các Prompt lấy công thức chỉnh ảnh bằng tool _"squoosh"_ của Google:
+
+```
+Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh chụp không có nền trong suốt, từ JPG sang AVIF, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+```
+
+- _"Edit"_:
+  - `Resize` (Thay đổi kích thước): ✅ `ON`
+    - `Method` (Phương pháp): `Lanczos3` (đây là phương pháp tốt nhất cho <u>ảnh chụp thực tế</u>)
+    - `Preset` (Cài đặt sẵn): `Custom` (để có thể tùy chỉnh kích thước chính xác)
+    - `Width` (Độ rộng): `1280` (theo yêu cầu độ rộng tối đa **1280px**)
+    - `Height` (Độ cao): _auto_ ... sẽ tự động điều chỉnh theo tỷ lệ khi bạn đổi `Width`
+    - Các tùy chọn khác:
+      - `Premultiply alpha channel`: ✅ `ON` (tốt cho chất lượng)
+      - `Linear RGB`: ✅ `ON` (màu sắc chính xác hơn)
+      - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
+  - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không cần thiết cho ảnh chụp thực tế)
+- _"Compress"_: chọn định dạng `AVIF`
+  - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, không cần thiết cho ảnh chụp)
+  - `Quality` (Chất lượng ảnh): `75-80` (mức cân bằng tốt cho ảnh chụp, không làm mất chi tiết)
+  - `Effort` (Mức độ nén ảnh): `4` (cho chất lượng nén tốt)
+  - Cài đặt nâng cao:
+    - `Subsample chroma`: `4:2:0` (tối ưu cho ảnh chụp thông thường)
+    - `Sharp YUV Downsampling`: ❌ `OFF` (không cần thiết cho hầu hết ảnh chụp)
+    - `Separate alpha quality`: ❌ `OFF` (`JPG` không có `Alpha channel`, không cần)
+    - `Extra chroma compression`: ❌ `OFF` (có thể làm giảm chất lượng màu sắc)
+    - `Sharpness`: `1-2` (giúp ảnh sau resize sắc nét hơn, khuyến nghị `1` cho ảnh chụp)
+    - `Noise synthesis`: `0` (không cần thêm noise cho ảnh thực tế)
+    - `Tuning`: `Auto` (để `AVIF` tự động tối ưu)
+    - `Log2 of tile rows`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
+    - `Log2 of tile cols`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
 
 ### [ "use client" ]
 

@@ -30,46 +30,29 @@
 
     "profileCards": [
       {
-        "title": "Jul 30, 2025",
-        "image": "/images/profile/about-me-300725.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Jul 30, 2025",
-        "className": "top-10 left-[20%] rotate-[-5deg]"
-      },
-      {
-        "title": "Feb 26, 2025",
-        "image": "/images/profile/about-me-260225.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Feb 26, 2025",
-        "className": "top-40 left-[25%] rotate-[-7deg]"
-      },
-      {
         "title": "Feb 22, 2024",
-        "image": "/images/profile/about-me-220224.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Feb 22, 2024",
-        "className": "top-5 left-[40%] rotate-[8deg]"
+        "image": "/images/profile/about-me-220224-optimal.avif",
+        "alt": "Avatar photo of Hoang Trung, taken on Feb 22, 2024"
       },
       {
         "title": "Nov 25, 2023",
-        "image": "/images/profile/about-me-251123.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Nov 25, 2023",
-        "className": "top-32 left-[55%] rotate-[10deg]"
+        "image": "/images/profile/about-me-251123-optimal.avif",
+        "alt": "Avatar photo of Hoang Trung, taken on Nov 25, 2023"
       },
       {
         "title": "Sep 07, 2023",
-        "image": "/images/profile/about-me-070923.JPG",
-        "alt": "Avatar photo of Hoang Trung, taken on Sep 07, 2023",
-        "className": "top-20 right-[35%] rotate-[2deg]"
+        "image": "/images/profile/about-me-070923-optimal.avif",
+        "alt": "Avatar photo of Hoang Trung, taken on Sep 07, 2023"
       },
       {
         "title": "Aug 23, 2023",
-        "image": "/images/profile/about-me-230823.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Aug 23, 2023",
-        "className": "top-24 left-[45%] rotate-[-7deg]"
+        "image": "/images/profile/about-me-230823-optimal.avif",
+        "alt": "Avatar photo of Hoang Trung, taken on Aug 23, 2023"
       },
       {
         "title": "Sep 10, 2022",
-        "image": "/images/profile/about-me-100922.jpg",
-        "alt": "Avatar photo of Hoang Trung, taken on Sep 10, 2022",
-        "className": "top-8 left-[30%] rotate-[4deg]"
+        "image": "/images/profile/about-me-100922-optimal.avif",
+        "alt": "Avatar photo of Hoang Trung, taken on Sep 10, 2022"
       }
     ]
   },
