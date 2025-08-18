@@ -717,6 +717,41 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
     - `Log2 of tile rows`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
     - `Log2 of tile cols`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
 
+```
+Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh thiết kế không có nền trong suốt, từ PNG sang WEBP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+```
+
+- _"Edit"_:
+  - `Resize` (Thay đổi kích thước): ✅ `ON`
+    - `Method` (Phương pháp): `Lanczos3` (chất lượng tốt nhất cho thiết kế)
+    - `Preset` (Cài đặt sẵn): `Custom` (để có thể tùy chỉnh kích thước chính xác)
+    - `Width` (Độ rộng): `1280` (theo yêu cầu độ rộng tối đa **1280px**)
+    - `Height` (Độ cao): _auto_ ... sẽ tự động điều chỉnh theo tỷ lệ khi bạn đổi `Width`
+    - Các tùy chọn khác:
+      - `Premultiply alpha channel`: ✅ `ON` (quan trọng cho `PNG`)
+      - `Linear RGB`: ✅ `ON` (màu sắc chính xác)
+      - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
+  - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không nên bật cho ảnh thiết kế, sẽ làm giảm số lượng màu, `PNG` thiết kế thường cần đầy đủ màu sắc)
+- _"Compress"_: chọn định dạng `WebP`
+  - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, `Lossy` với quality cao vẫn đủ cho thiết kế)
+  - `Effort` (Mức độ nén ảnh): `6` (nén tối ưu hơn cho thiết kế)
+  - `Quality` (Chất lượng ảnh): `85-90` (`PNG` thiết kế cần quality cao hơn ảnh chụp, khuyến nghị `88` cho cân bằng tốt)
+  - `Preserve transparent data` (Bảo toàn dữ liệu trong suốt): ✅ `ON` (rất quan trọng! Giữ nguyên độ trong suốt của `PNG` gốc, nếu tắt sẽ mất alpha channel)
+  - Cài đặt nâng cao:
+    - `Compress alpha` (Nén Alpha): ✅ `ON`
+    - `Alpha quality` (Chất lượng Alpha): `100` (giữ chất lượng alpha tối đa)
+    - `Alpha filter quality` (Chất lượng bộ lọc Alpha): `0` (với alpha quality max, không cần filter thêm)
+    - `Auto adjust filter strength` (Tự động điều chỉnh cường độ bộ lọc): ❌ `OFF` (để kiểm soát manual cho thiết kế)
+    - `Filter strength` (Cường độ lọc): `60`
+    - `Strong filter` (Bộ lọc mạnh): ✅ `ON` (đúng cho thiết kế)
+    - `Filter sharpness` (Độ sắc nét của bộ lọc): `0-3` (quá cao có thể tạo artifacts cho thiết kế)
+    - `Sharp RGB→YUV conversion` Chuyển đổi RGB→YUV sắc nét: ❌ `OFF` (không cần thiết cho `PNG` thiết kế)
+    - `Passes`: `2-4` (nhiều passes = chất lượng tốt hơn cho thiết kế)
+    - `Spatial noise shaping` (Định hình hình dạng nhiễu): `25-30` (`PNG` thiết kế ít noise hơn ảnh chụp)
+    - `Preprocess` (Tiền xử lý): `None` (không cần preprocess cho thiết kế)
+    - `Segments` (Phân đoạn): `4`
+    - `Partitions` (Phân vùng): `0`
+
 ### [ "use client" ]
 
 - Trong App Router (Next.js 13+), **mặc định component là server component**.

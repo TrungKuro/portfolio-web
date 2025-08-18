@@ -7,7 +7,7 @@
     "categories": [
       {
         "categoryName": "Programming Languages",
-        "thumbnail": "/images/illustrations/skill-prog-lang.png",
+        "thumbnail": "/images/illustrations/skill-prog-lang-optimal.webp",
         "alt": "Illustration of Programming Languages",
         "items": [
           {
@@ -32,7 +32,7 @@
       },
       {
         "categoryName": "Frontend Frameworks & Libraries",
-        "thumbnail": "/images/illustrations/skill-front-framework.png",
+        "thumbnail": "/images/illustrations/skill-front-framework-optimal.webp",
         "alt": "Illustration of Frontend Frameworks & Libraries",
         "items": [
           {
@@ -75,7 +75,7 @@
       },
       {
         "categoryName": "State & Data Management",
-        "thumbnail": "/images/illustrations/skill-state-data.png",
+        "thumbnail": "/images/illustrations/skill-state-data-optimal.webp",
         "alt": "Illustration of State & Data Management",
         "items": [
           {
@@ -94,7 +94,7 @@
       },
       {
         "categoryName": "Backend & Databases",
-        "thumbnail": "/images/illustrations/skill-back-database.png",
+        "thumbnail": "/images/illustrations/skill-back-database-optimal.webp",
         "alt": "Illustration of Backend & Databases",
         "items": [
           {
@@ -137,7 +137,7 @@
       },
       {
         "categoryName": "Mobile Development",
-        "thumbnail": "/images/illustrations/skill-mobile-dev.png",
+        "thumbnail": "/images/illustrations/skill-mobile-dev-optimal.webp",
         "alt": "Illustration of Mobile Development",
         "items": [
           {
@@ -150,7 +150,7 @@
       },
       {
         "categoryName": "UI/UX & Productivity Tools",
-        "thumbnail": "/images/illustrations/skill-ui-ux.png",
+        "thumbnail": "/images/illustrations/skill-ui-ux-optimal.webp",
         "alt": "Illustration of UI/UX & Productivity Tools",
         "items": [
           {
@@ -169,7 +169,7 @@
       },
       {
         "categoryName": "DevOps & Utilities",
-        "thumbnail": "/images/illustrations/skill-dev-ops.png",
+        "thumbnail": "/images/illustrations/skill-dev-ops-optimal.webp",
         "alt": "Illustration of DevOps & Utilities",
         "items": [
           {
@@ -200,7 +200,7 @@
       },
       {
         "categoryName": "Testing Frameworks",
-        "thumbnail": "/images/illustrations/skill-test-framework.png",
+        "thumbnail": "/images/illustrations/skill-test-framework-optimal.webp",
         "alt": "Illustration of Testing Frameworks",
         "items": [
           {
@@ -213,7 +213,7 @@
       },
       {
         "categoryName": "Deployment Platforms",
-        "thumbnail": "/images/illustrations/skill-deploy-platform.png",
+        "thumbnail": "/images/illustrations/skill-deploy-platform-optimal.webp",
         "alt": "Illustration of Deployment Platforms",
         "items": [
           {
