@@ -70,8 +70,13 @@
       "titleClassName": "max-w-[80%]",
       "descriptionClassName": "max-w-[80%]",
 
-      "img": "/images/misc/bg-card1-optimal.webp",
+      "img": "/images/misc/bg-cyberpunk.png",
       "spareImg": "",
+
+      "imgH": 1024,
+      "imgW": 1024,
+      "spareImgH": 0,
+      "spareImgW": 0,
 
       "imgClassName": "",
       "spareImgClassName": "",
@@ -91,6 +96,11 @@
       "img": "",
       "spareImg": "",
 
+      "imgH": 0,
+      "imgW": 0,
+      "spareImgH": 0,
+      "spareImgW": 0,
+
       "imgClassName": "",
       "spareImgClassName": "",
 
@@ -108,6 +118,11 @@
 
       "img": "",
       "spareImg": "",
+
+      "imgH": 0,
+      "imgW": 0,
+      "spareImgH": 0,
+      "spareImgW": 0,
 
       "imgClassName": "",
       "spareImgClassName": "",
@@ -127,8 +142,13 @@
       "img": "/images/misc/bg-card4.svg",
       "spareImg": "/images/misc/bento-grid-optimal.webp",
 
+      "imgH": 96,
+      "imgW": 208,
+      "spareImgH": 656,
+      "spareImgW": 1280,
+
       "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
-      "spareImgClassName": "opacity-40",
+      "spareImgClassName": "opacity-60",
 
       "specialEffect": "lottie"
     },
@@ -144,6 +164,11 @@
 
       "img": "/images/misc/bg-card5-optimal.webp",
       "spareImg": "/images/misc/bento-grid-optimal.webp",
+
+      "imgH": 980,
+      "imgW": 1280,
+      "spareImgH": 656,
+      "spareImgW": 1280,
 
       "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
       "spareImgClassName": "opacity-80",
@@ -162,6 +187,11 @@
 
       "img": "",
       "spareImg": "",
+
+      "imgH": 0,
+      "imgW": 0,
+      "spareImgH": 0,
+      "spareImgW": 0,
 
       "imgClassName": "",
       "spareImgClassName": "",

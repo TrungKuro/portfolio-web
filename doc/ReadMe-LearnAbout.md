@@ -709,15 +709,15 @@ Cấu trúc cơ bản:
 
 - Prompt tạo hình các `'categoryName'` cho **Skill -> Tech Stack**:
 
-```
-"Create a minimalist flat-style SVG illustration with a modern UI/UX dashboard aesthetic. Use a harmonious color palette dominated by shades of purple, pink, and blue. The composition should feature 3D-style cards, widgets, or panels arranged in a floating layered layout with soft shadows, rounded corners, and consistent spacing. Include subtle icons or elements that convey the theme of 'categoryName'. Ensure visual balance and use gradients or soft lighting effects to enhance depth and cleanliness. Style should evoke a tech-savvy, futuristic, and professional feel."
-```
+  ```
+  "Create a minimalist flat-style SVG illustration with a modern UI/UX dashboard aesthetic. Use a harmonious color palette dominated by shades of purple, pink, and blue. The composition should feature 3D-style cards, widgets, or panels arranged in a floating layered layout with soft shadows, rounded corners, and consistent spacing. Include subtle icons or elements that convey the theme of 'categoryName'. Ensure visual balance and use gradients or soft lighting effects to enhance depth and cleanliness. Style should evoke a tech-savvy, futuristic, and professional feel."
+  ```
 
 - Các Prompt lấy công thức chỉnh ảnh bằng tool _"squoosh"_ của Google:
 
-```
-Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh chụp không có nền trong suốt, từ JPG sang AVIF, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
-```
+  ```
+  Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh chụp không có nền trong suốt, từ JPG sang AVIF, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+  ```
 
 - _"Edit"_:
   - `Resize` (Thay đổi kích thước): ✅ `ON`
@@ -731,6 +731,7 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
       - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
   - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không cần thiết cho ảnh chụp thực tế)
 - _"Compress"_: chọn định dạng `AVIF`
+
   - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, không cần thiết cho ảnh chụp)
   - `Quality` (Chất lượng ảnh): `75-80` (mức cân bằng tốt cho ảnh chụp, không làm mất chi tiết)
   - `Effort` (Mức độ nén ảnh): `4` (cho chất lượng nén tốt)
@@ -745,9 +746,9 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
     - `Log2 of tile rows`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
     - `Log2 of tile cols`: giữ `0` (Giá trị mặc định tốt cho ảnh **1280px**)
 
-```
-Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh thiết kế không có nền trong suốt, từ PNG sang WEBP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
-```
+  ```
+  Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh thiết kế không có nền trong suốt, từ PNG sang WEBP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+  ```
 
 - _"Edit"_:
   - `Resize` (Thay đổi kích thước): ✅ `ON`
@@ -761,6 +762,7 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
       - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
   - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không nên bật cho ảnh thiết kế, sẽ làm giảm số lượng màu, `PNG` thiết kế thường cần đầy đủ màu sắc)
 - _"Compress"_: chọn định dạng `WebP`
+
   - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, `Lossy` với quality cao vẫn đủ cho thiết kế)
   - `Effort` (Mức độ nén ảnh): `6` (nén tối ưu hơn cho thiết kế)
   - `Quality` (Chất lượng ảnh): `85-90` (`PNG` thiết kế cần quality cao hơn ảnh chụp, khuyến nghị `88` cho cân bằng tốt)
@@ -780,9 +782,35 @@ Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh
     - `Segments` (Phân đoạn): `4`
     - `Partitions` (Phân vùng): `0`
 
-```
-Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh vector có "embed raster image", từ SVG sang WebP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
-```
+  ```
+  Công thức dùng "squoosh" của Google tối ưu. Mục đích chuyển ảnh vector có "embed raster image", từ SVG sang WebP, có resize ảnh kích thước độ rộng tối đa 1280px, và có nén ảnh mà không làm mất chất lượng đáng kể.
+  ```
+
+- Prompt tạo hình nền cho các item trong grid section **About**:
+
+  - ✅ Prompt (Positive with Lighting Architecture):
+
+  ```
+  "Ultra-realistic retro-futuristic cyberpunk interior scene in a 1:1 square ratio. A dark textured brick wall illuminated with glowing neon light in purple (#a855f7) and blue (#3b82f6), creating a vaporwave cyberpunk atmosphere.
+
+  At the center, a large FBI-style evidence board spans the entire width of the frame, filled with pinned photographs, sticky notes, documents, and red strings connecting clues. The photographs only show futuristic vehicles, drones, aircraft, or sci-fi machines — no human faces. The board is subtly illuminated by ambient neon light, with soft highlights along its edges.
+
+  Above the board, a long rectangular window stretches fully across the top, overflowing beyond the left, right, and upper edges of the frame. Through the glass is a breathtaking futuristic city skyline at night, glowing with vibrant purple and blue neon skyscrapers, holographic billboards, and a few flying vehicles. Light from the city softly streams through the glass, casting subtle purple-blue reflections downward onto the evidence board and the brick wall.
+
+  Below the board, a wide desk runs completely across the bottom of the frame, overflowing beyond the left, right, and lower edges of the image. On the desk are slightly messy but realistic coder items: a small desk lamp with a soft warm glow, a futuristic computer with faint holographic projections, AR glasses, scattered pens, and a small potted plant at the far right. The neon city light and desk lamp together create layered reflections on the desk surface — a mix of purple-blue neon glow and warm highlights — adding depth and realism.
+
+  The entire scene should feel cinematic, immersive, and photorealistic, with carefully layered lighting:
+  - Neon glow from the city (cool tones) spilling through the glass.
+  - Reflected neon light across the brick wall, evidence board, and desk edges.
+  - Warm localized light from the desk lamp balancing the cool tones.
+  - The overall brightness is slightly increased (+10%) for clarity while keeping the moody cyberpunk vibe. Resolution 2048x2048 or higher."
+  ```
+
+  - ❌ Negative Prompt:
+
+  ```
+  "people, faces, human portraits, characters, cartoon, painting, illustration, 3d render, cgi, flat textures, low quality, blurry, pixelated, oversaturated, distorted lighting, watermark, text overlay, logos, cropped window, cropped desk, cropped board, plain empty wall."
+  ```
 
 ### [ "use client" ]
 

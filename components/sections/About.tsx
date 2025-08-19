@@ -31,6 +31,10 @@ export const About = ({ id }: { id: string }) => {
                   //
                   img,
                   spareImg,
+                  imgH,
+                  imgW,
+                  spareImgH,
+                  spareImgW,
                   imgClassName,
                   spareImgClassName,
                   //
@@ -50,6 +54,10 @@ export const About = ({ id }: { id: string }) => {
                   //
                   img={img}
                   spareImg={spareImg}
+                  imgH={imgH}
+                  imgW={imgW}
+                  spareImgH={spareImgH}
+                  spareImgW={spareImgW}
                   imgClassName={imgClassName}
                   spareImgClassName={spareImgClassName}
                   //
