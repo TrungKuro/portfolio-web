@@ -107,16 +107,18 @@ export function Globe({ globeConfig, data }: WorldProps) {
     ...globeConfig,
   };
 
-  // Initialize globe only once
+  // STEP 1 - Initialize globe only once
   useEffect(() => {
     if (!globeRef.current && groupRef.current) {
       globeRef.current = new ThreeGlobe();
       (groupRef.current as unknown as Group).add(globeRef.current);
       setIsInitialized(true);
+
+      debugLog("Globe initialized");
     }
   }, []);
 
-  // Build material when globe is initialized or when relevant props change
+  // STEP 2 - Build material when globe is initialized or when relevant props change
   useEffect(() => {
     if (!globeRef.current || !isInitialized) return;
 
@@ -130,33 +132,17 @@ export function Globe({ globeConfig, data }: WorldProps) {
     globeMaterial.emissive = new Color(globeConfig.emissive);
     globeMaterial.emissiveIntensity = globeConfig.emissiveIntensity || 0.1;
     globeMaterial.shininess = globeConfig.shininess || 0.9;
+
+    debugLog("Globe material updated");
   }, [
     isInitialized,
-    globeConfig.globeColor,
-    globeConfig.emissive,
-    globeConfig.emissiveIntensity,
-    globeConfig.shininess,
+    // globeConfig.globeColor,
+    // globeConfig.emissive,
+    // globeConfig.emissiveIntensity,
+    // globeConfig.shininess,
   ]);
 
-  //! Set initial globe position based on "initialPosition"
-  useEffect(() => {
-    if (!globeRef.current || !isInitialized || !defaultProps.initialPosition)
-      return;
-
-    const { lat, lng, offsetLat, offsetLng } = defaultProps.initialPosition;
-
-    // Convert degrees to radians
-    const latRad = ((lat + offsetLat) * Math.PI) / 180;
-    const lngRad = ((lng + offsetLng) * Math.PI) / 180;
-
-    // Rotate the group containing the globe
-    if (groupRef.current) {
-      groupRef.current.rotation.x = -latRad;
-      groupRef.current.rotation.y = -lngRad;
-    }
-  }, [isInitialized, defaultProps.initialPosition]);
-
-  // Build data when globe is initialized or when data changes
+  // STEP 3 - Build data when globe is initialized or when data changes
   useEffect(() => {
     if (!globeRef.current || !isInitialized || !data) return;
 
@@ -247,8 +233,11 @@ export function Globe({ globeConfig, data }: WorldProps) {
       .ringRepeatPeriod(
         (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
       );
+
+    debugLog("Globe data updated");
   }, [
-    data,
+    isInitialized,
+    // data,
     // defaultProps.arcLength,
     // defaultProps.arcTime,
     // defaultProps.atmosphereAltitude,
@@ -263,10 +252,9 @@ export function Globe({ globeConfig, data }: WorldProps) {
     // defaultProps.polygonResolution,
     // defaultProps.rings,
     // defaultProps.showAtmosphere,
-    isInitialized,
   ]);
 
-  // Handle rings animation with cleanup
+  // STEP 4 - Handle rings animation with cleanup
   useEffect(() => {
     if (!globeRef.current || !isInitialized || !data) return;
 
@@ -290,10 +278,42 @@ export function Globe({ globeConfig, data }: WorldProps) {
       globeRef.current.ringsData(ringsData);
     }, 2000);
 
+    debugLog("Globe rings animation started");
+
     return () => {
       clearInterval(interval);
+
+      debugLog("Globe rings animation stopped");
     };
-  }, [isInitialized, data]);
+  }, [
+    isInitialized,
+    // data
+  ]);
+
+  //! STEP 5 - Set initial globe position based on "initialPosition"
+  useEffect(() => {
+    if (!globeRef.current || !isInitialized || !defaultProps.initialPosition)
+      return;
+
+    const { lat, lng, offsetLat, offsetLng } = defaultProps.initialPosition;
+
+    // Convert degrees to radians
+    const latRad = ((lat + offsetLat) * Math.PI) / 180;
+    const lngRad = ((lng + offsetLng) * Math.PI) / 180;
+
+    // Rotate the group containing the globe
+    if (groupRef.current) {
+      groupRef.current.rotation.x = -latRad;
+      groupRef.current.rotation.y = -lngRad;
+    }
+
+    debugLog("Globe position updated");
+  }, [
+    isInitialized,
+    // defaultProps.initialPosition
+  ]);
+
+  debugLog("Globe rendered");
 
   return <group ref={groupRef} />;
 }
@@ -306,6 +326,8 @@ export function WebGLRendererConfig() {
       gl.setPixelRatio(window.devicePixelRatio);
       gl.setSize(size.width, size.height);
       gl.setClearColor(0xffaaff, 0);
+
+      debugLog("WebGLRendererConfig updated");
     },
     [
       // gl, size.height, size.width
@@ -319,6 +341,9 @@ export function World(props: WorldProps) {
   const { globeConfig } = props;
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
+
+  debugLog("World rendered");
+
   return (
     <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
       <WebGLRendererConfig />
@@ -351,22 +376,6 @@ export function World(props: WorldProps) {
   );
 }
 
-export function hexToRgb(hex: string) {
-  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-    return r + r + g + g + b + b;
-  });
-
-  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-  return result
-    ? {
-        r: parseInt(result[1], 16),
-        g: parseInt(result[2], 16),
-        b: parseInt(result[3], 16),
-      }
-    : null;
-}
-
 export function genRandomNumbers(min: number, max: number, count: number) {
   const arr = [];
   while (arr.length < count) {
@@ -376,3 +385,19 @@ export function genRandomNumbers(min: number, max: number, count: number) {
 
   return arr;
 }
+
+// export function hexToRgb(hex: string) {
+//   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+//   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+//     return r + r + g + g + b + b;
+//   });
+
+//   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+//   return result
+//     ? {
+//         r: parseInt(result[1], 16),
+//         g: parseInt(result[2], 16),
+//         b: parseInt(result[3], 16),
+//       }
+//     : null;
+// }

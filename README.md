@@ -76,7 +76,9 @@
 > - [Clipping Magic](https://vi.clippingmagic.com/)
 > - [SVGOMG](https://svgomg.net/)
 > - [Squoosh](https://squoosh.app/)
->
+> - [CSS Loaders](https://css-loaders.com/)
+> - [Loaders](https://cssloaders.github.io/)
+
 > **WEBPACK**
 >
 > - [SVGR](https://react-svgr.com/) → [Configure your Next.js project to import SVG as React components](https://react-svgr.com/docs/next/)
