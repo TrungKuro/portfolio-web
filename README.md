@@ -87,6 +87,20 @@
 >
 > - [SVGO](https://svgo.dev/) → [svgo](https://github.com/svg/svgo)
 >
+> [**THREE.JS**](https://threejs.org/)
+>
+> - [Canvas](https://r3f.docs.pmnd.rs/api/canvas)
+> - Hook
+>   - [useFrame](https://sbcode.net/react-three-fiber/use-frame/)
+>   - [useThree](https://gracious-keller-98ef35.netlify.app/docs/api/hooks/useThree/)
+>   - [useProgress](https://drei.docs.pmnd.rs/loaders/progress-use-progress)
+> - Object3D → Light
+>   - [AmbientLight](https://threejs.org/docs/?q=ambientLight#api/en/lights/AmbientLight)
+>   - [DirectionalLight](https://threejs.org/docs/?q=directionalLight#api/en/lights/DirectionalLight)
+>   - [PointLight](https://threejs.org/docs/?q=pointLight#api/en/lights/PointLight)
+> - Controls
+>   - [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls)
+>
 > **HEADLESS CMS**
 >
 > - [Sanity](https://www.sanity.io/)

@@ -141,21 +141,6 @@ body {
     background-color: #e9acf9;
     box-shadow: 30px 0 0 #acf9f3;
   }
-
-  /* ----------------------------------------------------------------------- */
-
-  .loader-dots {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    display: block;
-    margin: 15px auto;
-    position: relative;
-    background: #acf9f3;
-    box-shadow: -24px 0 #acf9f3, 24px 0 #acf9f3;
-    box-sizing: border-box;
-    animation: dotsShadowPulse 2s linear infinite;
-  }
 }
 
 /* ------------------------------------------------------------------------- */
@@ -272,22 +257,5 @@ body {
   100% {
     box-shadow: 30px 0 0 #acf9f3;
     margin-top: 0;
-  }
-}
-
-/* ------------------------------------------------------------------------- */
-
-@keyframes dotsShadowPulse {
-  33% {
-    background: #acf9f3;
-    box-shadow: -24px 0 #e9acf9, 24px 0 #acf9f3;
-  }
-  66% {
-    background: #e9acf9;
-    box-shadow: -24px 0 #acf9f3, 24px 0 #acf9f3;
-  }
-  100% {
-    background: #acf9f3;
-    box-shadow: -24px 0 #acf9f3, 24px 0 #e9acf9;
   }
 }

@@ -249,3 +249,23 @@
 
 - Trong **Next.js**, các <u>biến môi trường</u> bắt đầu bằng `NEXT_PUBLIC_` được _"expose"_ cho **client-side (browser)** còn các biến khác chỉ dùng ở **server-side**
 - ⚠️ Đảm bảo bạn đặt các <u>biến nhạy cảm</u> (như API keys) không có _"prefix"_ `NEXT_PUBLIC_`
+
+## Các kỹ thuật cải thiện "Performance"
+
+👉🏻 **Lighthouse `Treemap` View**:
+
+- Công cụ giúp bạn thấy "kích thước" và "thành phần" `Bundle JS` khi build Next.js.
+
+  - **Tổng dung lượng**: `http://localhost:3000/ ? MiB` → là tổng dung lượng JS đang tải cho trang này (thường nên giữ dưới `1 MB` nếu có thể).
+  - **Treemap**: mỗi ô là một `Bundle JS` hoặc `Chunk JS` → diện tích ô = dung lượng file tương ứng.
+  - **Name + Transfer bytes**: liệt kê chi tiết từng file bundle gồm "đường dẫn và kích thước".
+
+- `Treemap` này giúp bạn thấy chỗ nào cần `code splitting`, `dynamic import`, `SSR/SSG` để <u>giảm JS cần load ban đầu</u>.
+
+### Cải thiện `LCP`
+
+?
+
+### Cải thiện `TBT`
+
+?

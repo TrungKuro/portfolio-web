@@ -5,7 +5,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Color, Scene, Fog, PerspectiveCamera, Vector3, Group } from "three";
 import ThreeGlobe from "three-globe";
-import { useThree, Canvas, extend } from "@react-three/fiber";
+import { useThree, Canvas, extend, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import countries from "@/data/canvas/globe.json";
 import { debugLog } from "@/lib/logger";
@@ -20,10 +20,6 @@ declare module "@react-three/fiber" {
 
 extend({ ThreeGlobe: ThreeGlobe });
 
-const RING_PROPAGATION_SPEED = 3;
-const aspect = 1.2;
-const cameraZ = 300;
-
 type Position = {
   order: number;
   startLat: number;
@@ -34,7 +30,7 @@ type Position = {
   color: string;
 };
 
-export type GlobeConfig = {
+type GlobeConfig = {
   pointSize?: number;
   globeColor?: string;
   showAtmosphere?: boolean;
@@ -75,12 +71,43 @@ interface WorldProps {
   data: Position[];
 }
 
-// let numbersOfRings = [0];
+interface GlobeProps extends WorldProps {
+  onCanvasReady?: () => void;
+}
 
-export function Globe({ globeConfig, data }: WorldProps) {
+/* ------------------------------------------------------------------------- */
+/*                               Main Function                               */
+/* ------------------------------------------------------------------------- */
+
+function WebGLRendererConfig() {
+  const {
+    gl, // WebGL renderer
+    size, // Bounds of the view (which stretches 100% and auto-adjusts)
+  } = useThree();
+
+  useEffect(
+    () => {
+      gl.setPixelRatio(window.devicePixelRatio);
+      gl.setSize(size.width, size.height);
+      gl.setClearColor(0xffaaff, 0);
+
+      debugLog("WebGLRendererConfig updated");
+    },
+    [
+      // gl, size.height, size.width
+    ]
+  );
+
+  return null;
+}
+
+function Globe({ globeConfig, data, onCanvasReady }: GlobeProps) {
   const globeRef = useRef<ThreeGlobe | null>(null);
   const groupRef = useRef<Group>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const hasRenderedFirstFrame = useRef(false);
+
+  const RING_PROPAGATION_SPEED = 3; // tốc độ lan truyền của vòng tròn
 
   const defaultProps = {
     pointSize: 1,
@@ -150,7 +177,6 @@ export function Globe({ globeConfig, data }: WorldProps) {
     const points = [];
     for (let i = 0; i < arcs.length; i++) {
       const arc = arcs[i];
-      // const rgb = hexToRgb(arc.color) as { r: number; g: number; b: number };
       points.push({
         size: defaultProps.pointSize,
         order: arc.order,
@@ -313,70 +339,123 @@ export function Globe({ globeConfig, data }: WorldProps) {
     // defaultProps.initialPosition
   ]);
 
+  //! Use useFrame to detect first frame render
+  //  Giúp bạn thực thi mã trước mỗi khung hình được hiển thị
+  useFrame(() => {
+    if (isInitialized && !hasRenderedFirstFrame.current && onCanvasReady) {
+      hasRenderedFirstFrame.current = true;
+      onCanvasReady();
+
+      debugLog("Globe canvas ready");
+    }
+  });
+
   debugLog("Globe rendered");
 
   return <group ref={groupRef} />;
 }
 
-export function WebGLRendererConfig() {
-  const { gl, size } = useThree();
+/* ------------------------------------------------------------------------- */
+/*                               Main Component                              */
+/* ------------------------------------------------------------------------- */
 
-  useEffect(
-    () => {
-      gl.setPixelRatio(window.devicePixelRatio);
-      gl.setSize(size.width, size.height);
-      gl.setClearColor(0xffaaff, 0);
-
-      debugLog("WebGLRendererConfig updated");
-    },
-    [
-      // gl, size.height, size.width
-    ]
-  );
-
-  return null;
-}
+const aspect = 1.2; // tỷ lệ khung hình
+const cameraZ = 300; // khoảng cách giữa camera và mục tiêu
 
 export function World(props: WorldProps) {
   const { globeConfig } = props;
+  const [isCanvasReady, setIsCanvasReady] = useState(false);
   const scene = new Scene();
   scene.fog = new Fog(0xffffff, 400, 2000);
 
   debugLog("World rendered");
 
   return (
-    <Canvas scene={scene} camera={new PerspectiveCamera(50, aspect, 180, 1800)}>
-      <WebGLRendererConfig />
-      <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
-      <directionalLight
-        color={globeConfig.directionalLeftLight}
-        position={new Vector3(-400, 100, 400)}
-      />
-      <directionalLight
-        color={globeConfig.directionalTopLight}
-        position={new Vector3(-200, 500, 200)}
-      />
-      <pointLight
-        color={globeConfig.pointLight}
-        position={new Vector3(-200, 500, 200)}
-        intensity={0.8}
-      />
-      <Globe {...props} />
-      <OrbitControls
-        enablePan={false}
-        enableZoom={false}
-        minDistance={cameraZ}
-        maxDistance={cameraZ}
-        autoRotateSpeed={globeConfig.autoRotateSpeed}
-        autoRotate={globeConfig.autoRotate}
-        minPolarAngle={Math.PI / 3.5}
-        maxPolarAngle={Math.PI - Math.PI / 3}
-      />
-    </Canvas>
+    <>
+      {/*
+       * Loader overlay
+       * - Tuy CANVAS đã được "mount"
+       * - Rồi đã chạy useEffect để cấu hình
+       * - Nhưng GPU vẫn cần time để render, dẫn tới chưa có gì hiển thị trên màn hình
+       * - Trong khoảng thời gian này, sẽ hiển thị Loader tạm cho tới khi FRAME đầu tiên xuất hiện trong CANVAS
+       * - Lớp phủ có hiệu ứng "ẩn dần" (fade-out) với 3s chuyển đổi opacity
+       * - Đổi lại lớp phủ này sẽ luôn render, chỉ là bị ẩn đi ^^!
+       */}
+      <div
+        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-3000 ${
+          isCanvasReady ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <div className="flex flex-col items-center space-y-4">
+          {/* Spinner Loading Icon */}
+          <div className="loader-spinner" />
+
+          {/* Loading Text */}
+          <p className="font-sans text-center font-extralight text-cool-gray sub-title-custom">
+            Rendering... 🌍
+          </p>
+        </div>
+      </div>
+
+      <Canvas
+        scene={scene}
+        camera={new PerspectiveCamera(50, aspect, 180, 1800)}
+      >
+        <WebGLRendererConfig />
+
+        <ambientLight
+          // Ánh sáng này chiếu sáng đồng đều tất cả các vật thể trong khung cảnh
+          // Ánh sáng này không thể được sử dụng để tạo bóng vì nó không có hướng
+          color={globeConfig.ambientLight}
+          intensity={0.6}
+        />
+
+        <directionalLight
+          // Ánh sáng phát ra theo một hướng cụ thể
+          // Ánh sáng này sẽ hoạt động như thể nó ở vô cùng xa và các tia sáng phát ra từ nó đều song song
+          color={globeConfig.directionalLeftLight}
+          position={new Vector3(-400, 100, 400)}
+        />
+        <directionalLight
+          color={globeConfig.directionalTopLight}
+          position={new Vector3(-200, 500, 200)}
+        />
+
+        <pointLight
+          // Ánh sáng phát ra từ một điểm duy nhất theo mọi hướng
+          // Ánh sáng này có thể tạo ra bóng tối
+          color={globeConfig.pointLight}
+          position={new Vector3(-200, 500, 200)}
+          intensity={0.8}
+        />
+
+        <Globe
+          //! Component 3D chính, cũng là nặng nhất cần nhiều time để GPU render 💀
+          {...props}
+          onCanvasReady={() => setIsCanvasReady(true)}
+        />
+
+        <OrbitControls
+          // Điều khiển quỹ đạo cho phép camera quay quanh mục tiêu
+          enablePan={false} // OFF chế độ lia máy của camera
+          enableZoom={false} // OFF chế độ phóng to (dolly) của camera
+          minDistance={cameraZ} // khoảng cách tối thiểu giữa camera và mục tiêu
+          maxDistance={cameraZ} // khoảng cách tối đa giữa camera và mục tiêu
+          autoRotateSpeed={globeConfig.autoRotateSpeed} // tốc độ tự động xoay của mục tiêu trước camera
+          autoRotate={globeConfig.autoRotate} // ON chế độ tự động xoay của mục tiêu trước camera
+          minPolarAngle={Math.PI / 3.5} // góc nhìn thấp nhất của camera
+          maxPolarAngle={Math.PI - Math.PI / 3} // góc nhìn cao nhất của camera
+        />
+      </Canvas>
+    </>
   );
 }
 
-export function genRandomNumbers(min: number, max: number, count: number) {
+/* ------------------------------------------------------------------------- */
+/*                              Helper Function                              */
+/* ------------------------------------------------------------------------- */
+
+function genRandomNumbers(min: number, max: number, count: number) {
   const arr = [];
   while (arr.length < count) {
     const r = Math.floor(Math.random() * (max - min)) + min;
@@ -385,19 +464,3 @@ export function genRandomNumbers(min: number, max: number, count: number) {
 
   return arr;
 }
-
-// export function hexToRgb(hex: string) {
-//   const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-//   hex = hex.replace(shorthandRegex, function (m, r, g, b) {
-//     return r + r + g + g + b + b;
-//   });
-
-//   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-//   return result
-//     ? {
-//         r: parseInt(result[1], 16),
-//         g: parseInt(result[2], 16),
-//         b: parseInt(result[3], 16),
-//       }
-//     : null;
-// }
