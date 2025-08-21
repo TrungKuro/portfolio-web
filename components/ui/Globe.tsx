@@ -308,8 +308,6 @@ function Globe({ globeConfig, data, onCanvasReady }: GlobeProps) {
 
     return () => {
       clearInterval(interval);
-
-      debugLog("Globe rings animation stopped");
     };
   }, [
     isInitialized,

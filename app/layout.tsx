@@ -10,6 +10,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 
 import { PortfolioMetadata } from "@/data/seo/PortfolioMetadata";
 import { StructuredData } from "@/data/seo/StructuredData";
+import { cn } from "@/lib/utils";
 
 /* ------------------------------------------------------------------------- */
 /*                                    ...                                    */
@@ -46,7 +47,7 @@ export default function RootLayout({
         <StructuredData />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >
         <ThemeProvider
           attribute="class"

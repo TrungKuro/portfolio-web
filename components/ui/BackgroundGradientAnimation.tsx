@@ -173,7 +173,7 @@ export const BackgroundGradientAnimation = ({
         </defs>
       </svg>
 
-      <div className={cn("", className)}>{children}</div>
+      <div className={className}>{children}</div>
 
       <div
         className={cn(
