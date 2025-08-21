@@ -1,3 +1,16 @@
+import React from "react";
+import { seoConfig } from "./seo-config";
+
+/* ------------------------------------------------------------------------- */
+/*                                    ...                                    */
+/* ------------------------------------------------------------------------- */
+
+/* ✅ Ba loại structured data quan trọng
+ * "jsonLd" - Personal info
+ * "websiteJsonLd" Website info
+ * "serviceJsonLd" Business info
+ */
+
 // Structured Data JSON-LD
 const jsonLd = {
   "@context": "https://schema.org",
@@ -12,10 +25,11 @@ const jsonLd = {
     seoConfig.socialMedia.github,
     seoConfig.socialMedia.linkedin,
     seoConfig.socialMedia.twitter,
+    // ✅ Social verification
   ],
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Ho Chi Minh City",
+    addressLocality: "Ho Chi Minh City", // ✅ Local SEO
     addressCountry: "Vietnam",
   },
   knowsAbout: [
@@ -39,6 +53,7 @@ const jsonLd = {
     "Mobile Development",
     "Frontend Development",
     "Backend Development",
+    // ✅ Skills listing
   ],
   hasOccupation: {
     "@type": "Occupation",
@@ -58,15 +73,16 @@ const jsonLd = {
       "API Development",
       "Mobile App Development",
       "Web Application Development",
+      // ✅ Detailed skills
     ],
   },
   alumniOf: {
     "@type": "EducationalOrganization",
-    name: "Engineering Background", // Có thể thêm tên trường cụ thể nếu muốn
+    name: "Engineering Background", // ✅ Có thể thêm tên trường cụ thể nếu muốn
   },
   worksFor: {
     "@type": "Organization",
-    name: "Freelance Developer",
+    name: "Freelance Developer", // ✅ Có thể thêm tên công ty cụ thể nếu muốn
   },
 };
 
@@ -83,7 +99,7 @@ const websiteJsonLd = {
     name: "Hoang Trung",
   },
   inLanguage: "en",
-  copyrightYear: new Date().getFullYear(),
+  copyrightYear: new Date().getFullYear(), // ✅ Dynamic year
   genre: "Portfolio",
 };
 
@@ -98,7 +114,7 @@ const serviceJsonLd = {
     "@type": "Person",
     name: "Hoang Trung",
   },
-  areaServed: "Worldwide",
+  areaServed: "Worldwide", // ✅ Global reach
   serviceType: [
     "Web Development",
     "Mobile App Development",
@@ -118,12 +134,10 @@ const serviceJsonLd = {
 /*                                    ...                                    */
 /* ------------------------------------------------------------------------- */
 
-import React from "react";
-import { seoConfig } from "./seo-config";
-
 export const StructuredData = () => {
   return (
     <>
+      {/* ✅ Ba script tags riêng biệt */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

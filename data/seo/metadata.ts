@@ -2,16 +2,17 @@ import type { Metadata } from "next";
 import { seoConfig } from "./seo-config";
 
 export const PortfolioMetadata: Metadata = {
+  // ✅ Base URL đúng cách
   metadataBase: new URL(seoConfig.baseUrl),
 
-  // "Title" tag optimization
+  // ✅ Title tối ưu SEO (< 60 ký tự)
   title: "Hoang Trung - Full-Stack Developer | React, Next.js, Flutter Expert",
 
-  // "Description" tag
+  // ✅ Description tối ưu (155-160 ký tự)
   description:
     "Full-Stack Developer specializing in React, Next.js, and Flutter. 3+ years experience building scalable web & mobile apps with TypeScript, Node.js, and modern tech stack. Based in Ho Chi Minh City, available for remote projects.",
 
-  // "Open Graph" meta tags cho Social Media
+  // ✅ Open Graph cho social media
   openGraph: {
     title: "Hoang Trung - Full-Stack Developer Portfolio",
     description:
@@ -30,7 +31,7 @@ export const PortfolioMetadata: Metadata = {
     ],
   },
 
-  // "Twitter Card" meta tags
+  // ✅ Twitter Cards
   twitter: {
     card: "summary_large_image",
     title: "Hoang Trung - Full-Stack Developer",
@@ -39,7 +40,7 @@ export const PortfolioMetadata: Metadata = {
     images: [seoConfig.images.profileImage],
   },
 
-  // Keywords Strategy
+  // ✅ Keywords strategy tốt
   keywords: [
     "Full-Stack Developer",
     "React Developer",
@@ -69,7 +70,7 @@ export const PortfolioMetadata: Metadata = {
     "msvalidate.01": seoConfig.verification.bing,
   },
 
-  // Cải thiện Robots
+  // ✅ Robots configuration
   robots: {
     index: true,
     follow: true,
@@ -132,4 +133,9 @@ export const PortfolioMetadata: Metadata = {
  * ⚠️ Thay thế các placeholder:
  * - https://your-domain.com → domain thực tế
  * - Social media links → links thực tế
+ *
+ * Test metadata với tools như:
+ * - Facebook Sharing Debugger (https://developers.facebook.com/tools/debug/)
+ * - Twitter Card Validator (https://cards-dev.x.com/validator)
+ * - Google Rich Results Test (https://search.google.com/test/rich-results)
  ***/

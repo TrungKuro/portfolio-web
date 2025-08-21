@@ -4,8 +4,12 @@ import { ThemeProvider } from "next-themes";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
-import type { Metadata } from "next";
-import { PortfolioMetadata, StructuredData } from "@/data/seo";
+//! Tạm thời không dùng API Metadata
+// import { Metadata } from "next";
+// import { PortfolioMetadata } from "@/data/seo/metadata";
+
+import { PortfolioMetadata } from "@/data/seo/PortfolioMetadata";
+import { StructuredData } from "@/data/seo/StructuredData";
 
 /* ------------------------------------------------------------------------- */
 /*                                    ...                                    */
@@ -21,7 +25,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = PortfolioMetadata;
+//! Vô hiệu tạm thời vì lý do nào đó API Metadata hoạt động chưa đúng
+// export const metadata: Metadata = PortfolioMetadata;
 
 /* ------------------------------------------------------------------------- */
 /*                                    ...                                    */
@@ -35,6 +40,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* MetaData */}
+        <PortfolioMetadata />
         {/* JSON-LD Structured Data */}
         <StructuredData />
       </head>

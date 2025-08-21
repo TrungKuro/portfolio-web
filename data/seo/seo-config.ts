@@ -1,9 +1,9 @@
 // SEO Configuration - Centralized config for all SEO-related settings
 export const seoConfig = {
-  // Base URL configuration
+  // ✅ Dynamic base URL với fallback
   baseUrl: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
 
-  // [ robots.txt ] configuration
+  // ✅ [ robots.txt ] configuration
   robots: {
     disallowPaths: [
       "/api/", // Ẩn API routes nếu có
@@ -16,7 +16,7 @@ export const seoConfig = {
     allowPaths: ["/images/", "/assets/", "/public/"],
   },
 
-  // [ sitemap.ts ] configuration
+  // ✅ [ sitemap.ts ] configuration
   sitemap: {
     staticPages: [
       {
@@ -49,22 +49,22 @@ export const seoConfig = {
     ],
   },
 
-  // Social Media Links
+  // ✅ Social media links thực tế
   socialMedia: {
     github: "https://github.com/TrungKuro",
     linkedin: "https://www.linkedin.com/in/trungkuro/",
     twitter: "https://x.com/Trung_Kuro",
   },
 
-  // Verification codes
+  // ✅ Verification codes
   verification: {
     google: "your-google-verification-code",
     bing: "your-bing-verification-code",
   },
 
-  // Image paths for OG and structured data
+  // ✅ Image paths for OG and structured data
   images: {
     profileImage: "/images/profile/about-me-100922.jpg",
-    ogImage: "/images/profile/about-me-251123.jpg", // Có thể khác với profile
+    ogImage: "/images/profile/about-me-251123.jpg",
   },
 };

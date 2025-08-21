@@ -70,13 +70,16 @@ export const FloatingNavbar = ({
         {navItems.map((navItem: NavItem, idx: number) => (
           <Link
             key={`${idx}-${navItem.name}`}
+            aria-label={navItem.name}
             href={navItem.link}
             className={cn(
               "relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300",
               idx === navItems.length - 1 && "mr-0"
             )}
           >
-            <span className="block sm:hidden">{navItem.icon}</span>
+            <span className="block sm:hidden" aria-hidden={true}>
+              {navItem.icon}
+            </span>
             <span className="hidden sm:block text-sm !cursor-pointer">
               {navItem.name}
             </span>
