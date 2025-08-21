@@ -1,35 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 
-"use client";
-
 import Link from "next/link";
-import React, { useState } from "react";
+import React from "react";
+import { Lamp } from "../ui/Lamp";
+import { FaLocationArrow } from "react-icons/fa";
 import { HeadingHighlight } from "../common/HeadingHighlight";
 import { MagicButton } from "../common/MagicButton";
-import { FaLocationArrow } from "react-icons/fa";
-import { IconSVG } from "../common/IconSVG";
-import { Lamp } from "../ui/Lamp";
-import Tooltip from "@mui/material/Tooltip";
+import { BtnCopy } from "../common/BtnCopy";
+import { BtnSocialMedia } from "../common/BtnSocialMedia";
 import { getFooterData } from "@/lib/content";
-import { debugError } from "@/lib/logger";
 
 export const Contact = ({ id }: { id: string }) => {
   const { contact, background, address, copyright, socialMedia } =
     getFooterData();
-
-  const [copied, setCopied] = useState<Record<string, boolean>>({});
-
-  const handleCopy = async (content: string, iconName: string) => {
-    try {
-      await navigator.clipboard.writeText(content);
-      setCopied((prev) => ({ ...prev, [iconName]: true }));
-      setTimeout(() => {
-        setCopied((prev) => ({ ...prev, [iconName]: false }));
-      }, 3000);
-    } catch (error) {
-      debugError("Error when copy: ", error);
-    }
-  };
 
   return (
     <footer id={id}>
@@ -59,22 +42,7 @@ export const Contact = ({ id }: { id: string }) => {
                   className="grid grid-cols-[auto_1fr] gap-3"
                 >
                   <div className="flex justify-center items-center">
-                    <Tooltip title="Click to Copy" arrow>
-                      <button
-                        disabled={copied[iconName]}
-                        onClick={() => handleCopy(content, iconName)}
-                        className={`hover:cursor-copy hover:scale-90 transition-transform ${
-                          copied[iconName]
-                            ? "opacity-50 scale-90"
-                            : "opacity-100"
-                        }`}
-                      >
-                        <IconSVG
-                          iconName={iconName}
-                          className="border-1 sm:border-2 lg:border-3 stroke-[1px] sm:stroke-[1.5px] lg:stroke-[2px] border-foreground p-1.5 rounded-lg size-8 sm:size-9 lg:size-11 text-foreground"
-                        />
-                      </button>
-                    </Tooltip>
+                    <BtnCopy iconName={iconName} content={content} />
                   </div>
 
                   <div className="place-content-center content-custom">
@@ -116,33 +84,20 @@ export const Contact = ({ id }: { id: string }) => {
 
         <div className="flex md:flex-row flex-col-reverse justify-between items-center">
           <p className="md:text-base text-sm md:font-normal font-light max-md:m-6">
-            {copyright}
+            {`© ${new Date().getFullYear()} ${copyright}. All rights reserved.`}
           </p>
 
           <div className="flex md:flex-row flex-col justify-between items-center">
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.core.map(({ id, name, alt, icon, url }) => (
-                <Tooltip key={`socialMediaCore=${id}`} title={name} arrow>
-                  <button
-                    type="button"
-                    aria-label={name}
-                    onClick={() =>
-                      window.open(url, "_blank", "noopener,noreferrer")
-                    }
-                  >
-                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-purple hover:scale-110 transition-all duration-200 ease-out">
-                      <img
-                        src={icon}
-                        alt={alt}
-                        width={25}
-                        height={25}
-                        loading="lazy"
-                        decoding="async"
-                        className="pointer-events-none select-none"
-                      />
-                    </div>
-                  </button>
-                </Tooltip>
+                <BtnSocialMedia
+                  key={`socialMediaCore=${id}`}
+                  name={name}
+                  alt={alt}
+                  icon={icon}
+                  url={url}
+                  className="hover:border-purple"
+                />
               ))}
             </div>
 
@@ -150,27 +105,14 @@ export const Contact = ({ id }: { id: string }) => {
 
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.branding.map(({ id, name, alt, icon, url }) => (
-                <Tooltip key={`socialMediaBranding=${id}`} title={name} arrow>
-                  <button
-                    type="button"
-                    aria-label={name}
-                    onClick={() =>
-                      window.open(url, "_blank", "noopener,noreferrer")
-                    }
-                  >
-                    <div className="w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:border-blue hover:scale-110 transition-all duration-200 ease-out">
-                      <img
-                        src={icon}
-                        alt={alt}
-                        width={25}
-                        height={25}
-                        loading="lazy"
-                        decoding="async"
-                        className="pointer-events-none select-none"
-                      />
-                    </div>
-                  </button>
-                </Tooltip>
+                <BtnSocialMedia
+                  key={`socialMediaBranding=${id}`}
+                  name={name}
+                  alt={alt}
+                  icon={icon}
+                  url={url}
+                  className="hover:border-blue"
+                />
               ))}
             </div>
           </div>
