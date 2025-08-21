@@ -82,7 +82,6 @@ const nextConfig: NextConfig = {
       "@react-three/drei",
 
       // UI Libraries
-      "framer-motion",
       "motion", // thay vì "motion/react"
 
       // Other libraries

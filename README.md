@@ -58,10 +58,11 @@
 > - [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
 > - [react-icons](https://www.npmjs.com/package/react-icons) → [Popular icons in your React projects](https://react-icons.github.io/react-icons/)
 > - [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
-> - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react)
+> - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react) → [motion](https://www.npmjs.com/package/motion)
 > - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
 > - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
 > - [lottie-react](https://www.npmjs.com/package/lottie-react) → [Lottie for React](https://lottiereact.com/)
+> - [depcheck](https://www.npmjs.com/package/depcheck)
 >
 > **WEB TOOLS**
 >

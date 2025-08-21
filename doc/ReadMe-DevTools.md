@@ -312,12 +312,19 @@
   - Dùng `Lighthouse Treemap` → xem file `(.js)` nào to.
   - Dùng `next-bundle-analyzer` để thấy dependency nào chiếm dung lượng.
 
+- ⚡️ Cách <u>tối ưu</u> dependency
+
+  - 👉🏻 `Tree-shaking`: chỉ import hàm nhỏ.
+  - 👉🏻 `Dynamic import`: chỉ load dependency khi thật sự cần.
+  - 👉🏻 Thay thế bằng `lightweight library`.
+  - 👉🏻 <u>Tách code</u> ra khỏi bundle chính bằng `dynamic(() => import(...))`.
+
 - ⚙️ [How to optimize package bundling](https://nextjs.org/docs/app/guides/package-bundling)
 
   - Lưu ý cấu hình giữa `next.config.js` (Next.js với JavaScript) và `next.config.ts` (Next.js với TypeScript).
     - `require()` chỉ dùng trong `next.config.js` còn trong `next.config.ts` Next.js chạy ở ESM mode, bắt buộc dùng `import ... from ....`
     - Tương tự `module.exports` trong `next.config.js` sẽ thay thành `export default` trong `next.config.ts`
-    - Cấu hình xong thì chạy lệnh `ANALYZE=true npm run build`
+    - Cấu hình xong thì chạy lệnh 🔑 `ANALYZE=true npm run build`
 
   ```typescript
   import bundleAnalyzer from "@next/bundle-analyzer";
@@ -380,6 +387,13 @@
     - [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js#what-is-a-barrel-file?)
       - Một là dùng `optimizePackageImports` để tự động xử lý các "barrel file imports.
       - Hai là thêm `ESLint rule` để ngăn chặn việc "barrel file imports".
+
+  - 👉🏻 Kiểm tra những gói trong `package.json` nhưng không được sử dụng:
+    - Sử dụng tool `depcheck` nhớ cài với gói tương thích `typescript` (nhập lệnh 🔑 `depcheck` ở thư mục root để kiểm tra)
+    - Kết quả sẽ in ra:
+      - ✅ `Unused dependencies`: <u>gói có</u> trong `package.json` cần cho [runtime/app chạy], nhưng không thấy import trong code.
+      - `Unused devDependencies`: <u>gói có</u> trong `package.json` chỉ dùng khi [build, lint, test, dev], nhưng cũng không thấy dùng.
+      - `Missing dependencies`: gói được dùng nhưng <u>chưa khai báo</u> trong `package.json`.
 
 ### Cải thiện `TBT`
 
