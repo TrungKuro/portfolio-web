@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import bundleAnalyzer from "@next/bundle-analyzer";
 
 interface WebpackRule {
   test?: {
@@ -53,6 +54,47 @@ const nextConfig: NextConfig = {
     // Chỉ xóa console trong production
     removeConsole: process.env.NODE_ENV === "production",
   },
+
+  experimental: {
+    // Danh sách các gói được "tối ưu tự động" không cần thêm vào
+    //   - https://nextjs.org/docs/app/api-reference/config/next-config-js/optimizePackageImports
+    //!  - Chỉ thêm "tên gói chính" (PACKAGE-LEVEL) vào đây
+    optimizePackageImports: [
+      //! Đây là danh sách các gói từ script "analyze-imports.js" sau khi quét project có sử dụng "barrel-import"
+      //
+      // "react", // ❌ đây là gói cốt lõi, không cần optimize
+      // "next", // ❌ gói cốt lõi của Next.js
+      //
+      // Đây là các module cụ thể, không phải package-level
+      // "next/link",
+      // "next/image",
+      // "next/font/google",
+      // "next/dynamic",
+      // "react-dom/server",
+      //
+      // "react-icons/fa", // ❌ có hỗ trợ "react-icons" tự động
+      // "@mui/material/Tooltip", // ❌ có hỗ trợ "@mui/material" tự động
+
+      // 3D Libraries
+      "three",
+      "three-globe",
+      "@react-three/fiber",
+      "@react-three/drei",
+
+      // UI Libraries
+      "framer-motion",
+      "motion", // thay vì "motion/react"
+
+      // Other libraries
+      "next-themes",
+      "react-intersection-observer",
+      "lottie-react",
+    ],
+  },
 };
 
-export default nextConfig;
+const withBundleAnalyzer = bundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
+
+export default withBundleAnalyzer(nextConfig);

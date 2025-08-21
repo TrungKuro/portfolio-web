@@ -262,10 +262,129 @@
 
 - `Treemap` này giúp bạn thấy chỗ nào cần `code splitting`, `dynamic import`, `SSR/SSG` để <u>giảm JS cần load ban đầu</u>.
 
-### Cải thiện `LCP`
+### Cải thiên `FCP`
 
 ?
 
+### Cải thiện `LCP`
+
+💡 Một số tip:
+
+1. `Dynamic Import` cho **Component_Heavy (ssr: false)** để không block **LCP**.
+2. `Code Splitting` để giảm những đoạn **script (.js)** có dung lượng **MB** lớn.
+3. Kiểm tra lại `Dependency` xem có **Import** nặng nào không cần thiết.
+
+1️⃣🔎 `Dynamic Import` là gì?
+
+- ?
+
+2️⃣🔎 `Code Splitting` là gì?
+
+- ?
+
+- 👉🏻 Kiểm tra các file `(.tsx)` có sử dụng `"use client"` đúng cách?
+  - Mục đích để phân loại rõ ràng giữa _"Server Components"_ vs _"Client Components"_.
+  - Kiến trúc tối ưu:
+  ```
+  📁 Server Component (Container)
+  ├── 🔹 Data fetching & processing
+  ├── 🔹 Static layout & structure
+  ├── 🔹 SEO metadata
+  └── ⚡ Client Components (Interactive parts)
+      ├── Animation components
+      ├── Form handling components
+      ├── Event handling components
+      └── Browser API components
+  ```
+  - Cách làm này:
+    - **Server Components** làm _"container"_ chính - xử lý data và structure
+    - **Client Components** làm _"interactive parts"_ - chỉ chứa logic client cần thiết
+    - Tách biệt rõ ràng, bundle size nhỏ, performance cao
+    - Dễ maintain và scale
+
+3️⃣🔎 `Dependency` là gì?
+
+- Trong project Next.js/React, _“dependency”_ nghĩa là <u>thư viện bên ngoài</u> (third-party package) hoặc <u>module lớn</u> mà bạn import vào code.
+  - Mỗi **dependency** đều góp thêm dung lượng JS vào bundle (page.js, main-app.js, …).
+  - Nếu bạn import cả thư viện to, kể cả khi chỉ dùng một function nhỏ, thì toàn bộ code có thể bị bundle vào.
+- Cách check dependency nặng:
+
+  - Dùng `Lighthouse Treemap` → xem file `(.js)` nào to.
+  - Dùng `next-bundle-analyzer` để thấy dependency nào chiếm dung lượng.
+
+- ⚙️ [How to optimize package bundling](https://nextjs.org/docs/app/guides/package-bundling)
+
+  - Lưu ý cấu hình giữa `next.config.js` (Next.js với JavaScript) và `next.config.ts` (Next.js với TypeScript).
+    - `require()` chỉ dùng trong `next.config.js` còn trong `next.config.ts` Next.js chạy ở ESM mode, bắt buộc dùng `import ... from ....`
+    - Tương tự `module.exports` trong `next.config.js` sẽ thay thành `export default` trong `next.config.ts`
+    - Cấu hình xong thì chạy lệnh `ANALYZE=true npm run build`
+
+  ```typescript
+  import bundleAnalyzer from "@next/bundle-analyzer";
+
+  const withBundleAnalyzer = bundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+  });
+
+  export default withBundleAnalyzer(nextConfig);
+  ```
+
+  - Báo cáo sẽ mở ra **3 tab** mới trên trình duyệt của bạn để bạn có thể kiểm tra:
+
+    - Báo cáo `nodejs.html`
+      - Đây là <u>bundle</u> chạy ở **Server Node.js** (nếu bạn deploy lên server Node truyền thống như Vercel Node runtime, VPS, Docker, …).
+      - Chứa <u>code Server Components</u> và <u>logic chạy server-side</u> (render `SSR/SSG`, `API Routes`).
+      - Những dependency nào chỉ dùng trong **Server Component** (ví dụ: fs, pg để kết nối DB, node-fetch, …) sẽ xuất hiện ở đây.
+      - Không ảnh hưởng trực tiếp đến `LCP` (vì client không tải bundle này), nhưng ảnh hưởng `TTFB` (server render nhanh/chậm).
+    - Báo cáo `edge.html`
+      - Đây là bundle khi bạn chọn Edge Runtime (ví dụ Vercel Edge Functions).
+      - Edge runtime không dùng Node API (không có fs, crypto, …) → bundle sẽ khác Node.js.
+      - Nếu bạn không deploy trên Edge thì có thể bỏ qua report này.
+      - Ý nghĩa: để bạn so sánh khi chạy ở Edge thì code nào bị pack vào, xem có dependency nào không tương thích.
+    - Báo cáo `client.html`
+      - Đây là <u>bundle</u> **Client-Side**, chính là thứ <u>browser phải tải</u>, ảnh hưởng trực tiếp `LCP`, `FID`, `INP`.
+      - Chứa:
+        - **Client Components** (có `"use client"`).
+        - `JS` từ dependency bạn import trực tiếp vào client.
+        - Các `hydration script` để React chạy ở browser.
+        - Đây là báo cáo quan trọng nhất cho `LCP` & Core Web Vitals, vì dung lượng ở đây càng to → `JS parse` chậm → `LCP` xấu.
+
+  - Mỗi báo cáo sẽ gồm **3 loại** `Treemap Sizes`:
+
+    - `Stat size` (kích thước thống kê): là kích thước gốc của source code
+    - `Parsed size` (kích thước đã phân tích): sau khi webpack/Next xử lý, tree-shake, thêm dependency
+    - `Gzipped size` (kích thước nén): kích thước thực tế browser tải
+
+  - 🏆 **Optimizing package imports**:
+
+    - You can optimize how these packages are imported by adding the `optimizePackageImports` option to your `next.config.js`.
+    - 👉🏻 Cách xác định nhanh danh sách gói cần đưa vào `optimizePackageImports`
+      - Không dựa vào _"package.json"_ ❌
+        - package.json chỉ cho biết các dependency bạn cài, chứ không cho biết lib nào import nhiều export “nặng”.
+        - Nhiều lib nhỏ (clsx, tailwind-merge, next/link) hoàn toàn tree-shake tốt → không có lợi khi optimize.
+        - Không cần liệt kê hết trong package.json.
+      - Dựa vào đặc điểm thư viện ✅
+        - Nếu import nhiều named exports từ 1 lib → có khả năng cần optimize.
+        ```
+        import { ..., ..., ... } from "...";
+        ```
+        - Nếu import default export nhỏ → không cần optimize.
+        ```
+        import ... from "...";
+        ```
+      - Cách kiểm chứng thực tế 📊
+        - Bạn không cần đọc từng file component. Thay vào đó:
+          - Step 1: Build project (next build)
+          - Step 2: Chạy tool bundle-analyzer
+          - Step 3: Nhìn vào bundle graph: Nếu thấy thư viện nào chiếm mảng to → có thể optimize.
+    - [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js#what-is-a-barrel-file?)
+      - Một là dùng `optimizePackageImports` để tự động xử lý các "barrel file imports.
+      - Hai là thêm `ESLint rule` để ngăn chặn việc "barrel file imports".
+
 ### Cải thiện `TBT`
+
+?
+
+### Cải thiện `CLS`
 
 ?
