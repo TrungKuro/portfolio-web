@@ -39,7 +39,7 @@ export const BtnCopy = ({
         disabled={copied}
         onClick={handleCopy}
         className={cn(
-          "hover:cursor-copy hover:scale-90 transition-transform",
+          "hover:cursor-copy hover:scale-90",
           copied ? "opacity-50 scale-90" : "opacity-100"
         )}
       >

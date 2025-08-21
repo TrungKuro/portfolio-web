@@ -28,7 +28,7 @@ export const BtnSocialMedia = ({
       >
         <div
           className={cn(
-            "w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:scale-110 transition-all duration-200 ease-out",
+            "w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:scale-110",
             className
           )}
         >

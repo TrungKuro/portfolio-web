@@ -35,7 +35,7 @@ export const Contact = ({ id }: { id: string }) => {
               <p className="text-lavender font-extralight">{contact.message}</p>
             </div>
 
-            <div className="grid gap-3 place-content-center">
+            <div className="grid gap-3 place-content-center transition-all duration-200 ease-out">
               {address.map(({ iconName, title, content, link }) => (
                 <div
                   key={`address=${iconName}`}
@@ -87,7 +87,7 @@ export const Contact = ({ id }: { id: string }) => {
             {`© ${new Date().getFullYear()} ${copyright}. All rights reserved.`}
           </p>
 
-          <div className="flex md:flex-row flex-col justify-between items-center">
+          <div className="flex md:flex-row flex-col justify-between items-center transition-all duration-200 ease-out">
             <div className="flex items-center md:gap-3 gap-6">
               {socialMedia.core.map(({ id, name, alt, icon, url }) => (
                 <BtnSocialMedia

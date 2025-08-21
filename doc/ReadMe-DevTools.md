@@ -315,9 +315,8 @@
 - ⚡️ Cách <u>tối ưu</u> dependency
 
   - 👉🏻 `Tree-shaking`: chỉ import hàm nhỏ.
-  - 👉🏻 `Dynamic import`: chỉ load dependency khi thật sự cần.
   - 👉🏻 Thay thế bằng `lightweight library`.
-  - 👉🏻 <u>Tách code</u> ra khỏi bundle chính bằng `dynamic(() => import(...))`.
+  - 👉🏻 <u>Tách code</u> ra khỏi bundle chính bằng `dynamic(() => import(...))` → `Dynamic import`: chỉ load dependency khi thật sự cần.
 
 - ⚙️ [How to optimize package bundling](https://nextjs.org/docs/app/guides/package-bundling)
 
