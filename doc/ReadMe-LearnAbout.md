@@ -610,6 +610,31 @@ self    = căn chỉnh riêng lẻ từng flex item
 - Tối ưu khó khăn hơn 💀
   - Các tool nén SVG (như SVGO) chỉ tối ưu phần vector, không tối ưu ảnh raster nhúng bên trong.
 
+## Loading
+
+### Loading Page
+
+- [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
+
+  - Với **LoadingPage** (tức `loading.tsx` trong **App Router**), mục tiêu là:
+    - Nhẹ, render nhanh.
+    - Gợi cảm giác “toàn cục” (khác với `Suspense` <u>cục bộ</u>).
+    - Tránh animation phức tạp (vì đang ở trạng thái loading đầu tiên).
+
+- 💡 Một số ý tưởng cho **LoadingPage**:
+
+  1. `Spinner` đơn giản (tối ưu cho tốc độ)
+  2. `Skeleton layout` (gợi hình dạng page thật)
+  3. `Branding loader` (phù hợp app có logo)
+
+- 👉 Gợi ý chọn:
+
+  - **App content-heavy** (báo chí, dashboard) → skeleton.
+  - **App nhỏ/gọn** (portfolio, landing) → spinner.
+  - **App thương hiệu mạnh** (SaaS, startup) → logo animation.
+
+- 🔑 Bạn có thể sử dụng `React Developer Tools` để **ON/OFF** thủ công _"ranh giới" (boundaries)_ `<Suspense>`.
+
 ## Other Things
 
 ### Import

@@ -202,7 +202,7 @@
     - Giảm `TTI` & `TBT`
       - Chia nhỏ `bundle JS`, `lazy load component` không cần ngay.
       - Loại bỏ JS thừa (đặc biệt thư viện nặng).
-      - Sử dụng React.lazy() và dynamic import trong Next.js.
+      - Sử dụng `React.lazy()` và `dynamic import` trong Next.js.
     - Giảm dung lượng trang (~11MB)
       - Nén ảnh (sử dụng `next/image` hoặc `sharp`).
       - Tránh ảnh/video full-HD nếu không cần.
@@ -255,11 +255,9 @@
 👉🏻 **Lighthouse `Treemap` View**:
 
 - Công cụ giúp bạn thấy "kích thước" và "thành phần" `Bundle JS` khi build Next.js.
-
   - **Tổng dung lượng**: `http://localhost:3000/ ? MiB` → là tổng dung lượng JS đang tải cho trang này (thường nên giữ dưới `1 MB` nếu có thể).
   - **Treemap**: mỗi ô là một `Bundle JS` hoặc `Chunk JS` → diện tích ô = dung lượng file tương ứng.
   - **Name + Transfer bytes**: liệt kê chi tiết từng file bundle gồm "đường dẫn và kích thước".
-
 - `Treemap` này giúp bạn thấy chỗ nào cần `code splitting`, `dynamic import`, `SSR/SSG` để <u>giảm JS cần load ban đầu</u>.
 
 ### Cải thiên `FCP`
@@ -274,45 +272,106 @@
 2. `Code Splitting` để giảm những đoạn **script (.js)** có dung lượng **MB** lớn.
 3. Kiểm tra lại `Dependency` xem có **Import** nặng nào không cần thiết.
 
-1️⃣🔎 `Dynamic Import` là gì?
+1️⃣🔎 `Lazy Loading` là gì?
 
-- ?
+- ⚙️ [How to lazy load Client Components and libraries](https://nextjs.org/docs/app/guides/lazy-loading)
+
+  - 👉🏻 **Tải lười biếng**,là kỹ thuật <u>trì hoãn việc tải</u> code hoặc tài nguyên cho đến khi thật sự cần. Trong React/Next.js:
+
+    - `Dynamic Import` → load component khi cần.
+      - ✅ Next.js sẽ <u>tách component ra thành bundle riêng</u> (code splitting) ➡️ **Bundle** đó không tải ngay khi load trang ➡️ **Bundle** đó chỉ được _"tải" `(fetch)`_ từ server khi component (lần đầu) <u>cần được render</u>.
+      - ❌ Nhưng nếu bạn không kết hợp <u>điều kiện render</u> (như `Intersection Observer`) ➡️ thì **Bundle** đó vẫn được tải ngay khi React đi qua JSX (component luôn có trong JSX), nghĩa là dù nó ở cuối trang, vẫn load ngay từ đầu.
+      - 💎 Nếu kết hợp với `Intersection Observer` ➡️ **Bundle** chỉ load + render khi user scroll tới (viewport tiến tới component đó).
+    - `React.lazy` → lazy load component con.
+    - `Intersection Observer` → lazy load hình ảnh hoặc component khi scroll đến viewport.
+
+  - ⚠️ **Lazy loading** chỉ áp dụng cho `Client Components`:
+
+    - Nếu một component là `Client Component ("use client";)` thì nó <u>có JS bundle riêng</u> cần gửi xuống browser.
+    - _"Lazy loading"_ trong tài liệu Next.js nghĩa là:
+      - ✅ Chỉ tải <u>JS bundle</u> của `Client Component` khi cần. Tức component phải là `Client Component` nếu bạn muốn nó lazy-load trên browser.
+      - 💎 Chứ `Server Components` thì được _"render"_ trên **server** thành `HTML/RSC payload`, thì <u>không có bundle JS</u> nên không cần **lazy load** (không có tác dụng _"tải chậm"_).
+
+  - ⚠️ _"Note: When a Server Component dynamically imports a Client Component, automatic code splitting is currently not supported."_
+    - Nghĩa là nếu bạn dùng `dynamic()` trong một `Server Components` để **import** một `Client Component`.
+    - Thì `Client Component` con vẫn chạy, vẫn _"lazy load"_, nhưng `bundle JS` của component con <u>có thể to hơn</u> 💀 (ít granular hơn).
+    - Vì Next.js <u>không _“tách tự động”_ tốt</u> như khi `dynamic()` được gọi trong `Client Component`.
+    - Đây là limitation ❌ hiện tại của Next.js.
 
 2️⃣🔎 `Code Splitting` là gì?
 
-- ?
+- 👉🏻 **Chia nhỏ code**, nghĩa là:
+
+  - Thay vì build ra 1 file _"bundle"_ to đùng chứa toàn bộ ứng dụng (React, lib, pages, components…), ta chia nhỏ _"bundle"_ thành nhiều _"chunk"_ riêng biệt.
+  - Khi người dùng chỉ cần một phần chức năng, trình duyệt chỉ tải đúng _"chunk"_ cần thiết → nhanh hơn, nhẹ hơn.
+  - Ví dụ trực quan:
+    - Không Code Splitting:
+      - Trang **/about** vẫn tải cả component của **/dashboard**, dù không dùng.
+    - Có Code Splitting:
+      - Trang **/about** chỉ tải code của **/about**.
+      - Khi user chuyển sang **/dashboard**, mới tải thêm _"chunk"_ của nó.
+  - 💎 Next.js <u>mặc định</u> đã hỗ trợ `code splitting cho từng page (page-level splitting)`.
+    - Next.js tự động tách code theo `pages/routes`.
+    - Mỗi `page` trong thư mục `app` sẽ tạo ra một _"bundle"_ riêng biệt.
+    - Điều này có nghĩa là khi user truy cập một `page` cụ thể, chỉ code của `page` đó mới được tải xuống.
 
 - 👉🏻 Kiểm tra các file `(.tsx)` có sử dụng `"use client"` đúng cách?
+
   - Mục đích để phân loại rõ ràng giữa _"Server Components"_ vs _"Client Components"_.
   - Kiến trúc tối ưu:
-  ```
-  📁 Server Component (Container)
-  ├── 🔹 Data fetching & processing
-  ├── 🔹 Static layout & structure
-  ├── 🔹 SEO metadata
-  └── ⚡ Client Components (Interactive parts)
-      ├── Animation components
-      ├── Form handling components
-      ├── Event handling components
-      └── Browser API components
-  ```
+    ```
+    📁 Server Component (Container)
+    ├── 🔹 Data fetching & processing
+    ├── 🔹 Static layout & structure
+    ├── 🔹 SEO metadata
+    └── ⚡ Client Components (Interactive parts)
+        ├── Animation components
+        ├── Form handling components
+        ├── Event handling components
+        └── Browser API components
+    ```
   - Cách làm này:
     - **Server Components** làm _"container"_ chính - xử lý data và structure
     - **Client Components** làm _"interactive parts"_ - chỉ chứa logic client cần thiết
     - Tách biệt rõ ràng, bundle size nhỏ, performance cao
     - Dễ maintain và scale
 
+- 💎 `Server Components automatically code split`!
+
+  - Next.js không _"render"_ nguyên cả cây component một cục, mà chỉ tách và `stream` từng phần cần thiết (theo boundary). Nó không tạo `JS bundle` để chạy trên **client**, mà tạo `"payload"` để **client** ghép UI dần.
+  - `Streaming`: UI từ **server** có thể được gửi theo từng _"chunk"_ (ví dụ header trước, content sau), không phải đợi tất cả xong mới _"render"_.
+  - Tóm gọn:
+    - `Server Component code split` = tách thành _"payload"_ nhỏ để `stream` UI.
+    - `Client Component code split` = tách thành _"bundle JS"_ để `lazy load` (⚠️ Lazy loading applies to Client Components).
+
+- 🏆 Nguyên tắc xử lý:
+  1. Vẫn giữ `page.js` và `main-app.js` là `Server Component` (để không ship JS thừa).
+  2. Chia nhỏ thành các `Server Component` <u>con</u> (theo **feature/section**).
+     - Mỗi **section** riêng biệt = một file riêng → Next.js có thể <u>code split</u> + `stream` từng phần.
+  3. `Lazy-load` khi cần:
+     - **Section** nào nặng, dưới **[viewport]** → tách riêng và...
+     - Dùng 🔑 `Suspense + streaming (cho Server Component)`.
+       - Giúp giảm `TTFB` cho phần trên cùng của page.
+       - Tránh user phải đợi toàn bộ page render mới thấy UI.
+       - Cho phép section độc lập load song song.
+     - Hoặc 🔑 `dynamic import (cho Client Component)`.
+  4. Chỉ đổi sang `Client Component` ở scope nhỏ nhất:
+     - ✅ Ví dụ: Button, Form, Modal → `"use client"`.
+     - ❌ Không bao giờ biến cả `page.js` hoặc `main-app.js` thành **Client**, vì sẽ đẩy cả cây xuống `JS bundle` (rất nặng).
+
 3️⃣🔎 `Dependency` là gì?
 
 - Trong project Next.js/React, _“dependency”_ nghĩa là <u>thư viện bên ngoài</u> (third-party package) hoặc <u>module lớn</u> mà bạn import vào code.
+
   - Mỗi **dependency** đều góp thêm dung lượng JS vào bundle (page.js, main-app.js, …).
   - Nếu bạn import cả thư viện to, kể cả khi chỉ dùng một function nhỏ, thì toàn bộ code có thể bị bundle vào.
+
 - Cách check dependency nặng:
 
   - Dùng `Lighthouse Treemap` → xem file `(.js)` nào to.
   - Dùng `next-bundle-analyzer` để thấy dependency nào chiếm dung lượng.
 
-- ⚡️ Cách <u>tối ưu</u> dependency
+- ⚡️ Cách <u>tối ưu</u> dependency:
 
   - 👉🏻 `Tree-shaking`: chỉ import hàm nhỏ.
   - 👉🏻 Thay thế bằng `lightweight library`.
@@ -336,7 +395,6 @@
   ```
 
   - Báo cáo sẽ mở ra **3 tab** mới trên trình duyệt của bạn để bạn có thể kiểm tra:
-
     - Báo cáo `nodejs.html`
       - Đây là <u>bundle</u> chạy ở **Server Node.js** (nếu bạn deploy lên server Node truyền thống như Vercel Node runtime, VPS, Docker, …).
       - Chứa <u>code Server Components</u> và <u>logic chạy server-side</u> (render `SSR/SSG`, `API Routes`).
@@ -354,15 +412,11 @@
         - `JS` từ dependency bạn import trực tiếp vào client.
         - Các `hydration script` để React chạy ở browser.
         - Đây là báo cáo quan trọng nhất cho `LCP` & Core Web Vitals, vì dung lượng ở đây càng to → `JS parse` chậm → `LCP` xấu.
-
   - Mỗi báo cáo sẽ gồm **3 loại** `Treemap Sizes`:
-
     - `Stat size` (kích thước thống kê): là kích thước gốc của source code
     - `Parsed size` (kích thước đã phân tích): sau khi webpack/Next xử lý, tree-shake, thêm dependency
     - `Gzipped size` (kích thước nén): kích thước thực tế browser tải
-
   - 🏆 **Optimizing package imports**:
-
     - You can optimize how these packages are imported by adding the `optimizePackageImports` option to your `next.config.js`.
     - 👉🏻 Cách xác định nhanh danh sách gói cần đưa vào `optimizePackageImports`
       - Không dựa vào _"package.json"_ ❌
@@ -386,18 +440,41 @@
     - [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js#what-is-a-barrel-file?)
       - Một là dùng `optimizePackageImports` để tự động xử lý các "barrel file imports.
       - Hai là thêm `ESLint rule` để ngăn chặn việc "barrel file imports".
-
   - 👉🏻 Kiểm tra những gói trong `package.json` nhưng không được sử dụng:
-    - Sử dụng tool `depcheck` nhớ cài với gói tương thích `typescript` (nhập lệnh 🔑 `depcheck` ở thư mục root để kiểm tra)
-    - Kết quả sẽ in ra:
-      - ✅ `Unused dependencies`: <u>gói có</u> trong `package.json` cần cho [runtime/app chạy], nhưng không thấy import trong code.
-      - `Unused devDependencies`: <u>gói có</u> trong `package.json` chỉ dùng khi [build, lint, test, dev], nhưng cũng không thấy dùng.
-      - `Missing dependencies`: gói được dùng nhưng <u>chưa khai báo</u> trong `package.json`.
+  - Sử dụng tool `depcheck` nhớ cài với gói tương thích `typescript` (nhập lệnh 🔑 `depcheck` ở thư mục root để kiểm tra)
+  - Kết quả sẽ in ra:
+    - ✅ `Unused dependencies`: <u>gói có</u> trong `package.json` cần cho [runtime/app chạy], nhưng không thấy import trong code.
+    - `Unused devDependencies`: <u>gói có</u> trong `package.json` chỉ dùng khi [build, lint, test, dev], nhưng cũng không thấy dùng.
+    - `Missing dependencies`: gói được dùng nhưng <u>chưa khai báo</u> trong `package.json`.
 
 ### Cải thiện `TBT`
 
-?
+👉🏻 **Minimize main-thread work**
+
+- _"Consider reducing the time spent parsing, compiling and executing JS. You may find delivering smaller JS payloads helps with this."_
+- [Learn how to minimize main-thread work](https://developer.chrome.com/docs/lighthouse/performance/mainthread-work-breakdown/?utm_source=lighthouse&utm_medium=devtools)
+- Các hạng mục thường cần xử lý:
+  - `Script Parsing & Compilation` ➡️ Thời gian parse/compile JS trước khi chạy.
+    - Time cao, chứng tỏ `Bundle JS` lớn (có thể vài MB).
+    - Optimize được bằng cách:
+      - Giảm kích thước bundle (`tree shaking`, import đúng module nhỏ, xóa `polyfill` dư thừa).
+      - Dùng `next/script` với `strategy="lazyOnload"` cho script ít quan trọng.
+  - `Script Evaluation` ➡️ Browser đang mất nhiều thời gian chạy JavaScript (sau khi tải và parse).
+    - Nguyên nhân thường gặp:
+      - Import quá nhiều <u>thư viện nặng</u> (moment.js, lodash full, chart libs, three.js…).
+      - Code không `tree-shake` tốt, đang load toàn bộ thay vì chỉ dùng 1 phần.
+      - `Barrel imports` (index.ts) cũng có thể làm bundle to hơn.
+      - Chưa tách code (`code splitting`, `dynamic import`).
+  - `Other` ➡️ Các tác vụ vặt (event handlers, timers, plugin code...). Có thể đến từ tracking scripts, analytics, hoặc code logic nặng.
+  - `Style & Layout` ➡️ Từ CSS/DOM.
+  - `Garbage Collection` ➡️ Thời gian dọn rác JS.
+  - `Rendering` ➡️ Thời gian Render DOM sau khi tính toán xong.
+  - `Parse HTML & CSS` ➡️ Thời gian phân tích HTML & CSS.
 
 ### Cải thiện `CLS`
+
+?
+
+### Cải thiện `SI`
 
 ?

@@ -13,6 +13,9 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 
+import { Suspense } from "react";
+import { LoadingSection } from "@/components/layout/LoadingSection";
+
 export default function Home() {
   const { navItems } = getHeaderData();
 
@@ -53,15 +56,25 @@ export default function Home() {
         <FloatingNavbar navItems={navItemsWithIcons} />
 
         {/* Header */}
-        <Hero id={navItems[0].id} />
+        <Suspense fallback={<LoadingSection />}>
+          <Hero id={navItems[0].id} />
+        </Suspense>
 
         {/* Body */}
-        <About id={navItems[1].id} />
-        <Skills id={navItems[2].id} />
-        <Projects id={navItems[3].id} />
+        <Suspense fallback={<LoadingSection />}>
+          <About id={navItems[1].id} />
+        </Suspense>
+        <Suspense fallback={<LoadingSection />}>
+          <Skills id={navItems[2].id} />
+        </Suspense>
+        <Suspense fallback={<LoadingSection />}>
+          <Projects id={navItems[3].id} />
+        </Suspense>
 
         {/* Footer */}
-        <Contact id={navItems[4].id} />
+        <Suspense fallback={<LoadingSection />}>
+          <Contact id={navItems[4].id} />
+        </Suspense>
       </div>
     </main>
   );

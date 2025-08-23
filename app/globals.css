@@ -104,6 +104,10 @@ body {
     @apply text-[8px] md:text-[12px] lg:text-[16px];
   }
 
+  .logo-custom {
+    @apply h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32;
+  }
+
   /* ----------------------------------------------------------------------- */
 
   .bg-gradient-custom {
@@ -118,7 +122,7 @@ body {
 
 @layer utilities {
   .loader-spinner {
-    animation: rotateSpinner 1s infinite;
+    animation: loaderSpinnerRotate 1s infinite;
     height: 50px;
     width: 50px;
   }
@@ -131,13 +135,13 @@ body {
     width: 20px;
   }
   .loader-spinner:before {
-    animation: spinnerBall1 1s infinite;
+    animation: loaderSpinnerBall1 1s infinite;
     background-color: #acf9f3;
     box-shadow: 30px 0 0 #e9acf9;
     margin-bottom: 10px;
   }
   .loader-spinner:after {
-    animation: spinnerBall2 1s infinite;
+    animation: loaderSpinnerBall2 1s infinite;
     background-color: #e9acf9;
     box-shadow: 30px 0 0 #acf9f3;
   }
@@ -218,7 +222,7 @@ body {
 /*                                CSS LOADERS                                */
 /* ------------------------------------------------------------------------- */
 
-@keyframes rotateSpinner {
+@keyframes loaderSpinnerRotate {
   0% {
     transform: rotate(0deg) scale(0.8);
   }
@@ -230,7 +234,7 @@ body {
   }
 }
 
-@keyframes spinnerBall1 {
+@keyframes loaderSpinnerBall1 {
   0% {
     box-shadow: 30px 0 0 #e9acf9;
   }
@@ -245,7 +249,7 @@ body {
   }
 }
 
-@keyframes spinnerBall2 {
+@keyframes loaderSpinnerBall2 {
   0% {
     box-shadow: 30px 0 0 #acf9f3;
   }
