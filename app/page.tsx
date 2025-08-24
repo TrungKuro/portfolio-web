@@ -16,6 +16,8 @@ import { Contact } from "@/components/sections/Contact";
 import { Suspense } from "react";
 import { LoadingSection } from "@/components/layout/LoadingSection";
 
+//! Cấu hình mặc định là SSG
+//  (Static Site Generation) -> phù hợp cho Web Portfolio
 export default function Home() {
   const { navItems } = getHeaderData();
 

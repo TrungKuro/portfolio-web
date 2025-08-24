@@ -7,42 +7,33 @@ import React from "react";
 import { LoadingBundle } from "../layout/LoadingBundle";
 import { LoadingWait } from "../layout/LoadingWait";
 
-import animationData from "@/public/assets/lottie/topictalk-icon.json";
-
 /* ------------------------------------------------------------------------- */
 /*                             Lazy Import Bundle                            */
 /* ------------------------------------------------------------------------- */
 
-//! Dynamic sẽ auto lấy "default export" của thư viện "lottie-react"
-const Lottie = dynamic(() => import("lottie-react"), {
-  loading: () => <LoadingBundle />,
-  ssr: false,
-});
+const BackgroundGradientAnimation = dynamic(
+  () =>
+    import("../ui/BackgroundGradientAnimation").then(
+      (m) => m.BackgroundGradientAnimation
+    ),
+  {
+    loading: () => <LoadingBundle />,
+    ssr: false,
+  }
+);
 
 /* ------------------------------------------------------------------------- */
 /*                               Main Component                              */
 /* ------------------------------------------------------------------------- */
 
-export const LottieDemo = () => {
+export const BackgroundGradientAnimationDemo = () => {
   const { ref: refContainer, inView: containerInView } = useInView({
     triggerOnce: true,
   });
 
   return (
     <div ref={refContainer} className="container-item-grid">
-      {containerInView ? (
-        <Lottie
-          animationData={animationData}
-          loop={true}
-          autoplay={true}
-          rendererSettings={{
-            preserveAspectRatio: "xMidYMid slice",
-          }}
-          className="h-[50%] w-auto"
-        />
-      ) : (
-        <LoadingWait />
-      )}
+      {containerInView ? <BackgroundGradientAnimation /> : <LoadingWait />}
     </div>
   );
 };

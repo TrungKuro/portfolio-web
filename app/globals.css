@@ -108,6 +108,10 @@ body {
     @apply h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32;
   }
 
+  .container-item-grid {
+    @apply absolute w-full h-full flex items-center justify-center;
+  }
+
   /* ----------------------------------------------------------------------- */
 
   .bg-gradient-custom {
@@ -117,33 +121,6 @@ body {
       rgba(4, 7, 29, 1) 0%,
       rgba(12, 14, 35, 1) 100%
     );
-  }
-}
-
-@layer utilities {
-  .loader-spinner {
-    animation: loaderSpinnerRotate 1s infinite;
-    height: 50px;
-    width: 50px;
-  }
-  .loader-spinner:before,
-  .loader-spinner:after {
-    border-radius: 50%;
-    content: "";
-    display: block;
-    height: 20px;
-    width: 20px;
-  }
-  .loader-spinner:before {
-    animation: loaderSpinnerBall1 1s infinite;
-    background-color: #acf9f3;
-    box-shadow: 30px 0 0 #e9acf9;
-    margin-bottom: 10px;
-  }
-  .loader-spinner:after {
-    animation: loaderSpinnerBall2 1s infinite;
-    background-color: #e9acf9;
-    box-shadow: 30px 0 0 #acf9f3;
   }
 }
 
@@ -222,6 +199,33 @@ body {
 /*                                CSS LOADERS                                */
 /* ------------------------------------------------------------------------- */
 
+@layer utilities {
+  .loader-spinner {
+    animation: loaderSpinnerRotate 1s infinite;
+    height: 50px;
+    width: 50px;
+  }
+  .loader-spinner:before,
+  .loader-spinner:after {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: 20px;
+    width: 20px;
+  }
+  .loader-spinner:before {
+    animation: loaderSpinnerBall1 1s infinite;
+    background-color: #acf9f3;
+    box-shadow: 30px 0 0 #e9acf9;
+    margin-bottom: 10px;
+  }
+  .loader-spinner:after {
+    animation: loaderSpinnerBall2 1s infinite;
+    background-color: #e9acf9;
+    box-shadow: 30px 0 0 #acf9f3;
+  }
+}
+
 @keyframes loaderSpinnerRotate {
   0% {
     transform: rotate(0deg) scale(0.8);
@@ -261,5 +265,207 @@ body {
   100% {
     box-shadow: 30px 0 0 #acf9f3;
     margin-top: 0;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+.loader-atomic {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: #acf9f3;
+}
+.loader-atomic:before,
+.loader-atomic:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  border-radius: 50%;
+  transform: rotateX(70deg);
+  animation: 1s loaderAtomicSpin linear infinite;
+}
+.loader-atomic:after {
+  color: #e9acf9;
+  transform: rotateY(70deg);
+  animation-delay: 0.4s;
+}
+
+@keyframes loaderAtomicSpin {
+  0%,
+  100% {
+    box-shadow: 0.2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: 0.2em 0.2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 0.2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -0.2em 0.2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -0.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -0.2em -0.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -0.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: 0.2em -0.2em 0 0 currentcolor;
+  }
+}
+
+/* ------------------------------------------------------------------------- */
+
+.loader-gear {
+  width: 60px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  --base-color: #1e1e2f; /*use your base color*/
+}
+.loader-gear::before {
+  content: "";
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #e9acf9;
+  background-image: radial-gradient(
+      circle 8px at 18px 18px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 18px 0px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 0px 18px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 36px 18px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 18px 36px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 30px 5px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 30px 5px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 30px 30px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 5px 30px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 4px at 5px 5px,
+      var(--base-color) 100%,
+      transparent 0
+    );
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: loaderGearRotationBack 3s linear infinite;
+}
+.loader-gear::after {
+  content: "";
+  left: 35px;
+  top: 15px;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #acf9f3;
+  background-image: radial-gradient(
+      circle 5px at 12px 12px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 12px 0px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 0px 12px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 24px 12px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 12px 24px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 20px 3px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 20px 3px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 20px 20px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 3px 20px,
+      var(--base-color) 100%,
+      transparent 0
+    ),
+    radial-gradient(
+      circle 2.5px at 3px 3px,
+      var(--base-color) 100%,
+      transparent 0
+    );
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  animation: loaderGearRotationBack 4s linear infinite reverse;
+}
+
+@keyframes loaderGearRotationBack {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
   }
 }

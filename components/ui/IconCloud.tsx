@@ -69,6 +69,9 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
 
+  // State theo dõi xem tất cả icon/image đã load xong chưa?
+  const [isLoaded, setIsLoaded] = useState(false);
+
   const sizeRender = 40; //! Là kích thước gốc khi render
   const dprRef = useRef<number>(1);
   const displaySizeRef = useRef<{ width: number; height: number }>({
@@ -76,9 +79,17 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
     height: 400,
   });
 
+  // Theo dõi trạng thái load của icon/image:
+  function checkAllLoaded() {
+    if (imagesLoadedRef.current.every(Boolean)) {
+      setIsLoaded(true);
+    }
+  }
+
   // Create icon canvases once when icons/images change
   useEffect(() => {
     if (!icons && !images) return;
+    setIsLoaded(false); // Reset loading mỗi khi icons/images đổi
 
     const items = icons || images || [];
     imagesLoadedRef.current = new Array(items.length).fill(false);
@@ -110,9 +121,11 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
               offCtx.clearRect(0, 0, sizeRender, sizeRender);
               offCtx.drawImage(img, 0, 0, sizeRender, sizeRender);
               imagesLoadedRef.current[index] = true;
+              checkAllLoaded(); // <--- Kiểm tra xem đã tải xong tất cả chưa?
             } catch (error) {
               debugWarn(`Failed to decode image ${index}: `, error);
               imagesLoadedRef.current[index] = true; // Vẫn đánh dấu loaded
+              checkAllLoaded(); // <--- Kiểm tra xem đã tải xong tất cả chưa?
             }
           };
         } else {
@@ -132,9 +145,11 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
               offCtx.clearRect(0, 0, sizeRender, sizeRender);
               offCtx.drawImage(img, 0, 0, sizeRender, sizeRender);
               imagesLoadedRef.current[index] = true;
+              checkAllLoaded(); // <--- Kiểm tra xem đã tải xong tất cả chưa?
             } catch (error) {
               debugWarn(`Failed to decode SVG ${index}: `, error);
               imagesLoadedRef.current[index] = true;
+              checkAllLoaded(); // <--- Kiểm tra xem đã tải xong tất cả chưa?
             }
           };
         }
@@ -414,19 +429,45 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{ width: 400, height: 400 }}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      className={cn(
-        "rounded-lg hover:cursor-grab active:cursor-grabbing",
-        className
-      )}
-      aria-label="Interactive 3D Icon Cloud"
-      role="img"
-    />
+    <>
+      {/*
+       * Loader overlay
+       * - Tuy CANVAS đã được "mount"
+       * - Nhưng các [icon/images] vẫn chưa tải xong hết
+       * - Trong khoảng thời gian này, sẽ hiển thị Loader tạm cho tới khi toàn bộ [icon/images] đã tải xong
+       * - Lớp phủ có hiệu ứng "ẩn dần" (fade-out) với 2s chuyển đổi opacity
+       * - Đổi lại lớp phủ này sẽ luôn render, chỉ là bị ẩn đi ^^!
+       */}
+      <div
+        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-2000 ${
+          isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+        }`}
+      >
+        <div className="flex flex-col items-center space-y-4">
+          {/* Spinner Loading Icon */}
+          <div className="loader-spinner" />
+
+          {/* Loading Text */}
+          <p className="font-sans text-center font-extralight text-cool-gray sub-title-custom">
+            Rendering... 💭
+          </p>
+        </div>
+      </div>
+
+      <canvas
+        ref={canvasRef}
+        style={{ width: 400, height: 400 }}
+        onMouseDown={handleMouseDown}
+        onMouseMove={handleMouseMove}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseUp}
+        className={cn(
+          "rounded-lg hover:cursor-grab active:cursor-grabbing",
+          className
+        )}
+        aria-label="Interactive 3D Icon Cloud"
+        role="img"
+      />
+    </>
   );
 };

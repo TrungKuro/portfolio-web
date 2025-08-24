@@ -390,7 +390,42 @@
 
 - 🧠 Chú ý điểm khác nhau giữa `"loading" của dynamic()` và `"fallback" của <Suspense>`:
 
-  - ?!
+  1. `dynamic() với "loading"`
+     ```tsx
+     const Chart = dynamic(() => import("./Chart"), {
+       loading: () => <p>Loading...</p>, // fallback hiển thị khi đang load JS bundle
+       ssr: false,
+     });
+     ```
+     - Phạm vi: chỉ áp dụng cho component được _"import"_ bằng **dynamic()**.
+     - Cách hoạt động: khi Next.js <u>đang tải JS bundle</u> của `component client` từ **server** về → hiện _"fallback loading"_.
+     - Giới hạn:
+       - Chỉ dùng cho component được dynamic import.
+       - Không thể wrap nhiều component chung fallback.
+       - Không stream từ server → chỉ chờ JS load xong.
+  2. `<Suspense fallback={...}>`
+
+     ```tsx
+     <Suspense fallback={<Skeleton />}>
+       <Chart />
+     </Suspense>
+     ```
+
+     - Phạm vi: **React API**, bao quanh bất kỳ `async component` (Server Component, Client Component, dynamic import, fetch data…).
+     - Cách hoạt động: khi <u>subtree chưa render xong</u> (data chưa fetch, component chưa load) → hiện _"fallback"_.
+     - Sức mạnh:
+       - Hỗ trợ `Streaming SSR`: Server gửi từng phần UI xuống sớm thay vì chờ toàn bộ.
+       - Có thể wrap nhiều component, hiển thị fallback chung.
+       - Linh hoạt hơn (kết hợp tốt với `RSC`).
+
+  3. 🎯 So sánh nhanh
+     | Tính năng | `dynamic({ loading })` | `<Suspense>` |
+     | --------------------- | ------------------------------ | -------------------------- |
+     | Mức áp dụng | Chỉ 1 component dynamic import | Bất kỳ subtree React |
+     | Fallback hiển thị khi | Đang tải **JS bundle** | Đang chờ **JS hoặc data** |
+     | Streaming SSR | ❌ Không hỗ trợ | ✅ Có |
+     | Granularity | Fallback cục bộ cho component | Có thể bao nhiều component |
+     | Ngữ cảnh | Next.js API | React API gốc |
 
 - 🧠 Chú ý thuộc tính `"ssr" của dynamic()`!
 

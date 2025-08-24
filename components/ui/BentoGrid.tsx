@@ -3,8 +3,8 @@ import { DraggableCardDemo } from "../common/DraggableCardDemo";
 import { GlobeDemo } from "../common/GlobeDemo";
 import { IconCloudDemo } from "../common/IconCloudDemo";
 import { LottieDemo } from "../common/LottieDemo";
-import { Meteors } from "./Meteors";
-import { BackgroundGradientAnimation } from "./BackgroundGradientAnimation";
+import { MeteorsDemo } from "../common/MeteorsDemo";
+import { BackgroundGradientAnimationDemo } from "../common/BackgroundGradientAnimationDemo";
 import { cn } from "@/lib/utils";
 
 export const BentoGrid = ({
@@ -137,9 +137,9 @@ export const BentoGridItem = ({
         {specialEffect === "globe" && <GlobeDemo />}
         {specialEffect === "icon-cloud" && <IconCloudDemo />}
         {specialEffect === "lottie" && <LottieDemo />}
-        {specialEffect === "meteors" && <Meteors number={20} />}
+        {specialEffect === "meteors" && <MeteorsDemo />}
         {specialEffect === "background-gradient-animation" && (
-          <BackgroundGradientAnimation />
+          <BackgroundGradientAnimationDemo />
         )}
 
         {/* Nội dung */}

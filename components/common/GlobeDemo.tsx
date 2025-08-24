@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
+import { LoadingWait } from "../layout/LoadingWait";
 
 /* ------------------------------------------------------------------------- */
 /*                             Fake Progress Bar                             */
@@ -703,9 +704,13 @@ export function GlobeDemo() {
   return (
     <div
       ref={refContainer}
-      className="absolute w-full h-full flex items-center justify-center hover:cursor-grab active:cursor-grabbing"
+      className="container-item-grid hover:cursor-grab active:cursor-grabbing"
     >
-      {containerInView && <World data={sampleArcs} globeConfig={globeConfig} />}
+      {containerInView ? (
+        <World data={sampleArcs} globeConfig={globeConfig} />
+      ) : (
+        <LoadingWait />
+      )}
     </div>
   );
 }
