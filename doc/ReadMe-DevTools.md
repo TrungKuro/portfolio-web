@@ -150,7 +150,7 @@
     - 📌 Thời gian từ lúc tải trang đến khi trang hoàn toàn sẵn sàng tương tác (không còn tác vụ JS dài gây block)
     - 🏆 Mục tiêu tốt (**≤ 3.8 giây**)
     - 💎 Phản ánh cảm giác trang đã sẵn sàng để thao tác mà không bị delay
-  - `FID (First Input Delay)` : ?
+  - `FID (First Input Delay)` : ?!
     - 📌 Độ trễ giữa tương tác đầu tiên của người dùng (click, tap, keypress) và khi browser thực sự xử lý sự kiện đó
     - 🏆 Mục tiêu tốt (**≤ 100 mili giây**)
     - 💎 Phản ánh cảm giác trang phản hồi nhanh khi bấm lần đầu
@@ -262,7 +262,7 @@
 
 ### Cải thiên `FCP`
 
-?
+?!
 
 ### Cải thiện `LCP`
 
@@ -293,6 +293,7 @@
       - 💎 Chứ `Server Components` thì được _"render"_ trên **server** thành `HTML/RSC payload`, thì <u>không có bundle JS</u> nên không cần **lazy load** (không có tác dụng _"tải chậm"_).
 
   - ⚠️ _"Note: When a Server Component dynamically imports a Client Component, automatic code splitting is currently not supported."_
+
     - Nghĩa là nếu bạn dùng `dynamic()` trong một `Server Components` để **import** một `Client Component`.
     - Thì `Client Component` con vẫn chạy, vẫn _"lazy load"_, nhưng `bundle JS` của component con <u>có thể to hơn</u> 💀 (ít granular hơn).
     - Vì Next.js <u>không _“tách tự động”_ tốt</u> như khi `dynamic()` được gọi trong `Client Component`.
@@ -324,7 +325,7 @@
     ├── 🔹 Data fetching & processing
     ├── 🔹 Static layout & structure
     ├── 🔹 SEO metadata
-    └── ⚡ Client Components (Interactive parts)
+    └── ⚡️ Client Components (Interactive parts)
         ├── Animation components
         ├── Form handling components
         ├── Event handling components
@@ -345,6 +346,7 @@
     - `Client Component code split` = tách thành _"bundle JS"_ để `lazy load` (⚠️ Lazy loading applies to Client Components).
 
 - 🏆 Nguyên tắc xử lý:
+
   1. Vẫn giữ `page.js` và `main-app.js` là `Server Component` (để không ship JS thừa).
   2. Chia nhỏ thành các `Server Component` <u>con</u> (theo **feature/section**).
      - Mỗi **section** riêng biệt = một file riêng → Next.js có thể <u>code split</u> + `stream` từng phần.
@@ -358,6 +360,41 @@
   4. Chỉ đổi sang `Client Component` ở scope nhỏ nhất:
      - ✅ Ví dụ: Button, Form, Modal → `"use client"`.
      - ❌ Không bao giờ biến cả `page.js` hoặc `main-app.js` thành **Client**, vì sẽ đẩy cả cây xuống `JS bundle` (rất nặng).
+
+- 🧠 Tóm lại, cấu trúc tối ưu nhất:
+
+  ```
+  "page" (Component Server)
+  └── section (Component Server)
+      └── ...
+          điểm giao giữa Component cha (loại Server) và Component con (loại Client)
+          dùng <Suspense> làm lớp đệm giữa chúng
+          └── Wrapper (Component Client 💎 dùng IntersectionObserver + Dynamic Import)
+              └── HeavyComponent (Component Client ✅ được Lazy Load)
+  ```
+
+  - Với cấu trúc này:
+    - Toàn bộ _"page"_ & _"section"_ vẫn `Server Component` (tốt cho `SEO`, `SSR`, không ship **JS** thừa).
+    - Chỉ khoanh vùng `Component Client` nhỏ nhất để xử lý _"lazy-load"_ (Wrapper + component con nặng đô).
+    - `IntersectionObserver` chạy ở Client, còn phần còn lại không bị ảnh hưởng.
+  - ⚡️ Điểm giao _“Server → Client”_:
+    - <u>Stage 1:</u>
+      - Khi `Server Component` gọi tới một `Client Component`, Next.js sẽ <u>dừng render</u> ở **server**, và chèn một **[ Client Boundary ]**.
+      - Phần đó được **[ Bundle JS ]** riêng, ship xuống browser, còn **server** <u>tiếp tục render</u> phần còn lại.
+    - <u>Stage 2:</u>
+      - Nếu trình duyệt chưa tải xong **[ Bundle JS ]**, chỗ đó sẽ để trống → UX xấu (màn hình nháy, layout dịch).
+      - Nếu bọc bằng `<Suspense fallback={...}>`, trong lúc `Client Component` con đang tải _"bundle"_: `Suspense` sẽ render _"fallback"_ (ví dụ Skeleton / Spinner) → Layout không bị dịch → UX mượt hơn.
+    - <u>Stage 3:</u>
+      - Khi _"bundle"_ đã tải xong → `Suspense` thay thế _"fallback"_ bằng `Client Component` con.
+  - 👉 Tóm lại tối ưu tại _“giao điểm”_ = Combine `<Suspense>` để _"fallback"_ mượt.
+
+- 🧠 Chú ý điểm khác nhau giữa `"loading" của dynamic()` và `"fallback" của <Suspense>`:
+
+  - ?!
+
+- 🧠 Chú ý thuộc tính `"ssr" của dynamic()`!
+
+  - ?!
 
 3️⃣🔎 `Dependency` là gì?
 
@@ -473,8 +510,8 @@
 
 ### Cải thiện `CLS`
 
-?
+?!
 
 ### Cải thiện `SI`
 
-?
+?!

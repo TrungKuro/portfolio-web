@@ -13,7 +13,7 @@
 ### Link
 
 - **Anchor Link** `"#section-id"`
-  - Dẫn đến ID cụ thể trong cùng 1 Page - Single Page Application (SPA)
+  - Dẫn đến ID cụ thể trong cùng 1 Page - `Single Page Application (SPA)`
   - Dùng để Navigation nội bộ giữa các Section
 - **Relative URL** `"/page"`
   - Dẫn đến một Page khác trong cùng Website/App
@@ -30,7 +30,7 @@
 
 ### `<Link>` vs `<a>`
 
-?
+?!
 
 ### Google Drive
 
@@ -504,15 +504,19 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 👉🏻 `[ fill ]` của `<Image>`:
 
-?
+?!
 
 👉🏻 `[ sizes ]` của `<Image>`:
 
-?
+?!
 
 👉🏻 `[ height ]` và `[ width ]` của `<Image>`:
 
-?
+?!
+
+👉🏻 `[ priority ]` và `[ loading ]` của `<Image>`:
+
+?!
 
 ### Image Optimization Bitmap
 
@@ -635,7 +639,258 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 - 🔑 Bạn có thể sử dụng `React Developer Tools` để **ON/OFF** thủ công _"ranh giới" (boundaries)_ `<Suspense>`.
 
+## Router
+
+### App Router
+
+?!
+
+### Page Router
+
+?!
+
+## Rendering Patterns
+
+- 👉🏻 Core Patterns:
+
+  1. `SSR` (Server-Side Rendering)
+
+     - 👉 Render mỗi request ở server, sau đó gửi HTML đã render xuống client.
+     - 📌 Đặc điểm:
+       - HTML luôn mới nhất (data cập nhật theo từng request).
+       - Nhưng server phải render lại toàn bộ → chậm hơn khi nhiều traffic.
+     - ➡️ Ví dụ code mẫu: Khi user vào **/ssr**, server sẽ fetch API → render HTML → gửi xuống browser.
+
+     ```tsx
+     // pages/ssr.tsx
+     export async function getServerSideProps() {
+       const data = await fetch("https://api.example.com/posts").then((r) =>
+         r.json()
+       );
+       return { props: { data } };
+     }
+
+     export default function SSRPage({ data }: { data: any[] }) {
+       return (
+         <div>
+           <h1>SSR Page</h1>
+           <ul>
+             {data.map((post, i) => (
+               <li key={i}>{post.title}</li>
+             ))}
+           </ul>
+         </div>
+       );
+     }
+     ```
+
+     - ✅ Ví dụ ứng dụng:
+       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+       - Không cần `SSR` vì dữ liệu của bạn không thay đổi liên tục → không cần server render lại mỗi request.
+
+  2. `CSR` (Client-Side Rendering)
+
+     - 👉 Trang ban đầu chỉ là skeleton HTML trống, dữ liệu được fetch và render ở client (browser).
+     - 📌 Đặc điểm:
+       - Trải nghiệm ban đầu chậm hơn (phải chờ JS load).
+       - Nhưng load lại trong client rất mượt (`SPA`).
+     - ➡️ Ví dụ code mẫu:
+
+     ```tsx
+     // app/csr/page.tsx
+     "use client";
+
+     import { useEffect, useState } from "react";
+
+     export default function CSRPage() {
+       const [data, setData] = useState<any[]>([]);
+
+       useEffect(() => {
+         fetch("https://api.example.com/posts")
+           .then((r) => r.json())
+           .then(setData);
+       }, []);
+
+       return (
+         <div>
+           <h1>CSR Page</h1>
+           {data.length === 0 ? (
+             <p>Loading...</p>
+           ) : (
+             <ul>
+               {data.map((post, i) => (
+                 <li key={i}>{post.title}</li>
+               ))}
+             </ul>
+           )}
+         </div>
+       );
+     }
+     ```
+
+  3. `SSG` (Static Site Generation)
+
+     - 👉 Render tại build time → sinh ra file HTML tĩnh.
+     - 📌 Đặc điểm:
+       - HTML cực nhanh `(CDN cache)`.
+       - Nhưng dữ liệu chỉ mới tại thời điểm build → không realtime.
+     - ➡️ Ví dụ code mẫu: **Khi chạy next build, HTML cho "/ssg" được sinh ra sẵn → deploy lên CDN**.
+
+     ```tsx
+     // pages/ssg.tsx
+     export async function getStaticProps() {
+       const data = await fetch("https://api.example.com/posts").then((r) =>
+         r.json()
+       );
+       return { props: { data } };
+     }
+
+     export default function SSGPage({ data }: { data: any[] }) {
+       return (
+         <div>
+           <h1>SSG Page</h1>
+           <ul>
+             {data.map((post, i) => (
+               <li key={i}>{post.title}</li>
+             ))}
+           </ul>
+         </div>
+       );
+     }
+     ```
+
+     - ✅ Ví dụ ứng dụng:
+       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+       - Dùng `SSG` là tối ưu nhất.
+         - Build ra 1 file HTML tĩnh.
+         - Deploy lên CDN (Vercel, Netlify, Cloudflare Pages) → tốc độ cực nhanh.
+       - 💎 Với `App Router` (Next.js 13+), nếu bạn không _"fetch API"_ trong server component, thì mặc định page đã là _"static"_ (giống `SSG`).
+
+  4. `ISR` (Incremental Static Regeneration)
+
+     - 👉 Giống `SSG`, nhưng có thêm khả năng regenerate (tái tạo) HTML sau 1 khoảng thời gian revalidate.
+     - 📌 Đặc điểm:
+       - Lần đầu vẫn là file tĩnh (nhanh).
+       - Khi hết hạn revalidate, request tiếp theo sẽ trigger re-build trong background.
+       - User luôn thấy HTML tĩnh, nhưng được update theo chu kỳ.
+     - ➡️ Ví dụ code mẫu: **Kết hợp ưu điểm của SSG (tốc độ) và SSR (cập nhật data)**.
+
+     ```tsx
+     // pages/isr.tsx
+     export async function getStaticProps() {
+       const data = await fetch("https://api.example.com/posts").then((r) =>
+         r.json()
+       );
+       return {
+         props: { data },
+         revalidate: 60, // sau 60 giây rebuild lại HTML 1 lần
+       };
+     }
+
+     export default function ISRPage({ data }: { data: any[] }) {
+       return (
+         <div>
+           <h1>ISR Page</h1>
+           <ul>
+             {data.map((post, i) => (
+               <li key={i}>{post.title}</li>
+             ))}
+           </ul>
+         </div>
+       );
+     }
+     ```
+
+     - ✅ Ví dụ ứng dụng:
+       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+       - Không cần `ISR`, trừ khi bạn định lấy data từ `CMS/blog` và muốn cập nhật theo chu kỳ.
+
+- 👉🏻 Advanced Patterns:
+
+  - `DPR` (Distributed Persistent Rendering)
+    - Render được phân phối trên nhiều "máy chủ/vùng" **(Server/Region)**
+  - `ESR` (Edge-Side Rendering)
+    - Render tại các **Edge Location** (Cloudflare Workers, Vercel Edge)
+  - `NSR` (Nested Server Rendering)
+    - Server render các "thành phần lồng nhau" **(Nested Component)** vào những thời điểm khác nhau
+  - `PSR` (Progressive Server Rendering)
+    - Tương tự Streaming SSR nhưng focus vào progressive enhancement
+    - Render core content first, enhance progressively
+  - `TSR` (Trisomorphic Server Rendering)
+    - Render ở 3 places: Build time + Server + Client = SSG + SSR + CSR hybrid
+  - `DSR` (Dynamic Server Rendering)
+    - Server render nhưng với **Dynamic Routing**
+  - `RSR` (Resumable Server Rendering)
+    - Server render, serialize state, resume trên client (Qwik-style)
+    - Next.js chưa support native, nhưng có thể implement
+
+- 🌐 Các thuật ngữ liên quan khác:
+
+  - Build-time Patterns:
+    - `SWR` (Stale-While-Revalidate) - caching strategy
+    - `PWR` (Pre-Warm Rendering) - pre-generate popular routes
+  - Runtime Patterns:
+    - `JIT` (Just-In-Time Rendering)
+    - `AOT` (Ahead-Of-Time Rendering)
+    - `OTF` (On-The-Fly Rendering)
+  - Deployment Patterns:
+    - `JAMstack` (JavaScript + APIs + Markup)
+    - `MPAv2` (Multi-Page Application v2)
+    - `Islands Architecture` (Partial hydration)
+
+```
+Trong Next.js, focus chính vẫn là SSG, SSR, CSR, ISR + PPR + Streaming.
+```
+
+- 📋 Tóm tắt các patterns chính trong Next.js:
+  | Pattern | Viết tắt | Timing | Next.js Support |
+  |----------------------------|----------|----------------|--------------------|
+  | **Static Site Generation** | **SSG** | Build time | ✅ Native |
+  | **Incremental Static Regeneration** | **ISR** | Background revalidate | ✅ Native |
+  | **Streaming Server Rendering** | **Streaming SSR** | Progressive (stream chunks to client) | ✅ Native |
+  | **Server-Side Rendering** | **SSR** | Request time | ✅ Native |
+  | **Client-Side Rendering** | **CSR** | Browser | ✅ Native |
+  | **Edge-Side Rendering** | **ESR** | Edge locations | ✅ Native (Middleware, Edge Runtime) |
+  | **Partial Pre-rendering** | **PPR** | Mixed (Static + Dynamic) | ✅ Experimental |
+- 📝 Notes:
+  - `SSG`: Build sẵn HTML tại build-time, tối ưu cho static content.
+  - `ISR`: Cho phép trang `SSG` tự động _"re-build"_ lại theo chu kỳ mà không cần _"redeploy"_.
+  - **Streaming SSR**: `SSR` + `Suspense/streaming` → nội dung được gửi dần về client.
+  - |
+  - `SSR`: Render HTML trên server cho mỗi request.
+  - `CSR`: Render hoàn toàn trong browser bằng JS.
+  - |
+  - **ESR**: _"Render động"_ tại Edge (gần user) để giảm _"latency"_.
+  - **PPR**: Một phần trang _"pre-render"_, phần còn lại _"stream dần"_ (hiện đang experimental ⚠️).
+
+## Hook
+
+### [ useEffect ] và [ useLayoutEffect ]
+
+?!
+
 ## Other Things
+
+### SPA = Single Page Application 🖥️
+
+- Hiểu nôm na:
+
+  - Một ứng dụng web **chỉ có 1 file HTML gốc (index.html)** được load lần đầu.
+  - Sau đó toàn bộ **điều hướng (navigation)** và cập nhật UI đều được thực hiện bằng JavaScript trên trình duyệt.
+  - Khi người dùng bấm vào link, thay vì tải lại toàn bộ trang từ server, chỉ _"fetch"_ dữ liệu `JSON/API` và _"update"_ `DOM` → trải nghiệm mượt, giống `App Mobile`.
+
+- 🔑 Đặc điểm `SPA`:
+
+  - Chỉ load 1 lần đầu, sau đó mọi thứ xử lý bằng JS.
+  - Không reload toàn trang → nhanh hơn, UX tốt hơn.
+  - `SEO` yếu hơn nếu không có `SSR/SSG` (vì Google bot có thể gặp khó khi đọc JS).
+  - Phụ thuộc nặng vào JS (nếu disable JS thì app “chết”).
+
+- So sánh `SPA` và `MPA`:
+  | Kiểu | Hoạt động | Ưu | Nhược |
+  | ------------------------- | ------------------------------------- | ----------------------- | ----------------------- |
+  | **MPA (Multi Page App)** | Mỗi link → request HTML mới từ server | SEO tốt, đơn giản | Chậm, reload toàn trang |
+  | **SPA (Single Page App)** | Chỉ 1 HTML, router client xử lý | UX mượt, như app mobile | SEO kém, nặng JS |
 
 ### Import
 

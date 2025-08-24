@@ -376,11 +376,11 @@ export function World(props: WorldProps) {
        * - Rồi đã chạy useEffect để cấu hình
        * - Nhưng GPU vẫn cần time để render, dẫn tới chưa có gì hiển thị trên màn hình
        * - Trong khoảng thời gian này, sẽ hiển thị Loader tạm cho tới khi FRAME đầu tiên xuất hiện trong CANVAS
-       * - Lớp phủ có hiệu ứng "ẩn dần" (fade-out) với 3s chuyển đổi opacity
+       * - Lớp phủ có hiệu ứng "ẩn dần" (fade-out) với 2s chuyển đổi opacity
        * - Đổi lại lớp phủ này sẽ luôn render, chỉ là bị ẩn đi ^^!
        */}
       <div
-        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-3000 ${
+        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-2000 ${
           isCanvasReady ? "opacity-0 pointer-events-none" : "opacity-100"
         }`}
       >

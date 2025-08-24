@@ -50,6 +50,12 @@ export default function Home() {
   ];
 
   return (
+    //! "page" luôn nên là Component Server
+    //  - Và vì NextJs đã tự động tách code cho Component Server
+    //  - Nên chỉ cần bọc các component con trong <Suspense>
+    //  - Bạn có thể sử dụng tính năng "streaming" để gửi dần các phần UI từ server đến client
+    //! Đây là kỹ thuật Streaming UI
+
     <main className="relative bg-black-100 flex justify-center items-center flex-col mx-auto sm:px-10 px-5 overflow-clip">
       <div className="max-w-7xl w-full">
         {/* Navigation */}

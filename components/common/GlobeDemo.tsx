@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import { useInView } from "react-intersection-observer";
 import { useEffect, useState } from "react";
 
 /* ------------------------------------------------------------------------- */
@@ -691,9 +692,20 @@ export function GlobeDemo() {
 
   /* ----------------------------------------------------------------------- */
 
+  //! Kết hợp "Dynamic Import" và "Intersection Observer"
+  // Khi "container" vào "viewport" thì mới render "World"
+  const { ref: refContainer, inView: containerInView } = useInView({
+    triggerOnce: true,
+  });
+
+  /* ----------------------------------------------------------------------- */
+
   return (
-    <div className="absolute w-full h-full flex items-center justify-center hover:cursor-grab active:cursor-grabbing">
-      <World data={sampleArcs} globeConfig={globeConfig} />
+    <div
+      ref={refContainer}
+      className="absolute w-full h-full flex items-center justify-center hover:cursor-grab active:cursor-grabbing"
+    >
+      {containerInView && <World data={sampleArcs} globeConfig={globeConfig} />}
     </div>
   );
 }

@@ -2,11 +2,11 @@
 
 > [**NEXT.JS**](https://nextjs.org/)
 >
+> Chạy Web ở chế độ Dev:
+>
 > ```
 > npm run dev
 > ```
->
-> Chạy Web ở chế độ Dev
 >
 > - `Local`: http://localhost:3000
 >   - Chỉ truy cập được trên chính máy bạn.
@@ -19,6 +19,16 @@
 >   - Hữu ích khi:
 >     - Test website trên điện thoại hoặc tablet.
 >     - Cho người khác xem demo ngay trên mạng nội bộ.
+>
+> Chạy Web ở chế độ Product:
+>
+> ```
+> # 1. Build production
+> npm run build
+>
+> # 2. Start server
+> npm run start
+> ```
 >
 > [**TAILWIND CSS**](https://tailwindcss.com/)
 >
