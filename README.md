@@ -84,7 +84,7 @@
 > - [DevIcon](https://devicon.dev/)
 > - [Lottie Files](https://lottiefiles.com/)
 > - [Canva](https://www.canva.com/)
-> - [Clipping Magic](https://vi.clippingmagic.com/)
+> - [Remove BG](https://www.remove.bg/vi)
 > - [SVGOMG](https://svgomg.net/)
 > - [Squoosh](https://squoosh.app/)
 > - [CSS Loaders](https://css-loaders.com/)

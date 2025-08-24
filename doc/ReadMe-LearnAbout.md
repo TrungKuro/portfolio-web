@@ -1092,6 +1092,18 @@ Cấu trúc cơ bản:
   "people, faces, human portraits, characters, cartoon, painting, illustration, 3d render, cgi, flat textures, low quality, blurry, pixelated, oversaturated, distorted lighting, watermark, text overlay, logos, cropped window, cropped desk, cropped board, plain empty wall."
   ```
 
+- Prompt tạo `Logo`:
+
+  ```
+  Create a 1:1 ratio retro-futuristic logo for a web developer portfolio. Main icon: A bold geometric "less-than sign" shape ( < ) inside a rounded square, abstract and futuristic. Typography: Below the icon, write the text: less-than sign, uppercase T, forward slash, greater-than sign which should look like <T/> in coding style. Below that, place the word DEV in small modern futuristic font. Style: Retro Futuristic / Vaporwave / Soft Neon, with glowing neon edges and soft gradients. Color palette: Primary: Light retro purple (#cbacf9) Secondary: Baby pastel blue (#acd8f9) Accent: Warm pastel orange (#f9d7ac) Tertiary: Light pink purple (#e9acf9) Success: Bright lime green (#c9f9ac) Error: Pastel peach red (#f9acac) Info: Bright turquoise (#acf9f3) Background: Smoky black (#1e1e2f), Foreground: Ivory white (#fdfdfe). Design should feel minimal, futuristic, and striking, suitable for a developer’s personal brand.
+  ```
+
+- Prompt tạo `Favicon`:
+
+  ```
+  Create a 1:1 ratio retro-futuristic favicon for a web developer portfolio. Main icon: A bold geometric "less-than sign" shape ( < ) inside a rounded square, abstract and futuristic. Style: Retro Futuristic / Vaporwave / Soft Neon, with glowing neon edges and soft gradients. Color palette: Primary: Light retro purple (#cbacf9) Secondary: Baby pastel blue (#acd8f9) Accent: Warm pastel orange (#f9d7ac) Tertiary: Light pink purple (#e9acf9) Success: Bright lime green (#c9f9ac) Error: Pastel peach red (#f9acac) Info: Bright turquoise (#acf9f3) Background: Smoky black (#1e1e2f), Foreground: Ivory white (#fdfdfe). Design should feel minimal, futuristic, and striking, suitable for a developer’s personal brand.
+  ```
+
 ### [ "use client" ]
 
 - Trong App Router (Next.js 13+), **mặc định component là server component**.

@@ -13,19 +13,28 @@ export const LoadingPage = () => {
        *  - nếu logo file Bitmap
        *  - không có các dạng ảnh tối ưu cho web như (.webp)
        *  - dùng <Image> với tải ưu tiên "priority"
+       *
+       *  Nếu priority={true}
+       *  - The resource http://... was preloaded using link preload but not used within a few seconds from the window's load event
+       *  - Please make sure it has an appropriate `as` value and it is preloaded intentionally
+       *
+       *  Nếu priority={false}
+       *  - Image with src "/xxx.png" was detected as the Largest Contentful Paint (LCP)
+       *  - Please add the "priority" property if this image is above the fold
        */}
-      <div className="logo-custom animate-bounce">
+      <div className="w-[30%] max-sm:w-[50%] h-auto animate-bounce">
         <Image
           src={logo.img}
           alt={logo.alt}
-          priority={true} //!
-          fill
-          sizes="(min-width: 1024px) 128px, (min-width: 768px) 96px, 64px"
+          height={500}
+          width={500}
+          className="object-contain"
+          priority //! Tự động preload (Next.js sẽ tự động thêm as="image")
         />
       </div>
 
       {/* Text branding */}
-      <p className="text-purple title-custom animate-pulse">
+      <p className="text-purple heading animate-pulse">
         Loading my portfolio...
       </p>
     </div>

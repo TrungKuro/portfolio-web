@@ -104,10 +104,6 @@ body {
     @apply text-[8px] md:text-[12px] lg:text-[16px];
   }
 
-  .logo-custom {
-    @apply h-16 w-16 md:h-24 md:w-24 lg:h-32 lg:w-32;
-  }
-
   .container-item-grid {
     @apply absolute w-full h-full flex items-center justify-center;
   }
