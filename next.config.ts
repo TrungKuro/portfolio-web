@@ -18,6 +18,21 @@ interface WebpackRule {
 }
 
 const nextConfig: NextConfig = {
+  images: {
+    // Để cho phép hình ảnh từ Remote Server truy cập an toàn
+    // Cần xác định danh sách các mẫu URL được hỗ trợ
+    // Càng cụ thể càng tốt để ngăn chặn việc sử dụng trái phép
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.jsdelivr.net",
+        port: "",
+        pathname: "/gh/devicons/devicon@latest/icons/**",
+        search: "",
+      },
+    ],
+  },
+
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule: WebpackRule) =>

@@ -76,19 +76,37 @@
 >
 > **WEB TOOLS**
 >
-> - [CSS Gradient](https://cssgradient.io/)
-> - [SVG Repo](https://www.svgrepo.com/)
-> - [Cool Symbols & Fonts](https://coolsymbol.com/)
-> - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
-> - [11zon](https://www.11zon.com/vi/)
-> - [DevIcon](https://devicon.dev/)
-> - [Lottie Files](https://lottiefiles.com/)
-> - [Canva](https://www.canva.com/)
-> - [Remove BG](https://www.remove.bg/vi)
-> - [SVGOMG](https://svgomg.net/)
-> - [Squoosh](https://squoosh.app/)
-> - [CSS Loaders](https://css-loaders.com/)
-> - [Loaders](https://cssloaders.github.io/)
+> - Cho CSS:
+>
+>   - [CSS Gradient](https://cssgradient.io/)
+>   - [CSS Loaders](https://css-loaders.com/)
+>   - [Loaders](https://cssloaders.github.io/)
+>
+> - Cho SVG:
+>
+>   - [SVG Repo](https://www.svgrepo.com/)
+>   - [SVGOMG](https://svgomg.net/)
+>   - [DevIcon](https://devicon.dev/)
+>
+> - Cho GIF:
+>
+>   - [Lottie Files](https://lottiefiles.com/)
+>
+> - Cho Favicon:
+>
+>   - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
+>   - [Favic-o-matic](https://favicomatic.com/)
+>
+> - Cho Font:
+>
+>   - [Cool Symbols & Fonts](https://coolsymbol.com/)
+>   - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
+>
+> - Cho Edit Image:
+>   - [Squoosh](https://squoosh.app/)
+>   - [11zon](https://www.11zon.com/vi/)
+>   - [Remove BG](https://www.remove.bg/vi)
+>   - [Canva](https://www.canva.com/)
 
 > **WEBPACK**
 >

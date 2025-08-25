@@ -179,8 +179,23 @@ self    = căn chỉnh riêng lẻ từng flex item
   - Step 3: Chèn đoạn mã favicon HTML vào các trang web
 
 - **Next.Js - Metadata Files**
+
   - [favicon, icon, and apple-icon](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
   - [manifest.json](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
+
+- [How to Favicon in 2025: Three files that fit most needs](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
+  - Trình duyệt tải xuống các `Favicon` ở <u>chế độ nền</u>, do đó, hình ảnh biểu tượng yêu thích lớn hơn sẽ không ảnh hưởng đến hiệu suất của trang web.
+  - Nếu bạn có file `SVG` cho **Favicon** thì quá tuyệt, ngược lại nếu không thì <u>bộ 3 ảnh `PNG` tối thiểu<u> (sử dụng các công cụ tiên tiến để tối ưu hóa dung lượng) cũng đã đủ đáp ứng.
+  - 🏆 Cách thiết lập `Favicon` tối ưu:
+    - **[1]** `favicon.ico` cho trình duyệt cũ **(legacy browser)**.
+      - Tôi khuyên bạn nên sử dụng một hình ảnh duy nhất có kích thước `32×32`.
+      - Chúng ta cần `sizes="32x32"` cho `<link>` thành file `(.ico)` để sửa lỗi **Chrome** chọn tệp `ICO` thay vì `SVG`.
+    - **[2]** Một `SVG icon` duy nhất với phiên bản **(light/dark)** cho trình duyệt hiện đại **(modern browser)**.
+      - Cho phép bạn <u>chuyển đổi cùng một biểu tượng</u> giữa <u>chủ đề hệ thống sáng và tối</u>.
+    - **[3]** `180×180 PNG image` cho thiết bị **Apple**.
+      - Biểu tượng **Apple Touch** sẽ trông đẹp hơn nếu bạn _"đặt khoảng đệm 20px xung quanh biểu tượng"_ và _"thêm một chút màu nền"_.
+    - **[4]** `Web app manifest` với `192×192` và `512×512` của `PNG icon` cho thiết bị **Android**.
+  - Cuối cùng nhớ tối ưu lại các ảnh, bằng `Squoosh` cho _"ảnh Bitmap"_ và `SVGO` cho ảnh _"Vector"_.
 
 ### [ object-fit ]
 

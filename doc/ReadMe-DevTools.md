@@ -260,9 +260,16 @@
   - **Name + Transfer bytes**: liệt kê chi tiết từng file bundle gồm "đường dẫn và kích thước".
 - `Treemap` này giúp bạn thấy chỗ nào cần `code splitting`, `dynamic import`, `SSR/SSG` để <u>giảm JS cần load ban đầu</u>.
 
-### Cải thiên `FCP`
+### Cải thiện `FCP`
 
-?!
+👉🏻 **Reduce unused JavaScript:**
+
+- [Remove unused JavaScript](https://developer.chrome.com/docs/lighthouse/performance/unused-javascript/?utm_source=lighthouse&utm_medium=devtools)
+  1. Phát hiện JavaScript không sử dụng:
+     - Sử dụng `Tab Coverage` sẽ cho bạn biết trang web thực sự sử dụng `CSS/JS` nào.
+     - Cách mở `Tab Coverage`:
+       - Nhấn tổ hợp `Command+Shift+P (Mac)` hoặc `Control+Shift+P (Windows, Linux, ChromeOS)` trong **DevTools**.
+       - Một vùng nhập lệnh **Command Menu** sẽ hiện lên ➡️ nhập _"coverage"_.
 
 ### Cải thiện `LCP`
 
