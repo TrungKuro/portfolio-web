@@ -1,6 +1,6 @@
 // analyze-imports.js
 // - script để quét toàn bộ code và thống kê package nào bạn import nhiều named exports nhất
-// - cần cài số gói, nhập lệnh "npm install @babel/parser @babel/traverse glob" + "npm install globby --save-dev"
+// - cần cài số gói, nhập lệnh "npm i -D @babel/parser @babel/traverse globby glob"
 // - để chạy script, nhập lệnh "node analyze-imports.js"
 //
 //! Kết quả từ script này: giúp xác định danh sách tên các gói (PACKAGE-LEVEL) có thể cần đưa vào "optimizePackageImports" trong "next.config." để Optimizing package imports

@@ -65,6 +65,38 @@
 >
 > [**NPM**](https://www.npmjs.com/)
 >
+> - Lệnh cài đặt:
+>   - Viết đầy đủ: `npm install`
+>   - Viết tắt: `npm i`
+> - Lệnh gỡ:
+>   - Viết đầy đủ: `npm uninstall`
+>   - Viết tắt: `npm un`, `npm rm`, `npm r`
+> - Cờ:
+>   - Chọn _"dependencies"_ cho quá trình Deploy: ⚠️ mặc định, không cần ghi ra
+>     - Viết đầy đủ: `--save`
+>     - Viết tắt: `-S`
+>   - Chọn _"devDependencies"_ cho quá trình Dev:
+>     - Viết đầy đủ: `--save-dev`
+>     - Viết tắt: `-D`
+>   - Chọn _"toàn bộ"_ trong dự án:
+>     - Viết đầy đủ: `--global`
+>     - Viết tắt: `-g`
+>
+> ```
+> # Mặc định cài vào dependencies (từ npm 5+)
+> npm install "tên-package"
+>
+> # Cài vào devDependencies
+> npm install --save-dev "tên-package"
+> # Hoặc viết tắt:
+> npm install -D "tên-package"
+>
+> # Cài vào dependencies (tường minh)
+> npm install --save "tên-package"
+> # Hoặc viết tắt:
+> npm install -S "tên-package"
+> ```
+>
 > - [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
 > - [react-icons](https://www.npmjs.com/package/react-icons) → [Popular icons in your React projects](https://react-icons.github.io/react-icons/)
 > - [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
