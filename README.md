@@ -135,10 +135,15 @@
 >   - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
 >
 > - Cho Edit Image:
+>
 >   - [Squoosh](https://squoosh.app/)
 >   - [11zon](https://www.11zon.com/vi/)
 >   - [Remove BG](https://www.remove.bg/vi)
 >   - [Canva](https://www.canva.com/)
+>
+> - Cho Optimize Web:
+>
+>   - [Bundlephobia](https://bundlephobia.com/)
 
 > **WEBPACK**
 >

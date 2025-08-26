@@ -444,6 +444,21 @@
 
   - Mỗi **dependency** đều góp thêm dung lượng JS vào bundle (page.js, main-app.js, …).
   - Nếu bạn import cả thư viện to, kể cả khi chỉ dùng một function nhỏ, thì toàn bộ code có thể bị bundle vào.
+  - Có tất cả <u>3 loại</u> **Dependency List** trong `packages.json`:
+    - _`dependencies`_: những gói cần thiết để app chạy ở production.
+      - ✅ Được bundle vào production build.
+    - _`devDependencies`_: những gói chỉ cần khi development/build.
+      - ❌ KHÔNG được bundle vào production.
+      - 💎 Phù hợp cho những gói _"Build tools, testing, linting"_
+    - _`peerDependencies`_: những gói mà **[ Host Project]** phải provide
+      - 💎 Khi nào sử dụng?
+        - Khi tạo <u>library/plugin</u>
+        - Cần <u>specific version</u> của package khác (ví dụ **"react": ">=16.8.0"**)
+        - Muốn <u>host project control version</u> (sẽ ko bị _"Auto install"_, chỉ hiện _"Warning"_)
+  - Một số quy tắc quan trọng khi thêm các gói vào dự án:
+    1. ❌ Đảm bảo bạn không thêm các gói <u>chỉ được sử dụng trong quá trình phát triển</u> vào `dependencies`.
+    2. ✅ Nếu gói chỉ được sử dụng <u>cho mục đích phát triển</u>, hoặc <u>để thử nghiệm</u>, hoặc <u>trong quá trình biên dịch</u> (như _"Babel"_ hoặc _"webpack"_), thì gói đó sẽ thuộc danh sách `devDependencies`.
+    3. ✅ Bạn chỉ sử dụng danh sách `peerDependencies` trong **[ Shared Codebase ]** khi coi nó như một <u>gói riêng biệt</u>. Các gói nằm trong <u>gói chia sẻ</u> vì chúng có phiên bản dành cho thiết bị khác như **Mobile** hoặc **Desktop**.
 
 - Cách check dependency nặng:
 
@@ -453,7 +468,9 @@
 - ⚡️ Cách <u>tối ưu</u> dependency:
 
   - 👉🏻 `Tree-shaking`: chỉ import hàm nhỏ.
-  - 👉🏻 Thay thế bằng `lightweight library`.
+  - 👉🏻 Thay thế bằng `lightweight library` ➡️ Có thể dùng `Bundlephobia` để được cung cấp thông tin về lượng dữ liệu sẽ được thêm vào gói dự án của chúng ta nếu chúng ta thêm một gói cụ thể vào _"dependencies"_ của mình.
+    - Ngoài cung cấp sự so sánh kích thước của gói đó với <u>các phiên bản khác nhau</u>.
+    - Nó cũng cung cấp danh sách <u>các gói tương tự</u> để giúp bạn tìm được giải pháp thay thế.
   - 👉🏻 <u>Tách code</u> ra khỏi bundle chính bằng `dynamic(() => import(...))` → `Dynamic import`: chỉ load dependency khi thật sự cần.
 
 - ⚙️ [How to optimize package bundling](https://nextjs.org/docs/app/guides/package-bundling)
@@ -493,8 +510,42 @@
         - Đây là báo cáo quan trọng nhất cho `LCP` & Core Web Vitals, vì dung lượng ở đây càng to → `JS parse` chậm → `LCP` xấu.
   - Mỗi báo cáo sẽ gồm **3 loại** `Treemap Sizes`:
     - `Stat size` (kích thước thống kê): là kích thước gốc của source code
+      - Kích thước của gói JavaScript khi được cung cấp cho **Client**; đây là kích thước của mã JavaScript mà <u>trình duyệt web</u> của **Client** phải tải xuống và thực thi để chạy ứng dụng.
     - `Parsed size` (kích thước đã phân tích): sau khi webpack/Next xử lý, tree-shake, thêm dependency
+      - Kích thước của gói sau khi <u>trình duyệt web</u> _"đã phân tích cú pháp" (parsed)_; đây là lượng bộ nhớ mà mã JavaScript chiếm dụng trong trình duyệt web sau khi thực thi mã
     - `Gzipped size` (kích thước nén): kích thước thực tế browser tải
+      - Kích thước của gói JavaScript khi _"được nén" (compressed)_ bằng thuật toán `Gzip`; đây là lượng dữ liệu mà trình duyệt web của **Client** phải tải xuống để chạy ứng dụng.
+      - 💎 `Gzip` là <u>thuật toán nén tiêu chuẩn</u> được sử dụng để giảm kích thước của các nội dung web như tệp JavaScript. Nó có thể làm giảm đáng kể lượng dữ liệu được truyền qua mạng.
+  - 👉🏻 Cách để chỉ dùng gói `@next/bundle-analyzer` chỉ trong giai đoạn **(DEV)**.
+
+    - [NextJS Bundle Management 101](https://www.mattyasul.com/blog/nextjs-bundle-management/)
+
+      - ⚠️ Lệnh cài đặt: `npm install --save-dev @next/bundle-analyzer cross-env`
+        - Điểm khác biệt quan trọng trong lệnh này so với hướng dẫn từ NextJs chính là cài ở _"devDependencies"_
+        - Và thêm cả gói `cross-env`, giúp **Set environment variables cross-platform (Windows/Mac/Linux)** ➡️ Giải quyết vấn đề syntax khác nhau giữa OS.
+      - Nếu ko có `cross-env`:
+
+        ```json
+        // ❌ Chỉ work trên Unix/Mac/Linux
+        "scripts": {
+          "analyze": "ANALYZE=true npm run build"
+        }
+
+        // ❌ Windows CMD syntax
+        "scripts": {
+          "analyze": "set ANALYZE=true && npm run build"
+        }
+        ```
+
+      - Nếu có `cross-env`
+        ```json
+        // ✅ Work trên tất cả platforms
+        "scripts": {
+          "analyze": "cross-env ANALYZE=true npm run build"
+        }
+        ```
+      - Với thiết lập này, lệnh _"cũ"_ `ANALYZE=true npm run build` để chạy phân tích đổi thành ➡️ lệnh mới 🔑 `npm run analyze` có thể chạy trên mọi OS.
+
   - 🏆 **Optimizing package imports**:
     - You can optimize how these packages are imported by adding the `optimizePackageImports` option to your `next.config.js`.
     - 👉🏻 Cách xác định nhanh danh sách gói cần đưa vào `optimizePackageImports`
@@ -504,11 +555,11 @@
         - Không cần liệt kê hết trong package.json.
       - Dựa vào đặc điểm thư viện ✅
         - Nếu import nhiều named exports từ 1 lib → có khả năng cần optimize.
-        ```
+        ```tsx
         import { ..., ..., ... } from "...";
         ```
         - Nếu import default export nhỏ → không cần optimize.
-        ```
+        ```tsx
         import ... from "...";
         ```
       - Cách kiểm chứng thực tế 📊
@@ -517,14 +568,32 @@
           - Step 2: Chạy tool bundle-analyzer
           - Step 3: Nhìn vào bundle graph: Nếu thấy thư viện nào chiếm mảng to → có thể optimize.
     - [How we optimized package imports in Next.js](https://vercel.com/blog/how-we-optimized-package-imports-in-next-js#what-is-a-barrel-file?)
-      - Một là dùng `optimizePackageImports` để tự động xử lý các "barrel file imports.
-      - Hai là thêm `ESLint rule` để ngăn chặn việc "barrel file imports".
+      - 1️⃣ là dùng `optimizePackageImports` để tự động xử lý các "barrel file imports.
+      - 2️⃣ là thêm `ESLint rule` để ngăn chặn việc "barrel file imports".
+      - 📦 `Barrel Import` là gì?
+        - Là pattern tạo một index file để re-export nhiều modules <u>từ một thư mục</u>, giúp import gọn gàng hơn.
+        - Trước khi có Barrel:
+          ```js
+          // ❌ Import từng file riêng lẻ
+          import { Button } from "./components/Button/Button";
+          import { Modal } from "./components/Modal/Modal";
+          import { Card } from "./components/Card/Card";
+          import { Input } from "./components/Input/Input";
+          ```
+        - Sau khi có Barrel:
+          ```js
+          // ✅ Import từ một chỗ
+          import { Button, Modal, Card, Input } from "./components";
+          ```
+        - ✅ Ưu điểm: Clean Imports, Consistent Import Path, Easy Refactoring.
+        - ❌ Nhược điểm: Bundle Size Issues, Circular Dependencies, Build Performance.
   - 👉🏻 Kiểm tra những gói trong `package.json` nhưng không được sử dụng:
-  - Sử dụng tool `depcheck` nhớ cài với gói tương thích `typescript` (nhập lệnh 🔑 `depcheck` ở thư mục root để kiểm tra)
-  - Kết quả sẽ in ra:
-    - ✅ `Unused dependencies`: <u>gói có</u> trong `package.json` cần cho [runtime/app chạy], nhưng không thấy import trong code.
-    - `Unused devDependencies`: <u>gói có</u> trong `package.json` chỉ dùng khi [build, lint, test, dev], nhưng cũng không thấy dùng.
-    - `Missing dependencies`: gói được dùng nhưng <u>chưa khai báo</u> trong `package.json`.
+    - Sử dụng tool `depcheck` nhớ cài với gói tương thích `typescript` (nhập lệnh 🔑 `depcheck` ở thư mục root để kiểm tra)
+    - Kết quả sẽ in ra:
+      - ✅ `Unused dependencies`: <u>gói có</u> trong `package.json` cần cho [runtime/app chạy], nhưng không thấy import trong code.
+      - `Unused devDependencies`: <u>gói có</u> trong `package.json` chỉ dùng khi [build, lint, test, dev], nhưng cũng không thấy dùng.
+      - `Missing dependencies`: gói được dùng nhưng <u>chưa khai báo</u> trong `package.json`.
+  - 🏆 Sau cùng ‼️ Chúng ta phải đảm bảo rằng tất cả các `NPM packages` mà chúng ta thêm vào _`"dependencies"`_ đều có kích thước nhỏ nhất có thể.
 
 ### Cải thiện `TBT`
 
