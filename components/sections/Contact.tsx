@@ -48,13 +48,13 @@ export const Contact = ({ id }: { id: string }) => {
                   <div className="content-custom place-content-center">
                     <p className="font-extrabold text-cool-gray">{title}</p>
                     <p className="font-extralight text-lavender hover:font-medium hover:text-cyan">
-                      <Link
+                      <a
                         href={link}
-                        target="_blank"
+                        target="_blank" //! 👉 Đây là link external
                         rel="noopener noreferrer"
                       >
                         {content}
-                      </Link>
+                      </a>
                     </p>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ export const Contact = ({ id }: { id: string }) => {
             </div>
           </div>
 
-          <Link href="" className="my-16">
+          <Link href="#" className="my-16">
             <MagicButton
               title="Let's get in touch"
               icon={<FaLocationArrow />}

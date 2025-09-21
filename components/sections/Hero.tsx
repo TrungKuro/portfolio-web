@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React from "react";
 import { Spotlight } from "../ui/Spotlight";
 import { GridBackground } from "../ui/GridBackground";
@@ -49,13 +48,17 @@ export const Hero = ({ id }: { id: string }) => {
               <p className="font-bold text-purple">.</p>
             </div>
 
-            <Link href={cv.download} download className="mt-5 md:mt-10">
+            <a
+              href={cv.download}
+              download //! 👉 Đây là download file
+              className="mt-5 md:mt-10"
+            >
               <MagicButton
                 title={cv.title}
                 icon={<FaLocationArrow />}
                 position="right"
               />
-            </Link>
+            </a>
           </div>
         </div>
       </div>
