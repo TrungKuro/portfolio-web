@@ -1,198 +1,261 @@
-# About Project
+# Portfolio Web
 
-> [**NEXT.JS**](https://nextjs.org/)
->
-> Chạy Web ở chế độ Dev:
->
-> ```
-> npm run dev
-> ```
->
-> - `Local`: http://localhost:3000
->   - Chỉ truy cập được trên chính máy bạn.
->   - localhost hoặc 127.0.0.1 là địa chỉ loopback (vòng về máy mình), không đi qua mạng LAN.
->   - Dùng khi bạn code và test trực tiếp trên máy đang chạy server.
->   - Nếu bạn gửi link này cho người khác hoặc mở trên thiết bị khác (cùng Wi-Fi), họ sẽ không truy cập được.
-> - `Network`: http://192.168.2.61:3000
->   - Là địa chỉ IP trong mạng LAN (nội bộ).
->   - Máy khác trong cùng mạng Wi-Fi/LAN có thể truy cập app của bạn qua link này.
->   - Hữu ích khi:
->     - Test website trên điện thoại hoặc tablet.
->     - Cho người khác xem demo ngay trên mạng nội bộ.
->
-> Chạy Web ở chế độ Product:
->
-> ```
-> # 1. Build production
-> npm run build
->
-> # 2. Start server
-> npm run start
-> ```
->
-> [**TAILWIND CSS**](https://tailwindcss.com/)
->
-> - [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
->   - [Responsive design](https://tailwindcss.com/docs/responsive-design)
->   - [font-size](https://tailwindcss.com/docs/font-size)
->
-> [**ACETERNITY UI**](https://ui.aceternity.com/)
->
-> - [Spotlight](https://ui.aceternity.com/components/spotlight)
-> - [Grid and Dot Backgrounds](https://ui.aceternity.com/components/grid-and-dot-backgrounds)
-> - [Text Generate Effect](https://ui.aceternity.com/components/text-generate-effect)
-> - [Floating Navbar](https://ui.aceternity.com/components/floating-navbar)
-> - [Bento Grid](https://ui.aceternity.com/components/bento-grid)
-> - [Background Gradient Animation](https://ui.aceternity.com/components/background-gradient-animation)
-> - [GitHub Globe](https://ui.aceternity.com/components/github-globe)
-> - [3D Animated Pin](https://ui.aceternity.com/components/3d-pin)
-> - [Infinite Moving Cards](https://ui.aceternity.com/components/infinite-moving-cards)
-> - [Moving Border](https://ui.aceternity.com/components/moving-border)
-> - [Canvas Reveal Effect](https://ui.aceternity.com/components/canvas-reveal-effect)
-> - [Tailwind CSS buttons](https://ui.aceternity.com/components/tailwindcss-buttons)
-> - [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
-> - [Animated Tooltip](https://ui.aceternity.com/components/animated-tooltip)
-> - [Meteor Effect](https://ui.aceternity.com/components/meteors)
-> - [Lens](https://ui.aceternity.com/components/lens)
->
-> [**MATERIAL UI**](https://mui.com/)
->
-> - [Tooltip](https://mui.com/material-ui/react-tooltip/)
->
-> [**SHADCN UI**](https://ui.shadcn.com/)
->
-> - [Icon Cloud](https://magicui.design/docs/components/icon-cloud)
->
-> [**NPM**](https://www.npmjs.com/)
->
-> - Lệnh cài đặt:
->   - Viết đầy đủ: `npm install`
->   - Viết tắt: `npm i`
-> - Lệnh gỡ:
->   - Viết đầy đủ: `npm uninstall`
->   - Viết tắt: `npm un`, `npm rm`, `npm r`
-> - Cờ:
->   - Chọn _"dependencies"_ cho quá trình Deploy: ⚠️ mặc định, không cần ghi ra
->     - Viết đầy đủ: `--save`
->     - Viết tắt: `-S`
->   - Chọn _"devDependencies"_ cho quá trình Dev:
->     - Viết đầy đủ: `--save-dev`
->     - Viết tắt: `-D`
->   - Chọn _"toàn bộ"_ trong dự án:
->     - Viết đầy đủ: `--global`
->     - Viết tắt: `-g`
->
-> ```
-> # Mặc định cài vào dependencies (từ npm 5+)
-> npm install "tên-package"
->
-> # Cài vào devDependencies
-> npm install --save-dev "tên-package"
-> # Hoặc viết tắt:
-> npm install -D "tên-package"
->
-> # Cài vào dependencies (tường minh)
-> npm install --save "tên-package"
-> # Hoặc viết tắt:
-> npm install -S "tên-package"
-> ```
->
-> - [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
-> - [react-icons](https://www.npmjs.com/package/react-icons) → [Popular icons in your React projects](https://react-icons.github.io/react-icons/)
-> - [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
-> - [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react) → [motion](https://www.npmjs.com/package/motion)
-> - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
-> - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
-> - [lottie-react](https://www.npmjs.com/package/lottie-react) → [Lottie for React](https://lottiereact.com/)
-> - [depcheck](https://www.npmjs.com/package/depcheck)
->
-> **WEB TOOLS**
->
-> - Cho CSS:
->
->   - [CSS Gradient](https://cssgradient.io/)
->   - [CSS Loaders](https://css-loaders.com/)
->   - [Loaders](https://cssloaders.github.io/)
->
-> - Cho SVG:
->
->   - [SVG Repo](https://www.svgrepo.com/)
->   - [SVGOMG](https://svgomg.net/)
->   - [DevIcon](https://devicon.dev/)
->
-> - Cho GIF:
->
->   - [Lottie Files](https://lottiefiles.com/)
->
-> - Cho Favicon:
->
->   - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
->   - [Favic-o-matic](https://favicomatic.com/)
->
-> - Cho Font:
->
->   - [Cool Symbols & Fonts](https://coolsymbol.com/)
->   - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
->
-> - Cho Edit Image:
->
->   - [Squoosh](https://squoosh.app/)
->   - [11zon](https://www.11zon.com/vi/)
->   - [Remove BG](https://www.remove.bg/vi)
->   - [Canva](https://www.canva.com/)
->
-> - Cho Optimize Web:
->
->   - [Bundlephobia](https://bundlephobia.com/)
+?! ... about project
 
-> **WEBPACK**
->
-> - [SVGR](https://react-svgr.com/) → [Configure your Next.js project to import SVG as React components](https://react-svgr.com/docs/next/)
->
-> **CLI TOOLS**
->
-> - [SVGO](https://svgo.dev/) → [svgo](https://github.com/svg/svgo)
->
-> [**THREE.JS**](https://threejs.org/)
->
-> - [Canvas](https://r3f.docs.pmnd.rs/api/canvas)
-> - Hook
->   - [useFrame](https://sbcode.net/react-three-fiber/use-frame/)
->   - [useThree](https://gracious-keller-98ef35.netlify.app/docs/api/hooks/useThree/)
->   - [useProgress](https://drei.docs.pmnd.rs/loaders/progress-use-progress)
-> - Object3D → Light
->   - [AmbientLight](https://threejs.org/docs/?q=ambientLight#api/en/lights/AmbientLight)
->   - [DirectionalLight](https://threejs.org/docs/?q=directionalLight#api/en/lights/DirectionalLight)
->   - [PointLight](https://threejs.org/docs/?q=pointLight#api/en/lights/PointLight)
-> - Controls
->   - [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls)
->
-> **HEADLESS CMS**
->
-> - [Sanity](https://www.sanity.io/)
+## 🖼️ Framework
 
-## Portfolio
+#### [**NEXT.JS**](https://nextjs.org/)
 
-👉🏻 Những Portfolio tham khảo:
+- Chạy Web ở chế độ `Dev`:
 
-- 💎
-  - https://www.youtube.com/watch?v=FTH6Dn3AyIQ
-- ✅
-  - https://www.v1.ashish.top/
-  - https://mohi-portfolio.netlify.app/
-  - https://chanhdai.com/
-- ❌
-  - https://ymelnychenko.com/
-  - https://www.lokeshdev.in/
+  ```
+  npm run dev
+  ```
 
-### Các Page cho Portfolio
+  - `Local` - ví dụ ➡️ http://localhost:3000
+    - Chỉ truy cập được trên chính máy bạn.
+    - `localhost` hoặc `127.0.0.1` là _"địa chỉ loopback"_ (vòng về máy mình), không đi qua _"mạng LAN"_.
+    - Dùng khi bạn code và test trực tiếp trên máy đang chạy **server**.
+    - Nếu bạn gửi link này cho người khác hoặc mở trên thiết bị khác (cùng **Wi-Fi**), họ sẽ không truy cập được.
+  - `Network` - ví dụ ➡️ http://192.168.2.61:3000
+    - Là _"địa chỉ IP"_ trong _"mạng LAN" (nội bộ)_.
+    - Máy khác trong cùng mạng **Wi-Fi/LAN** có thể truy cập app của bạn qua link này.
+    - Hữu ích khi:
+      - Test website trên điện thoại hoặc tablet.
+      - Cho người khác xem demo ngay trên mạng nội bộ.
+
+- Chạy Web ở chế độ `Product`:
+
+  ```
+  # 1. Build production
+  npm run build
+
+  # 2. Start server
+  npm run start
+  ```
+
+## 🎨 Styling
+
+#### [**TAILWIND CSS**](https://tailwindcss.com/)
+
+- [Install Tailwind CSS with Next.js](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
+- [Responsive design](https://tailwindcss.com/docs/responsive-design)
+- [font-size](https://tailwindcss.com/docs/font-size)
+
+#### [**ACETERNITY UI**](https://ui.aceternity.com/)
+
+- [Spotlight](https://ui.aceternity.com/components/spotlight)
+- [Grid and Dot Backgrounds](https://ui.aceternity.com/components/grid-and-dot-backgrounds)
+- [Text Generate Effect](https://ui.aceternity.com/components/text-generate-effect)
+- [Floating Navbar](https://ui.aceternity.com/components/floating-navbar)
+- [Bento Grid](https://ui.aceternity.com/components/bento-grid)
+- [Background Gradient Animation](https://ui.aceternity.com/components/background-gradient-animation)
+- [GitHub Globe](https://ui.aceternity.com/components/github-globe)
+- [3D Animated Pin](https://ui.aceternity.com/components/3d-pin)
+- [Infinite Moving Cards](https://ui.aceternity.com/components/infinite-moving-cards)
+- [Moving Border](https://ui.aceternity.com/components/moving-border)
+- [Canvas Reveal Effect](https://ui.aceternity.com/components/canvas-reveal-effect)
+- [Tailwind CSS buttons](https://ui.aceternity.com/components/tailwindcss-buttons)
+- [Lamp Section Header](https://ui.aceternity.com/components/lamp-effect)
+- [Animated Tooltip](https://ui.aceternity.com/components/animated-tooltip)
+- [Meteor Effect](https://ui.aceternity.com/components/meteors)
+- [Lens](https://ui.aceternity.com/components/lens)
+
+#### [**MATERIAL UI**](https://mui.com/)
+
+- [Tooltip](https://mui.com/material-ui/react-tooltip/)
+
+#### [**SHADCN UI**](https://ui.shadcn.com/)
+
+- [Icon Cloud](https://magicui.design/docs/components/icon-cloud)
+
+## 📦 Package Manager
+
+#### [**NPM**](https://www.npmjs.com/)
+
+- Lệnh <u>cài đặt gói</u>:
+
+  - Viết đầy đủ: `npm install`
+  - Viết tắt: `npm i`
+
+- Lệnh <u>gỡ cài đặt gói</u>:
+
+  - Viết đầy đủ: `npm uninstall`
+  - Viết tắt: `npm un`, `npm rm`, `npm r`
+
+- Flag - <u>cờ</u>:
+
+  - Chọn _"dependencies"_ cho quá trình `Deploy`:
+    - ⚠️ là <u>mặc định</u> ➡️ không cần ghi ra
+    - Viết đầy đủ: `--save`
+    - Viết tắt: `-S`
+  - Chọn _"devDependencies"_ cho quá trình `Dev`:
+    - Viết đầy đủ: `--save-dev`
+    - Viết tắt: `-D`
+  - Chọn _"toàn bộ"_ trong dự án:
+    - Viết đầy đủ: `--global`
+    - Viết tắt: `-g`
+
+- ✅ Tóm lại:
+
+  ```
+  # Mặc định cài vào dependencies (từ npm 5+)
+  npm install "tên-package"
+
+  # Cài vào devDependencies
+  npm install --save-dev "tên-package"
+  # Hoặc viết tắt:
+  npm install -D "tên-package"
+
+  # Cài vào dependencies (tường minh)
+  npm install --save "tên-package"
+  # Hoặc viết tắt:
+  npm install -S "tên-package"
+  ```
+
+#### Packages:
+
+- [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
+- [react-icons](https://www.npmjs.com/package/react-icons) → [Popular icons in your React projects](https://react-icons.github.io/react-icons/)
+- [react-lottie](https://www.npmjs.com/package/react-lottie) → [Package contains type definitions for react-lottie](https://www.npmjs.com/package/@types/react-lottie)
+- [framer-motion](https://www.npmjs.com/package/framer-motion) → [Get started with Motion for React](https://motion.dev/docs/react) → [motion](https://www.npmjs.com/package/motion)
+- [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
+- [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
+- [lottie-react](https://www.npmjs.com/package/lottie-react) → [Lottie for React](https://lottiereact.com/)
+- [depcheck](https://www.npmjs.com/package/depcheck)
+
+## ⚙️ Support Tools
+
+#### Tool Web:
+
+- Cho `CSS`:
+
+  - [CSS Gradient](https://cssgradient.io/)
+  - [CSS Loaders](https://css-loaders.com/)
+  - [Loaders](https://cssloaders.github.io/)
+
+- Cho `SVG`:
+
+  - [SVG Repo](https://www.svgrepo.com/)
+  - [SVGOMG](https://svgomg.net/)
+  - [DevIcon](https://devicon.dev/)
+
+- Cho `GIF`:
+
+  - [Lottie Files](https://lottiefiles.com/)
+
+- Cho `Favicon`:
+
+  - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
+  - [Favic-o-matic](https://favicomatic.com/)
+
+- Cho `Font`:
+
+  - [Cool Symbols & Fonts](https://coolsymbol.com/)
+  - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
+
+- Cho `Edit Image`:
+
+  - [Squoosh](https://squoosh.app/)
+  - [11zon](https://www.11zon.com/vi/)
+  - [Remove BG](https://www.remove.bg/vi)
+  - [Canva](https://www.canva.com/)
+
+- Cho `Optimize Web`:
+
+  - [Bundlephobia](https://bundlephobia.com/)
+
+#### Tool WebPack:
 
 ```
-📌 ✅ Page Loading
-📌 ✅ Page Error
+Webpack = Module Bundler
+        – công cụ giúp bạn compile các module Javascript
 ```
 
-### Cấu trúc Header Portfolio
+- [SVGR](https://react-svgr.com/) → [Configure your Next.js project to import SVG as React components](https://react-svgr.com/docs/next/)
+
+#### Tool CLI:
+
+```
+CLI – Command Line Interface
+    – Giao diện dòng lệnh
+```
+
+- [SVGO](https://svgo.dev/) → [svgo](https://github.com/svg/svgo)
+
+#### Tool 3D ➡️ [**THREE.JS**](https://threejs.org/):
+
+- [Canvas](https://r3f.docs.pmnd.rs/api/canvas)
+- Hook
+  - [useFrame](https://sbcode.net/react-three-fiber/use-frame/)
+  - [useThree](https://gracious-keller-98ef35.netlify.app/docs/api/hooks/useThree/)
+  - [useProgress](https://drei.docs.pmnd.rs/loaders/progress-use-progress)
+- Object3D → Light
+  - [AmbientLight](https://threejs.org/docs/?q=ambientLight#api/en/lights/AmbientLight)
+  - [DirectionalLight](https://threejs.org/docs/?q=directionalLight#api/en/lights/DirectionalLight)
+  - [PointLight](https://threejs.org/docs/?q=pointLight#api/en/lights/PointLight)
+- Controls
+  - [OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls)
+
+## 🧔🏻 About My `Portfolio`
+
+- Những nguồn **Portfolio** tham khảo:
+  - 💎 https://www.youtube.com/watch?v=FTH6Dn3AyIQ
+  - ✅ https://www.v1.ashish.top/
+  - ✅ https://mohi-portfolio.netlify.app/
+  - ✅ https://chanhdai.com/
+  - ❌ https://ymelnychenko.com/
+  - ❌ https://www.lokeshdev.in/
+
+#### Các `Page` chính
+
+```
+📌 Page Loading 💫 (app/loading.tsx)
+📌 Page Content ✅ (app/page.tsx)
+📌 Page Error   ❌ (app/error.tsx)
+```
+
+- 💫 File [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading) ➡️ giúp bạn tạo UI _"đang tải" (`loading`)_ kết hợp với **Component** `<Suspense>` của **React**.
+- 📜 File [layout.js](https://nextjs.org/docs/app/api-reference/file-conventions/layout) ➡️ được sử dụng để xác định `layout` trong ứng dụng **Next.js** của bạn.
+  - ✅ File [page.js](https://nextjs.org/docs/app/api-reference/file-conventions/page) ➡️ cho phép bạn định nghĩa UI là _"duy nhất" (`unique`)_ cho một _"tuyến đường" (`route`)_.
+- ❌ File [error.js](https://nextjs.org/docs/app/api-reference/file-conventions/error) ➡️ cho phép bạn xử lý các _"lỗi runtime không mong muốn"_ và hiển thị UI _"dự phòng" (`fallback`)_.
+
+#### Tổng quát `Web Architecture`
+
+```
+Website Architecture:         Single Page Website
+                              ➡️ Header
+                              ➡️ Sections
+                              ➡️ Footer
+
+Web Application Architecture: SPA (Single Page Application)
+                              ➡️ 1 route duy nhất [app/page.tsx]
+
+Web Rendering Patterns:       SSG (Static Site Generation)
+                              ➡️ (/) page Home
+
+?!
+```
+
+- 👉🏻 **Website Architecture** → Cách bố cục và tổ chức UI của website
+
+  - Loại: _"Single Page Website"_
+  - Đặc điểm: chỉ có một trang duy nhất chứa đầy đủ các phần
+    - _Header_
+    - Các _Section_
+    - _Footer_
+
+- 👉🏻 **Web Application Architecture** → Cách điều hướng (routing) và cấu trúc app
+
+  - Loại: `SPA` _(Single Page Application)_
+  - Đặc điểm: chỉ có 1 route duy nhất → `/` (tương ứng `app/page.tsx`)
+
+- 👉🏻 **Web Rendering Pattern** → Cách Next.js render page đó
+
+  - Loại: `SSG` _(Static Site Generation)_
+  - Đặc điểm: page `/` (Home) được build sẵn thành file HTML + JSON khi `next build`
+
+#### Cấu trúc `Header` _(dự tính)_
 
 ```
 Logo 👉🏻 hover làm thay đổi hiệu ứng
@@ -213,7 +276,7 @@ Button
 |__ Toggle Language         👉🏻 nút đổi Language VN/EN
 ```
 
-### Cấu trúc các Section Portfolio
+#### Cấu trúc các `Section` _(dự tính)_
 
 ```
 1. [Home] ... hiện tất cả Section trên 1 Page với hiệu ứng hiển thị mỗi khi cuộn xuống
@@ -278,7 +341,7 @@ Button
 ✅ Liên hệ : Email ; Số điện thoại
 ```
 
-### Cấu trúc Footer Portfolio
+#### Cấu trúc `Footer` _(dự tính)_
 
 ```
 © 20xx - All right reserved by <you>
@@ -288,7 +351,7 @@ Button
 📌 Phát triển thương hiệu cá nhân / sản phẩm 👉🏻 Product Hunt ; Twitter (X) ; Telegram ; Hashnode ; Discord
 ```
 
-### Directory Structure
+#### Cấu trúc `Directory` _(dự tính)_
 
 👉🏻 Gợi ý cho thư mục `components`:
 

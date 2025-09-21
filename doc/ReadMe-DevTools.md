@@ -150,7 +150,7 @@
     - 📌 Thời gian từ lúc tải trang đến khi trang hoàn toàn sẵn sàng tương tác (không còn tác vụ JS dài gây block)
     - 🏆 Mục tiêu tốt (**≤ 3.8 giây**)
     - 💎 Phản ánh cảm giác trang đã sẵn sàng để thao tác mà không bị delay
-  - `FID (First Input Delay)` : ?!
+  - `FID (First Input Delay)` : ?
     - 📌 Độ trễ giữa tương tác đầu tiên của người dùng (click, tap, keypress) và khi browser thực sự xử lý sự kiện đó
     - 🏆 Mục tiêu tốt (**≤ 100 mili giây**)
     - 💎 Phản ánh cảm giác trang phản hồi nhanh khi bấm lần đầu
@@ -436,7 +436,16 @@
 
 - 🧠 Chú ý thuộc tính `"ssr" của dynamic()`!
 
-  - ?!
+  | Thuộc tính    | `ssr: true` (mặc định)         | `ssr: false`                                       |
+  | ------------- | ------------------------------ | -------------------------------------------------- |
+  | Render server | ✅ Có                          | ❌ Không                                           |
+  | Render client | ✅ Có (hydrate)                | ✅ Có                                              |
+  | SEO           | Tốt (HTML có sẵn)              | Kém (chỉ div rỗng ban đầu)                         |
+  | Dùng cho      | Nội dung chính, SEO quan trọng | Component client-only (map, chart, local state UI) |
+
+  - 👉 Tóm lại:
+    - `ssr: true` → dùng khi cần `SEO` hoặc nội dung phải có ngay từ **server**.
+    - `ssr: false` → dùng khi **component** chỉ chạy được ở **client** hoặc không cần `SSR`.
 
 3️⃣🔎 `Dependency` là gì?
 
@@ -621,8 +630,65 @@
 
 ### Cải thiện `CLS`
 
-?!
+```
+👉 Ngắn gọn: đặt kích thước cố định cho phần tử, dành chỗ trước, tránh chèn nội dung bất ngờ, preload font, dùng animation đúng cách.
+```
+
+1. **Đặt kích thước cố định cho ảnh và video**
+
+   - Dùng `width` và `height` hoặc `aspect-ratio` để trình duyệt biết trước không gian chiếm chỗ.
+
+2. **Dự trữ không gian cho <u>quảng cáo</u>, `<iframe>`, `"embeds"`**
+
+   - Luôn dành chỗ trước khi nội dung thực tải về.
+
+3. **Không chèn nội dung mới lên trên nội dung cũ**
+
+   - Tránh load thêm _"banner"_, _"popup"_ đẩy nội dung xuống.
+   - Nếu cần, hãy dùng `[overlay]` hoặc `[modal]`.
+
+4. **Load font hợp lý (Font Display)**
+
+   - Dùng `font-display: swap` để tránh text nhảy khi _"font custom"_ tải xong.
+   - Hoặc _"preload font"_ quan trọng.
+
+5. **Animation/Transition mượt**
+
+   - Chỉ _"animate"_ `opacity`, `transform`.
+   - Không _"animate"_ `width`, `height`, `top`, `left`.
 
 ### Cải thiện `SI`
 
-?!
+```
+👉 Ngắn gọn: hiển thị nhanh phần nội dung đầu tiên bằng cách giảm block render, tối ưu ảnh, preload tài nguyên quan trọng, và render sẵn ở server.
+```
+
+1. **Tối ưu Critical Rendering Path**
+
+   - Inline hoặc preload **CSS quan trọng** cho phần trên màn hình (above-the-fold).
+   - Trì hoãn CSS/JS không cần thiết (`defer`, `async`).
+
+2. **Giảm kích thước & số lượng request**
+
+   - Dùng minify, tree-shaking, bundle splitting.
+   - Ưu tiên HTTP/2 hoặc HTTP/3.
+
+3. **Tối ưu hình ảnh**
+
+   - Dùng **WebP/AVIF**, nén ảnh.
+   - Lazy load ảnh ngoài viewport (`loading="lazy"`).
+   - Dùng `srcset` cho responsive images.
+
+4. **Server-side Rendering / Static Rendering**
+
+   - Render sẵn HTML giúp người dùng thấy nội dung sớm thay vì chờ JS.
+
+5. **CDN & Caching**
+
+   - Đưa nội dung gần người dùng nhất (Edge caching).
+   - Dùng `Cache-Control` hợp lý.
+
+6. **Preload / Prefetch tài nguyên quan trọng**
+
+   - Preload font, CSS, hero image.
+   - Prefetch route tiếp theo (Next.js tự hỗ trợ).

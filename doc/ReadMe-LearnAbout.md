@@ -30,7 +30,41 @@
 
 ### `<Link>` vs `<a>`
 
-?!
+- 🔗 `<a>` (thẻ HTML gốc)
+
+  - Reload lại **toàn bộ trang** khi điều hướng.
+  - Luôn gửi request mới đến server.
+  - Dùng khi: liên kết ra **ngoài domain** hoặc cần tải lại trang từ server.
+
+- 🔗 `<Link>` (Next.js component)
+
+  - Dùng **client-side navigation** → chỉ thay đổi phần nội dung, không reload cả trang.
+  - Nhanh hơn, giữ được **state** và **performance tốt**.
+  - Tự động **prefetch** route nội bộ (khi gần viewport).
+  - Chỉ dùng cho **route nội bộ** trong Next.js app.
+
+```
+👉 Tóm lại:
+  - <a>   : link chuẩn HTML, reload trang.
+  - <Link>: của Next.js, điều hướng nội bộ nhanh, không reload.
+```
+
+- 📌 Bảng so sánh `<Link>` vs `<a>`
+
+  | Trường hợp                                                | Dùng `<Link>`                                     | Dùng `<a>`         |
+  | --------------------------------------------------------- | ------------------------------------------------- | ------------------ |
+  | **Điều hướng nội bộ (cùng app)**                          | ✅ Có (client-side navigation nhanh, giữ state)   | ❌ Không           |
+  | **Điều hướng nội bộ nhưng mở tab mới (`target="_blank`)** | ❌ Không cần (mất lợi thế client-side navigation) | ✅ Có              |
+  | **Điều hướng ra ngoài domain**                            | ❌ Không                                          | ✅ Có              |
+  | **Link tải file (PDF, ZIP, …)**                           | ❌ Không                                          | ✅ Có              |
+  | **Link chứa anchor nội bộ (`#section`)**                  | ❌ Không (Next.js không tối ưu cho hash link)     | ✅ Có              |
+  | **SEO: backlink đến site khác**                           | ❌ Không                                          | ✅ Có (chuẩn HTML) |
+  | **Prefetch route (nội bộ)**                               | ✅ Tự động prefetch (Next.js hỗ trợ)              | ❌ Không           |
+
+- ✅ Best practice (tóm gọn)
+
+  - **Nội bộ, không tab mới** → `<Link>`.
+  - **Ngoại bộ, tab mới, download, anchor** → `<a>`.
 
 ### Google Drive
 
@@ -185,7 +219,7 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 - [How to Favicon in 2025: Three files that fit most needs](https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs)
   - Trình duyệt tải xuống các `Favicon` ở <u>chế độ nền</u>, do đó, hình ảnh biểu tượng yêu thích lớn hơn sẽ không ảnh hưởng đến hiệu suất của trang web.
-  - Nếu bạn có file `SVG` cho **Favicon** thì quá tuyệt, ngược lại nếu không thì <u>bộ 3 ảnh `PNG` tối thiểu<u> (sử dụng các công cụ tiên tiến để tối ưu hóa dung lượng) cũng đã đủ đáp ứng.
+  - Nếu bạn có file `SVG` cho **Favicon** thì quá tuyệt, ngược lại nếu không thì <u>bộ 3 ảnh `PNG` tối thiểu</u> (sử dụng các công cụ tiên tiến để tối ưu hóa dung lượng) cũng đã đủ đáp ứng.
   - 🏆 Cách thiết lập `Favicon` tối ưu:
     - **[1]** `favicon.ico` cho trình duyệt cũ **(legacy browser)**.
       - Tôi khuyên bạn nên sử dụng một hình ảnh duy nhất có kích thước `32×32`.
@@ -519,19 +553,48 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 👉🏻 `[ fill ]` của `<Image>`:
 
-?!
+- ✅ Làm cho <u>ảnh chiếm toàn bộ phần tử cha</u> (⚠️ phải có `position: relative` trên cha).
+- ❌ Không dùng `width/height` trực tiếp, mà <u>ảnh tự co giãn theo container</u>.
 
 👉🏻 `[ sizes ]` của `<Image>`:
 
-?!
+- Xác định kích thước ảnh hiển thị theo `viewport` (cho _"responsive"_).
+- Giúp **Next.js** chọn đúng phiên bản ảnh tối ưu.
 
 👉🏻 `[ height ]` và `[ width ]` của `<Image>`:
 
-?!
+- Dùng khi ảnh có kích thước cố định.
+- **Next.js** dùng thông tin này để tạo `placeholder` (🐞 ngăn _"layout shift"_ = ✅ cải thiện `CLS`).
+
+📌 Sơ đồ chọn cách định nghĩa ảnh:
+
+```
+                   Bạn muốn ảnh chiếm trọn container (phủ hết cha)?
+                                  │
+               ┌──────────────────┴──────────────────┐
+               ▼                                     ▼
+              Có                                    Không
+   (Hero, banner, background)         Ảnh có kích thước cụ thể?
+               │                                     │
+               ▼                                     ▼
+      Dùng [ fill ]                          ┌─────────────┴─────────────┐
+      + [ sizes ] nếu responsive             ▼                           ▼
+                                      Có (icon, logo, thumbnail)   Không (ảnh responsive)
+                                              │                           │
+                                              ▼                           ▼
+                                       Dùng [ width ] + [ height ]   Dùng [ width ] + [ height ]
+                                       (cố định, không cần sizes)   + [ sizes ] (responsive)
+
+```
 
 👉🏻 `[ priority ]` và `[ loading ]` của `<Image>`:
 
-?!
+- `priority` → ⚠️ <u>Bắt buộc</u> _"preload"_ ảnh
+  - Chắc chắn ảnh được <u>ưu tiên cao nhất</u>.
+  - Thường dùng cho ảnh hero/above-the-fold.
+- `loading` → Cách tải ảnh:
+  - `"eager"`: tải ngay lập tức, nhưng vẫn cạnh tranh với tài nguyên khác.
+  - `"lazy"` (mặc định): tải khi gần `viewport`.
 
 ### Image Optimization Bitmap
 
@@ -642,9 +705,9 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 - 💡 Một số ý tưởng cho **LoadingPage**:
 
-  1. `Spinner` đơn giản (tối ưu cho tốc độ)
-  2. `Skeleton layout` (gợi hình dạng page thật)
-  3. `Branding loader` (phù hợp app có logo)
+  - `Spinner` đơn giản (tối ưu cho tốc độ)
+  - `Skeleton layout` (gợi hình dạng page thật)
+  - `Branding loader` (phù hợp app có logo)
 
 - 👉 Gợi ý chọn:
 
@@ -656,169 +719,187 @@ self    = căn chỉnh riêng lẻ từng flex item
 
 ## Router
 
-### App Router
+- Trong _"web framework"_, `Router` là hệ thống <u>ánh xạ</u> `URL → component/page`.
+- Giúp _"điều hướng" (navigation)_ và định nghĩa <u>cấu trúc ứng dụng</u>.
 
-?!
+```
+⚠️ Trước đây Next.js mặc định là [Page Router]
+    - Từ Next.js 13+ thì giới thiệu [App Router]
+    - Tuy nhiên vẫn giữ [Page Router] để "backward compatibility"
+```
 
-### Page Router
+### Page Router (truyền thống, từ Next.js 1 → 12, vẫn còn trong 13+)
 
-?!
+- ⚙️ Cơ chế: mỗi _"file"_ trong _"thư mục"_ `/pages` tự động thành một `route`.
+  - _pages/index.tsx → /_
+  - _pages/about.tsx → /about_
+- ✅ Đơn giản, dễ hiểu
+- ❌ Nhưng hạn chế khi app lớn (khó chia nhỏ layout, khó handle _"nested routes"_).
+
+### App Router (giới thiệu từ Next.js 13)
+
+- ⚙️ Cơ chế: dựa trên _"thư mục"_ `/app`.
+- ✅ Hỗ trợ:
+  - 1️⃣ `Nested routes` (route lồng nhau).
+  - 2️⃣ `Layout sharing` (chia sẻ layout giữa các page con).
+  - 3️⃣ `Server Components` (tối ưu tải nhanh, render trên server).
+  - 4️⃣ `Loading, error, not-found` handling theo route.
 
 ## Rendering Patterns
 
 - 👉🏻 Core Patterns:
 
-  1. `SSR` (Server-Side Rendering)
+  - 1️⃣ `SSR` (Server-Side Rendering)
 
-     - 👉 Render mỗi request ở server, sau đó gửi HTML đã render xuống client.
-     - 📌 Đặc điểm:
-       - HTML luôn mới nhất (data cập nhật theo từng request).
-       - Nhưng server phải render lại toàn bộ → chậm hơn khi nhiều traffic.
-     - ➡️ Ví dụ code mẫu: Khi user vào **/ssr**, server sẽ fetch API → render HTML → gửi xuống browser.
+    - 👉 Render mỗi request ở server, sau đó gửi HTML đã render xuống client.
+    - 📌 Đặc điểm:
+      - HTML luôn mới nhất (data cập nhật theo từng request).
+      - Nhưng server phải render lại toàn bộ → chậm hơn khi nhiều traffic.
+    - ➡️ Ví dụ code mẫu: Khi user vào **/ssr**, server sẽ fetch API → render HTML → gửi xuống browser.
 
-     ```tsx
-     // pages/ssr.tsx
-     export async function getServerSideProps() {
-       const data = await fetch("https://api.example.com/posts").then((r) =>
-         r.json()
-       );
-       return { props: { data } };
-     }
+    ```tsx
+    // pages/ssr.tsx
+    export async function getServerSideProps() {
+      const data = await fetch("https://api.example.com/posts").then((r) =>
+        r.json()
+      );
+      return { props: { data } };
+    }
 
-     export default function SSRPage({ data }: { data: any[] }) {
-       return (
-         <div>
-           <h1>SSR Page</h1>
-           <ul>
-             {data.map((post, i) => (
-               <li key={i}>{post.title}</li>
-             ))}
-           </ul>
-         </div>
-       );
-     }
-     ```
+    export default function SSRPage({ data }: { data: any[] }) {
+      return (
+        <div>
+          <h1>SSR Page</h1>
+          <ul>
+            {data.map((post, i) => (
+              <li key={i}>{post.title}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+    ```
 
-     - ✅ Ví dụ ứng dụng:
-       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
-       - Không cần `SSR` vì dữ liệu của bạn không thay đổi liên tục → không cần server render lại mỗi request.
+    - ✅ Ví dụ ứng dụng:
+      - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+      - Không cần `SSR` vì dữ liệu của bạn không thay đổi liên tục → không cần server render lại mỗi request.
 
-  2. `CSR` (Client-Side Rendering)
+  - 2️⃣ `CSR` (Client-Side Rendering)
 
-     - 👉 Trang ban đầu chỉ là skeleton HTML trống, dữ liệu được fetch và render ở client (browser).
-     - 📌 Đặc điểm:
-       - Trải nghiệm ban đầu chậm hơn (phải chờ JS load).
-       - Nhưng load lại trong client rất mượt (`SPA`).
-     - ➡️ Ví dụ code mẫu:
+    - 👉 Trang ban đầu chỉ là skeleton HTML trống, dữ liệu được fetch và render ở client (browser).
+    - 📌 Đặc điểm:
+      - Trải nghiệm ban đầu chậm hơn (phải chờ JS load).
+      - Nhưng load lại trong client rất mượt (`SPA`).
+    - ➡️ Ví dụ code mẫu:
 
-     ```tsx
-     // app/csr/page.tsx
-     "use client";
+    ```tsx
+    // app/csr/page.tsx
+    "use client";
 
-     import { useEffect, useState } from "react";
+    import { useEffect, useState } from "react";
 
-     export default function CSRPage() {
-       const [data, setData] = useState<any[]>([]);
+    export default function CSRPage() {
+      const [data, setData] = useState<any[]>([]);
 
-       useEffect(() => {
-         fetch("https://api.example.com/posts")
-           .then((r) => r.json())
-           .then(setData);
-       }, []);
+      useEffect(() => {
+        fetch("https://api.example.com/posts")
+          .then((r) => r.json())
+          .then(setData);
+      }, []);
 
-       return (
-         <div>
-           <h1>CSR Page</h1>
-           {data.length === 0 ? (
-             <p>Loading...</p>
-           ) : (
-             <ul>
-               {data.map((post, i) => (
-                 <li key={i}>{post.title}</li>
-               ))}
-             </ul>
-           )}
-         </div>
-       );
-     }
-     ```
+      return (
+        <div>
+          <h1>CSR Page</h1>
+          {data.length === 0 ? (
+            <p>Loading...</p>
+          ) : (
+            <ul>
+              {data.map((post, i) => (
+                <li key={i}>{post.title}</li>
+              ))}
+            </ul>
+          )}
+        </div>
+      );
+    }
+    ```
 
-  3. `SSG` (Static Site Generation)
+  - 3️⃣ `SSG` (Static Site Generation)
 
-     - 👉 Render tại build time → sinh ra file HTML tĩnh.
-     - 📌 Đặc điểm:
-       - HTML cực nhanh `(CDN cache)`.
-       - Nhưng dữ liệu chỉ mới tại thời điểm build → không realtime.
-     - ➡️ Ví dụ code mẫu: **Khi chạy next build, HTML cho "/ssg" được sinh ra sẵn → deploy lên CDN**.
+    - 👉 Render tại build time → sinh ra file HTML tĩnh.
+    - 📌 Đặc điểm:
+      - HTML cực nhanh `(CDN cache)`.
+      - Nhưng dữ liệu chỉ mới tại thời điểm build → không realtime.
+    - ➡️ Ví dụ code mẫu: **Khi chạy next build, HTML cho "/ssg" được sinh ra sẵn → deploy lên CDN**.
 
-     ```tsx
-     // pages/ssg.tsx
-     export async function getStaticProps() {
-       const data = await fetch("https://api.example.com/posts").then((r) =>
-         r.json()
-       );
-       return { props: { data } };
-     }
+    ```tsx
+    // pages/ssg.tsx
+    export async function getStaticProps() {
+      const data = await fetch("https://api.example.com/posts").then((r) =>
+        r.json()
+      );
+      return { props: { data } };
+    }
 
-     export default function SSGPage({ data }: { data: any[] }) {
-       return (
-         <div>
-           <h1>SSG Page</h1>
-           <ul>
-             {data.map((post, i) => (
-               <li key={i}>{post.title}</li>
-             ))}
-           </ul>
-         </div>
-       );
-     }
-     ```
+    export default function SSGPage({ data }: { data: any[] }) {
+      return (
+        <div>
+          <h1>SSG Page</h1>
+          <ul>
+            {data.map((post, i) => (
+              <li key={i}>{post.title}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+    ```
 
-     - ✅ Ví dụ ứng dụng:
-       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
-       - Dùng `SSG` là tối ưu nhất.
-         - Build ra 1 file HTML tĩnh.
-         - Deploy lên CDN (Vercel, Netlify, Cloudflare Pages) → tốc độ cực nhanh.
-       - 💎 Với `App Router` (Next.js 13+), nếu bạn không _"fetch API"_ trong server component, thì mặc định page đã là _"static"_ (giống `SSG`).
+    - ✅ Ví dụ ứng dụng:
+      - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+      - Dùng `SSG` là tối ưu nhất.
+        - Build ra 1 file HTML tĩnh.
+        - Deploy lên CDN (Vercel, Netlify, Cloudflare Pages) → tốc độ cực nhanh.
+      - 💎 Với `App Router` (Next.js 13+), nếu bạn không _"fetch API"_ trong server component, thì mặc định page đã là _"static"_ (giống `SSG`).
 
-  4. `ISR` (Incremental Static Regeneration)
+  - 4️⃣ `ISR` (Incremental Static Regeneration)
 
-     - 👉 Giống `SSG`, nhưng có thêm khả năng regenerate (tái tạo) HTML sau 1 khoảng thời gian revalidate.
-     - 📌 Đặc điểm:
-       - Lần đầu vẫn là file tĩnh (nhanh).
-       - Khi hết hạn revalidate, request tiếp theo sẽ trigger re-build trong background.
-       - User luôn thấy HTML tĩnh, nhưng được update theo chu kỳ.
-     - ➡️ Ví dụ code mẫu: **Kết hợp ưu điểm của SSG (tốc độ) và SSR (cập nhật data)**.
+    - 👉 Giống `SSG`, nhưng có thêm khả năng regenerate (tái tạo) HTML sau 1 khoảng thời gian revalidate.
+    - 📌 Đặc điểm:
+      - Lần đầu vẫn là file tĩnh (nhanh).
+      - Khi hết hạn revalidate, request tiếp theo sẽ trigger re-build trong background.
+      - User luôn thấy HTML tĩnh, nhưng được update theo chu kỳ.
+    - ➡️ Ví dụ code mẫu: **Kết hợp ưu điểm của SSG (tốc độ) và SSR (cập nhật data)**.
 
-     ```tsx
-     // pages/isr.tsx
-     export async function getStaticProps() {
-       const data = await fetch("https://api.example.com/posts").then((r) =>
-         r.json()
-       );
-       return {
-         props: { data },
-         revalidate: 60, // sau 60 giây rebuild lại HTML 1 lần
-       };
-     }
+    ```tsx
+    // pages/isr.tsx
+    export async function getStaticProps() {
+      const data = await fetch("https://api.example.com/posts").then((r) =>
+        r.json()
+      );
+      return {
+        props: { data },
+        revalidate: 60, // sau 60 giây rebuild lại HTML 1 lần
+      };
+    }
 
-     export default function ISRPage({ data }: { data: any[] }) {
-       return (
-         <div>
-           <h1>ISR Page</h1>
-           <ul>
-             {data.map((post, i) => (
-               <li key={i}>{post.title}</li>
-             ))}
-           </ul>
-         </div>
-       );
-     }
-     ```
+    export default function ISRPage({ data }: { data: any[] }) {
+      return (
+        <div>
+          <h1>ISR Page</h1>
+          <ul>
+            {data.map((post, i) => (
+              <li key={i}>{post.title}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+    ```
 
-     - ✅ Ví dụ ứng dụng:
-       - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
-       - Không cần `ISR`, trừ khi bạn định lấy data từ `CMS/blog` và muốn cập nhật theo chu kỳ.
+    - ✅ Ví dụ ứng dụng:
+      - Một web Portfolio chỉ có 1 page duy nhất với vài section tĩnh.
+      - Không cần `ISR`, trừ khi bạn định lấy data từ `CMS/blog` và muốn cập nhật theo chu kỳ.
 
 - 👉🏻 Advanced Patterns:
 
@@ -882,7 +963,21 @@ Trong Next.js, focus chính vẫn là SSG, SSR, CSR, ISR + PPR + Streaming.
 
 ### [ useEffect ] và [ useLayoutEffect ]
 
-?!
+```
+useLayoutEffect → chạy trước paint
+                  dùng cho case cần đồng bộ DOM/layout để tránh UI nhấp nháy
+
+useEffect       → chạy sau paint
+                  UI load nhanh, dùng cho side-effect thông thường
+```
+
+| Thuộc tính           | `useEffect`                                                                                 | `useLayoutEffect`                                                                                              |
+| -------------------- | ------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| **Thời điểm chạy**   | Sau khi React render UI ra màn hình (paint xong).                                           | Ngay sau khi DOM đã được cập nhật nhưng **trước khi browser paint**.                                           |
+| **Ảnh hưởng đến UI** | Không chặn việc browser vẽ giao diện. UI hiển thị trước rồi effect mới chạy.                | Chặn browser paint cho đến khi chạy xong → đảm bảo UI không nhấp nháy.                                         |
+| **Use case chính**   | - Fetch API.<br>- Subscriptions.<br>- Logging.<br>- Các side-effect không ảnh hưởng layout. | - Đo đạc DOM (kích thước, vị trí).<br>- Đồng bộ scroll, animation.<br>- Sửa DOM trước khi vẽ để tránh flicker. |
+| **Hiệu năng**        | Nhẹ hơn, ít gây block render.                                                               | Có thể gây “lag” nếu làm việc nặng vì block paint.                                                             |
+| **Khuyến nghị**      | Dùng mặc định cho hầu hết side-effect.                                                      | Chỉ dùng khi cần truy cập / đo đạc DOM ngay sau render.                                                        |
 
 ## Other Things
 
@@ -1643,4 +1738,4 @@ Cấu trúc cơ bản:
   - Sau đó chạy `file (.js)` với lệnh `node scale-geometry.js` để lấy data.
   - Cuối cùng thêm các data GeoJSON đã _"scale"_ trên vào kế bên GeoJSON của _"Đại lục Vietnam"_ trong file `globe.json`.
 
-- Kết quả 💀 (thêm hình ở đây)
+- Kết quả 💀 (thêm hình ở đây) ?!
