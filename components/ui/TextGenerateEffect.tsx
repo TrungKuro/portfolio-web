@@ -30,7 +30,7 @@ export const TextGenerateEffect = ({
       {
         duration: duration,
         delay: stagger(0.2),
-      }
+      },
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []); //! Chỉ chạy một lần khi mount
@@ -44,7 +44,7 @@ export const TextGenerateEffect = ({
               key={`${idx}-${word}`}
               className={cn(
                 idx === wordHighlight - 1 ? "text-purple" : "text-white",
-                "opacity-0"
+                "opacity-0",
               )}
               style={{
                 filter: filter ? "blur(10px)" : "none",
@@ -61,7 +61,7 @@ export const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="my-4">
-        <div className="text-white leading-snug tracking-wide">
+        <div className="leading-snug tracking-wide text-white">
           {renderWords()}
         </div>
       </div>

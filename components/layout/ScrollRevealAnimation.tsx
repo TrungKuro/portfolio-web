@@ -24,13 +24,13 @@ export const ScrollRevealAnimation = ({
       animate(
         scope.current,
         { opacity: 1, scale: 1 },
-        { duration: duration, ease: "easeOut" }
+        { duration: duration, ease: "easeOut" },
       );
     } else {
       animate(
         scope.current,
         { opacity: 0, scale: 0.9 },
-        { duration: duration, ease: "easeIn" }
+        { duration: duration, ease: "easeIn" },
       );
     }
   }, [inView, animate, scope, duration]);

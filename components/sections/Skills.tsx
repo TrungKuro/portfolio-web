@@ -13,29 +13,29 @@ export const Skills = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <div className="pt-30 flex flex-col items-center">
+        <div className="flex flex-col items-center pt-30">
           <HeadingHighlight
             title={skill.title}
             wordHighlight={skill.titleHighlight}
           />
 
-          <div className="w-full mt-10 grid lg:grid-cols-4 grid-cols-1 gap-5 lg:gap-10">
+          <div className="mt-10 grid w-full grid-cols-1 gap-5 lg:grid-cols-4 lg:gap-10">
             {techStack.categories.map(
               ({ categoryName, thumbnail, alt, items }) => (
                 <BtnMoveBorder
                   key={`${categoryName}-${thumbnail}`}
                   duration={Math.floor(Math.random() * 10000 + 10000)}
                   borderRadius="1.75rem"
-                  className="text-white border-slate-800"
+                  className="border-slate-800 text-white"
                 >
-                  <div className="flex h-full w-full p-3 flex-row gap-3 md:gap-5 lg:gap-10">
+                  <div className="flex h-full w-full flex-row gap-3 p-3 md:gap-5 lg:gap-10">
                     {/* THUMBNAIL */}
                     <Lens zoomFactor={5} lensSize={100}>
                       <div
                         // Từ (md:) trở xuống | Chiều rộng = 64px
                         // Từ (md:) trở lên   | Chiều rộng = 80px
                         // Từ (lg:) trở lên   | Chiều rộng = 128px
-                        className="relative h-full lg:w-32 md:w-20 w-16 cursor-zoom-in"
+                        className="relative h-full w-16 cursor-zoom-in md:w-20 lg:w-32"
                       >
                         <Image
                           src={thumbnail}
@@ -54,18 +54,18 @@ export const Skills = ({ id }: { id: string }) => {
                           // Border Radius OUTER : 28px
                           // Padding             : 12px
                           // Border Radius INNER : 16px (28-12)
-                          className="object-cover rounded-bl-[16px] rounded-tl-[16px]"
+                          className="rounded-tl-[16px] rounded-bl-[16px] object-cover"
                         />
                       </div>
                     </Lens>
 
                     {/* CONTENT */}
                     <div className="w-full">
-                      <h1 className="text-start text-xl md:text-2xl font-bold ">
+                      <h1 className="text-start text-xl font-bold md:text-2xl">
                         {categoryName}
                       </h1>
 
-                      <div className="flex flex-wrap items-center justify-start gap-3 mt-3">
+                      <div className="mt-3 flex flex-wrap items-center justify-start gap-3">
                         <AnimatedTooltip
                           items={items.map((item, idx) => ({
                             id: idx,
@@ -82,7 +82,7 @@ export const Skills = ({ id }: { id: string }) => {
                     </div>
                   </div>
                 </BtnMoveBorder>
-              )
+              ),
             )}
           </div>
         </div>

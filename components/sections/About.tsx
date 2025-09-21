@@ -11,13 +11,13 @@ export const About = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <div className="pt-30 flex flex-col items-center">
+        <div className="flex flex-col items-center pt-30">
           <HeadingHighlight
             title={about.title}
             wordHighlight={about.titleHighlight}
           />
 
-          <BentoGrid className={cn("mt-10 w-full mx-auto", bentoGridClassName)}>
+          <BentoGrid className={cn("mx-auto mt-10 w-full", bentoGridClassName)}>
             {bentoGridItems.map(
               (
                 {
@@ -40,7 +40,7 @@ export const About = ({ id }: { id: string }) => {
                   //
                   specialEffect,
                 },
-                idx
+                idx,
               ) => (
                 <BentoGridItem
                   key={`${idx}-${title}`}
@@ -63,7 +63,7 @@ export const About = ({ id }: { id: string }) => {
                   //
                   specialEffect={specialEffect}
                 />
-              )
+              ),
             )}
           </BentoGrid>
         </div>

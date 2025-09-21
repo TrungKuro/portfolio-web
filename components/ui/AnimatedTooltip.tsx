@@ -34,11 +34,11 @@ export const AnimatedTooltip = ({
 
   const rotate = useSpring(
     useTransform(x, [-100, 100], [-45, 45]),
-    springConfig
+    springConfig,
   );
   const translateX = useSpring(
     useTransform(x, [-100, 100], [-50, 50]),
-    springConfig
+    springConfig,
   );
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -89,7 +89,7 @@ export const AnimatedTooltip = ({
                 <div
                   className={cn(
                     "relative z-30 text-base font-bold text-white",
-                    classNameTitle
+                    classNameTitle,
                   )}
                 >
                   {item.name}
@@ -102,8 +102,8 @@ export const AnimatedTooltip = ({
           </AnimatePresence>
           <div
             className={cn(
-              "relative size-8 sm:size-9 md:size-10 lg:size-11 transition-transform hover:scale-110 hover:z-30",
-              item.isBg ? classNameBg : ""
+              "relative size-8 transition-transform hover:z-30 hover:scale-110 sm:size-9 md:size-10 lg:size-11",
+              item.isBg ? classNameBg : "",
             )}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -114,7 +114,7 @@ export const AnimatedTooltip = ({
               //  - SVG không cần optimization của Next.js Image (đã là vector)
               //  - Tránh overhead không cần thiết của Image component
               //  - SVG tự responsive và không bị mất nét
-              className="w-full h-full object-contain object-center"
+              className="h-full w-full object-contain object-center"
               loading="lazy" // Lazy loading
               decoding="async" // Async decoding
               onMouseMove={handleMouseMove}

@@ -3,16 +3,16 @@ import { cn } from "@/lib/utils";
 
 export const GridBackground = () => {
   return (
-    <div className="h-screen w-full absolute top-0 left-0 flex items-center justify-center bg-black-100">
+    <div className="absolute top-0 left-0 flex h-screen w-full items-center justify-center bg-black-100">
       <div
         className={cn(
           "absolute inset-0",
           "[background-size:70px_70px]",
-          "[background-image:linear-gradient(to_right,#262626_2px,transparent_2px),linear-gradient(to_bottom,#262626_2px,transparent_2px)]"
+          "[background-image:linear-gradient(to_right,#262626_2px,transparent_2px),linear-gradient(to_bottom,#262626_2px,transparent_2px)]",
         )}
       />
       {/* Radial gradient for the container to give a faded look */}
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] bg-black-100" />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black-100 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
     </div>
   );
 };

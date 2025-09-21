@@ -13,13 +13,13 @@ export const Projects = ({ id }: { id: string }) => {
   return (
     <section id={id}>
       <ScrollRevealAnimation>
-        <div className="pt-30 flex flex-col items-center">
+        <div className="flex flex-col items-center pt-30">
           <HeadingHighlight
             title={project.title}
             wordHighlight={project.titleHighlight}
           />
 
-          <div className="mt-10 w-full grid md:grid-cols-2 grid-cols-1 gap-5 lg:gap-10">
+          <div className="mt-10 grid w-full grid-cols-1 gap-5 md:grid-cols-2 lg:gap-10">
             {personalProjects.map(
               ({ title, description, imageProject, iconLists, links }, idx) => (
                 <PinContainer
@@ -50,7 +50,7 @@ export const Projects = ({ id }: { id: string }) => {
                         //
                         // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
                         // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
-                        className="w-full h-full rounded-lg bg-black-200"
+                        className="h-full w-full rounded-lg bg-black-200"
                       />
                     </picture>
 
@@ -60,27 +60,27 @@ export const Projects = ({ id }: { id: string }) => {
                       alt={imageProject.alt}
                       loading="lazy"
                       decoding="async"
-                      className="z-10 absolute bottom-0"
+                      className="absolute bottom-0 z-10"
                     />
                   </div>
 
                   {/* Tên dự án */}
-                  <h1 className="font-bold lg:text-2xl md:text-xl text-base line-clamp-1 mt-7 mb-3">
+                  <h1 className="mt-7 mb-3 line-clamp-1 text-base font-bold md:text-xl lg:text-2xl">
                     {title}
                   </h1>
 
                   {/* Mô tả dự án */}
-                  <p className="lg:text-xl lg:font-normal text-sm font-light line-clamp-2">
+                  <p className="line-clamp-2 text-sm font-light lg:text-xl lg:font-normal">
                     {description}
                   </p>
 
                   {/* Danh sách công nghệ sử dụng */}
-                  <div className="flex items-center justify-between mt-7 mb-3">
+                  <div className="mt-7 mb-3 flex items-center justify-between">
                     <div className="flex items-center">
                       {iconLists.map((icon, index) => (
                         <div
                           key={`${title}-${icon.alt}`}
-                          className="border border-white/[0.2] rounded-full bg-black lg:w-10 lg:h-10 w-8 h-8 flex items-center justify-center"
+                          className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:h-10 lg:w-10"
                           style={{
                             transform: `translateX(-${10 * index}px)`,
                           }}
@@ -94,7 +94,7 @@ export const Projects = ({ id }: { id: string }) => {
                             alt={icon.alt}
                             loading="lazy"
                             decoding="async"
-                            className="p-2 w-full aspect-square object-contain"
+                            className="aspect-square w-full object-contain p-2"
                           />
                         </div>
                       ))}
@@ -103,13 +103,13 @@ export const Projects = ({ id }: { id: string }) => {
 
                   {/* Nút xem dự án */}
                   <div className="flex items-center justify-center">
-                    <p className="flex content-custom text-pink">
+                    <p className="content-custom flex text-pink">
                       Check Live Site
                     </p>
                     <FaLocationArrow className="ms-3 text-pink" />
                   </div>
                 </PinContainer>
-              )
+              ),
             )}
           </div>
         </div>

@@ -73,18 +73,15 @@
 
 #### [**NPM**](https://www.npmjs.com/)
 
-- Lệnh <u>cài đặt gói</u>:
-
+- 👉🏻 Lệnh <u>cài đặt gói</u>:
   - Viết đầy đủ: `npm install`
   - Viết tắt: `npm i`
 
-- Lệnh <u>gỡ cài đặt gói</u>:
-
+- 👉🏻 Lệnh <u>gỡ cài đặt gói</u>:
   - Viết đầy đủ: `npm uninstall`
   - Viết tắt: `npm un`, `npm rm`, `npm r`
 
-- Flag - <u>cờ</u>:
-
+- 🚩 Flag - <u>cờ</u>:
   - Chọn _"dependencies"_ cho quá trình `Deploy`:
     - ⚠️ là <u>mặc định</u> ➡️ không cần ghi ra
     - Viết đầy đủ: `--save`
@@ -113,6 +110,22 @@
   npm install -S "tên-package"
   ```
 
+---
+
+- 📌 Lệnh _"kiểm toán lỗ hổng"_ ➡️ `npm audit`
+  - Quét toàn bộ `[dependency]` trong project.
+  - Báo cáo <u>lỗ hổng bảo mật</u> _(severity: 🟢 low, 🟡 moderate, 🔴 high, ⚠️ critical)_.
+
+- 📌 Lệnh _"xóa cache lỗi"_ ➡️ `npm cache clean --force`
+  - Xoá toàn bộ `cache package` mà `NPM` đã <u>lưu cục bộ</u>.
+  - Dùng khi cache bị lỗi, tải gói thất bại, hoặc gặp sự cố mạng.
+  - Thêm cờ `--force` vì mặc định `NPM` không cho xoá hết cache.
+
+- 📌 Lệnh _"ép update để vá lỗ hổng"_ ➡️ `npm audit fix --force` (⚠️ nhưng có rủi ro)
+  - Cố gắng tự động <u>nâng cấp package</u> để <u>vá lỗ hổng bảo mật</u>.
+  - Cờ `--force` buộc update lên phiên bản mới nhất ngay cả khi vượt ngoài range trong `[package.json]`
+  - ⚠️ Có thể gây _"breaking changes"_ (hỏng code).
+
 #### Packages:
 
 - [next-themes](https://www.npmjs.com/package/next-themes) → [Adding dark mode to your next app](https://ui.shadcn.com/docs/dark-mode/next)
@@ -122,47 +135,41 @@
 - [react-intersection-observer](https://www.npmjs.com/package/react-intersection-observer) → [Scroll animations](https://motion.dev/docs/react-scroll-animations)
 - [typewriter-effect](https://www.npmjs.com/package/typewriter-effect) → [Typewriter Effect](https://css-tricks.com/snippets/css/typewriter-effect/)
 - [lottie-react](https://www.npmjs.com/package/lottie-react) → [Lottie for React](https://lottiereact.com/)
-- [depcheck](https://www.npmjs.com/package/depcheck)
+- [depcheck](https://www.npmjs.com/package/depcheck) → A `tool` for analyzing the `[dependencies]` in a project.
+- [prettier](https://www.npmjs.com/package/prettier) + [prettier-plugin-tailwindcss](https://www.npmjs.com/package/prettier-plugin-tailwindcss/v/0.0.0-insiders.d539a72) → A `Prettier plugin` for `Tailwind CSS v3.0+` that automatically sorts `[classes]`.
 
 ## ⚙️ Support Tools
 
 #### Tool Web:
 
 - Cho `CSS`:
-
   - [CSS Gradient](https://cssgradient.io/)
   - [CSS Loaders](https://css-loaders.com/)
   - [Loaders](https://cssloaders.github.io/)
 
 - Cho `SVG`:
-
   - [SVG Repo](https://www.svgrepo.com/)
   - [SVGOMG](https://svgomg.net/)
   - [DevIcon](https://devicon.dev/)
 
 - Cho `GIF`:
-
   - [Lottie Files](https://lottiefiles.com/)
 
 - Cho `Favicon`:
-
   - [Favicon.ico & App Icon GeneratorFrom Dan's Tools](https://www.favicon-generator.org/)
   - [Favic-o-matic](https://favicomatic.com/)
 
 - Cho `Font`:
-
   - [Cool Symbols & Fonts](https://coolsymbol.com/)
   - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
 
 - Cho `Edit Image`:
-
   - [Squoosh](https://squoosh.app/)
   - [11zon](https://www.11zon.com/vi/)
   - [Remove BG](https://www.remove.bg/vi)
   - [Canva](https://www.canva.com/)
 
 - Cho `Optimize Web`:
-
   - [Bundlephobia](https://bundlephobia.com/)
 
 #### Tool WebPack:
@@ -238,7 +245,6 @@ Web Rendering Patterns:       SSG (Static Site Generation)
 ```
 
 - 👉🏻 **Website Architecture** → Cách bố cục và tổ chức UI của website
-
   - Loại: _"Single Page Website"_
   - Đặc điểm: chỉ có một trang duy nhất chứa đầy đủ các phần
     - _Header_
@@ -246,12 +252,10 @@ Web Rendering Patterns:       SSG (Static Site Generation)
     - _Footer_
 
 - 👉🏻 **Web Application Architecture** → Cách điều hướng (routing) và cấu trúc app
-
   - Loại: `SPA` _(Single Page Application)_
   - Đặc điểm: chỉ có 1 route duy nhất → `/` (tương ứng `app/page.tsx`)
 
 - 👉🏻 **Web Rendering Pattern** → Cách Next.js render page đó
-
   - Loại: `SSG` _(Static Site Generation)_
   - Đặc điểm: page `/` (Home) được build sẵn thành file HTML + JSON khi `next build`
 

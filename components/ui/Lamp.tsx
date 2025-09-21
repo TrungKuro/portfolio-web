@@ -38,14 +38,14 @@ export const Lamp = ({
 
   return (
     <div
-      className={cn("relative flex w-full z-0", className)}
+      className={cn("relative z-0 flex w-full", className)}
       style={{
         height: `${heightFrame}vh`,
         backgroundColor: getColor(background) || undefined,
       }}
     >
       <div
-        className="relative flex items-center justify-center w-full isolate z-0"
+        className="relative isolate z-0 flex w-full items-center justify-center"
         style={{
           transform: `scaleY(${scaleY / 100})`,
         }}
@@ -66,7 +66,7 @@ export const Lamp = ({
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="absolute z-50 h-1 w-[30rem] rounded-full -translate-y-[7rem]"
+          className="absolute z-50 h-1 w-[30rem] -translate-y-[7rem] rounded-full"
           style={{
             backgroundColor: getColor(colorLamp) || undefined,
           }}
@@ -104,16 +104,16 @@ export const Lamp = ({
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
           }}
-          className="absolute right-1/2 h-56 overflow-visible w-[30rem] bg-gradient-conic text-white [--conic-position:from_70deg_at_center_top]"
+          className="bg-gradient-conic absolute right-1/2 h-56 w-[30rem] overflow-visible text-white [--conic-position:from_70deg_at_center_top]"
         >
           <div
-            className="absolute w-[100%] left-0 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]"
+            className="absolute bottom-0 left-0 z-20 h-40 w-[100%] [mask-image:linear-gradient(to_top,white,transparent)]"
             style={{
               backgroundColor: getColor(background) || undefined,
             }}
           />
           <div
-            className="absolute w-40 h-[100%] left-0 bottom-0 z-20 [mask-image:linear-gradient(to_right,white,transparent)]"
+            className="absolute bottom-0 left-0 z-20 h-[100%] w-40 [mask-image:linear-gradient(to_right,white,transparent)]"
             style={{
               backgroundColor: getColor(background) || undefined,
             }}
@@ -131,16 +131,16 @@ export const Lamp = ({
           style={{
             backgroundImage: `conic-gradient(var(--conic-position), var(--tw-gradient-stops))`,
           }}
-          className="absolute left-1/2 h-56 w-[30rem] bg-gradient-conic text-white [--conic-position:from_290deg_at_center_top]"
+          className="bg-gradient-conic absolute left-1/2 h-56 w-[30rem] text-white [--conic-position:from_290deg_at_center_top]"
         >
           <div
-            className="absolute w-40 h-[100%] right-0 bottom-0 z-20 [mask-image:linear-gradient(to_left,white,transparent)]"
+            className="absolute right-0 bottom-0 z-20 h-[100%] w-40 [mask-image:linear-gradient(to_left,white,transparent)]"
             style={{
               backgroundColor: getColor(background) || undefined,
             }}
           />
           <div
-            className="absolute w-[100%] right-0 h-40 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]"
+            className="absolute right-0 bottom-0 z-20 h-40 w-[100%] [mask-image:linear-gradient(to_top,white,transparent)]"
             style={{
               backgroundColor: getColor(background) || undefined,
             }}

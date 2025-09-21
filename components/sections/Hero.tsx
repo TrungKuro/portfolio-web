@@ -13,10 +13,10 @@ export const Hero = ({ id }: { id: string }) => {
 
   return (
     <header id={id}>
-      <div className="py-30 h-screen">
+      <div className="h-screen py-30">
         <div>
           <Spotlight
-            className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen"
+            className="-top-40 -left-10 h-screen md:-top-20 md:-left-32"
             fill="white"
           />
           <Spotlight
@@ -28,9 +28,9 @@ export const Hero = ({ id }: { id: string }) => {
 
         <GridBackground />
 
-        <div className="flex justify-center relative my-20 z-10">
-          <div className="max-w-[89vw] md:max-w-2xl lg:max-w-[60vw] flex flex-col items-center justify-center">
-            <p className="uppercase tracking-widest text-xs md:text-base lg:text-xl text-center text-blue max-w-80">
+        <div className="relative z-10 my-20 flex justify-center">
+          <div className="flex max-w-[89vw] flex-col items-center justify-center md:max-w-2xl lg:max-w-[60vw]">
+            <p className="max-w-80 text-center text-xs tracking-widest text-blue uppercase md:text-base lg:text-xl">
               {hero.greeting}
             </p>
 
@@ -40,13 +40,13 @@ export const Hero = ({ id }: { id: string }) => {
               className="text-center text-4xl md:text-6xl lg:text-8xl"
             />
 
-            <div className="flex justify-center items-center space-x-2 my-4 tracking-wider text-base md:text-xl lg:text-3xl">
+            <div className="my-4 flex items-center justify-center space-x-2 text-base tracking-wider md:text-xl lg:text-3xl">
               <p className="text-white">{hero.introducePrefix}</p>
               <TypewriterEffect
                 texts={hero.roles}
                 textClassName="text-blue uppercase font-bold"
               />
-              <p className="text-purple font-bold">.</p>
+              <p className="font-bold text-purple">.</p>
             </div>
 
             <Link href={cv.download} download className="mt-5 md:mt-10">

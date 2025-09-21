@@ -26,7 +26,7 @@ export const BentoGrid = ({
       // Tỉ lệ mới (16:10) = 16 CỘT : 10 DÒNG
       // | card 1 = 8:5 | card 2 = 8:3  | card 3 = 8:2
       // | card 4 = 6:3 | card 5 = 10:3 | card 6 = 16:2
-      className={cn("grid mx-auto", className)}
+      className={cn("mx-auto grid", className)}
     >
       {children}
     </div>
@@ -74,7 +74,7 @@ export const BentoGridItem = ({
 }) => {
   //! Nếu "contentClassName" có chứa `group-hover/bento:translate-` hoặc `group-hover/bento:-translate-` thì không dùng mặc định
   const hasCustomTranslate = /group-hover\/bento:-?translate-/.test(
-    contentClassName || ""
+    contentClassName || "",
   );
 
   //! Đổi <img> qua dùng <Image> cho HÌNH NỀN CHÍNH và HÌNH NỀN PHỤ
@@ -99,11 +99,11 @@ export const BentoGridItem = ({
   return (
     <div
       className={cn(
-        "group/bento row-span-1 flex flex-col justify-between overflow-hidden rounded-3xl border border-white/[0.1] bg-gradient-custom",
-        className
+        "group/bento bg-gradient-custom row-span-1 flex flex-col justify-between overflow-hidden rounded-3xl border border-white/[0.1]",
+        className,
       )}
     >
-      <div className="relative w-full h-full">
+      <div className="relative h-full w-full">
         {/* Hình nền phụ */}
         {spareImg && (
           <Image
@@ -112,8 +112,8 @@ export const BentoGridItem = ({
             height={spareImgH}
             width={spareImgW}
             className={cn(
-              "absolute w-full h-full object-cover object-center",
-              spareImgClassName
+              "absolute h-full w-full object-cover object-center",
+              spareImgClassName,
             )}
           />
         )}
@@ -126,8 +126,8 @@ export const BentoGridItem = ({
             height={imgH}
             width={imgW}
             className={cn(
-              "absolute w-full h-full object-cover object-center",
-              imgClassName
+              "absolute h-full w-full object-cover object-center",
+              imgClassName,
             )}
           />
         )}
@@ -149,19 +149,19 @@ export const BentoGridItem = ({
             //! Nếu muốn bỏ mặc định thì dùng chuỗi nhận diện giả ví dụ như `group-hover/bento:translate-none`
             !hasCustomTranslate && "group-hover/bento:translate-x-2",
             // Luôn thêm các class cố định
-            "transition duration-200 relative z-10 w-full h-full flex flex-col space-y-3 p-5 lg:p-10",
+            "relative z-10 flex h-full w-full flex-col space-y-3 p-5 transition duration-200 lg:p-10",
             //! Mouse events pass through -> tắt để các lớp "absolute" bên dưới có thể nhận Event Mouse | không ảnh hưởng hiệu ứng vì phần tử đã được liên kết Event với phần tử gốc
             "pointer-events-none",
             // Và cuối cùng là "contentClassName" truyền vào
-            contentClassName
+            contentClassName,
           )}
         >
           {/* Tiêu đề */}
           {title && (
             <div
               className={cn(
-                "font-sans font-extrabold text-lavender title-custom",
-                titleClassName
+                "title-custom font-sans font-extrabold text-lavender",
+                titleClassName,
               )}
             >
               {title}
@@ -172,8 +172,8 @@ export const BentoGridItem = ({
           {description && (
             <div
               className={cn(
-                "font-sans font-extralight text-cool-gray sub-title-custom",
-                descriptionClassName
+                "sub-title-custom font-sans font-extralight text-cool-gray",
+                descriptionClassName,
               )}
             >
               {description}

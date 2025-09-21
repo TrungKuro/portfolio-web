@@ -32,7 +32,7 @@ function drawRoundedRect(
   y: number,
   w: number,
   h: number,
-  r: number
+  r: number,
 ) {
   const rr = Math.min(r, w / 2, h / 2);
   ctx.beginPath();
@@ -137,7 +137,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
 
           const img = new Image();
           img.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(
-            optimizedSvg
+            optimizedSvg,
           )}`; //! Sử dụng encodeURIComponent thay vì btoa cho UTF-8 support
           img.onload = async () => {
             try {
@@ -222,14 +222,14 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
       if (dx * dx + dy * dy < radius * radius) {
         const targetX = -Math.atan2(
           icon.y,
-          Math.sqrt(icon.x * icon.x + icon.z * icon.z)
+          Math.sqrt(icon.x * icon.x + icon.z * icon.z),
         );
         const targetY = Math.atan2(icon.x, icon.z);
 
         const currentX = rotationRef.current.x;
         const currentY = rotationRef.current.y;
         const distance = Math.sqrt(
-          Math.pow(targetX - currentX, 2) + Math.pow(targetY - currentY, 2)
+          Math.pow(targetX - currentX, 2) + Math.pow(targetY - currentY, 2),
         );
 
         const duration = Math.min(2000, Math.max(800, distance * 1000));
@@ -340,7 +340,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
         ctx.save();
         ctx.translate(
           displaySizeRef.current.width / 2 + rotatedX,
-          displaySizeRef.current.height / 2 + rotatedY
+          displaySizeRef.current.height / 2 + rotatedY,
         );
         ctx.scale(scale, scale);
 
@@ -359,7 +359,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
           -(bgSize / 2),
           bgSize,
           bgSize,
-          radius
+          radius,
         );
         ctx.fill();
         ctx.restore();
@@ -373,7 +373,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
             -(sizeRender / 2),
             -(sizeRender / 2),
             sizeRender,
-            sizeRender
+            sizeRender,
           );
         }
 
@@ -439,8 +439,8 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
        * - Đổi lại lớp phủ này sẽ luôn render, chỉ là bị ẩn đi ^^!
        */}
       <div
-        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-2000 ${
-          isLoaded ? "opacity-0 pointer-events-none" : "opacity-100"
+        className={`absolute z-15 flex h-full w-full items-center justify-center bg-background transition-opacity duration-2000 ${
+          isLoaded ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
         <div className="flex flex-col items-center space-y-4">
@@ -448,7 +448,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
           <div className="loader-spinner" />
 
           {/* Loading Text */}
-          <p className="font-sans text-center font-extralight text-cool-gray sub-title-custom">
+          <p className="sub-title-custom text-center font-sans font-extralight text-cool-gray">
             Rendering... 💭
           </p>
         </div>
@@ -463,7 +463,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
         onMouseLeave={handleMouseUp}
         className={cn(
           "rounded-lg hover:cursor-grab active:cursor-grabbing",
-          className
+          className,
         )}
         aria-label="Interactive 3D Icon Cloud"
         role="img"

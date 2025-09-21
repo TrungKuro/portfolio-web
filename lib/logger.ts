@@ -25,7 +25,7 @@ export function debugLog(...args: unknown[]) {
   styledLog(
     "background: #c9f9ac; color: black; font-weight: bold; padding: 2px 4px; border-radius: 4px;",
     "LOG",
-    ...args
+    ...args,
   );
 }
 
@@ -33,7 +33,7 @@ export function debugWarn(...args: unknown[]) {
   styledLog(
     "background: #f9d7ac; color: black; font-weight: bold; padding: 2px 4px; border-radius: 4px;",
     "WARN",
-    ...args
+    ...args,
   );
 }
 
@@ -41,6 +41,6 @@ export function debugError(...args: unknown[]) {
   styledLog(
     "background: #f9acac; color: black; font-weight: bold; padding: 2px 4px; border-radius: 4px;",
     "ERROR",
-    ...args
+    ...args,
   );
 }

@@ -14,12 +14,12 @@ import { LoadingWait } from "../layout/LoadingWait";
 const BackgroundGradientAnimation = dynamic(
   () =>
     import("../ui/BackgroundGradientAnimation").then(
-      (m) => m.BackgroundGradientAnimation
+      (m) => m.BackgroundGradientAnimation,
     ),
   {
     loading: () => <LoadingBundle />,
     ssr: false,
-  }
+  },
 );
 
 /* ------------------------------------------------------------------------- */

@@ -88,7 +88,7 @@ export const DraggableCardBody = ({
    */
   const rotateX = useSpring(
     useTransform(mouseY, [-300, 300], [25, -25]),
-    springConfig
+    springConfig,
   );
 
   /**
@@ -99,7 +99,7 @@ export const DraggableCardBody = ({
    */
   const rotateY = useSpring(
     useTransform(mouseX, [-300, 300], [-25, 25]),
-    springConfig
+    springConfig,
   );
 
   /**
@@ -110,7 +110,7 @@ export const DraggableCardBody = ({
    */
   const opacity = useSpring(
     useTransform(mouseX, [-300, 0, 300], [0.8, 1, 0.8]),
-    springConfig
+    springConfig,
   );
 
   /**
@@ -121,7 +121,7 @@ export const DraggableCardBody = ({
    */
   const glareOpacity = useSpring(
     useTransform(mouseX, [-300, 0, 300], [0.2, 0, 0.2]),
-    springConfig
+    springConfig,
   );
 
   /**
@@ -210,7 +210,7 @@ export const DraggableCardBody = ({
         // Bước 3: Tính tổng độ lớn vận tốc (vector magnitude)
         const velocityMagnitude = Math.sqrt(
           currentVelocityX * currentVelocityX +
-            currentVelocityY * currentVelocityY
+            currentVelocityY * currentVelocityY,
         );
 
         // Bước 4: Tính độ nảy dựa trên vận tốc (càng nhanh càng nảy nhiều)
@@ -265,10 +265,10 @@ export const DraggableCardBody = ({
        * - Desktop (lg:): 240x288px  | Chiều rộng hình = 240 - (18 x 2) = 204px
        */
       className={cn(
-        "flex flex-col justify-between items-center overflow-hidden shadow-2xl transform-3d bg-background",
-        "rounded-lg gap-y-1.5 p-1.5 h-24 w-20 sm:p-3 sm:h-48 sm:w-40 lg:p-4.5 lg:h-72 lg:w-60",
+        "flex flex-col items-center justify-between overflow-hidden bg-background shadow-2xl transform-3d",
+        "h-24 w-20 gap-y-1.5 rounded-lg p-1.5 sm:h-48 sm:w-40 sm:p-3 lg:h-72 lg:w-60 lg:p-4.5",
         "absolute hover:cursor-grab active:cursor-grabbing",
-        className
+        className,
       )}
     >
       {children}
@@ -342,7 +342,7 @@ export const DraggableCardContainer = ({
         ref={containerRef}
         className={cn(
           "[perspective:3000px]", // Thiết lập perspective 3D cho hiệu ứng xoay
-          className
+          className,
         )}
       >
         {children}

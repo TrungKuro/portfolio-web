@@ -39,13 +39,13 @@ export const BtnCopy = ({
         disabled={copied}
         onClick={handleCopy}
         className={cn(
-          "hover:cursor-copy hover:scale-90",
-          copied ? "opacity-50 scale-90" : "opacity-100"
+          "hover:scale-90 hover:cursor-copy",
+          copied ? "scale-90 opacity-50" : "opacity-100",
         )}
       >
         <IconSVG
           iconName={iconName}
-          className="border-1 sm:border-2 lg:border-3 stroke-[1px] sm:stroke-[1.5px] lg:stroke-[2px] border-foreground p-1.5 rounded-lg size-8 sm:size-9 lg:size-11 text-foreground"
+          className="size-8 rounded-lg border-1 border-foreground stroke-[1px] p-1.5 text-foreground sm:size-9 sm:border-2 sm:stroke-[1.5px] lg:size-11 lg:border-3 lg:stroke-[2px]"
         />
       </button>
     </Tooltip>

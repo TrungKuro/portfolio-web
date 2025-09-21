@@ -18,7 +18,7 @@ const IconCloud = dynamic(
   {
     loading: () => <LoadingBundle />,
     ssr: false,
-  }
+  },
 );
 
 /* ------------------------------------------------------------------------- */
@@ -35,7 +35,7 @@ export const IconCloudDemo = () => {
   return (
     <div ref={refContainer} className="container-item-grid">
       {containerInView ? (
-        <IconCloud images={fundamentals} className="w-fit h-fit" />
+        <IconCloud images={fundamentals} className="h-fit w-fit" />
       ) : (
         <LoadingWait />
       )}

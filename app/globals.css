@@ -87,7 +87,7 @@ body {
 
 @layer utilities {
   .heading {
-    @apply font-bold text-4xl md:text-5xl text-center;
+    @apply text-center text-4xl font-bold md:text-5xl;
   }
   .content-custom {
     @apply text-xs sm:text-base lg:text-xl;
@@ -105,7 +105,7 @@ body {
   }
 
   .container-item-grid {
-    @apply absolute w-full h-full flex items-center justify-center;
+    @apply absolute flex h-full w-full items-center justify-center;
   }
 
   /* ----------------------------------------------------------------------- */
@@ -339,7 +339,8 @@ body {
   height: 36px;
   border-radius: 50%;
   background-color: #e9acf9;
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle 8px at 18px 18px,
       var(--base-color) 100%,
       transparent 0
@@ -402,7 +403,8 @@ body {
   height: 24px;
   border-radius: 50%;
   background-color: #acf9f3;
-  background-image: radial-gradient(
+  background-image:
+    radial-gradient(
       circle 5px at 12px 12px,
       var(--base-color) 100%,
       transparent 0

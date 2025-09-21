@@ -95,7 +95,7 @@ function WebGLRendererConfig() {
     },
     [
       // gl, size.height, size.width
-    ]
+    ],
   );
 
   return null;
@@ -198,9 +198,9 @@ function Globe({ globeConfig, data, onCanvasReady }: GlobeProps) {
       (v, i, a) =>
         a.findIndex((v2) =>
           ["lat", "lng"].every(
-            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"]
-          )
-        ) === i
+            (k) => v2[k as "lat" | "lng"] === v[k as "lat" | "lng"],
+          ),
+        ) === i,
     );
 
     globeRef.current
@@ -257,7 +257,7 @@ function Globe({ globeConfig, data, onCanvasReady }: GlobeProps) {
       .ringMaxRadius(defaultProps.maxRings)
       .ringPropagationSpeed(RING_PROPAGATION_SPEED)
       .ringRepeatPeriod(
-        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings
+        (defaultProps.arcTime * defaultProps.arcLength) / defaultProps.rings,
       );
 
     debugLog("Globe data updated");
@@ -290,7 +290,7 @@ function Globe({ globeConfig, data, onCanvasReady }: GlobeProps) {
       const newNumbersOfRings = genRandomNumbers(
         0,
         data.length,
-        Math.floor((data.length * 4) / 5)
+        Math.floor((data.length * 4) / 5),
       );
 
       const ringsData = data
@@ -380,8 +380,8 @@ export function World(props: WorldProps) {
        * - Đổi lại lớp phủ này sẽ luôn render, chỉ là bị ẩn đi ^^!
        */}
       <div
-        className={`absolute w-full h-full flex items-center justify-center bg-background z-15 transition-opacity duration-2000 ${
-          isCanvasReady ? "opacity-0 pointer-events-none" : "opacity-100"
+        className={`absolute z-15 flex h-full w-full items-center justify-center bg-background transition-opacity duration-2000 ${
+          isCanvasReady ? "pointer-events-none opacity-0" : "opacity-100"
         }`}
       >
         <div className="flex flex-col items-center space-y-4">
@@ -389,7 +389,7 @@ export function World(props: WorldProps) {
           <div className="loader-spinner" />
 
           {/* Loading Text */}
-          <p className="font-sans text-center font-extralight text-cool-gray sub-title-custom">
+          <p className="sub-title-custom text-center font-sans font-extralight text-cool-gray">
             Rendering... 🌍
           </p>
         </div>

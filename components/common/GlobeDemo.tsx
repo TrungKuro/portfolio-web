@@ -39,21 +39,21 @@ function LoadingBar() {
         clearInterval(interval); // Clear the interval
       };
     },
-    [] //! The "empty dependency array" ensures this effect runs only once on "mount" and cleans up on "unmount"
+    [], //! The "empty dependency array" ensures this effect runs only once on "mount" and cleans up on "unmount"
   );
 
   return (
-    <div className="absolute w-full h-full flex items-center justify-center bg-background z-15">
+    <div className="absolute z-15 flex h-full w-full items-center justify-center bg-background">
       <div className="flex flex-col items-center space-y-4">
         {/* Spinner Loading Icon */}
         <div className="loader-spinner" />
 
         {/* Loading Text */}
-        <div className="font-sans text-center">
-          <p className="font-extrabold text-lavender title-custom">
+        <div className="text-center font-sans">
+          <p className="title-custom font-extrabold text-lavender">
             {`Loading Globe ${progress}%`}
           </p>
-          <p className="mt-1 font-extralight text-cool-gray sub-title-custom">
+          <p className="sub-title-custom mt-1 font-extralight text-cool-gray">
             Preparing 3D visualization
           </p>
         </div>

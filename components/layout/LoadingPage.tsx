@@ -6,7 +6,7 @@ const { logo } = getHeaderData();
 
 export const LoadingPage = () => {
   return (
-    <div className="w-full h-screen flex flex-col items-center justify-center gap-6 bg-background">
+    <div className="flex h-screen w-full flex-col items-center justify-center gap-6 bg-background">
       {/* Logo animation
        * Nếu logo file Vector (.svg) dùng <img> là tối ưu.
        * Ngược lại, ...
@@ -22,7 +22,7 @@ export const LoadingPage = () => {
        *  - Image with src "/xxx.png" was detected as the Largest Contentful Paint (LCP)
        *  - Please add the "priority" property if this image is above the fold
        */}
-      <div className="w-[30%] max-sm:w-[50%] h-auto animate-bounce">
+      <div className="h-auto w-[30%] animate-bounce max-sm:w-[50%]">
         <Image
           src={logo.img}
           alt={logo.alt}
@@ -34,7 +34,7 @@ export const LoadingPage = () => {
       </div>
 
       {/* Text branding */}
-      <p className="text-purple heading animate-pulse">
+      <p className="heading animate-pulse text-purple">
         Loading my portfolio...
       </p>
     </div>

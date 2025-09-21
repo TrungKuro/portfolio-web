@@ -63,8 +63,8 @@ export const FloatingNavbar = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit fixed top-10 inset-x-0 mx-auto border border-white/[0.2] rounded-full shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] px-10 py-5 bg-black-100 items-center justify-center space-x-4",
-          className
+          "fixed inset-x-0 top-10 z-[5000] mx-auto flex max-w-fit items-center justify-center space-x-4 rounded-full border border-white/[0.2] bg-black-100 px-10 py-5 shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)]",
+          className,
         )}
       >
         {navItems.map((navItem: NavItem, idx: number) => (
@@ -73,19 +73,19 @@ export const FloatingNavbar = ({
             aria-label={navItem.name}
             href={navItem.link}
             className={cn(
-              "relative text-neutral-50 items-center flex space-x-1 hover:text-neutral-300",
-              idx === navItems.length - 1 && "mr-0"
+              "relative flex items-center space-x-1 text-neutral-50 hover:text-neutral-300",
+              idx === navItems.length - 1 && "mr-0",
             )}
           >
             <span className="block sm:hidden" aria-hidden={true}>
               {navItem.icon}
             </span>
-            <span className="hidden sm:block text-sm !cursor-pointer">
+            <span className="hidden !cursor-pointer text-sm sm:block">
               {navItem.name}
             </span>
           </Link>
         ))}
-        <motion.span className="absolute inset-x-0 -bottom-px h-px mx-10">
+        <motion.span className="absolute inset-x-0 -bottom-px mx-10 h-px">
           <motion.span
             className="absolute inset-x-0 h-px bg-[linear-gradient(to_right,_transparent_0%,_#a855f7_10%,_#3b82f6_50%,_#a855f7_90%,_transparent_100%)]"
             style={{ width: progressWidth }}

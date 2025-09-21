@@ -19,7 +19,7 @@ const DraggableCardContainer = dynamic(
   {
     loading: () => <LoadingBundle />,
     ssr: false,
-  }
+  },
 );
 
 const DraggableCardBody = dynamic(
@@ -27,7 +27,7 @@ const DraggableCardBody = dynamic(
   {
     loading: () => <LoadingBundle />,
     ssr: false,
-  }
+  },
 );
 
 /* ------------------------------------------------------------------------- */
@@ -44,7 +44,7 @@ export function DraggableCardDemo() {
   return (
     <div ref={refContainer} className="container-item-grid">
       {containerInView ? (
-        <DraggableCardContainer className="relative w-full h-full overflow-clip">
+        <DraggableCardContainer className="relative h-full w-full overflow-clip">
           {profileCards.map((card, index) => {
             return (
               <DraggableCardBody
@@ -59,7 +59,7 @@ export function DraggableCardDemo() {
                 //! Thứ tự "stack" các CARD
                 deepZ={index}
               >
-                <div className="grow relative w-full h-full">
+                <div className="relative h-full w-full grow">
                   <Image
                     src={card.image}
                     alt={card.alt}
@@ -91,7 +91,7 @@ export function DraggableCardDemo() {
                   />
                 </div>
 
-                <p className="text-center font-bold text-lavender title-card line-clamp-1">
+                <p className="title-card line-clamp-1 text-center font-bold text-lavender">
                   {card.title}
                 </p>
               </DraggableCardBody>

@@ -28,8 +28,8 @@ export const BtnSocialMedia = ({
       >
         <div
           className={cn(
-            "w-10 h-10 cursor-pointer flex justify-center items-center backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-overlay-white hover:scale-110",
-            className
+            "bg-opacity-75 flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg border border-overlay-white bg-black-200 saturate-180 backdrop-blur-lg backdrop-filter hover:scale-110",
+            className,
           )}
         >
           <img

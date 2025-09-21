@@ -42,9 +42,9 @@ export const TypewriterEffect = ({
             //! Tách chuỗi thành mảng ký tự (hiển thị đúng với emoji, cả loại nhiều mã Unicode)
             const characters = Array.from(
               new Intl.Segmenter("en", { granularity: "grapheme" }).segment(
-                texts[currentIndex]
+                texts[currentIndex],
               ),
-              (seg) => seg.segment
+              (seg) => seg.segment,
             );
 
             setDisplayText(characters.slice(0, charIndex + 1).join(""));
@@ -64,9 +64,9 @@ export const TypewriterEffect = ({
             //! Tách chuỗi thành mảng ký tự (hiển thị đúng với emoji, cả loại nhiều mã Unicode)
             const characters = Array.from(
               new Intl.Segmenter("en", { granularity: "grapheme" }).segment(
-                texts[currentIndex]
+                texts[currentIndex],
               ),
-              (seg) => seg.segment
+              (seg) => seg.segment,
             );
 
             setDisplayText(characters.slice(0, charIndex - 1).join(""));
@@ -87,7 +87,7 @@ export const TypewriterEffect = ({
               setIsTyping(true);
               setCharIndex(0);
             },
-            nextIndex === 0 ? loopDelay : pauseTime
+            nextIndex === 0 ? loopDelay : pauseTime,
           );
         }
       }
@@ -112,12 +112,12 @@ export const TypewriterEffect = ({
 
   return (
     <p
-      className={cn(textClassName ?? "text-5xl text-white uppercase font-bold")}
+      className={cn(textClassName ?? "text-5xl font-bold text-white uppercase")}
     >
       {displayText}
       {showCursor && (
         <span
-          className="border-r-2 border-white animate-pulse"
+          className="animate-pulse border-r-2 border-white"
           aria-hidden="true"
         ></span>
       )}

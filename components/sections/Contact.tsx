@@ -16,7 +16,7 @@ export const Contact = ({ id }: { id: string }) => {
 
   return (
     <footer id={id}>
-      <div className="relative max-sm:pt-30 pb-30 z-0">
+      <div className="relative z-0 pb-30 max-sm:pt-30">
         <div className="flex flex-col items-center">
           <Lamp
             heightFrame={66}
@@ -29,25 +29,25 @@ export const Contact = ({ id }: { id: string }) => {
             wordHighlight={contact.titleHighlight}
           />
 
-          <div className="mt-10 grid auto-rows-auto md:grid-cols-[1fr_auto] gap-5 md:gap-10">
-            <div className="grid gap-3 text-center md:text-left tracking-widest content-custom">
-              <p className="text-cool-gray font-extrabold">{contact.intro}</p>
-              <p className="text-lavender font-extralight">{contact.message}</p>
+          <div className="mt-10 grid auto-rows-auto gap-5 md:grid-cols-[1fr_auto] md:gap-10">
+            <div className="content-custom grid gap-3 text-center tracking-widest md:text-left">
+              <p className="font-extrabold text-cool-gray">{contact.intro}</p>
+              <p className="font-extralight text-lavender">{contact.message}</p>
             </div>
 
-            <div className="grid gap-3 place-content-center transition-all duration-200 ease-out">
+            <div className="grid place-content-center gap-3 transition-all duration-200 ease-out">
               {address.map(({ iconName, title, content, link }) => (
                 <div
                   key={`address=${iconName}`}
                   className="grid grid-cols-[auto_1fr] gap-3"
                 >
-                  <div className="flex justify-center items-center">
+                  <div className="flex items-center justify-center">
                     <BtnCopy iconName={iconName} content={content} />
                   </div>
 
-                  <div className="place-content-center content-custom">
-                    <p className="text-cool-gray font-extrabold">{title}</p>
-                    <p className="text-lavender font-extralight hover:text-cyan hover:font-medium">
+                  <div className="content-custom place-content-center">
+                    <p className="font-extrabold text-cool-gray">{title}</p>
+                    <p className="font-extralight text-lavender hover:font-medium hover:text-cyan">
                       <Link
                         href={link}
                         target="_blank"
@@ -71,24 +71,24 @@ export const Contact = ({ id }: { id: string }) => {
           </Link>
         </div>
 
-        <div className="w-full h-full absolute left-0 bottom-0 -z-1">
+        <div className="absolute bottom-0 left-0 -z-1 h-full w-full">
           <img
             // Vẫn nên dùng <img> thay <Image> vì đây là ảnh SVG
             src={background.img}
             alt=""
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
           />
         </div>
 
-        <div className="flex md:flex-row flex-col-reverse justify-between items-center">
-          <p className="md:text-base text-sm md:font-normal font-light max-md:m-6">
+        <div className="flex flex-col-reverse items-center justify-between md:flex-row">
+          <p className="text-sm font-light max-md:m-6 md:text-base md:font-normal">
             {`© ${new Date().getFullYear()} ${copyright}. All rights reserved.`}
           </p>
 
-          <div className="flex md:flex-row flex-col justify-between items-center transition-all duration-200 ease-out">
-            <div className="flex items-center md:gap-3 gap-6">
+          <div className="flex flex-col items-center justify-between transition-all duration-200 ease-out md:flex-row">
+            <div className="flex items-center gap-6 md:gap-3">
               {socialMedia.core.map(({ id, name, alt, icon, url }) => (
                 <BtnSocialMedia
                   key={`socialMediaCore=${id}`}
@@ -101,9 +101,9 @@ export const Contact = ({ id }: { id: string }) => {
               ))}
             </div>
 
-            <span className="block w-full h-0.5 max-md:my-6 md:w-0.5 md:h-10 md:mx-3 bg-overlay-white rounded-full" />
+            <span className="block h-0.5 w-full rounded-full bg-overlay-white max-md:my-6 md:mx-3 md:h-10 md:w-0.5" />
 
-            <div className="flex items-center md:gap-3 gap-6">
+            <div className="flex items-center gap-6 md:gap-3">
               {socialMedia.branding.map(({ id, name, alt, icon, url }) => (
                 <BtnSocialMedia
                   key={`socialMediaBranding=${id}`}
