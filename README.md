@@ -240,8 +240,6 @@ Web Application Architecture: SPA (Single Page Application)
 
 Web Rendering Patterns:       SSG (Static Site Generation)
                               ➡️ (/) page Home
-
-?!
 ```
 
 - 👉🏻 **Website Architecture** → Cách bố cục và tổ chức UI của website

@@ -64,13 +64,10 @@ Firebase hiện có rất nhiều dịch vụ (products) chia theo hai nhóm ch�
 ```
 
 - 🔧 **Firebase** dịch vụ phù hợp:
-
   - 1️⃣ `Firebase Cloud Storage`
-
     - Dùng để upload ảnh.
     - Mỗi ảnh sau khi upload có một _"public URL"_ hoặc _"download URL"_ có `token`.
     - Portfolio load ảnh trực tiếp qua URL này.
-
   - 2️⃣ `Firestore (Cloud Firestore)` hoặc `JSON` trong 1️⃣ `Firebase Cloud Storage`
     - Lưu _"metadata JSON"_ (tên ảnh, link, section nào dùng ảnh nào, text hiển thị...).
     - Ảnh chỉ lưu _"địa chỉ (URL)"_, không nhúng trực tiếp vào `JSON`.
@@ -85,8 +82,8 @@ Firebase hiện có rất nhiều dịch vụ (products) chia theo hai nhóm ch�
 
 Chính sách [`Pricing plans`](https://firebase.google.com/pricing) với tài khoản `No-cost (Spark plan)`:
 
-1. `Cloud Storage`
-2. `Cloud Firestore`
+1. [Cloud Storage](https://firebase.google.com/products/storage) for Firebase
+2. [Cloud Firestore](https://firebase.google.com/products/firestore)
 
 ### 📊 Bảng chi phí **Firebase Cloud Storage**
 
@@ -120,6 +117,8 @@ Chính sách [`Pricing plans`](https://firebase.google.com/pricing) với tài k
     - Nếu có nhiều traffic (nhiều người truy cập tải ảnh), nên chuyển Blaze để tránh giới hạn
 ```
 
+- ⚠️ Gói `Spark (free)` không có áp dụng dịch vụ `Cloud Storage` cho _"khu vực châu Á"_ 😭
+
 ### 📊 Bảng chi phí **Firebase Cloud Firestore**
 
 | Products                          | No-cost (Spark plan) | Pay as you go (Blaze plan)                                             |
@@ -146,3 +145,5 @@ Chính sách [`Pricing plans`](https://firebase.google.com/pricing) với tài k
 ```
 👉 Với portfolio (JSON config + text) thì Spark (free) là quá đủ, vì JSON đọc ít, gần như không có writes.
 ```
+
+- ⚠️ `Cloud Firestore` không lưu trữ 1 file `JSON` <u>nguyên khối</u>, mà lưu thành **document (object)** với các **field** (có thể lồng nhau).
