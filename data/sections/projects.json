@@ -9,7 +9,7 @@
       "title": "3D Solar System Planets to Explore",
       "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
       "imageProject": {
-        "src": "/images/projects/p1-optimal.webp",
+        "src": "https://ik.imagekit.io/trungkur0/p1-optimal.webp",
         "alt": "Home page interface of '3D Solar System Planets to Explore' project",
         "background": {
           "webp": "/images/misc/bg-project.webp",
@@ -18,23 +18,23 @@
       },
       "iconLists": [
         {
-          "src": "/assets/icons/tech-re.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
           "alt": "React Logo"
         },
         {
-          "src": "/assets/icons/tech-tail.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "/assets/icons/tech-ts.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "/assets/icons/tech-three.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
           "alt": "Three.js Logo"
         },
         {
-          "src": "/assets/icons/tech-fm.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-fm.svg",
           "alt": "Framer Motion Logo"
         }
       ],
@@ -48,7 +48,7 @@
       "title": "Yoom - Video Conferencing App",
       "description": "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
       "imageProject": {
-        "src": "/images/projects/p2-optimal.webp",
+        "src": "https://ik.imagekit.io/trungkur0/p2-optimal.webp",
         "alt": "Home page interface of 'Yoom - Video Conferencing App' project",
         "background": {
           "webp": "/images/misc/bg-project.webp",
@@ -57,23 +57,23 @@
       },
       "iconLists": [
         {
-          "src": "/assets/icons/tech-next.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-next.svg",
           "alt": "Next.js Logo"
         },
         {
-          "src": "/assets/icons/tech-tail.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "/assets/icons/tech-ts.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "/assets/icons/tech-stream.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg",
           "alt": "Stream Logo"
         },
         {
-          "src": "/assets/icons/tech-c.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-c.svg",
           "alt": "C Logo"
         }
       ],
@@ -87,7 +87,7 @@
       "title": "AI Image SaaS - Canva Application",
       "description": "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
       "imageProject": {
-        "src": "/images/projects/p3-optimal.webp",
+        "src": "https://ik.imagekit.io/trungkur0/p3-optimal.webp",
         "alt": "Home page interface of 'AI Image SaaS - Canva Application' project",
         "background": {
           "webp": "/images/misc/bg-project.webp",
@@ -96,23 +96,23 @@
       },
       "iconLists": [
         {
-          "src": "/assets/icons/tech-re.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
           "alt": "React Logo"
         },
         {
-          "src": "/assets/icons/tech-tail.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "/assets/icons/tech-ts.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "/assets/icons/tech-three.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
           "alt": "Three.js Logo"
         },
         {
-          "src": "/assets/icons/tech-c.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-c.svg",
           "alt": "C Logo"
         }
       ],
@@ -126,7 +126,7 @@
       "title": "Animated Apple Iphone 3D Website",
       "description": "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
       "imageProject": {
-        "src": "/images/projects/p4-optimal.webp",
+        "src": "https://ik.imagekit.io/trungkur0/p4-optimal.webp",
         "alt": "Home page interface of 'Animated Apple Iphone 3D Website' project",
         "background": {
           "webp": "/images/misc/bg-project.webp",
@@ -135,23 +135,23 @@
       },
       "iconLists": [
         {
-          "src": "/assets/icons/tech-next.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-next.svg",
           "alt": "Next.js Logo"
         },
         {
-          "src": "/assets/icons/tech-tail.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "/assets/icons/tech-ts.svg",
+          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "/assets/icons/tech-three.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
           "alt": "Three.js Logo"
         },
         {
-          "src": "/assets/icons/tech-gsap.svg",
+          "src": "https://ik.imagekit.io/trungkur0/tech-gsap.svg",
           "alt": "GSAP Logo"
         }
       ],

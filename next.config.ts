@@ -30,13 +30,20 @@ const nextConfig: NextConfig = {
         pathname: "/gh/devicons/devicon@latest/icons/**",
         search: "",
       },
+      {
+        protocol: "https",
+        hostname: "ik.imagekit.io",
+        port: "",
+        pathname: "/trungkur0/**",
+        search: "",
+      },
     ],
   },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports
     const fileLoaderRule = config.module.rules.find((rule: WebpackRule) =>
-      rule.test?.test?.(".svg")
+      rule.test?.test?.(".svg"),
     );
 
     if (!fileLoaderRule) {
@@ -56,7 +63,7 @@ const nextConfig: NextConfig = {
         issuer: fileLoaderRule.issuer,
         resourceQuery: { not: [...fileLoaderRule.resourceQuery.not, /url/] }, // exclude if *.svg?url
         use: ["@svgr/webpack"],
-      }
+      },
     );
 
     // Modify the file loader rule to ignore *.svg, since we have it handled now.

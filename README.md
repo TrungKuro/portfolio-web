@@ -151,6 +151,8 @@
   - [SVG Repo](https://www.svgrepo.com/)
   - [SVGOMG](https://svgomg.net/)
   - [DevIcon](https://devicon.dev/)
+    - ➡️ [DevIcon Web](https://devicon-website.vercel.app/)
+    - ➡️ [IconGram](https://icongr.am/)
 
 - Cho `GIF`:
   - [Lottie Files](https://lottiefiles.com/)

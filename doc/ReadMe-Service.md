@@ -503,3 +503,31 @@ SPA hoàn tất
 | Ảnh user-upload hoặc dynamic content                       | 🌐 External (S3 / Cloudinary / Supabase Storage) |
 | Ảnh nền tĩnh cho layout                                    | 🏠 Local                                         |
 | Ảnh nền động hoặc theo theme (portfolio cập nhật liên tục) | 🌐 External                                      |
+
+## 🫵🏻 Lựa chọn hướng nâng cấp Portfolio
+
+```
+🔑 Từ [ SSG ] nâng lên [ ISR ] dùng kỹ thuật "On-Demand Revalidation"
+```
+
+- **👉🏻 JSON Storage Service:**
+  - 📄 `JSON`:
+    - ?!
+
+- **👉🏻 Image Storage Service:**
+  - ⚙️ [imagekit.io](https://imagekit.io) → đăng ký bằng _"TK Gmail"_
+    - **Select your data processing and storage region**:
+      - The processing region is crucial as it determines where your media files are stored and processed. Choose your processing region based on integration strategy, compliance needs, and audience location.
+      - Select region ➡️ _Singapore (Singapore)_
+    - **Set-up ImageKit ID**:
+      - ImageKit ID is an alphanumeric identifier that uniquely identifies your account and assets. No special characters allowed.
+      - The chosen ImageKit ID will be used in asset URLs: https://ik.imagekit.io/[imagekit_ID]/path/to/myimage.jpg
+      - ImageKit ID ➡️ _trungkur0_
+  - 📦 `Digital Asset Management`:
+    - [Upload media to ImageKit storage](https://imagekit.io/docs/dam/upload-assets) ➡️ _Upload assets → From the dashboard_
+  - 🌐 `Image External` _(outside project)_
+    - Những ảnh thường cần cập nhập theo JSON.
+  - 🏠 `Image Local` _(inside project)_
+    - Những ảnh còn lại, hầu như không cần thay đổi.
+  - 🔗 `Domain-level restriction`:
+    - ?!

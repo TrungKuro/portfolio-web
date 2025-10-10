@@ -88,7 +88,7 @@
             "name": "React Query",
             "type": "Async Data Handling",
             "isBackground": false,
-            "icon": "/assets/icons/skill-react-query.svg"
+            "icon": "https://ik.imagekit.io/trungkur0/skill-react-query.svg"
           }
         ]
       },
