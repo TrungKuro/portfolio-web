@@ -33,54 +33,86 @@
 👉 Tóm lại: Điểm mạnh nhất của JSONHosting là CDN tốc độ cao và Version Control.
 ```
 
-### 🔑 Chiến lược _"cache"_ dữ liệu `JSON`
+### ⚙️ Các tính năng của `JSONHosting`
 
-- 👉🏻 `Client Fetch + Cache (browser)`
+1. `Multiple Access Points`
+   - Every JSON document gets two URLs: a raw endpoint for direct access and an API endpoint with metadata.
 
-  ```
-  +-----------------------+
-  |   JSONHosting (API)   |
-  |  Rate limit: 100/h/IP |
-  +----------+------------+
-            |
-    (1st fetch, nếu cache trống)
-            |
-            v
-  +------------------------+
-  |  Browser (client app)  |
-  |------------------------|
-  | - Fetch JSON từ API    |
-  | - Lưu vào localStorage |
-  | - Lưu vào React state  |
-  +------------------------+
-            |
-    (lần sau load page)
-            |
-            v
-  +------------------------+
-  |   Cache kiểm tra TTL   |
-  |------------------------|
-  | Nếu cache còn hạn dùng |
-  | -> Lấy dữ liệu từ đây  |
-  | Nếu hết hạn            |
-  | -> Fetch lại từ API    |
-  +------------------------+
-  ```
+     ```
+     Raw: /api/json/abc123/raw
+     API: /api/json/abc123
+     ```
 
-- ⚡️ Luồng hoạt động chi tiết:
-  - Lần đầu load
-    - App gọi _"fetch"_ đến **JSONHosting** → nhận `JSON`.
-    - Lưu dữ liệu vào `localStorage` + **React** `state`.
-    - Render **UI** từ _"cache"_.
+     | So sánh        | `Raw Endpoint`       | `API Endpoint`           |
+     | -------------- | -------------------- | ------------------------ |
+     | Dữ liệu trả về | Chỉ JSON gốc         | JSON + metadata          |
+     | Dễ đọc cho máy | ✅ (thuần JSON)      | ❌ (có wrapper)          |
+     | Dành cho       | Frontend, fetch data | Backend, quản lý dữ liệu |
+     | Có metadata    | ❌                   | ✅                       |
+     | Giống như      | File JSON tĩnh       | Bản ghi API có info      |
 
-  - Những lần tiếp theo trong 1h
-    - App kiểm tra _"cache"_ (`localStorage` hoặc `state`).
-    - Nếu _"cache"_ còn hạn → dùng dữ liệu _"cache"_ (không gọi `API`).
-    - Nếu _"cache"_ hết hạn (ví dụ >1h) → gọi `API` để _"refresh"_.
+   - 🔹 Raw Endpoint `(/raw)`
+     - Trả về chỉ _"dữ liệu JSON gốc"_ mà bạn đã lưu.
+     - Không có thêm bất kỳ thông tin nào như thời gian tạo, phiên bản, ID, v.v.
+     - Header thường là:
+       ```
+       Content-Type: application/json
+       ```
+     - Thích hợp khi bạn muốn dùng JSON đó trực tiếp trong code hoặc frontend (fetch data để render UI).
 
-- ✅ Kết quả:
-  - Mỗi **client** `(IP)` chỉ tốn _"1 request/h"_ thay vì hàng chục _"request"_ mỗi lần **user** reload trang.
-  - Không vượt quá _"rate limit 100 requests/h/IP"_ của **JSONHosting**.
+   - 🔹 API Endpoint `(/)`
+     - Trả về _"metadata + dữ liệu JSON gốc"_, giúp bạn biết thêm thông tin quản lý.
+     - Phục vụ cho dashboard, API clients, hoặc khi bạn muốn biết dữ liệu tạo khi nào, sửa lần cuối khi nào, ai tạo, v.v.
+     - 📌 Ứng dụng thực tế:
+       ```
+       - Dùng khi bạn cần quản lý dữ liệu (CRUD: tạo, xem, sửa, xóa).
+       - Dùng trong admin dashboard hoặc script server-side.
+       - Giúp kiểm tra phiên bản, kiểm soát dữ liệu, audit log...
+       ```
+
+2. `Secret Edit Keys`
+   - Each document comes with a secure edit key. Keep it safe to update or delete your JSON later.
+
+     ```
+     edit_key: a1b2c3d4e5f6...
+     ```
+
+3. `Privacy First`
+   - No accounts required, no tracking, no data mining. Your JSON is stored securely and accessed only via the URLs you share.
+
+4. `Global CDN`
+   - Powered by Cloudflare's global network for lightning-fast access from anywhere in the world.
+
+### 🧪 Example JSON
+
+```json
+{
+  "name": "Trung",
+  "job": "Developer",
+  "skills": ["Web", "Mobile", "Embedded"]
+}
+```
+
+- **JSON saved successfully!**
+  - _Your JSON is now live and accessible via multiple endpoints._
+  - `Raw JSON Endpoint:`
+    ```
+    https://jsonhosting.com/api/json/4087c506/raw
+    ```
+  - `API Endpoint:`
+    ```
+    https://jsonhosting.com/api/json/4087c506
+    ```
+  - `Edit Key (keep this secure):`
+
+    ```
+    5360893b...
+    ```
+
+    - _Save this key to update or delete your JSON later. It won't be shown again._
+    - _ID: 4087c506_
+    - _Size: 108 bytes_
+    - _Cached for 24h_
 
 ## ⚡️ `Image` "Storage" Service
 
@@ -289,3 +321,185 @@ SPA hoàn tất
   - 5️⃣ Toàn bộ **UI** hoàn tất
     - Người dùng thấy một `SPA` (dù gốc ban đầu là `SSG`).
     - Nếu bạn chuyển tab → quay lại → `JS` đã _"cache"_ nên load nhanh hơn.
+
+## 📊 Phân tích hướng nâng cấp Portfolio
+
+👉🏻 Hiện **Portfolio** có dạng _"render"_ là `SSG`.
+
+- Toàn bộ nội dung văn bản được <u>đọc</u> từ `JSON Local` <u>một lần</u> và đóng gói thành các **File Static** trong _"build time"_.
+- `JSON Local` cũng cung cấp **path** cho ảnh, trong đó:
+  - **Image inside** được đóng gói cùng thành các **File Static** khi _"build"_.
+  - Còn **Image outside**, mỗi khi **Client** truy cập sẽ được tải _"run time"_ về trên trình duyệt.
+- ✅ Ưu điểm:
+  - Trang **Portfolio** sẽ được tải cực nhanh, <u>5 chỉ số hiệu suất quan trọng</u> đều được tối ưu:
+  - `FCP (First Contentful Paint)` ➡️ Phản ánh cảm giác trang đã bắt đầu hiển thị gì đó
+  - `LCP (Largest Contentful Paint)` ➡️ Phản ánh cảm giác nội dung chính đã xuất hiện
+  - `TBT (Total Blocking Time)` ➡️ Phản ánh trải nghiệm tương tác (bấm, cuộn, nhập liệu có bị delay hay không)
+  - `CLS (Cumulative Layout Shift)` ➡️ Phản ánh cảm giác trang có ổn định hay bị xô lệch khi đang xem
+  - `SI (Speed Index)` ➡️ Phản ánh trải nghiệm thị giác (nội dung hiển thị nhanh hay chậm)
+- ❌ Nhược điểm:
+  - Mỗi lần muốn cập nhập nội dung mới sẽ cần cập nhập vào `JSON`, và phải _"re-build"_ cả trang web, thì **Portfolio** mới được cập nhập.
+- ⭐️ Chấp nhận và Tối ưu:
+  - Dạng `SSG` phù hợp khi tần suất thay đổi nội dung rất ít.
+  - Cân nhắc đến những ảnh có thể cần cập nhập _(cả file ảnh hoặc path ảnh)_ và chuyển đổi các ảnh _"inside"_ ra _"ouside"_, để giảm kích thước _"build"_ và tăng tốc _"deploy"_.
+
+### Phân tích khi dùng **[ JSON Storage Service ]**
+
+👉🏻 Việc chuyển từ dùng `JSON Local` (inside) sang `JSON-Hosting` (outside).
+
+- ⚠️ **Portfolio** không thể _"render"_ dạng `SSG` được nữa.
+  - Vì `SSG` → yêu cầu mọi dữ liệu phải có sẵn tại _"build time"_, nên dùng `JSON Local` được.
+  - Còn khi dùng `JSON-Hosting` dữ liệu chỉ có tại _"run time"_ (lúc **Client** truy cập), nên **Next.js** không thể _"build"_ ra file `HTML tĩnh` chứa sẵn nội dung đó.
+
+- 🔁 Khi đó mình có <u>3 hướng</u> phát triển:
+
+  | Hướng                           | Mô tả                                          | Loại render   |
+  | ------------------------------- | ---------------------------------------------- | ------------- |
+  | **1. SSR (getServerSideProps)** | Fetch JSONHosting mỗi request                  | Server render |
+  | **2. CSR (fetch client)**       | Fetch JSONHosting trực tiếp trên browser       | Client render |
+  | **3. ISR (revalidate)**         | Fetch JSONHosting tại build + cập nhật định kỳ | SSG lai động  |
+
+- 👉🏻 Hướng _"render"_ theo dạng `SSR`.
+  - ✅ Ưu điểm:
+    - Bảo mật được **URL** của `JSON`, **Client** ko thấy được, chỉ có **Server** mới biết.
+    - Tuy nhiên thì điều này ko cần thiết, vì `JSON-Hosting` có `Edit Key` sẵn rồi.
+  - ❌ Nhược điểm:
+    - Mỗi **Client** truy cập trang, thậm chí tải lại trang. Tương ứng **Server** sẽ gửi một _"request"_ đến `JSON-Hosting`.
+    - Nhưng bên `JSON-Hosting` họ có giới hạn mỗi **IP** chỉ được _100 request/h_.
+    - Vậy nên khi có càng nhiều **Client** truy cập cùng lúc, **Server** rất nhanh chóng chạm tới _"giới hạn cho phép" (quota)_ sử dụng dịch vụ này.
+
+  ```
+  ➡️ Hướng này không khả thi ‼️
+  ```
+
+- 👉🏻 Hướng _"render"_ theo dạng `CSR`.
+  - ✅ Ưu điểm:
+    - Lúc này mỗi khi **Client** truy cập trang, sẽ gửi một _"request"_ đến `JSON-Hosting` với **IP** của riêng họ.
+    - Thì mức giới hạn _100 request/h per IP_ hoàn toàn đáp ứng được. Trừ khi họ tự _"spam"_.
+    - Chỉ cần _"build"_ một lần. Về sau nếu chỉ muốn cập nhập nội dung cho trang, chỉ cần cập nhập trên `JSON-Hosting` và nội dung mới sẽ hiển thị ngay lập tức khi **Client** truy cập.
+  - ❌ Nhược điểm:
+    - **Client** sẽ thấy **URL** của `JSON`, nhưng ko lo vì họ không có `Edit Key` để sửa nội dung `JSON`.
+    - Tốc độ hiển thị ra nội dung trang chậm hơn nhiều, vì cần khoảng thời gian tải `JSON` về (tốc độ hoàn toàn phụ thuộc vào bên cung cấp dịch vụ), để có nội dung mà _"render"_ rồi mới hiển thị được.
+    - Khung hiển thị bố cục nội dung trang bị thay đổi trước và sau khi có `JSON`, tạo cảm giác trang không ổn định, hay bị xô lệch khi xem.
+  - ⭐️ Tối ưu:
+    - Để sử dụng tối ưu _"quota"_ của `JSON-Hosting`, có thể <u>gom toàn bộ</u> `JSON` thành <u>một</u> `JSON`.
+    - Thậm chí kết hợp thêm bộ nhớ `Cache` để lưu `JSON` trên trình duyệt của **Client**, trong một thời gian nhất định và tự làm mới lại qua thông số `TTL (Time To Live)`.
+    - Như vậy, **Client** chỉ phải gửi một _"request"_ khi lần đầu truy cập trang, những lần sau thì không cần nữa mà sử dụng trực tiếp từ bộ nhớ `Cache` trên trình duyệt.
+
+      ```
+      🔑 Client Fetch + Cache (browser)
+
+      +-----------------------+
+      |   JSONHosting (API)   |
+      |  Rate limit: 100/h/IP |
+      +----------+------------+
+                |
+        (1st fetch, nếu cache trống)
+                |
+                v
+      +------------------------+
+      |  Browser (client app)  |
+      |------------------------|
+      | - Fetch JSON từ API    |
+      | - Lưu vào localStorage |
+      | - Lưu vào React state  |
+      +------------------------+
+                |
+        (lần sau load page)
+                |
+                v
+      +------------------------+
+      |   Cache kiểm tra TTL   |
+      |------------------------|
+      | Nếu cache còn hạn dùng |
+      | -> Lấy dữ liệu từ đây  |
+      | Nếu hết hạn            |
+      | -> Fetch lại từ API    |
+      +------------------------+
+      ```
+
+    - ⚡️ Luồng hoạt động chi tiết:
+      - Lần đầu load
+        - App gọi _"fetch"_ đến **JSONHosting** → nhận `JSON`.
+        - Lưu dữ liệu vào `localStorage` + **React** `state`.
+        - Render **UI** từ _"cache"_.
+
+      - Những lần tiếp theo trong 1h
+        - App kiểm tra _"cache"_ (`localStorage` hoặc `state`).
+        - Nếu _"cache"_ còn hạn → dùng dữ liệu _"cache"_ (không gọi `API`).
+        - Nếu _"cache"_ hết hạn (ví dụ >1h) → gọi `API` để _"refresh"_.
+
+    - 🏆 Kết quả:
+      - Mỗi **client** `(IP)` chỉ tốn _"1 request/h"_ thay vì hàng chục _"request"_ mỗi lần **user** reload trang.
+      - Không vượt quá _"rate limit 100 requests/h/IP"_ của **JSONHosting**.
+
+  ```
+  ➡️ Hướng này khả thi 👍
+  ➡️ Nhưng ko tạo được hiệu suất tối ưu nhất ‼️
+  ➡️ Ảnh hưởng nhiều đến trải nghiệm UI người dùng ‼️
+  ```
+
+- 👉🏻 Hướng _"render"_ theo dạng `ISR`.
+  - 💎 `ISR` là sự kết hợp giữa `SSG` và `SSR` → Trang vẫn là **HTML tĩnh** (như `SSG`), nhưng <u>có thể tự tái tạo lại nội dung định kỳ</u> (như `SSR`).
+  - 🧠 `ISR` không _"re-build"_ toàn bộ project như `SSG`, mà chỉ _"re-render"_ lại `HTML` từ dữ liệu mới bằng hàm `getStaticProps()`.
+  - ✅ Ưu điểm:
+    - Tận dụng được ưu điểm hiệu suất y như của `SSG` mang lại cho trang.
+      - Nếu khi dùng `SSG`, nội dung được _"build"_ từ `JSON Local`.
+      - Thì `ISR` cũng cho gửi một _"request"_ đến `JSONHosting` để lấy nội dung trong _"build time"_.
+    - `JSON` từ _"inside"_ được đem ra _"outside"_, mỗi lần chỉnh sửa nội dung cũng không cần _"re-build"_ project.
+    - Ngoài ra `ISR` có cơ chế _"revalidate"_ để xác định khi nào cần _"re-render"_ trang một cách tự động.
+  - ❌ Nhược điểm:
+    - Nếu dùng _"revalidate"_ theo chu kỳ.
+      - Khi bạn cập nhập nội dung `JSON` mới, **Client** truy cập sau đó cũng chỉ thấy nội dung cũ. Chỉ khi kết thúc chu kỳ _"revalidate"_, trang mới được _"re-render"_.
+      - Nhưng nếu bạn không có cập nhập nội dung `JSON` mới, khi kết thúc chu kỳ trang cũng tự _"re-render"_ lại chính nội dung cũ, rất dư thừa lãng phí tài nguyên **Server** ko cần thiết.
+    - Khi hết _"revalidate"_, trang ko tự _"re-render"_, chỉ đến khi có **Client** nào đó truy cập, quá trình này mới được kích hoạt.
+      - Tất nhiên, lúc này nội dung mà **Client** đó thấy là nội dung cũ, trong khi chờ nội dung mới đang _"render"_.
+      - Chỉ những **Client** sau đó trở đi mới thấy nội dung mới.
+  - ⭐️ Tối ưu:
+    - 🔑 `On-Demand Revalidation`
+      - Bạn tạo _"API endpoint riêng"_.
+      - Khi dữ liệu **JSON** thay đổi, bạn gửi _"request"_ tới **EndPoint** này để báo **Next.js** _"revalidate"_ ngay.
+    - ✅ Ưu điểm, chỉ _"revalidate"_ khi có thay đổi thật.
+    - ⚙️ Cách triển khai:
+      - 📄 Thiết lập _"trang tĩnh"_, chỉ _"re-render"_ lại khi có lệnh _"revalidate"_.
+      - 🚀 Tạo _"API Revalidation Endpoint"_, có `token` ⇒ bảo mật, để người khác không tự ý gọi `API` này.
+      - 🔑 Thêm biến môi trường bảo mật ⇒ `REVALIDATE_SECRET`.
+      - 📡 Gửi yêu cầu _"revalidate"_ khi **JSON** đổi ⇒ **Next.js** sẽ tự động _"re-render"_ lại trang.
+
+  ```
+  ➡️ Hướng này khả thi.
+      - Tận dụng được ưu điểm hiệu suất của SSR.
+      - Có thể cập nhập JSON, chủ động Revalidate để "re-render" nội dung.
+      - Không cần "deploy" hay "re-build" lại toàn project.
+  ```
+
+### Phân tích khi dùng **[ Image Storage Service ]**
+
+⚖️ Cân đối giữa dùng `Image Local` (inside) và `Image External` (outsise)
+
+- 🧠 Về “tốc độ hiển thị ảnh”
+  - ⚠️ Tốc độ ảnh không phụ thuộc vào “nó ở đâu”.
+  - 🔑 Mà phụ thuộc vào độ gần `CDN` + `cache` + _"định dạng ảnh"_ + **Optimization**.
+
+| Tiêu chí                                       | 🏠 **Image Local (inside project)**                                                    | 🌐 **Image External (CDN / JSONHosting / Cloudflare / S3 …)**                                          |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| **1️⃣ Tốc độ tải ảnh**                          | Nhanh **nếu có build-time optimization**, nhưng phụ thuộc vào hosting gốc của web.     | Rất nhanh nếu CDN có **Edge caching gần người dùng**, nhưng phụ thuộc vào **server bên thứ ba**.       |
+| **2️⃣ SEO & Indexing**                          | ✅ Tối ưu tốt cho SEO vì ảnh cùng domain → Google dễ crawl và tính điểm PageSpeed.     | ⚠️ SEO yếu hơn nếu domain ảnh khác domain web (cross-domain). Cần `crossOrigin` hoặc `allow indexing`. |
+| **3️⃣ Caching**                                 | Caching do **web server bạn** kiểm soát. Có thể tối ưu TTL / ETag dễ dàng.             | Caching phụ thuộc vào chính sách của **CDN hoặc dịch vụ ngoài**, ít kiểm soát.                         |
+| **4️⃣ Build & Deploy**                          | ❌ Làm tăng kích thước build → thời gian build, deploy, và bandwidth lớn hơn.          | ✅ Giảm tải cho server của bạn, **HTML nhẹ hơn**, dễ cập nhật ảnh mà không rebuild.                    |
+| **5️⃣ Thay đổi nội dung ảnh**                   | Mỗi khi ảnh đổi → cần **rebuild** lại project.                                         | ✅ Chỉ cần **update ảnh ở nguồn ngoài**, không cần rebuild web.                                        |
+| **6️⃣ Bảo trì & Quản lý**                       | Ảnh nằm trong codebase → dễ quản lý phiên bản, backup cùng code.                       | Có thể rủi ro nếu bên thứ ba đổi link, xóa ảnh hoặc lỗi CDN.                                           |
+| **7️⃣ Bảo mật (CORS)**                          | Không lo lỗi `CORS`. Ảnh load nội bộ.                                                  | Có thể gặp lỗi `CORS` nếu quên config `Access-Control-Allow-Origin`.                                   |
+| **8️⃣ Tối ưu hóa (Next.js Image Optimization)** | ✅ Hoạt động trực tiếp với `next/image`, được tối ưu kích thước, lazyload, responsive. | ⚠️ Cần cấu hình `domains[]` trong `next.config.js` mới được Next.js optimize.                          |
+| **9️⃣ Chi phí / Tài nguyên**                    | Tốn **storage & bandwidth** của host bạn.                                              | Có thể miễn phí hoặc rẻ nếu dùng CDN có caching mạnh (Cloudflare, Vercel, S3).                         |
+| **🔟 Tính ổn định / Phụ thuộc**                | Độc lập, không phụ thuộc bên thứ ba.                                                   | Phụ thuộc vào độ ổn định của **dịch vụ bên ngoài**.                                                    |
+
+🏆 Kết hợp tối ưu (thực tế nhất):
+
+| Loại ảnh                                                   | Nên đặt ở đâu                                    |
+| ---------------------------------------------------------- | ------------------------------------------------ |
+| Logo, icon, favicon, ảnh UI cố định                        | 🏠 Local                                         |
+| Ảnh bài viết, dự án, sản phẩm, banner thay đổi             | 🌐 External CDN                                  |
+| Ảnh user-upload hoặc dynamic content                       | 🌐 External (S3 / Cloudinary / Supabase Storage) |
+| Ảnh nền tĩnh cho layout                                    | 🏠 Local                                         |
+| Ảnh nền động hoặc theo theme (portfolio cập nhật liên tục) | 🌐 External                                      |
