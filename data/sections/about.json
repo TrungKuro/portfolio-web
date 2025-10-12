@@ -18,40 +18,40 @@
     ],
 
     "fundamentals": [
-      "https://ik.imagekit.io/trungkur0/fundamental-c.svg",
-      "https://ik.imagekit.io/trungkur0/fundamental-cplusplus.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original-wordmark.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/embeddedc/embeddedc-original-wordmark.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original-wordmark.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg",
-      "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+      "/assets/icons/techstack/c.svg",
+      "/assets/icons/techstack/cplusplus.svg",
+      "/assets/icons/techstack/arduino-wordmark.svg",
+      "/assets/icons/techstack/embeddedc-wordmark.svg",
+      "/assets/icons/techstack/dart-wordmark.svg",
+      "/assets/icons/techstack/html5-wordmark.svg",
+      "/assets/icons/techstack/css3-wordmark.svg",
+      "/assets/icons/techstack/javascript.svg"
     ],
 
     "profileCards": [
       {
         "title": "Feb 22, 2024",
-        "image": "https://ik.imagekit.io/trungkur0/about-me-220224-optimal.avif",
+        "image": "/images/profile/about-me-220224-optimal.avif",
         "alt": "Avatar photo of Hoang Trung, taken on Feb 22, 2024"
       },
       {
         "title": "Nov 25, 2023",
-        "image": "https://ik.imagekit.io/trungkur0/about-me-251123-optimal.avif",
+        "image": "/images/profile/about-me-251123-optimal.avif",
         "alt": "Avatar photo of Hoang Trung, taken on Nov 25, 2023"
       },
       {
         "title": "Sep 07, 2023",
-        "image": "https://ik.imagekit.io/trungkur0/about-me-070923-optimal.avif",
+        "image": "/images/profile/about-me-070923-optimal.avif",
         "alt": "Avatar photo of Hoang Trung, taken on Sep 07, 2023"
       },
       {
         "title": "Aug 23, 2023",
-        "image": "https://ik.imagekit.io/trungkur0/about-me-230823-optimal.avif",
+        "image": "/images/profile/about-me-230823-optimal.avif",
         "alt": "Avatar photo of Hoang Trung, taken on Aug 23, 2023"
       },
       {
         "title": "Sep 10, 2022",
-        "image": "https://ik.imagekit.io/trungkur0/about-me-100922-optimal.avif",
+        "image": "/images/profile/about-me-100922-optimal.avif",
         "alt": "Avatar photo of Hoang Trung, taken on Sep 10, 2022"
       }
     ]

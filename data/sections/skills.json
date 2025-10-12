@@ -14,19 +14,19 @@
             "name": "JavaScript",
             "type": "Language",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg"
+            "icon": "/assets/icons/techstack/javascript.svg"
           },
           {
             "name": "TypeScript",
             "type": "Language",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg"
+            "icon": "/assets/icons/techstack/typescript.svg"
           },
           {
             "name": "Dart",
             "type": "Language",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg"
+            "icon": "/assets/icons/techstack/dart.svg"
           }
         ]
       },
@@ -39,37 +39,43 @@
             "name": "HTML",
             "type": "Markup Language",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"
+            "icon": "/assets/icons/techstack/html5.svg"
           },
           {
             "name": "CSS",
             "type": "Style Language",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg"
+            "icon": "/assets/icons/techstack/css3.svg"
           },
           {
             "name": "React",
             "type": "JavaScript Library",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg"
+            "icon": "/assets/icons/techstack/react.svg"
           },
           {
             "name": "Next.js",
             "type": "React Framework",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"
+            "icon": "/assets/icons/techstack/nextjs.svg"
           },
           {
             "name": "Tailwind CSS",
             "type": "CSS Framework",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg"
+            "icon": "/assets/icons/techstack/tailwindcss.svg"
           },
           {
             "name": "Material-UI (MUI)",
             "type": "UI Component Library",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/materialui/materialui-original.svg"
+            "icon": "/assets/icons/techstack/materialui.svg"
+          },
+          {
+            "name": "Three.js",
+            "type": "3D JavaScript Library",
+            "isBackground": true,
+            "icon": "/assets/icons/techstack/threejs.svg"
           }
         ]
       },
@@ -82,13 +88,25 @@
             "name": "Zustand",
             "type": "State Management",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/zustand/zustand-original.svg"
+            "icon": "/assets/icons/techstack/zustand.svg"
           },
           {
             "name": "React Query",
             "type": "Async Data Handling",
             "isBackground": false,
-            "icon": "https://ik.imagekit.io/trungkur0/skill-react-query.svg"
+            "icon": "/assets/icons/techstack/reactquery.svg"
+          },
+          {
+            "name": "Redux",
+            "type": "State Management Library",
+            "isBackground": false,
+            "icon": "/assets/icons/techstack/redux.svg"
+          },
+          {
+            "name": "Axios",
+            "type": "HTTP Client Library",
+            "isBackground": false,
+            "icon": "/assets/icons/techstack/axios.svg"
           }
         ]
       },
@@ -101,37 +119,49 @@
             "name": "Node.js",
             "type": "Runtime Environment",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg"
+            "icon": "/assets/icons/techstack/nodejs.svg"
           },
           {
             "name": "Express.js",
             "type": "Web Framework",
             "isBackground": true,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg"
+            "icon": "/assets/icons/techstack/express.svg"
+          },
+          {
+            "name": "Prisma",
+            "type": "ORM (Object Relational Mapper)",
+            "isBackground": false,
+            "icon": "/assets/icons/techstack/prisma-white.svg"
           },
           {
             "name": "MySQL",
             "type": "Relational Database",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg"
+            "icon": "/assets/icons/techstack/mysql.svg"
+          },
+          {
+            "name": "PostgreSQL",
+            "type": "Relational Database",
+            "isBackground": false,
+            "icon": "/assets/icons/techstack/postgresql.svg"
           },
           {
             "name": "MongoDB",
             "type": "NoSQL Database",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg"
+            "icon": "/assets/icons/techstack/mongodb.svg"
           },
           {
             "name": "Firebase",
             "type": "Backend as a Service",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-original.svg"
+            "icon": "/assets/icons/techstack/firebase.svg"
           },
           {
             "name": "Sanity",
             "type": "Headless CMS",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sanity/sanity-original.svg"
+            "icon": "/assets/icons/techstack/sanity.svg"
           }
         ]
       },
@@ -144,7 +174,7 @@
             "name": "Flutter",
             "type": "Cross-platform Framework",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg"
+            "icon": "/assets/icons/techstack/flutter.svg"
           }
         ]
       },
@@ -157,13 +187,13 @@
             "name": "Figma",
             "type": "Design Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg"
+            "icon": "/assets/icons/techstack/figma.svg"
           },
           {
-            "name": "Vite",
+            "name": "Vite.js",
             "type": "Frontend Build Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg"
+            "icon": "/assets/icons/techstack/vitejs.svg"
           }
         ]
       },
@@ -176,25 +206,25 @@
             "name": "Git",
             "type": "Version Control",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg"
+            "icon": "/assets/icons/techstack/git.svg"
           },
           {
             "name": "NPM",
             "type": "Package Manager",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original.svg"
+            "icon": "/assets/icons/techstack/npm.svg"
           },
           {
             "name": "GitHub Actions",
             "type": "CI/CD Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/githubactions/githubactions-original.svg"
+            "icon": "/assets/icons/techstack/githubactions.svg"
           },
           {
             "name": "Postman",
             "type": "API Testing Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg"
+            "icon": "/assets/icons/techstack/postman.svg"
           }
         ]
       },
@@ -207,7 +237,7 @@
             "name": "Vitest",
             "type": "Unit Testing Tool",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitest/vitest-original.svg"
+            "icon": "/assets/icons/techstack/vitest.svg"
           }
         ]
       },
@@ -220,13 +250,19 @@
             "name": "Vercel",
             "type": "Hosting Platform",
             "isBackground": true,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vercel/vercel-original.svg"
+            "icon": "/assets/icons/techstack/vercel.svg"
           },
           {
             "name": "Netlify",
             "type": "Hosting Platform",
             "isBackground": false,
-            "icon": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/netlify/netlify-original.svg"
+            "icon": "/assets/icons/techstack/netlify.svg"
+          },
+          {
+            "name": "Amazon Web Services (AWS)",
+            "type": "Cloud Infrastructure Platform",
+            "isBackground": false,
+            "icon": "/assets/icons/techstack/amazonwebservices.svg"
           }
         ]
       }

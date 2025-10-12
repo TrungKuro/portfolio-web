@@ -1,8 +1,8 @@
-import NavHomeIcon from "@/public/assets/icons/nav-home.svg";
-import NavAboutIcon from "@/public/assets/icons/nav-about.svg";
-import NavSkillsIcon from "@/public/assets/icons/nav-skills.svg";
-import NavProjectsIcon from "@/public/assets/icons/nav-projects.svg";
-import NavContactIcon from "@/public/assets/icons/nav-contact.svg";
+import NavHomeIcon from "@/public/assets/icons/navigation/nav-home.svg";
+import NavAboutIcon from "@/public/assets/icons/navigation/nav-about.svg";
+import NavSkillsIcon from "@/public/assets/icons/navigation/nav-skills.svg";
+import NavProjectsIcon from "@/public/assets/icons/navigation/nav-projects.svg";
+import NavContactIcon from "@/public/assets/icons/navigation/nav-contact.svg";
 
 import { getHeaderData } from "@/lib/content";
 import { FloatingNavbar } from "@/components/common/FloatingNavbar";

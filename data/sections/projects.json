@@ -18,24 +18,20 @@
       },
       "iconLists": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+          "src": "/assets/icons/techstack/react.svg",
           "alt": "React Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          "src": "/assets/icons/techstack/typescript.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
+          "src": "/assets/icons/techstack/threejs-white.svg",
           "alt": "Three.js Logo"
-        },
-        {
-          "src": "https://ik.imagekit.io/trungkur0/tech-fm.svg",
-          "alt": "Framer Motion Logo"
         }
       ],
       "links": {
@@ -57,24 +53,16 @@
       },
       "iconLists": [
         {
-          "src": "https://ik.imagekit.io/trungkur0/tech-next.svg",
+          "src": "/assets/icons/techstack/nextjs-white.svg",
           "alt": "Next.js Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          "src": "/assets/icons/techstack/typescript.svg",
           "alt": "TypeScript Logo"
-        },
-        {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/streamlit/streamlit-original.svg",
-          "alt": "Stream Logo"
-        },
-        {
-          "src": "https://ik.imagekit.io/trungkur0/tech-c.svg",
-          "alt": "C Logo"
         }
       ],
       "links": {
@@ -96,24 +84,20 @@
       },
       "iconLists": [
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg",
+          "src": "/assets/icons/techstack/react.svg",
           "alt": "React Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          "src": "/assets/icons/techstack/typescript.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
+          "src": "/assets/icons/techstack/threejs-white.svg",
           "alt": "Three.js Logo"
-        },
-        {
-          "src": "https://ik.imagekit.io/trungkur0/tech-c.svg",
-          "alt": "C Logo"
         }
       ],
       "links": {
@@ -135,24 +119,20 @@
       },
       "iconLists": [
         {
-          "src": "https://ik.imagekit.io/trungkur0/tech-next.svg",
+          "src": "/assets/icons/techstack/nextjs-white.svg",
           "alt": "Next.js Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg",
+          "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
         },
         {
-          "src": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg",
+          "src": "/assets/icons/techstack/typescript.svg",
           "alt": "TypeScript Logo"
         },
         {
-          "src": "https://ik.imagekit.io/trungkur0/tech-three.svg",
+          "src": "/assets/icons/techstack/threejs-white.svg",
           "alt": "Three.js Logo"
-        },
-        {
-          "src": "https://ik.imagekit.io/trungkur0/tech-gsap.svg",
-          "alt": "GSAP Logo"
         }
       ],
       "links": {

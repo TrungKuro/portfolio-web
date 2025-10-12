@@ -512,7 +512,7 @@ SPA hoàn tất
 
 - **👉🏻 JSON Storage Service:**
   - 📄 `JSON`:
-    - ?!
+    - ❌
 
 - **👉🏻 Image Storage Service:**
   - ⚙️ [imagekit.io](https://imagekit.io) → đăng ký bằng _"TK Gmail"_
@@ -530,4 +530,27 @@ SPA hoàn tất
   - 🏠 `Image Local` _(inside project)_
     - Những ảnh còn lại, hầu như không cần thay đổi.
   - 🔗 `Domain-level restriction`:
-    - ?!
+    - ❌
+
+```
+⚠️ Không thực hiện nâng cấp nữa!
+```
+
+- ✅ Vẫn giữa dạng _"render"_ `[SSG]`
+  ◉ `JSON` vẫn dùng trực tiếp **JSON Local** có trong repo project.
+  ◉ `Image` ưu tiên chuyển về dùng **Image Local** hơn **Image External**.
+
+- 🤔 Lý do:
+  - Mỗi khi muốn cập nhập nội dung ➡️ sẽ phải cập nhập trên `JSON`.
+    - Nếu dùng `JSON` từ dịch vụ ngoài lưu trữ, nó cũng ko đồng bộ với **JSON Local** trên **GitHub**, dẫn tới việc quản lý trở nên rời rạc.
+    - Nếu bên dịch vụ có vấn đề hay dùng hết giới hạn, **Portfolio** cũng không hiển thị nội dung được.
+    - Thay vào đó đơn giản là _"re-built"_ project theo mỗi `commit` mới được đẩy lên repo **GitHub**.
+  - Với việc cập nhập `Image`.
+    - Tương tự `JSON`, nếu dùng `Image` từ dịch vụ ngoài lưu trữ, việc quản lý repo lại tách thành 3 nhánh rời rạc.
+    - Và nếu dịch vụ có vấn đề, **Portfolio** cũng không hiển thị ảnh được.
+    - Quan trọng nhất là mình muốn dùng ảnh được lưu trữ chung nguồn **server** với web, tốc độ hiển thị ảnh sẽ tối ưu nhất.
+    - Việc còn lại chỉ cần _"tối ưu ảnh"_ để dùng, vừa giảm kích thước **deploy**, vừa đẩy nhanh tốc độ **build**, tốc độ load ảnh bên **client** cũng được tối ưu.
+
+- 👍 Tóm lại:
+  - Hiệu suất web **Portfolio** sẽ dễ tối ưu nhất.
+  - Việc quản lý và cập nhập **Portfolio** trở nên dễ dàng, vì được tập trung vào một nguồn duy nhất là **GitHub**.

@@ -153,6 +153,8 @@
   - [DevIcon](https://devicon.dev/)
     - ➡️ [DevIcon Web](https://devicon-website.vercel.app/)
     - ➡️ [IconGram](https://icongr.am/)
+    - ➡️ [DevIcon UI](https://devicon-ui.vercel.app/)
+    - ➡️ [SVG Icon](https://svgicons.com/icon-set/svg-logos-svg-icons)
 
 - Cho `GIF`:
   - [Lottie Files](https://lottiefiles.com/)
