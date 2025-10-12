@@ -79,6 +79,9 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
     height: 400,
   });
 
+  // Hệ số tăng kích thước ẢO "canvas" trong bộ nhớ
+  const memoryFactor = 8;
+
   // Theo dõi trạng thái load của icon/image:
   function checkAllLoaded() {
     if (imagesLoadedRef.current.every(Boolean)) {
@@ -95,7 +98,7 @@ export const IconCloud = ({ icons, images, className }: IconCloudProps) => {
     imagesLoadedRef.current = new Array(items.length).fill(false);
 
     const newIconCanvases = items.map((item, index) => {
-      const pixelRatio = (window.devicePixelRatio || 1) * 1.25; //! Điều chỉnh theo "devicePixelRatio" có "oversample" nhẹ
+      const pixelRatio = (window.devicePixelRatio || 1) * memoryFactor; //! Điều chỉnh theo "devicePixelRatio" có "oversample"
       const size = sizeRender * pixelRatio; //! Tăng từ "sizeRender" lên độ phân giải "pixelRatio" lần
 
       const offscreen = document.createElement("canvas");
