@@ -31,7 +31,14 @@ export const Projects = ({ id }: { id: string }) => {
                   {/* Hình demo dự án */}
                   <div className="relative flex items-center justify-center">
                     {/* Hình nền */}
-                    <picture>
+                    <picture
+                      // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
+                      // Padding            = p-4         → tương đương 1rem = 16px
+                      //
+                      // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
+                      // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
+                      className="h-full w-full rounded-lg bg-black-200"
+                    >
                       <source
                         srcSet={imageProject.background.webp}
                         type="image/webp"
@@ -45,12 +52,6 @@ export const Projects = ({ id }: { id: string }) => {
                         alt=""
                         loading="lazy"
                         decoding="async"
-                        // BorderRadius_outer = rounded-2xl → tương đương 1rem = 16px
-                        // Padding            = p-4         → tương đương 1rem = 16px
-                        //
-                        // Trường hợp "góc vuông đụng cong", cần xử lý cho mềm mượt
-                        // rounded-lg	0.5rem  = 8px	        → Mềm hơn chút, vẫn hợp
-                        className="h-full w-full rounded-lg bg-black-200"
                       />
                     </picture>
 
@@ -60,7 +61,7 @@ export const Projects = ({ id }: { id: string }) => {
                       alt={imageProject.alt}
                       loading="lazy"
                       decoding="async"
-                      className="absolute bottom-0 z-10"
+                      className="absolute h-full w-full rounded-lg"
                     />
                   </div>
 
