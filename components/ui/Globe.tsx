@@ -83,20 +83,22 @@ function WebGLRendererConfig() {
   const {
     gl, // WebGL renderer
     size, // Bounds of the view (which stretches 100% and auto-adjusts)
+    camera, //! THÊM camera
   } = useThree();
 
-  useEffect(
-    () => {
-      gl.setPixelRatio(window.devicePixelRatio);
-      gl.setSize(size.width, size.height);
-      gl.setClearColor(0xffaaff, 0);
+  useEffect(() => {
+    gl.setPixelRatio(window.devicePixelRatio);
+    gl.setSize(size.width, size.height);
+    gl.setClearColor(0xffaaff, 0);
 
-      debugLog("WebGLRendererConfig updated");
-    },
-    [
-      // gl, size.height, size.width
-    ],
-  );
+    //! Cập nhật camera aspect
+    if (camera instanceof PerspectiveCamera) {
+      camera.aspect = size.width / size.height;
+      camera.updateProjectionMatrix();
+    }
+
+    debugLog("WebGLRendererConfig updated");
+  }, [gl, size.width, size.height, camera]);
 
   return null;
 }
