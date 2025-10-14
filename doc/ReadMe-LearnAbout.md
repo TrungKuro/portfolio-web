@@ -31,13 +31,11 @@
 ### `<Link>` vs `<a>`
 
 - 🔗 `<a>` (thẻ HTML gốc)
-
   - Reload lại **toàn bộ trang** khi điều hướng.
   - Luôn gửi request mới đến server.
   - Dùng khi: liên kết ra **ngoài domain** hoặc cần tải lại trang từ server.
 
 - 🔗 `<Link>` (Next.js component)
-
   - Dùng **client-side navigation** → chỉ thay đổi phần nội dung, không reload cả trang.
   - Nhanh hơn, giữ được **state** và **performance tốt**.
   - Tự động **prefetch** route nội bộ (khi gần viewport).
@@ -62,7 +60,6 @@
   | **Prefetch route (nội bộ)**                               | ✅ Tự động prefetch (Next.js hỗ trợ)              | ❌ Không           |
 
 - ✅ Best practice (tóm gọn)
-
   - **Nội bộ, không tab mới** → `<Link>`.
   - **Ngoại bộ, tab mới, download, anchor** → `<a>`.
 
@@ -207,13 +204,11 @@ self    = căn chỉnh riêng lẻ từng flex item
 ### Favicon
 
 - [Favicon là gì? Hướng dẫn cách tạo favicon cho website ấn tượng [Chi tiết từ A-Z]](https://vietnix.vn/favicon-la-gi/)
-
   - Step 1: Chuẩn bị hình có kích thước vuông, tỉ lệ `1:1`
   - Step 2: Chuyển đổi file ảnh sang định dạng `.ico`
   - Step 3: Chèn đoạn mã favicon HTML vào các trang web
 
 - **Next.Js - Metadata Files**
-
   - [favicon, icon, and apple-icon](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons)
   - [manifest.json](https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest)
 
@@ -300,19 +295,16 @@ self    = căn chỉnh riêng lẻ từng flex item
 - `CDN` đặt ở nhiều vị trí địa lý khác nhau, để người dùng tải nội dung từ **server** gần mình nhất thay vì luôn yêu cầu về **server gốc**.
 
 - 📌 Cách hoạt động:
-
   - Người dùng truy cập → CDN kiểm tra cache.
   - Nếu có cache → trả về bản sao đã lưu (rất nhanh).
   - Nếu chưa có cache → CDN lấy nội dung từ server gốc, lưu lại, rồi trả cho người dùng.
 
 - 📌 Lợi ích:
-
   - Tăng tốc tải trang (đặc biệt cho người dùng ở xa server gốc).
   - Giảm tải server gốc (ít request hơn).
   - Tối ưu SEO & Core Web Vitals (FCP, LCP nhanh hơn).
 
 - 📌 Ví dụ:
-
   - Website host tại Singapore, người ở Mỹ truy cập → CDN có server ở Los Angeles → người đó lấy dữ liệu từ LA thay vì Singapore → nhanh hơn nhiều.
 
 - 💡 Tóm gọn: CDN caching = lưu nội dung ở nhiều nơi → người dùng lấy từ nơi gần nhất → nhanh hơn, tiết kiệm tài nguyên server gốc.
@@ -322,14 +314,12 @@ self    = căn chỉnh riêng lẻ từng flex item
 👉🏻 `WebP` là định dạng ảnh do `Google` phát triển, giúp <u>giảm dung lượng</u> so với `JPEG/PNG` mà <u>vẫn giữ chất lượng tốt</u>.
 
 - 📌 Ưu điểm
-
   - Nhỏ hơn ~25–35% so với JPEG/PNG cùng chất lượng.
   - Hỗ trợ nền trong suốt (như PNG).
   - Hỗ trợ ảnh động (như GIF).
   - Giúp tăng tốc độ tải trang, cải thiện SEO & Core Web Vitals.
 
 - 📌 Nhược điểm
-
   - Một số phần mềm cũ chưa hỗ trợ (nhưng trình duyệt hiện đại hầu hết đã hỗ trợ).
 
 - 💡 Tóm gọn: WebP = ảnh nhẹ hơn, load nhanh hơn, tốt cho SEO.
@@ -345,7 +335,6 @@ self    = căn chỉnh riêng lẻ từng flex item
 👉🏻 Nếu bắt buộc dùng `<img>`:
 
 - Bạn cần <u>tạo WebP thủ công</u> và _"fallback"_ sang `JPG/PNG` bằng thẻ `<picture>`:
-
   - Trình duyệt hỗ trợ WebP → dùng `WebP`.
   - Không hỗ trợ → fallback sang `JPG`.
 
@@ -365,7 +354,6 @@ self    = căn chỉnh riêng lẻ từng flex item
 🔑 **Photo Optimized:**
 
 - Nên chuẩn bị trước **ảnh đã tối ưu hóa**!
-
   - Mặc dù Next.js `<Image>` có `optimization`, nhưng với những ảnh có tỉ lệ gốc rất cao, như: 2K, 4K, ...
   - Vẫn cần phần "tiền xử lý" **(preprocessing)** ảnh gốc để tối ưu nhất
 
@@ -390,7 +378,6 @@ self    = căn chỉnh riêng lẻ từng flex item
 🏆 **Tự động tạo WebP khi build:**
 
 - Bạn có thể dùng `Sharp` hoặc `imagemin-webp` để convert toàn bộ ảnh trong `/public` sang `WebP` khi chạy `npm run build`.
-
   - ✅ Nên dùng WebP: `Ảnh bitmap (raster)` như JPG, PNG → WebP giúp giảm dung lượng 25–35% mà vẫn giữ chất lượng gần như gốc (hoặc `AVIF` nếu muốn nhẹ hơn nữa).
   - ❌ Không cần dùng WebP: `Ảnh vector (SVG)` → không bị vỡ khi phóng to/thu nhỏ, dung lượng nhỏ sẵn, không cần convert sang WebP.
 
@@ -417,12 +404,10 @@ self    = căn chỉnh riêng lẻ từng flex item
 - Hỗ trợ cả lossy (mất dữ liệu) và lossless (không mất dữ liệu).
 
 - ✅ Ưu điểm nổi bật:
-
   - Dung lượng thường nhỏ hơn WebP 20–50% cùng chất lượng.
   - Hỗ trợ HDR, 10-bit, transparency (alpha).
 
 - ❌ Nhược điểm:
-
   - Encode (chuyển đổi) chậm hơn WebP.
   - Chưa hỗ trợ 100% trên tất cả trình duyệt (nhưng đã khá phổ biến).
 
@@ -434,7 +419,7 @@ self    = căn chỉnh riêng lẻ từng flex item
 | Dung lượng         | Nhỏ hơn JPEG/PNG 25–35% | Nhỏ hơn JPEG/PNG 40–60%, nhỏ hơn WebP \~20–50%        |
 | Chất lượng         | Tốt                     | Rất tốt (chi tiết & màu sắc tốt hơn ở dung lượng nhỏ) |
 | Hỗ trợ alpha       | ✅ Có                   | ✅ Có                                                 |
-| Hỗ trợ animation   | ✅ Có                   | ⚠ Có nhưng ít dùng                                    |
+| Hỗ trợ animation   | ✅ Có                   | ⚠ Có nhưng ít dùng                                   |
 | Tốc độ encode      | Nhanh                   | Chậm hơn WebP                                         |
 | Hỗ trợ trình duyệt | Rất rộng                | Rộng nhưng chưa tuyệt đối                             |
 | HDR / 10-bit       | ❌ Không                | ✅ Có                                                 |
@@ -465,13 +450,11 @@ self    = căn chỉnh riêng lẻ từng flex item
 👉🏻 Khi nào vẫn dùng `<Image>`?
 
 - Chỉ dùng Next.js `<Image>` với:
-
   - Ảnh raster: `JPG`, `PNG`, `WebP`
   - Ảnh cần optimization: resize, lazy loading, format conversion
   - Ảnh lớn: cần compress để giảm bandwidth
 
 - Yếu tố quyết định quan trọng:
-
   - Kích thước file gốc (quan trọng nhất)
     - File lớn `(>50KB)` + không phải `SVG` → `<Image>`
     - File nhỏ `(<50KB)` hoặc `SVG` → `<img>`
@@ -483,7 +466,6 @@ self    = căn chỉnh riêng lẻ từng flex item
     - Non-critical → `<Image>` với `lazy loading`
 
 - Quy tắc thực tế:
-
   - Dùng `<Image>` khi:
     - File gốc `> 50KB` (dù hiển thị nhỏ) + không phải SVG
     - Cần lazy loading (nhiều ảnh)
@@ -496,7 +478,6 @@ self    = căn chỉnh riêng lẻ từng flex item
     - Simple static icons
 
 - Nếu đã dùng `loading="lazy"` thì nên luôn kết hợp với `decoding="async"`! -> Kết hợp cả hai cho performance tốt nhất, đặc biệt với **ảnh raster formats**! 🚀
-
   - Hoạt động khác nhau nhưng bổ trợ (kết hợp tối ưu)
     - loading="lazy" // Kiểm soát KHI NÀO load
     - decoding="async" // Kiểm soát CÁCH decode (không block)
@@ -517,14 +498,12 @@ self    = căn chỉnh riêng lẻ từng flex item
 👉🏻 `[ quality ]` của `<Image>`:
 
 - Được sử dụng để _"điều chỉnh mức độ nén của hình ảnh"_ được tối ưu hóa, ảnh hưởng đến kích thước tệp và độ chi tiết của hình ảnh
-
   - Phạm vi: Thuộc tính `quality` nhận giá trị là một số nguyên từ 1 đến 100.
     - Giá trị `1`: Chất lượng thấp nhất, nén mạnh nhất, dẫn đến kích thước tệp nhỏ nhưng hình ảnh có thể mất chi tiết nghiêm trọng (pixelated).
     - Giá trị `100`: Chất lượng cao nhất, nén ít nhất, giữ được nhiều chi tiết nhưng kích thước tệp lớn hơn.
   - Giá trị mặc định: `75`. Giá trị này được chọn để cân bằng giữa kích thước tệp và chất lượng hình ảnh, phù hợp cho hầu hết các trường hợp sử dụng mà không cần cấu hình thêm.
 
 - Khi nào nên dùng thuộc tính `quality`? -> Thuộc tính `quality` nên được sử dụng khi bạn muốn:
-
   - Tối ưu hóa hiệu suất:
     - Giảm kích thước tệp hình ảnh để cải thiện thời gian tải trang, đặc biệt quan trọng cho các trang web có nhiều hình ảnh hoặc nhắm đến người dùng với kết nối mạng chậm.
   - Cân bằng chất lượng và tốc độ:
@@ -535,7 +514,6 @@ self    = căn chỉnh riêng lẻ từng flex item
     - Kết hợp với thuộc tính `sizes` để phục vụ hình ảnh phù hợp với các thiết bị có độ phân giải khác nhau.
 
 - Dùng giá trị bao nhiêu? -> Việc chọn giá trị `quality` phụ thuộc vào mục tiêu và loại nội dung hình ảnh:
-
   - `Chất lượng thấp (1-50):`
     - Khi nào dùng: Dùng cho hình ảnh không cần chi tiết cao, như hình nền, hình ảnh trang trí, hoặc khi ưu tiên tốc độ tải trang trên các thiết bị có băng thông thấp.
     - Ví dụ: Hình ảnh thumbnail, biểu tượng nhỏ, hoặc hình ảnh trong các ứng dụng di động nơi kích thước tệp cần được giảm tối đa.
@@ -670,7 +648,6 @@ self    = căn chỉnh riêng lẻ từng flex item
 👉🏻 **Cách Tối Ưu Hóa Ảnh Gốc (ảnh Vector):**
 
 - Sử dụng Công cụ Tối ưu SVG:
-
   - `SVGO (SVG Optimizer)`: công cụ phổ biến để nén SVG
 
 - Kiểm tra có `embed raster image` không?
@@ -697,20 +674,17 @@ self    = căn chỉnh riêng lẻ từng flex item
 ### Loading Page
 
 - [loading.js](https://nextjs.org/docs/app/api-reference/file-conventions/loading)
-
   - Với **LoadingPage** (tức `loading.tsx` trong **App Router**), mục tiêu là:
     - Nhẹ, render nhanh.
     - Gợi cảm giác “toàn cục” (khác với `Suspense` <u>cục bộ</u>).
     - Tránh animation phức tạp (vì đang ở trạng thái loading đầu tiên).
 
 - 💡 Một số ý tưởng cho **LoadingPage**:
-
   - `Spinner` đơn giản (tối ưu cho tốc độ)
   - `Skeleton layout` (gợi hình dạng page thật)
   - `Branding loader` (phù hợp app có logo)
 
 - 👉 Gợi ý chọn:
-
   - **App content-heavy** (báo chí, dashboard) → skeleton.
   - **App nhỏ/gọn** (portfolio, landing) → spinner.
   - **App thương hiệu mạnh** (SaaS, startup) → logo animation.
@@ -748,9 +722,7 @@ self    = căn chỉnh riêng lẻ từng flex item
 ## Rendering Patterns
 
 - 👉🏻 Core Patterns:
-
   - 1️⃣ `SSR` (Server-Side Rendering)
-
     - 👉 Render mỗi request ở server, sau đó gửi HTML đã render xuống client.
     - 📌 Đặc điểm:
       - HTML luôn mới nhất (data cập nhật theo từng request).
@@ -761,7 +733,7 @@ self    = căn chỉnh riêng lẻ từng flex item
     // pages/ssr.tsx
     export async function getServerSideProps() {
       const data = await fetch("https://api.example.com/posts").then((r) =>
-        r.json()
+        r.json(),
       );
       return { props: { data } };
     }
@@ -785,7 +757,6 @@ self    = căn chỉnh riêng lẻ từng flex item
       - Không cần `SSR` vì dữ liệu của bạn không thay đổi liên tục → không cần server render lại mỗi request.
 
   - 2️⃣ `CSR` (Client-Side Rendering)
-
     - 👉 Trang ban đầu chỉ là skeleton HTML trống, dữ liệu được fetch và render ở client (browser).
     - 📌 Đặc điểm:
       - Trải nghiệm ban đầu chậm hơn (phải chờ JS load).
@@ -825,7 +796,6 @@ self    = căn chỉnh riêng lẻ từng flex item
     ```
 
   - 3️⃣ `SSG` (Static Site Generation)
-
     - 👉 Render tại build time → sinh ra file HTML tĩnh.
     - 📌 Đặc điểm:
       - HTML cực nhanh `(CDN cache)`.
@@ -836,7 +806,7 @@ self    = căn chỉnh riêng lẻ từng flex item
     // pages/ssg.tsx
     export async function getStaticProps() {
       const data = await fetch("https://api.example.com/posts").then((r) =>
-        r.json()
+        r.json(),
       );
       return { props: { data } };
     }
@@ -863,7 +833,6 @@ self    = căn chỉnh riêng lẻ từng flex item
       - 💎 Với `App Router` (Next.js 13+), nếu bạn không _"fetch API"_ trong server component, thì mặc định page đã là _"static"_ (giống `SSG`).
 
   - 4️⃣ `ISR` (Incremental Static Regeneration)
-
     - 👉 Giống `SSG`, nhưng có thêm khả năng regenerate (tái tạo) HTML sau 1 khoảng thời gian revalidate.
     - 📌 Đặc điểm:
       - Lần đầu vẫn là file tĩnh (nhanh).
@@ -875,7 +844,7 @@ self    = căn chỉnh riêng lẻ từng flex item
     // pages/isr.tsx
     export async function getStaticProps() {
       const data = await fetch("https://api.example.com/posts").then((r) =>
-        r.json()
+        r.json(),
       );
       return {
         props: { data },
@@ -902,7 +871,6 @@ self    = căn chỉnh riêng lẻ từng flex item
       - Không cần `ISR`, trừ khi bạn định lấy data từ `CMS/blog` và muốn cập nhật theo chu kỳ.
 
 - 👉🏻 Advanced Patterns:
-
   - `DPR` (Distributed Persistent Rendering)
     - Render được phân phối trên nhiều "máy chủ/vùng" **(Server/Region)**
   - `ESR` (Edge-Side Rendering)
@@ -921,7 +889,6 @@ self    = căn chỉnh riêng lẻ từng flex item
     - Next.js chưa support native, nhưng có thể implement
 
 - 🌐 Các thuật ngữ liên quan khác:
-
   - Build-time Patterns:
     - `SWR` (Stale-While-Revalidate) - caching strategy
     - `PWR` (Pre-Warm Rendering) - pre-generate popular routes
@@ -984,13 +951,11 @@ useEffect       → chạy sau paint
 ### SPA = Single Page Application 🖥️
 
 - Hiểu nôm na:
-
   - Một ứng dụng web **chỉ có 1 file HTML gốc (index.html)** được load lần đầu.
   - Sau đó toàn bộ **điều hướng (navigation)** và cập nhật UI đều được thực hiện bằng JavaScript trên trình duyệt.
   - Khi người dùng bấm vào link, thay vì tải lại toàn bộ trang từ server, chỉ _"fetch"_ dữ liệu `JSON/API` và _"update"_ `DOM` → trải nghiệm mượt, giống `App Mobile`.
 
 - 🔑 Đặc điểm `SPA`:
-
   - Chỉ load 1 lần đầu, sau đó mọi thứ xử lý bằng JS.
   - Không reload toàn trang → nhanh hơn, UX tốt hơn.
   - `SEO` yếu hơn nếu không có `SSR/SSG` (vì Google bot có thể gặp khó khi đọc JS).
@@ -1121,7 +1086,6 @@ Cấu trúc cơ bản:
       - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
   - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không cần thiết cho ảnh chụp thực tế)
 - _"Compress"_: chọn định dạng `AVIF`
-
   - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, không cần thiết cho ảnh chụp)
   - `Quality` (Chất lượng ảnh): `75-80` (mức cân bằng tốt cho ảnh chụp, không làm mất chi tiết)
   - `Effort` (Mức độ nén ảnh): `4` (cho chất lượng nén tốt)
@@ -1152,7 +1116,6 @@ Cấu trúc cơ bản:
       - `Maintain aspect ratio`: ✅ `ON` (giữ tỷ lệ ảnh)
   - `Reduce palette` (Giảm bảng màu): ❌ `OFF` (không nên bật cho ảnh thiết kế, sẽ làm giảm số lượng màu, `PNG` thiết kế thường cần đầy đủ màu sắc)
 - _"Compress"_: chọn định dạng `WebP`
-
   - `Lossless` (Không mất dữ liệu ảnh): ❌ `OFF` (`Lossless` sẽ tạo file rất nặng, `Lossy` với quality cao vẫn đủ cho thiết kế)
   - `Effort` (Mức độ nén ảnh): `6` (nén tối ưu hơn cho thiết kế)
   - `Quality` (Chất lượng ảnh): `85-90` (`PNG` thiết kế cần quality cao hơn ảnh chụp, khuyến nghị `88` cho cân bằng tốt)
@@ -1177,7 +1140,6 @@ Cấu trúc cơ bản:
   ```
 
 - Prompt tạo hình nền cho các item trong grid section **About**:
-
   - ✅ Prompt (Positive with Lighting Architecture):
 
   ```
@@ -1222,520 +1184,3 @@ Cấu trúc cơ bản:
   - Dùng các hook như useState, useEffect, useRef…
 
 ⇒ Phải thêm `"use client"` ở đầu file.
-
-### [ globe.json ]
-
-- `Mẫu GeoJSON` ban đầu lãnh thổ Việt Nam từ nguồn [Download the globe.json](https://assets.aceternity.com/globe.json)
-
-  ```json
-  {
-    "type": "Feature",
-    "properties": {
-      "admin": "Vietnam",
-      "name": "Vietnam",
-      "continent": "Asia"
-    },
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [108.05018029178291, 21.55237986906011],
-          [106.71506798709007, 20.696850694252014],
-          [105.881682163519, 19.752050482659694],
-          [105.66200564984628, 19.058165188060567],
-          [106.42681684776599, 18.004120998603224],
-          [107.36195356651973, 16.69745656988705],
-          [108.2694950704296, 16.079742336486145],
-          [108.87710656131745, 15.276690578670436],
-          [109.33526981001721, 13.42602834721772],
-          [109.20013593957395, 11.66685923913776],
-          [108.36612999881542, 11.00832062422627],
-          [107.22092858279521, 10.36448395430183],
-          [106.4051127462034, 9.530839748569317],
-          [105.15826378786508, 8.599759629750492],
-          [104.79518517458237, 9.2410383162765],
-          [105.07620161338559, 9.918490505406806],
-          [104.33433475140345, 10.486543687375228],
-          [105.19991499229232, 10.889309800658094],
-          [106.24967003786944, 10.961811835163585],
-          [105.8105237162531, 11.567614650921225],
-          [107.49140302941086, 12.337205918827944],
-          [107.6145479675624, 13.535530707244202],
-          [107.38272749230106, 14.202440904186968],
-          [107.56452518110387, 15.202173163305554],
-          [107.31270592654558, 15.908538316303177],
-          [106.55600792849566, 16.6042839624648],
-          [105.925762160264, 17.485315456608955],
-          [105.0945984232815, 18.666974595611073],
-          [103.8965320170267, 19.2651809758218],
-          [104.18338789267891, 19.624668077060214],
-          [104.82257368369707, 19.88664175056388],
-          [104.43500044150802, 20.758733221921528],
-          [103.20386111858643, 20.766562201413745],
-          [102.75489627483464, 21.675137233969462],
-          [102.17043582561355, 22.464753119389297],
-          [102.70699222210008, 22.708795070887668],
-          [103.50451460166055, 22.703756618739202],
-          [104.47685835166445, 22.81915009204696],
-          [105.3292094258866, 23.35206330005691],
-          [105.81124718630521, 22.9768924016179],
-          [106.72540327354845, 22.794267889898414],
-          [106.5672733907353, 22.218204860924768],
-          [107.04342003787261, 21.811898912029907],
-          [108.05018029178291, 21.55237986906011]
-        ]
-      ]
-    }
-  }
-  ```
-
-- [Tạo bản đồ Việt Nam gồm 2 quần đảo Trường Sa và Hoàng Sa với react-simple-maps](https://viblo.asia/p/tao-ban-do-viet-nam-gom-2-quan-dao-truong-sa-va-hoang-sa-voi-react-simple-maps-WAyK87wE5xX)
-
-  - [GADM](https://gadm.org/download_country.html)
-    - Ở **GADM**, thì dữ liệu trang web này ko bao gồm `Hoàng Sa` và `Trường Sa` ở bản đồ chính `Việt Nam` → _"gadm41_VNM_shp.zip"_.
-    - Vì vậy, tiếp tục các bạn tìm thêm:
-      - `Paracel Islands (Hoàng Sa)` → _"gadm41_XPI_shp.zip"_
-      - `Spratly Islands (Trường Sa)` → _"gadm41_XSP_shp.zip"_
-    - Và tải **Shapefile**.
-  - [MapShaper](https://mapshaper.org/)
-    - Thực hiện **Import** 2 file (.zip) nén vào: _"gadm41_XPI_0"_ ; _"gadm41_XSP_0"_
-    - Thực hiện `Simplify` điều chỉnh mức độ chi tiết của bản đồ: giúp đơn giản hóa dữ liệu bản đồ từ **Shapefile** của lãnh thổ Việt Nam, và để sao cho kết quả tương tự như mẫu **GeoJSON Việt Nam** bạn cung cấp (với các tọa độ đã được rút gọn). Bạn cần chọn các thiết lập phù hợp dựa trên đặc điểm của dữ liệu và mục tiêu đơn giản hóa.
-      - ✅ **[ Prevent shape removal ]** : Prevent small polygon features from disappearing at high simplification. Keeps the largest ring of multi-ring features.
-      - ❌ **[ Use planar geometry ]** : Treat x, y values as Cartesian coordinates on a plane, rather than as longitude, latitude coordinates on a sphere.
-      - ❌ **[ Douglas-Peucker ]** : Simplified lines remain within a set distance of original lines. Good for thinning dense points, but spikes tend to form at high simplification.
-      - ✅ **[ Visvalingam / effective area ]** : Lines are simplified by iteratively removing the point that forms the least-area triangle with two adjacent points.
-      - ❌ **[ Visalingam / weighted area ]** : Points located at the vertex of more acute angles are preferentially removed, for a smoother appearance.
-    - Chọn mức `settings = 1%` cho quá trình `Simplify`
-    - Cuối cùng thực hiện **Export** ra `file GeoJSON`, nhớ chỉ cần chọn `Layer 0` tương ứng với <u>biên giới quốc gia</u>.
-      - Bạn sẽ có 2 file _"gadm41_XPI_0.json"_ (Quần đảo Hoàng Sa) và _"gadm41_XSP_0.json"_ (Quần đảo Trường Sa)
-
-- Dùng AI để bổ sung dữ liệu từ các file trên vào **GeoJSON** gốc của lãnh thổ Việt Nam. Ví dụ, mình dùng `Prompt` như sau...
-
-  ```
-  Với 2 file tôi cung cấp, nếu vẫn còn có thể SIMPLIFY, hãy thực hiện, rồi bổ sung dữ liệu đã đơn giản hóa thêm vào JSON gốc.
-
-  Kết quả tạo thành cấu trúc:
-  - Đại lục Vietnam (Polygon)
-  - Quần đảo Hoàng Sa (MultiPolygon)
-  - Quần đảo Trường Sa (MultiPolygon)
-  ```
-
-- Quá trình đơn giản hóa:
-  - Loại bỏ các tọa độ dư thừa: Giảm từ hàng trăm điểm xuống còn các điểm then chốt cần thiết để duy trì hình dạng cơ bản
-  - Làm tròn tọa độ: Từ độ chính xác 14-15 chữ số thập phân xuống 4 chữ số (vẫn đủ chính xác cho việc hiển thị bản đồ)
-  - Chỉ giữ lại các đảo lớn nhất:
-    - Hoàng Sa: 3 polygon chính thay vì 25 polygon nhỏ
-    - Trường Sa: 4 polygon chính thay vì 10+ polygon nhỏ
-- JSON mới này bao gồm <u>tổng cộng 8 polygon</u>, thể hiện đầy đủ lãnh thổ Việt Nam bao gồm cả đất liền và các quần đảo trên Biển Đông.
-
-  ```json
-  {
-    "type": "Feature",
-    "properties": {
-      "admin": "Vietnam",
-      "name": "Vietnam",
-      "continent": "Asia"
-    },
-    "geometry": {
-      "type": "Polygon",
-      "coordinates": [
-        [
-          [108.05018029178291, 21.55237986906011],
-          [106.71506798709007, 20.696850694252014],
-          [105.881682163519, 19.752050482659694],
-          [105.66200564984628, 19.058165188060567],
-          [106.42681684776599, 18.004120998603224],
-          [107.36195356651973, 16.69745656988705],
-          [108.2694950704296, 16.079742336486145],
-          [108.87710656131745, 15.276690578670436],
-          [109.33526981001721, 13.42602834721772],
-          [109.20013593957395, 11.66685923913776],
-          [108.36612999881542, 11.00832062422627],
-          [107.22092858279521, 10.36448395430183],
-          [106.4051127462034, 9.530839748569317],
-          [105.15826378786508, 8.599759629750492],
-          [104.79518517458237, 9.2410383162765],
-          [105.07620161338559, 9.918490505406806],
-          [104.33433475140345, 10.486543687375228],
-          [105.19991499229232, 10.889309800658094],
-          [106.24967003786944, 10.961811835163585],
-          [105.8105237162531, 11.567614650921225],
-          [107.49140302941086, 12.337205918827944],
-          [107.6145479675624, 13.535530707244202],
-          [107.38272749230106, 14.202440904186968],
-          [107.56452518110387, 15.202173163305554],
-          [107.31270592654558, 15.908538316303177],
-          [106.55600792849566, 16.6042839624648],
-          [105.925762160264, 17.485315456608955],
-          [105.0945984232815, 18.666974595611073],
-          [103.8965320170267, 19.2651809758218],
-          [104.18338789267891, 19.624668077060214],
-          [104.82257368369707, 19.88664175056388],
-          [104.43500044150802, 20.758733221921528],
-          [103.20386111858643, 20.766562201413745],
-          [102.75489627483464, 21.675137233969462],
-          [102.17043582561355, 22.464753119389297],
-          [102.70699222210008, 22.708795070887668],
-          [103.50451460166055, 22.703756618739202],
-          [104.47685835166445, 22.81915009204696],
-          [105.3292094258866, 23.35206330005691],
-          [105.81124718630521, 22.9768924016179],
-          [106.72540327354845, 22.794267889898414],
-          [106.5672733907353, 22.218204860924768],
-          [107.04342003787261, 21.811898912029907],
-          [108.05018029178291, 21.55237986906011]
-        ]
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "properties": {
-      "admin": "Vietnam",
-      "name": "Paracel Islands",
-      "continent": "Vietnam"
-    },
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [
-        [
-          [
-            [111.2101, 15.79],
-            [111.2097, 15.79],
-            [111.2094, 15.7903],
-            [111.2086, 15.7903],
-            [111.2084, 15.7906],
-            [111.2081, 15.7906],
-            [111.2078, 15.7903],
-            [111.2069, 15.7903],
-            [111.2069, 15.7902],
-            [111.2067, 15.79],
-            [111.2061, 15.79],
-            [111.2058, 15.7897],
-            [111.2053, 15.7897],
-            [111.205, 15.79],
-            [111.2047, 15.79],
-            [111.2044, 15.7897],
-            [111.2042, 15.7897],
-            [111.2033, 15.7889],
-            [111.2031, 15.7889],
-            [111.2025, 15.7883],
-            [111.2017, 15.7883],
-            [111.2014, 15.7881],
-            [111.2008, 15.7881],
-            [111.2006, 15.7878],
-            [111.2003, 15.7878],
-            [111.1983, 15.7858],
-            [111.1983, 15.7856],
-            [111.1978, 15.785],
-            [111.1972, 15.785],
-            [111.1972, 15.7847],
-            [111.1967, 15.7842],
-            [111.1967, 15.7839],
-            [111.1964, 15.7836],
-            [111.1964, 15.7833],
-            [111.1961, 15.7831],
-            [111.1956, 15.7831],
-            [111.1956, 15.7826],
-            [111.1956, 15.7825],
-            [111.1964, 15.7817],
-            [111.1973, 15.7812],
-            [111.1975, 15.781],
-            [111.1982, 15.7807],
-            [111.1987, 15.7804],
-            [111.1994, 15.7804],
-            [111.2003, 15.7803],
-            [111.2014, 15.78],
-            [111.2013, 15.7807],
-            [111.2013, 15.7811],
-            [111.2017, 15.7816],
-            [111.2022, 15.7817],
-            [111.2027, 15.7815],
-            [111.2032, 15.781],
-            [111.2032, 15.7804],
-            [111.2042, 15.78],
-            [111.2056, 15.7803],
-            [111.206, 15.7808],
-            [111.2065, 15.7809],
-            [111.2088, 15.782],
-            [111.2092, 15.7831],
-            [111.2094, 15.7831],
-            [111.21, 15.7836],
-            [111.21, 15.7844],
-            [111.2103, 15.7847],
-            [111.2103, 15.785],
-            [111.2108, 15.7856],
-            [111.2108, 15.7858],
-            [111.2114, 15.7864],
-            [111.2114, 15.7867],
-            [111.2119, 15.7875],
-            [111.2119, 15.7885],
-            [111.2112, 15.7892],
-            [111.2101, 15.79]
-          ]
-        ],
-        [
-          [
-            [112.0511, 16.3631],
-            [112.0485, 16.3636],
-            [112.045, 16.3641],
-            [112.0418, 16.3645],
-            [112.0378, 16.3649],
-            [112.033, 16.3651],
-            [112.0282, 16.3649],
-            [112.0265, 16.3648],
-            [112.0242, 16.3649],
-            [112.0205, 16.3638],
-            [112.0182, 16.3632],
-            [112.016, 16.3629],
-            [112.0153, 16.3627],
-            [112.0136, 16.3616],
-            [112.0129, 16.3612],
-            [112.0126, 16.3606],
-            [112.0128, 16.3604],
-            [112.0137, 16.3604],
-            [112.0153, 16.3609],
-            [112.0185, 16.3616],
-            [112.0213, 16.3621],
-            [112.0238, 16.3621],
-            [112.0297, 16.3627],
-            [112.0318, 16.3632],
-            [112.0343, 16.3628],
-            [112.0369, 16.363],
-            [112.0398, 16.3629],
-            [112.043, 16.3627],
-            [112.0471, 16.3623],
-            [112.0497, 16.3617],
-            [112.0512, 16.3614],
-            [112.0544, 16.3607],
-            [112.0585, 16.3597],
-            [112.0621, 16.3584],
-            [112.0657, 16.3575],
-            [112.069, 16.3567],
-            [112.0727, 16.3561],
-            [112.0747, 16.3554],
-            [112.0773, 16.3549],
-            [112.0797, 16.3543],
-            [112.0812, 16.3533],
-            [112.0832, 16.3523],
-            [112.0862, 16.3513],
-            [112.0884, 16.3503],
-            [112.0894, 16.3502],
-            [112.0908, 16.3482],
-            [112.0916, 16.3459],
-            [112.0923, 16.3439],
-            [112.0925, 16.3425],
-            [112.0925, 16.3408],
-            [112.0919, 16.3389],
-            [112.091, 16.3372],
-            [112.09, 16.3359],
-            [112.0894, 16.3354],
-            [112.0887, 16.3351],
-            [112.0885, 16.3342],
-            [112.0887, 16.3334],
-            [112.0896, 16.3337],
-            [112.0911, 16.3346],
-            [112.0921, 16.3363],
-            [112.0931, 16.338],
-            [112.0938, 16.3416],
-            [112.0944, 16.3442],
-            [112.094, 16.3458],
-            [112.093, 16.3482],
-            [112.0916, 16.3501],
-            [112.0906, 16.3513],
-            [112.0888, 16.3527],
-            [112.0873, 16.3533],
-            [112.086, 16.354],
-            [112.0834, 16.3549],
-            [112.0807, 16.356],
-            [112.0789, 16.3567],
-            [112.076, 16.3571],
-            [112.0728, 16.3579],
-            [112.0679, 16.3589],
-            [112.0636, 16.36],
-            [112.0591, 16.361],
-            [112.0551, 16.3621],
-            [112.0511, 16.3631]
-          ]
-        ],
-        [
-          [
-            [112.3083, 16.9661],
-            [112.308, 16.9662],
-            [112.3078, 16.9664],
-            [112.3067, 16.9664],
-            [112.3064, 16.9667],
-            [112.3056, 16.9667],
-            [112.3053, 16.9664],
-            [112.3047, 16.9664],
-            [112.3045, 16.9662],
-            [112.3044, 16.9661],
-            [112.3042, 16.9661],
-            [112.3039, 16.9658],
-            [112.3036, 16.9656],
-            [112.3036, 16.965],
-            [112.3039, 16.9647],
-            [112.3044, 16.9647],
-            [112.3047, 16.9644],
-            [112.305, 16.9644],
-            [112.3053, 16.9642],
-            [112.3058, 16.9642],
-            [112.3061, 16.9639],
-            [112.3067, 16.9639],
-            [112.3069, 16.9636],
-            [112.3072, 16.9636],
-            [112.3075, 16.9633],
-            [112.3078, 16.9633],
-            [112.3081, 16.9631],
-            [112.3083, 16.9631],
-            [112.3089, 16.9625],
-            [112.3094, 16.9625],
-            [112.3097, 16.9622],
-            [112.31, 16.9622],
-            [112.3103, 16.9619],
-            [112.3108, 16.9619],
-            [112.3111, 16.9617],
-            [112.3114, 16.9617],
-            [112.3117, 16.9614],
-            [112.3122, 16.9614],
-            [112.3125, 16.9611],
-            [112.3128, 16.9611],
-            [112.3131, 16.9608],
-            [112.3133, 16.9608],
-            [112.3136, 16.9606],
-            [112.3144, 16.9606],
-            [112.3147, 16.9603],
-            [112.315, 16.9603],
-            [112.3153, 16.96],
-            [112.3156, 16.96],
-            [112.3161, 16.9606],
-            [112.3158, 16.9608],
-            [112.3158, 16.9614],
-            [112.3156, 16.9617],
-            [112.315, 16.9617],
-            [112.3136, 16.9631],
-            [112.3133, 16.9631],
-            [112.3125, 16.9639],
-            [112.3122, 16.9639],
-            [112.3117, 16.9644],
-            [112.3114, 16.9644],
-            [112.3111, 16.9647],
-            [112.3108, 16.9647],
-            [112.3106, 16.965],
-            [112.3103, 16.965],
-            [112.31, 16.9653],
-            [112.3097, 16.9653],
-            [112.3094, 16.9656],
-            [112.3092, 16.9656],
-            [112.3089, 16.9658],
-            [112.3086, 16.9658],
-            [112.3083, 16.9661]
-          ]
-        ]
-      ]
-    }
-  },
-  {
-    "type": "Feature",
-    "properties": {
-      "admin": "Vietnam",
-      "name": "Spratly Islands",
-      "continent": "Vietnam"
-    },
-    "geometry": {
-      "type": "MultiPolygon",
-      "coordinates": [
-        [
-          [
-            [114.4786, 10.3753],
-            [114.4803, 10.3736],
-            [114.4806, 10.3736],
-            [114.4808, 10.3733],
-            [114.4811, 10.3736],
-            [114.4814, 10.3736],
-            [114.4817, 10.3739],
-            [114.4817, 10.3747],
-            [114.4806, 10.3758],
-            [114.4806, 10.3761],
-            [114.48, 10.3767],
-            [114.4794, 10.3768],
-            [114.4789, 10.3767],
-            [114.4786, 10.3764],
-            [114.4786, 10.3753]
-          ]
-        ],
-        [
-          [
-            [114.4228, 10.6683],
-            [114.4225, 10.6681],
-            [114.4225, 10.6675],
-            [114.4236, 10.6664],
-            [114.4247, 10.6664],
-            [114.425, 10.6667],
-            [114.4253, 10.6667],
-            [114.4253, 10.6669],
-            [114.4256, 10.6672],
-            [114.4253, 10.6675],
-            [114.4253, 10.6678],
-            [114.425, 10.6681],
-            [114.425, 10.6683],
-            [114.4247, 10.6686],
-            [114.4247, 10.6689],
-            [114.4239, 10.6697],
-            [114.4236, 10.6697],
-            [114.4228, 10.6689],
-            [114.4228, 10.6683]
-          ]
-        ],
-        [
-          [
-            [115.8025, 10.7311],
-            [115.803, 10.7306],
-            [115.8033, 10.7302],
-            [115.8041, 10.7301],
-            [115.8043, 10.7307],
-            [115.8043, 10.7313],
-            [115.8042, 10.7319],
-            [115.8042, 10.7322],
-            [115.8044, 10.7325],
-            [115.8044, 10.7331],
-            [115.8033, 10.7342],
-            [115.8028, 10.7342],
-            [115.8022, 10.7336],
-            [115.8022, 10.7331],
-            [115.8019, 10.7328],
-            [115.8019, 10.7317],
-            [115.8025, 10.7311]
-          ]
-        ],
-        [
-          [
-            [115.8217, 10.8167],
-            [115.8215, 10.8165],
-            [115.8214, 10.8158],
-            [115.8216, 10.8156],
-            [115.8222, 10.8156],
-            [115.8231, 10.8164],
-            [115.823, 10.8167],
-            [115.8228, 10.817],
-            [115.8227, 10.8172],
-            [115.8223, 10.8173],
-            [115.8219, 10.8172],
-            [115.8217, 10.8167]
-          ]
-        ]
-      ]
-    }
-  }
-  ```
-
-- Tuy nhiên, vì kích thước các quần đảo quá nhỏ so với kích thước đại lục 😅. Và để hiển thị thấy được trên **Globe** có độ phân giải tương tối (vì cần ưu tiên tính hiệu suất khi render). Nên mình đã thực hiện **SCALE** lãnh thổ các quần đảo lên nhiều lần 🤣.
-
-  - Đầu tiên, mình cần cung cấp data JSON (đã có) của từng nhóm quần đảo vào file _"scale-geometry.js"_.
-  - Tiếp theo là chọn hệ số phóng to `(SCALE_FACTOR)`, mình đã chọn:
-    - `x100` cho _"Paracel Islands (Hoàng Sa)"_
-    - `x300` cho _"Spratly Islands (Trường Sa)"_
-  - Sau đó chạy `file (.js)` với lệnh `node scale-geometry.js` để lấy data.
-  - Cuối cùng thêm các data GeoJSON đã _"scale"_ trên vào kế bên GeoJSON của _"Đại lục Vietnam"_ trong file `globe.json`.
-
-- Kết quả 💀 (thêm hình ở đây) ?!
