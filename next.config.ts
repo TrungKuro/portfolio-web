@@ -111,6 +111,8 @@ const nextConfig: NextConfig = {
       "react-intersection-observer",
       "lottie-react",
     ],
+
+    esmExternals: true, //! dùng native ESM imports (giảm legacy)
   },
 };
 

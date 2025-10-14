@@ -40,3 +40,11 @@ export const LoadingPage = () => {
     </div>
   );
 };
+
+/* ------------------------------------------------------------------------- */
+
+//! Warning: khi dùng <Image> với priority={true}
+/**
+ * The resource http://localhost:3000/_next/image?url=%2Fassets%2Flogos%2Flogo-edit-removebg.png&w=1080&q=75 was preloaded using link preload but not used within a few seconds from the window's load event.
+ * Please make sure it has an appropriate `as` value and it is preloaded intentionally.
+ */

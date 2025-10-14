@@ -1,4 +1,4 @@
-import { LoadingPage } from "@/components/layout/LoadingPage";
+// import { LoadingPage } from "@/components/layout/LoadingPage";
 
 /* ------------------------------------------------------------------------- */
 
@@ -18,5 +18,9 @@ import { LoadingPage } from "@/components/layout/LoadingPage";
 /* ------------------------------------------------------------------------- */
 
 export default function Loading() {
-  return <LoadingPage />;
+  // return <LoadingPage />;
+
+  //! Tắt Loading Page, vì hiện page render dạng SSG
+  //! Chỉ bật Loading Page, khi page chuyển sang render dạng SSR
+  return null;
 }

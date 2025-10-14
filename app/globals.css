@@ -1,9 +1,39 @@
-@import "tailwindcss";
+/* ------------------------------------------------------------------------- */
+/*                           🔥 Inline Critical CSS                          */
+/* ------------------------------------------------------------------------- */
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1e1e2f;
+    --foreground: #fdfdfe;
+  }
+}
+
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* ------------------------------------------------------------------------- */
+
+@import "tailwindcss";
 
 @theme inline {
   --color-background: var(--background);
@@ -59,30 +89,6 @@
   --animate-scroll: scroll var(--animation-duration, 40s)
     var(--animation-direction, forwards) linear infinite;
   --animate-meteor-effect: meteor 5s linear infinite;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1e1e2f;
-    --foreground: #fdfdfe;
-  }
-}
-
-* {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {

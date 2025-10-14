@@ -8,13 +8,9 @@ import { getHeaderData } from "@/lib/content";
 import { FloatingNavbar } from "@/components/common/FloatingNavbar";
 
 import { Hero } from "@/components/sections/Hero";
-import { About } from "@/components/sections/About";
-import { Skills } from "@/components/sections/Skills";
-import { Projects } from "@/components/sections/Projects";
-import { Contact } from "@/components/sections/Contact";
+import { DynamicSections } from "@/components/layout/DynamicSections";
 
-import { Suspense } from "react";
-import { LoadingSection } from "@/components/layout/LoadingSection";
+/* ------------------------------------------------------------------------- */
 
 //! Cấu hình mặc định là SSG
 //  Hoặc dùng: export const dynamic = "force-static"; // -> ép SSG
@@ -65,25 +61,12 @@ export default function Home() {
         <FloatingNavbar navItems={navItemsWithIcons} />
 
         {/* Header */}
-        <Suspense fallback={<LoadingSection />}>
-          <Hero id={navItems[0].id} />
-        </Suspense>
+        <Hero id={navItems[0].id} />
 
-        {/* Body */}
-        <Suspense fallback={<LoadingSection />}>
-          <About id={navItems[1].id} />
-        </Suspense>
-        <Suspense fallback={<LoadingSection />}>
-          <Skills id={navItems[2].id} />
-        </Suspense>
-        <Suspense fallback={<LoadingSection />}>
-          <Projects id={navItems[3].id} />
-        </Suspense>
-
-        {/* Footer */}
-        <Suspense fallback={<LoadingSection />}>
-          <Contact id={navItems[4].id} />
-        </Suspense>
+        {/* Sections use Dynamic Import */}
+        <DynamicSections
+          ids={[navItems[1].id, navItems[2].id, navItems[3].id, navItems[4].id]}
+        />
       </div>
     </main>
   );
