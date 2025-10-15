@@ -73,10 +73,11 @@
       "img": "/images/misc/bg-cyberpunk.png",
       "spareImg": "",
 
-      "imgH": 1024,
-      "imgW": 1024,
-      "spareImgH": 0,
-      "spareImgW": 0,
+      "imgSizes": "(max-width: 768px) 100vw, (max-width: 1280px) 50vw",
+      "spareImgSizes": "",
+
+      "imgQuality": 75,
+      "spareImgQuality": 75,
 
       "imgClassName": "",
       "spareImgClassName": "",
@@ -96,10 +97,11 @@
       "img": "",
       "spareImg": "",
 
-      "imgH": 0,
-      "imgW": 0,
-      "spareImgH": 0,
-      "spareImgW": 0,
+      "imgSizes": "",
+      "spareImgSizes": "",
+
+      "imgQuality": 75,
+      "spareImgQuality": 75,
 
       "imgClassName": "",
       "spareImgClassName": "",
@@ -119,10 +121,11 @@
       "img": "",
       "spareImg": "",
 
-      "imgH": 0,
-      "imgW": 0,
-      "spareImgH": 0,
-      "spareImgW": 0,
+      "imgSizes": "",
+      "spareImgSizes": "",
+
+      "imgQuality": 75,
+      "spareImgQuality": 75,
 
       "imgClassName": "",
       "spareImgClassName": "",
@@ -142,10 +145,11 @@
       "img": "/images/misc/bg-card4.svg",
       "spareImg": "/images/misc/bento-grid-optimal.webp",
 
-      "imgH": 96,
-      "imgW": 208,
-      "spareImgH": 656,
-      "spareImgW": 1280,
+      "imgSizes": "(max-width: 768px) 100vw, (max-width: 1280px) 38vw",
+      "spareImgSizes": "(max-width: 768px) 100vw, (max-width: 1280px) 38vw",
+
+      "imgQuality": 75,
+      "spareImgQuality": 50,
 
       "imgClassName": "top-[40%] h-[60%] object-contain object-bottom",
       "spareImgClassName": "opacity-60",
@@ -165,10 +169,11 @@
       "img": "/images/misc/bg-card5-optimal.webp",
       "spareImg": "/images/misc/bento-grid-optimal.webp",
 
-      "imgH": 980,
-      "imgW": 1280,
-      "spareImgH": 656,
-      "spareImgW": 1280,
+      "imgSizes": "(max-width: 768px) 100vw, (max-width: 1280px) 38vw",
+      "spareImgSizes": "(max-width: 768px) 100vw, (max-width: 1280px) 58vw",
+
+      "imgQuality": 75,
+      "spareImgQuality": 50,
 
       "imgClassName": "right-0 bottom-0 w-[80%] h-[80%] object-contain object-bottom-right",
       "spareImgClassName": "opacity-80",
@@ -188,10 +193,11 @@
       "img": "",
       "spareImg": "",
 
-      "imgH": 0,
-      "imgW": 0,
-      "spareImgH": 0,
-      "spareImgW": 0,
+      "imgSizes": "",
+      "spareImgSizes": "",
+
+      "imgQuality": 75,
+      "spareImgQuality": 75,
 
       "imgClassName": "",
       "spareImgClassName": "",

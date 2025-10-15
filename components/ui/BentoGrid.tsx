@@ -44,10 +44,10 @@ export const BentoGridItem = ({
   //
   img,
   spareImg,
-  imgH,
-  imgW,
-  spareImgH,
-  spareImgW,
+  imgSizes,
+  spareImgSizes,
+  imgQuality,
+  spareImgQuality,
   imgClassName,
   spareImgClassName,
   //
@@ -63,10 +63,10 @@ export const BentoGridItem = ({
   //
   img?: string;
   spareImg?: string;
-  imgH?: number;
-  imgW?: number;
-  spareImgH?: number;
-  spareImgW?: number;
+  imgSizes?: string;
+  spareImgSizes?: string;
+  imgQuality?: number;
+  spareImgQuality?: number;
   imgClassName?: string;
   spareImgClassName?: string;
   //
@@ -109,8 +109,9 @@ export const BentoGridItem = ({
           <Image
             src={spareImg}
             alt=""
-            height={spareImgH}
-            width={spareImgW}
+            fill
+            sizes={spareImgSizes}
+            quality={spareImgQuality}
             className={cn(
               "absolute h-full w-full object-cover object-center",
               spareImgClassName,
@@ -123,8 +124,9 @@ export const BentoGridItem = ({
           <Image
             src={img}
             alt=""
-            height={imgH}
-            width={imgW}
+            fill
+            sizes={imgSizes}
+            quality={imgQuality}
             className={cn(
               "absolute h-full w-full object-cover object-center",
               imgClassName,

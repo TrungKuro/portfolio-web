@@ -61,27 +61,6 @@ export const PortfolioMetadata = () => {
         name="twitter:image"
         content="http://localhost:3000/images/profile/about-me-100922.jpg"
       />
-
-      {/* 🔥 Resource Hints - CRITICAL cho performance */}
-      {/* Google Fonts */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link
-        rel="preconnect"
-        href="https://fonts.gstatic.com"
-        crossOrigin="anonymous"
-      />
-
-      {/* CDN cho devicons */}
-      <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
-
-      {/* ImageKit CDN */}
-      <link rel="dns-prefetch" href="https://ik.imagekit.io" />
-
-      {/* Viewport */}
-      <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1, maximum-scale=5"
-      />
     </>
   );
 };

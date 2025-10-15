@@ -1,6 +1,104 @@
-# Portfolio Web
+# 👤 Portfolio Web
 
-?! ... about project
+> Modern single-page portfolio built with Next.js 15, React 19, and Tailwind CSS, featuring animated Aceternity UI components, 3D globe visualization with Three.js, and SSG rendering.
+>
+> 🙋🏻 _This is my first personal web project ➡️ A **`Developer Portfolio`**_ 😁
+
+## 🚀 Demo
+
+<div
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    align-items: center;
+    justify-items: center;
+    height: 250px;
+    border: 1px solid #ccc;
+  "
+>
+  <div>
+    <p style="font-weight: bold; font-size: 300%; padding: 20px">
+      👉🏻 <a href="https://?!">Live Demo</a>
+    </p>
+  </div>
+  <div>
+    <img
+      src="public/assets/favicons/favicon-edit-removebg-2.png"
+      alt="Favicon"
+      height="100px"
+      width="100px"
+    />
+  </div>
+</div>
+
+### 🧩 Example Screenshot:
+
+| Section     | Screenshot                                                                           |
+| ----------- | ------------------------------------------------------------------------------------ |
+| 🦸🏻‍♂️ Hero     | <img src="public/images/markdown/section-hero.png" alt="Hero" width="100%"/>         |
+| 💬 About    | <img src="public/images/markdown/section-about.png" alt="About" width="100%"/>       |
+| 💪 Skills   | <img src="public/images/markdown/section-skills.png" alt="Skills" width="100%"/>     |
+| 🚀 Projects | <img src="public/images/markdown/section-projects.png" alt="Projects" width="100%"/> |
+| 📨 Contact  | <img src="public/images/markdown/section-contact.png" alt="Contact" width="100%"/>   |
+
+## ✨ Features
+
+<img src="public/images/markdown/google-lighthouse-score.png" alt="Google Lighthouse Score" width="100%"/>
+
+### ⚡️ Performance
+
+- Static Site Generation (SSG) for fast loading
+- Dynamic imports & code splitting
+- Optimized images & SVG icons
+- Bundle size optimization
+
+<img src="public/images/markdown/google-lighthouse-score-performance.png" alt="Score Performance" width="100%"/>
+
+### 🎨 UI/UX
+
+- Interactive 3D globe visualization with Three.js
+- Beautiful animated components from Aceternity UI
+- Smooth scroll animations with Framer Motion
+- Fully responsive design
+
+<img src="public/images/markdown/Globe-VN-2.png" alt="Globe Three" width="100%"/>
+
+### 🔍 SEO & Accessibility
+
+- SEO-optimized metadata
+- Structured data (JSON-LD)
+- Semantic HTML
+- Mobile-friendly
+
+## 🧰 Tech Stack
+
+- **Framework:** `Next.js 15 (App Router)` <img src="public/assets/icons/techstack/nextjs-white.svg" alt="Next.js" height="20px" width="20px"/>
+- **Language:** `React 19` <img src="public/assets/icons/techstack/react.svg" alt="React" height="20px" width="20px"/> `TypeScript` <img src="public/assets/icons/techstack/typescript.svg" alt="Typescript" height="20px" width="20px"/>
+- **Styling:** `Tailwind CSS v4` <img src="public/assets/icons/techstack/tailwindcss.svg" alt="Tailwind" height="20px" width="20px"/>
+- **3D Engine:** `Three.js` <img src="public/assets/icons/techstack/threejs-white.svg" alt="Three.js" height="20px" width="20px"/> `React Three Fiber`
+- **Deployment:** `Vercel` <img src="public/assets/icons/techstack/vercel-white.svg" alt="Vercel" height="20px" width="20px"/>
+
+<br><br>
+
+<div style="
+  border: 3px dashed #888;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 150px;
+  font-size: 18px;
+">
+  <p style="font-weight: bold; font-size: 175%;">More Details About The Project 👇🏻 Below</p>
+</div>
+
+<br><br>
+
+### 📚 [Docs README](https://github.com/TrungKuro/portfolio-web/tree/main/doc)
+
+<br><br>
 
 ## 🖼️ Framework
 
@@ -27,6 +125,12 @@
 - Chạy Web ở chế độ `Product`:
 
   ```
+  # 0A. [Optional] Delete the entire build .next folder
+  rm -rf .next
+
+  # 0B. [Optional] Clear SWC cache as well
+  rm -rf .next/cache
+
   # 1. Build production
   npm run build
 
@@ -109,8 +213,6 @@
   # Hoặc viết tắt:
   npm install -S "tên-package"
   ```
-
----
 
 - 📌 Lệnh _"kiểm toán lỗ hổng"_ ➡️ `npm audit`
   - Quét toàn bộ `[dependency]` trong project.
