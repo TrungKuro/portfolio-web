@@ -514,7 +514,7 @@
   - Cuối cùng thêm các data GeoJSON đã _"scale"_ trên vào kế bên GeoJSON của _"Đại lục Vietnam"_ trong file `globe.json`.
 
 - Kết quả 😇:
-  <img src="../public/images/markdown/Globe-VN-1.png" alt="Globe VN" width="100%" />
+  <img src="../public/images/markdown/globe-vn-1.webp" alt="Globe VN" width="100%" />
 
 ## Method 2️⃣:
 
@@ -893,4 +893,4 @@
     - Chọn hệ số scale `x40 lần`.
 
 - Và đây là kết quả 🥰:
-  <img src="../public/images/markdown/Globe-VN-2.png" alt="Globe VN" width="100%" />
+  <img src="../public/images/markdown/globe-vn-2.webp" alt="Globe VN" width="100%" />

@@ -6,44 +6,26 @@
 
 ## 🚀 Demo
 
-<div
-  style="
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    align-items: center;
-    justify-items: center;
-    height: 250px;
-    border: 1px solid #ccc;
-  "
->
-  <div>
-    <p style="font-weight: bold; font-size: 300%; padding: 20px">
-      👉🏻 <a href="https://?!">Live Demo</a>
-    </p>
-  </div>
-  <div>
-    <img
-      src="public/assets/favicons/favicon-edit-removebg-2.png"
-      alt="Favicon"
-      height="100px"
-      width="100px"
-    />
-  </div>
-</div>
+<p align="center">
+
+| 👉🏻 [**Live Demo**](https://?!) | <img src="public/assets/favicons/favicon-edit-removebg-2.png" alt="Favicon" width="100" /> |
+| :----------------------------: | :----------------------------------------------------------------------------------------: |
+
+</p>
 
 ### 🧩 Example Screenshot:
 
-| Section     | Screenshot                                                                           |
-| ----------- | ------------------------------------------------------------------------------------ |
-| 🦸🏻‍♂️ Hero     | <img src="public/images/markdown/section-hero.png" alt="Hero" width="100%"/>         |
-| 💬 About    | <img src="public/images/markdown/section-about.png" alt="About" width="100%"/>       |
-| 💪 Skills   | <img src="public/images/markdown/section-skills.png" alt="Skills" width="100%"/>     |
-| 🚀 Projects | <img src="public/images/markdown/section-projects.png" alt="Projects" width="100%"/> |
-| 📨 Contact  | <img src="public/images/markdown/section-contact.png" alt="Contact" width="100%"/>   |
+| Section     | Screenshot                                                                            |
+| ----------- | ------------------------------------------------------------------------------------- |
+| 🦸🏻‍♂️ Hero     | <img src="public/images/markdown/section-hero.webp" alt="Hero" width="100%"/>         |
+| 💬 About    | <img src="public/images/markdown/section-about.webp" alt="About" width="100%"/>       |
+| 💪 Skills   | <img src="public/images/markdown/section-skills.webp" alt="Skills" width="100%"/>     |
+| 🚀 Projects | <img src="public/images/markdown/section-projects.webp" alt="Projects" width="100%"/> |
+| 📨 Contact  | <img src="public/images/markdown/section-contact.webp" alt="Contact" width="100%"/>   |
 
 ## ✨ Features
 
-<img src="public/images/markdown/google-lighthouse-score.png" alt="Google Lighthouse Score" width="100%"/>
+<img src="public/images/markdown/google-lighthouse-score.webp" alt="Google Lighthouse Score" width="100%"/>
 
 ### ⚡️ Performance
 
@@ -52,7 +34,7 @@
 - Optimized images & SVG icons
 - Bundle size optimization
 
-<img src="public/images/markdown/google-lighthouse-score-performance.png" alt="Score Performance" width="100%"/>
+<img src="public/images/markdown/google-lighthouse-score-performance.webp" alt="Score Performance" width="100%"/>
 
 ### 🎨 UI/UX
 
@@ -61,7 +43,7 @@
 - Smooth scroll animations with Framer Motion
 - Fully responsive design
 
-<img src="public/images/markdown/Globe-VN-2.png" alt="Globe Three" width="100%"/>
+<img src="public/images/markdown/globe-vn-2.webp" alt="Globe Three" width="100%"/>
 
 ### 🔍 SEO & Accessibility
 
@@ -78,27 +60,15 @@
 - **3D Engine:** `Three.js` <img src="public/assets/icons/techstack/threejs-white.svg" alt="Three.js" height="20px" width="20px"/> `React Three Fiber`
 - **Deployment:** `Vercel` <img src="public/assets/icons/techstack/vercel-white.svg" alt="Vercel" height="20px" width="20px"/>
 
-<br><br>
+<p align="center">
+  <strong>More Details About The Project 👇🏻 Below</strong>
+</p>
 
-<div style="
-  border: 3px dashed #888;
-  border-radius: 12px;
-  padding: 24px;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 150px;
-  font-size: 18px;
-">
-  <p style="font-weight: bold; font-size: 175%;">More Details About The Project 👇🏻 Below</p>
-</div>
-
-<br><br>
-
-### 📚 [Docs README](https://github.com/TrungKuro/portfolio-web/tree/main/doc)
-
-<br><br>
+> ---
+>
+> ### 📚 [Docs README](https://github.com/TrungKuro/portfolio-web/tree/main/doc)
+>
+> ---
 
 ## 🖼️ Framework
 

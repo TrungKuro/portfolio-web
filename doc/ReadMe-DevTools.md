@@ -62,7 +62,7 @@
 - Ví dụ: chạy báo cáo trên trang web chạy cục bộ tại URL _"http://localhost:3000/"_ bằng extension `Lighthouse` trên trình duyệt `Brave` của hệ điều hành `MacOS`.
   - Với kết quả của bản ghi `JSON` _"20250814T021541"_
   - Tức bản báo cáo của ngày **14-08-2025** vào lúc **2am15:41**
-    <img src="../doc/google-lighthouse/localhost_3000-20250814T021541.png" alt="Lighthouse 14/08/2025" width="100%" />
+    <img src="../doc/google-lighthouse/localhost_3000-20250814T021541.webp" alt="Lighthouse 14/08/2025" width="100%" />
 
 👉🏻 Tổng quát các danh mục `Audits`:
 
@@ -674,24 +674,24 @@
 
 ⚠️ Kết quả đánh giá có sự khác nhau giữa bản `DEV (npm run dev)` và bản `BUILD (npm run build) ➡️ (npm run start)`.
 
-| Date       | Time      | Result                                                                                                             |
-| ---------- | --------- | ------------------------------------------------------------------------------------------------------------------ |
-| 14-08-2025 | 2am15:41  | <img src="../doc/google-lighthouse/localhost_3000-20250814T021541.png" alt="Lighthouse 14/08/2025" width="100%" /> |
-| 20-08-2025 | 1pm35:52  | <img src="../doc/google-lighthouse/localhost_3000-20250820T133552.png" alt="Lighthouse 20/08/2025" width="100%" /> |
-| 21-08-2025 | 11pm53:44 | <img src="../doc/google-lighthouse/localhost_3000-20250821T235344.png" alt="Lighthouse 21/08/2025" width="100%" /> |
-| 24-08-2025 | 1pm01:19  | <img src="../doc/google-lighthouse/localhost_3000-20250824T130119.png" alt="Lighthouse 24/08/2025" width="100%" /> |
-| 24-08-2025 | 10pm33:29 | <img src="../doc/google-lighthouse/localhost_3000-20250824T223329.png" alt="Lighthouse 24/08/2025" width="100%" /> |
-| 26-08-2025 | 1pm15:16  | <img src="../doc/google-lighthouse/localhost_3000-20250826T131516.png" alt="Lighthouse 26/08/2025" width="100%" /> |
+| Date       | Time      | Result                                                                                                              |
+| ---------- | --------- | ------------------------------------------------------------------------------------------------------------------- |
+| 14-08-2025 | 2am15:41  | <img src="../doc/google-lighthouse/localhost_3000-20250814T021541.webp" alt="Lighthouse 14/08/2025" width="100%" /> |
+| 20-08-2025 | 1pm35:52  | <img src="../doc/google-lighthouse/localhost_3000-20250820T133552.webp" alt="Lighthouse 20/08/2025" width="100%" /> |
+| 21-08-2025 | 11pm53:44 | <img src="../doc/google-lighthouse/localhost_3000-20250821T235344.webp" alt="Lighthouse 21/08/2025" width="100%" /> |
+| 24-08-2025 | 1pm01:19  | <img src="../doc/google-lighthouse/localhost_3000-20250824T130119.webp" alt="Lighthouse 24/08/2025" width="100%" /> |
+| 24-08-2025 | 10pm33:29 | <img src="../doc/google-lighthouse/localhost_3000-20250824T223329.webp" alt="Lighthouse 24/08/2025" width="100%" /> |
+| 26-08-2025 | 1pm15:16  | <img src="../doc/google-lighthouse/localhost_3000-20250826T131516.webp" alt="Lighthouse 26/08/2025" width="100%" /> |
 
 ### Stage 2️⃣:
 
 - Thử nghiệm cải thiện hiệu suất _(xét từ trái ➡️ phải)_:
 
-  | So sánh ⚖️                                                                                               |
-  | -------------------------------------------------------------------------------------------------------- |
-  | <img src="../public/images/markdown/optimal-comparison-1.png" alt="optimal-comparison-1" width="100%" /> |
-  | <img src="../public/images/markdown/optimal-comparison-2.png" alt="optimal-comparison-2" width="100%" /> |
-  | <img src="../public/images/markdown/optimal-comparison-3.png" alt="optimal-comparison-3" width="100%" /> |
+  | So sánh ⚖️                                                                                                |
+  | --------------------------------------------------------------------------------------------------------- |
+  | <img src="../public/images/markdown/optimal-comparison-1.webp" alt="optimal-comparison-1" width="100%" /> |
+  | <img src="../public/images/markdown/optimal-comparison-2.webp" alt="optimal-comparison-2" width="100%" /> |
+  | <img src="../public/images/markdown/optimal-comparison-3.webp" alt="optimal-comparison-3" width="100%" /> |
   - <u>Hình 1</u>:
     - Tương ứng lần cải thiện gần nhất trước đó là _26-08-2025 | 1pm15:16_.
     - Trang **(page)** <u>mặc định</u> vẫn là `Component Server` dạng `SSG` _(build-time HTML) → render ở Server_.
@@ -812,7 +812,7 @@ Route (app)                                 Size  First Load JS
 
 Dự án của bạn đã implement best practices về performance optimization rất tốt! 🎉
 
-<img src="../doc/google-lighthouse/localhost_3000-20251015T015351.png" alt="Lighthouse 15/10/2025" width="100%" />
+<img src="../doc/google-lighthouse/localhost_3000-20251015T015351.webp" alt="Lighthouse 15/10/2025" width="100%" />
 
 # 📊 ĐÁNH GIÁ HIỆU SUẤT TOÀN DIỆN
 
