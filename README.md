@@ -2,7 +2,7 @@
 
 > Modern single-page portfolio built with Next.js 15, React 19, and Tailwind CSS, featuring animated Aceternity UI components, 3D globe visualization with Three.js, and SSG rendering.
 >
-> 🙋🏻 _This is my first personal web project ➡️ A **`Developer Portfolio`**_ 😁
+> 🙋🏻 _Hi, this is my first personal web project ➡️ a **`Developer Portfolio`**_ 😁
 
 ## 🚀 Demo
 
