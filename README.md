@@ -8,8 +8,8 @@
 
 <p align="center">
 
-| 👉🏻 [**Live Demo**](https://?!) | <img src="public/assets/favicons/favicon-edit-removebg-2.png" alt="Favicon" width="100" /> |
-| :----------------------------: | :----------------------------------------------------------------------------------------: |
+| 👉🏻 [**Live Demo**](https://trungkuro-portfolio.vercel.app/) | <img src="public/assets/favicons/favicon-edit-removebg-2.png" alt="Favicon" width="100" /> |
+| :---------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
 
 </p>
 
@@ -555,3 +555,67 @@ public/
 types/
 └── index.d.ts             # Interface cho các section
 ```
+
+## 🌆 Edit Image of Projects
+
+> Để thống nhất kiểu hình thumbnail các project, cần edit hình theo các bước dưới đây...
+
+Step 0️⃣ - Cần _"chụp full màn hình"_ trang web → chọn `Entire Screen` → bấm `Cmd+Shift+3` → sẽ chụp được hình kích thước gốc _2880 × 1800_.
+
+- Kích thước ảnh mẫu: _1280 × 859_.
+  - Tỉ lệ ảnh mẫu: _1280 / 859 = 1.49 ~ 1.5_.
+  - Tỉ lệ khung hình là `3:2`.
+
+Step 1️⃣ - _Upload_ hình lên `Canva` → chọn `Edit Image` → chọn `Crop` → chọn `Aspect Ratio` là _3:2_.
+
+- Trong `Canva`, chọn `Create`.
+  - Xuất hiện hộp thoại `Create a design`.
+  - Chọn `Custom size` với thông số: _Width (1500) ; Height (1000) ; Units (px)_.
+
+- Trang thiết kế sẽ hiện lên:
+  - Chọn `Uploads` để tải hình project.
+  - Kéo hình _"fit"_ khung hình cả _"cạnh trên-dưới-trái"_, chỉ chừa _"100px cạnh phải"_.
+  - Chọn `Corner rounding` với giá trị _(50)_ để bo tròn hình.
+  - Bấm nút 🔄 để xoay hình _(3°)_.
+  - Di chuyển căn hình _"giữa khung trục ngang"_ và _"cách 100px cạnh trên"_.
+  - Chọn `Stroke style` với giá trị `Stroke weight` _(5)_ và `Stroke color` _(#545454 - Dark gray)_.
+- Bấm `Share` → chọn `Download` để tải hình dạng _(PNG)_.
+
+Step 2️⃣ - _Upload_ hình lên [`LunaPic`](https://www2.lunapic.com/editor/?action=transparent) để làm _"trong suốt nền"_.
+
+- _Click on color to make transparent_: chọn vùng nền màu trắng quanh hình.
+- Chọn `Adjust Transparency Threshold` mức _(50)_.
+- Bấm `Apply → Save` để tải hình về (⚠️ để làm với hình mới, cần vào `File → Close Image` xóa hình cũ).
+
+Step 3️⃣ - _Upload_ hình lên [`ONLINEPNGTOOLS`](https://onlinepngtools.com/refine-png-edges) để _"khử răng cưa" (Anti aliasing)_ hình.
+
+- Thông số `Smooth Edge Radius` chọn giá trị _(2)_.
+- Thông số `Hard Edge Radius` chọn giá trị _(2)_.
+- ✅ `External Edge Refining`.
+- ❌ `Edge Pixels Refining`.
+
+Step 4️⃣ - _Upload_ hình lên `Squoosh` để tối ưu hình dạng _(WebP)_.
+
+- Các thông số cấu hình:
+  - 📌 _"Edit"_:
+    - Resize: ❌ `OFF` (giữ nguyên kích thước)
+    - Reduce palette: ❌ `OFF` (giữ đầy đủ màu sắc)
+  - 📌 _"Compress"_ -> `WebP`:
+    - Lossless: ❌ `UNCHECK` (để giảm file size)
+    - Effort: `4` (cân bằng speed/quality)
+    - Quality: `75-80` (cho balance tốt) hoặc `85-90` (nếu ảnh quan trọng)
+  - 📌 _"Advanced Settings"_:
+    - Compress alpha: ✅ `ON` (nén alpha)
+    - Alpha quality: `85-90` (vẫn sắc nét, file nhỏ hơn)
+    - Alpha filter quality: `1`
+    - Auto adjust filter strength: ❌ `OFF` (tự động điều chỉnh cường độ bộ lọc)
+    - Filter strength: `40-50` (giảm artifacts, không quá aggressive)
+    - Strong filter: ✅ `ON` (bộ lọc mạnh)
+    - Filter sharpness: `5-6` (cân bằng giữa crisp và natural)
+    - Sharp RGB→YUV conversion: ❌ `OFF` (chuyển đổi RGB→YUV sắc nét)
+    - Passes: `1`
+    - Spatial noise shaping: `30-40` (giảm processing overhead)
+    - Preprocess: `None`
+    - Segments: `3` (đủ cho most cases, nhanh hơn)
+    - Partitions: `0`
+  - ⚠️ **Preserve transparent data**: ✅ CHECK (nếu ảnh có trong suốt - bảo toàn dữ liệu trong suốt)

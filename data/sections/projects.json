@@ -6,6 +6,45 @@
 
   "personalProjects": [
     {
+      "title": "Interactive Developer Portfolio",
+      "description": "Modern single-page portfolio showcasing projects and skills with animated UI components, 3D globe visualization, and smooth scroll animations.",
+      "imageProject": {
+        "src": "/images/projects/project-portfolio-web.webp",
+        "alt": "Home page interface of 'Interactive Developer Portfolio' project",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/nextjs-white.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/react.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/tailwindcss.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/threejs-white.svg",
+          "alt": "Three.js Logo"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/portfolio-web",
+        "server": "",
+        "live": "https://trungkuro-portfolio.vercel.app/"
+      }
+    },
+    {
       "title": "3D Solar System Planets to Explore",
       "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
       "imageProject": {

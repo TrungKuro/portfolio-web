@@ -595,7 +595,7 @@ self    = căn chỉnh riêng lẻ từng flex item
     - 📌 _"Compress"_ -> `WebP`:
       - Lossless: ❌ `UNCHECK` (để giảm file size)
       - Effort: `4` (cân bằng speed/quality)
-      - Quality: `75-80` (cho balance tốt) hoặc 85-90 (nếu ảnh quan trọng)
+      - Quality: `75-80` (cho balance tốt) hoặc `85-90` (nếu ảnh quan trọng)
     - 📌 _"Advanced Settings"_:
       - Compress alpha: ✅ `ON` (nén alpha)
       - Alpha quality: `85-90` (vẫn sắc nét, file nhỏ hơn)
