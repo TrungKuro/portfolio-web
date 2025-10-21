@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -32,7 +31,7 @@ export const PinContainer = ({
   };
 
   return (
-    <Link
+    <a
       className={cn(
         "group/pin relative z-50 cursor-pointer",
         containerClassName,
@@ -40,20 +39,22 @@ export const PinContainer = ({
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       href={href || "/"}
+      target="_blank"
+      rel="noopener noreferrer"
     >
       {/* Invisible wrapper để tạo chiều cao thực cho grid
        *
        * Vì CHILDREN được lồng liên tiếp trong 2 lớp <div> có POSITION ABSOLUTE
-       * Mà các lớp <div> lại lấy kích thước theo lớp <Link> POSITION RELATIVE
-       * Trong khi lớp <Link> lại không nhận được kích thước trực tiếp từ CHILDREN
-       * Nên cần lớp <div> "vô hình" này lấy kích thước của CHILDREN cộng sẵn với kích thước "viền khung hình" cho <Link>
+       * Mà các lớp <div> lại lấy kích thước theo lớp <a> POSITION RELATIVE
+       * Trong khi lớp <a> lại không nhận được kích thước trực tiếp từ CHILDREN
+       * Nên cần lớp <div> "vô hình" này lấy kích thước của CHILDREN cộng sẵn với kích thước "viền khung hình" cho <a>
        */}
       {allowExpandToParent ? (
         <div
           className={cn(
             // Sau khi có toàn bộ kích thước của phần tử CHILDREN
             // Cần đệm thêm PADDING 18px = PADDING 14px + BORDER 2px
-            // Để cung cấp kích thước cho <Link>
+            // Để cung cấp kích thước cho <a>
             "invisible p-[18px]",
             className,
           )}
@@ -90,7 +91,7 @@ export const PinContainer = ({
       </div>
 
       <PinPerspective title={title} />
-    </Link>
+    </a>
   );
 };
 
@@ -102,7 +103,7 @@ export const PinPerspective = ({ title }: { title?: string }) => {
         <div className="absolute inset-x-0 top-0 flex justify-center">
           <div className="relative z-10 flex items-center space-x-2 rounded-full bg-zinc-950 px-4 py-0.5 ring-1 ring-white/10">
             {/* Đường dẫn */}
-            <span className="relative z-20 inline-block py-0.5 text-xs font-bold text-white">
+            <span className="relative z-20 inline-block py-0.5 text-xs/5 font-medium tracking-wide text-[#fdfdfe]">
               {title}
             </span>
 
