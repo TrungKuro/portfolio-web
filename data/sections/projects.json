@@ -65,12 +65,12 @@
           "alt": "React Logo"
         },
         {
-          "src": "/assets/icons/techstack/typescript.svg",
-          "alt": "TypeScript Logo"
-        },
-        {
           "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
         },
         {
           "src": "/assets/icons/techstack/framermotion-white.svg",
@@ -85,6 +85,49 @@
         "client": "https://github.com/TrungKuro/minesweeper",
         "server": "",
         "live": "https://minesweeper-aiagent-trung.vercel.app"
+      }
+    },
+    {
+      "title": "CaseCobra - Custom Phone Case E-commerce",
+      "description": "A modern, full-stack e-commerce platform built with Next.js 15 that allows users to create and order custom phone cases with their own images, featuring interactive design tools and secure payment processing.",
+      "imageProject": {
+        "src": "/images/projects/project-case-phone-web.webp",
+        "alt": "CaseCobra custom phone case platform homepage",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/nextjs-white.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/react.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/tailwindcss.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/prisma-white.svg",
+          "alt": "Prisma Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/postgresql.svg",
+          "alt": "PostgreSQL Logo"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/case-phone-web",
+        "server": "",
+        "live": "https://case-phone-web.vercel.app"
       }
     },
     {
