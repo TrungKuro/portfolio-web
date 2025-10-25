@@ -223,10 +223,11 @@
   - [SVG Repo](https://www.svgrepo.com/)
   - [SVGOMG](https://svgomg.net/)
   - [DevIcon](https://devicon.dev/)
-    - ➡️ [DevIcon Web](https://devicon-website.vercel.app/)
-    - ➡️ [IconGram](https://icongr.am/)
-    - ➡️ [DevIcon UI](https://devicon-ui.vercel.app/)
-    - ➡️ [SVG Icon](https://svgicons.com/icon-set/svg-logos-svg-icons)
+  - [DevIcon Web](https://devicon-website.vercel.app/)
+  - [DevIcon UI](https://devicon-ui.vercel.app/)
+  - [Icon Gram](https://icongr.am/)
+  - [SVG Icon](https://svgicons.com/icon-set/svg-logos-svg-icons)
+  - [World Vector Logo](https://worldvectorlogo.com/)
 
 - Cho `GIF`:
   - [Lottie Files](https://lottiefiles.com/)
@@ -237,7 +238,7 @@
 
 - Cho `Font`:
   - [Cool Symbols & Fonts](https://coolsymbol.com/)
-  - [Google Fonts](https://fonts.google.com/?query=Nunito+Sans)
+  - [Google Fonts](https://fonts.google.com/)
 
 - Cho `Edit Image`:
   - [Squoosh](https://squoosh.app/)

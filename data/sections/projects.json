@@ -45,6 +45,49 @@
       }
     },
     {
+      "title": "Modern Minesweeper Game (by AI Agent)",
+      "description": "A beautifully animated, modern Minesweeper game built with Next.js and TypeScript. Enjoy smooth gameplay, auto-open chording, and persistent highscores in a glossy, responsive UI.",
+      "imageProject": {
+        "src": "/images/projects/project-minesweeper.webp",
+        "alt": "Gameplay interface of 'Modern Minesweeper Game' showing board with revealed cells and mine counter",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/nextjs-white.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/react.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/tailwindcss.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/framermotion-white.svg",
+          "alt": "Framer Motion Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/vitest.svg",
+          "alt": "Vitest Logo"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/minesweeper",
+        "server": "",
+        "live": "https://minesweeper-aiagent-trung.vercel.app"
+      }
+    },
+    {
       "title": "3D Solar System Planets to Explore",
       "description": "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
       "imageProject": {
