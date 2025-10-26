@@ -25,7 +25,8 @@ export const Projects = ({ id }: { id: string }) => {
               ({ title, description, imageProject, iconLists, links }, idx) => (
                 <div key={`${idx}-${title}`} className="flex flex-col">
                   <PinContainer
-                    title={`💬 ${description}`}
+                    title={`👉🏻 ${title}`}
+                    content={`💬 ${description}`}
                     href={links.live}
                     allowExpandToParent={true}
                   >
@@ -72,7 +73,7 @@ export const Projects = ({ id }: { id: string }) => {
                     </h1>
 
                     {/* Mô tả dự án */}
-                    <p className="line-clamp-1 text-sm font-light subpixel-antialiased lg:text-xl lg:font-normal">
+                    <p className="line-clamp-2 text-sm font-light subpixel-antialiased lg:text-xl lg:font-normal">
                       {description}
                     </p>
 
