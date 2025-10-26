@@ -108,12 +108,12 @@
           "alt": "React Logo"
         },
         {
-          "src": "/assets/icons/techstack/typescript.svg",
-          "alt": "TypeScript Logo"
-        },
-        {
           "src": "/assets/icons/techstack/tailwindcss.svg",
           "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
         },
         {
           "src": "/assets/icons/techstack/prisma-white.svg",
@@ -128,6 +128,57 @@
         "client": "https://github.com/TrungKuro/case-phone-web",
         "server": "",
         "live": "https://case-phone-web.vercel.app"
+      }
+    },
+    {
+      "title": "Task Flow Manager",
+      "description": "A comprehensive project management application built with Next.js and TypeScript, featuring multiple project views including Kanban boards, Gantt charts, data tables, and timeline visualization. Manage teams, tasks, and projects with real-time dashboards and analytics.",
+      "imageProject": {
+        "src": "/images/projects/project-task-flow-manager.webp",
+        "alt": "Task Flow Manager dashboard interface showing project management features",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/nextjs-white.svg",
+          "alt": "Next.js Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/react.svg",
+          "alt": "React Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/tailwindcss.svg",
+          "alt": "Tailwind CSS Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/typescript.svg",
+          "alt": "TypeScript Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/redux.svg",
+          "alt": "Redux Toolkit Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/nodejs.svg",
+          "alt": "Node.js Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/prisma-white.svg",
+          "alt": "Prisma ORM Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/postgresql.svg",
+          "alt": "PostgreSQL Logo"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/task-flow-manager/tree/main/client",
+        "server": "https://github.com/TrungKuro/task-flow-manager/tree/main/server",
+        "live": "https://main.d5joeu8ua4xyj.amplifyapp.com"
       }
     },
     {
