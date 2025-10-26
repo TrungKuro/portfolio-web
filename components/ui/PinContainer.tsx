@@ -33,14 +33,18 @@ export const PinContainer = ({
   return (
     <a
       className={cn(
-        "group/pin relative z-50 cursor-pointer",
+        "group/pin relative z-50",
+        href ? "cursor-pointer" : "cursor-not-allowed",
         containerClassName,
       )}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      href={href || "/"}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={href || ""}
+      onClick={(e) => {
+        if (!href) e.preventDefault();
+      }}
+      target={href ? "_blank" : undefined}
+      rel={href ? "noopener noreferrer" : undefined}
     >
       {/* Invisible wrapper để tạo chiều cao thực cho grid
        *

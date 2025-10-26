@@ -180,6 +180,41 @@
         "server": "https://github.com/TrungKuro/task-flow-manager/tree/main/server",
         "live": "https://main.d5joeu8ua4xyj.amplifyapp.com"
       }
+    },
+    {
+      "title": "Pokemon Card App",
+      "description": "Modern Flutter mobile application for browsing and exploring Pokemon cards with clean architecture, featuring card details, search functionality, and responsive UI design.",
+      "imageProject": {
+        "src": "/images/projects/project-pokemon-card-app.webp",
+        "alt": "Home screen interface of 'Pokemon Card App' project",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/flutter.svg",
+          "alt": "Flutter Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/dart.svg",
+          "alt": "Dart Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/android.svg",
+          "alt": "Android Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/apple-white.svg",
+          "alt": "Apple Logo"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/Pokemon-Card-App",
+        "server": "",
+        "live": ""
+      }
     }
   ]
 }
