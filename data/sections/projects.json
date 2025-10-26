@@ -45,7 +45,7 @@
       }
     },
     {
-      "title": "Modern Minesweeper Game (by AI Agent)",
+      "title": "Modern Minesweeper Game (by 🤖 AI Agent)",
       "description": "A beautifully animated, modern Minesweeper game built with Next.js and TypeScript. Enjoy smooth gameplay, auto-open chording, and persistent highscores in a glossy, responsive UI.",
       "imageProject": {
         "src": "/images/projects/project-minesweeper.webp",
@@ -212,6 +212,76 @@
       ],
       "links": {
         "client": "https://github.com/TrungKuro/Pokemon-Card-App",
+        "server": "",
+        "live": ""
+      }
+    },
+    {
+      "title": "Servo 7-Segment Clock",
+      "description": "Physical 7-segment display clock controlled by 28 RC servo motors, featuring RTC DS3231 for timekeeping and PCA9685 PWM drivers. Each digit uses 7 servos to mechanically control segment visibility, displaying time with unique startup animations and hourly chimes.",
+      "imageProject": {
+        "src": "/images/projects/project-servo-7seg-clock.webp",
+        "alt": "Front view of 'Servo 7-Segment Clock' project showing mechanical 7-segment displays",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/arduino.svg",
+          "alt": "Arduino Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/cplusplus.svg",
+          "alt": "C++ Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/microchip.svg",
+          "alt": "Microchip Icon"
+        },
+        {
+          "src": "/assets/icons/techstack/hardware.svg",
+          "alt": "Hardware Icon"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/Servo_7Seg_Clock",
+        "server": "",
+        "live": "https://www.youtube.com/watch?v=wiTqnXfDZhE"
+      }
+    },
+    {
+      "title": "Car Detector Line",
+      "description": "Arduino-based line following robot project with PID control algorithm, featuring multiple versions including line detection, ultrasonic obstacle avoidance, Bluetooth control, and object following capabilities.",
+      "imageProject": {
+        "src": "/images/projects/project-car-detector-line.webp",
+        "alt": "Line following car with TCRT5000 sensors - 'Car Detector Line' project",
+        "background": {
+          "webp": "/images/misc/bg-project.webp",
+          "png": "/images/misc/bg-project.png"
+        }
+      },
+      "iconLists": [
+        {
+          "src": "/assets/icons/techstack/arduino.svg",
+          "alt": "Arduino Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/cpp.svg",
+          "alt": "C++ Logo"
+        },
+        {
+          "src": "/assets/icons/techstack/embedded.svg",
+          "alt": "Embedded Systems Icon"
+        },
+        {
+          "src": "/assets/icons/techstack/electronics.svg",
+          "alt": "Electronics Icon"
+        }
+      ],
+      "links": {
+        "client": "https://github.com/TrungKuro/Car_Detector_Line",
         "server": "",
         "live": ""
       }
