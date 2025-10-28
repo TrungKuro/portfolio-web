@@ -252,7 +252,7 @@
       }
     },
     {
-      "title": "Car Detector Line",
+      "title": "Car Detector Line (PID algorithm)",
       "description": "Arduino-based line following robot project with PID control algorithm, featuring multiple versions including line detection, ultrasonic obstacle avoidance, Bluetooth control, and object following capabilities.",
       "imageProject": {
         "src": "/images/projects/project-car-detector-line.webp",
@@ -268,22 +268,22 @@
           "alt": "Arduino Logo"
         },
         {
-          "src": "/assets/icons/techstack/cpp.svg",
+          "src": "/assets/icons/techstack/cplusplus.svg",
           "alt": "C++ Logo"
         },
         {
-          "src": "/assets/icons/techstack/embedded.svg",
-          "alt": "Embedded Systems Icon"
+          "src": "/assets/icons/techstack/microchip.svg",
+          "alt": "Microchip Icon"
         },
         {
-          "src": "/assets/icons/techstack/electronics.svg",
-          "alt": "Electronics Icon"
+          "src": "/assets/icons/techstack/hardware.svg",
+          "alt": "Hardware Icon"
         }
       ],
       "links": {
         "client": "https://github.com/TrungKuro/Car_Detector_Line",
         "server": "",
-        "live": ""
+        "live": "https://www.youtube.com/shorts/-XWY5h36vE4"
       }
     }
   ]
