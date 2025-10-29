@@ -12,7 +12,7 @@ export const Skills = ({ id }: { id: string }) => {
 
   return (
     <section id={id}>
-      <ScrollRevealAnimation>
+      <ScrollRevealAnimation disableOnMobile={true}>
         <div className="flex flex-col items-center pt-30">
           <HeadingHighlight
             title={skill.title}

@@ -113,9 +113,9 @@ export const PinPerspective = ({
       <div className="inset-0 -mt-7 h-full w-full flex-none">
         {/* Khung nội dung "link" của CARD */}
         <div className="absolute inset-x-0 top-0 flex justify-center">
-          <div className="relative z-10 flex items-center space-x-2 rounded-full bg-zinc-950 px-4 py-0.5 ring-1 ring-white/10">
+          <div className="relative z-10 flex items-center space-x-2 rounded-4xl bg-zinc-950 px-4 py-0.5 ring-1 ring-white/10">
             {/* Đường dẫn */}
-            <span className="relative z-20 inline-block py-0.5 text-xs/5 tracking-wide text-[#fdfdfe]">
+            <span className="relative z-20 inline-block py-0.5 pl-4 text-xs/5 tracking-wide text-[#fdfdfe]">
               <p className="font-bold">{title}</p>
               <br />
               <p className="font-medium">{content}</p>

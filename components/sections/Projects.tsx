@@ -13,7 +13,7 @@ export const Projects = ({ id }: { id: string }) => {
 
   return (
     <section id={id}>
-      <ScrollRevealAnimation>
+      <ScrollRevealAnimation disableOnMobile={true}>
         <div className="flex flex-col items-center pt-30">
           <HeadingHighlight
             title={project.title}
