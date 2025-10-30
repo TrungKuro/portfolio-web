@@ -38,6 +38,9 @@ const nextConfig: NextConfig = {
         search: "",
       },
     ],
+
+    //
+    qualities: [50, 75],
   },
 
   webpack(config) {
